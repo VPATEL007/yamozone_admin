@@ -3,24 +3,24 @@ import 'package:get/get.dart';
 import 'package:webkit/views/apps/CRM/contacts_page.dart';
 import 'package:webkit/views/apps/CRM/opportunities.dart';
 import 'package:webkit/views/apps/calender.dart';
-import 'package:webkit/views/apps/chat_page.dart';
+import 'package:webkit/views/apps/kyc/kyc_approval_page.dart';
 import 'package:webkit/views/apps/contacts/edit_profile.dart';
 import 'package:webkit/views/apps/contacts/member_list.dart';
 import 'package:webkit/views/apps/contacts/profile.dart';
 import 'package:webkit/views/apps/ecommerce/add_product.dart';
-import 'package:webkit/views/apps/ecommerce/customers.dart';
-import 'package:webkit/views/apps/ecommerce/invoice_page.dart';
-import 'package:webkit/views/apps/ecommerce/product_detail.dart';
+import 'package:webkit/views/apps/user_management/user_management_page.dart';
+import 'package:webkit/views/apps/kyc/kyc_review_page.dart';
+import 'package:webkit/views/apps/user_management/user_detail.dart';
 import 'package:webkit/views/apps/ecommerce/products.dart';
 import 'package:webkit/views/apps/file/file_manager.dart';
 import 'package:webkit/views/apps/file/file_uploader.dart';
-import 'package:webkit/views/apps/fitness/fitness_screen.dart';
+import 'package:webkit/views/apps/driver_monitoring/driver_monitoring_page.dart';
 import 'package:webkit/views/apps/kanban_page.dart';
-import 'package:webkit/views/apps/mail_box_screen.dart';
+import 'package:webkit/views/apps/system_setting/system_setting_page.dart';
 import 'package:webkit/views/apps/projects/create_project.dart';
 import 'package:webkit/views/apps/projects/project_detail.dart';
 import 'package:webkit/views/apps/projects/project_list.dart';
-import 'package:webkit/views/apps/shopping_customer/shopping_customer_screen.dart';
+import 'package:webkit/views/apps/dispute_center/dispute_center_page.dart';
 import 'package:webkit/views/auth/forgot_password.dart';
 import 'package:webkit/views/auth/forgot_password_2.dart';
 import 'package:webkit/views/auth/locked.dart';
@@ -40,7 +40,7 @@ import 'package:webkit/views/other/fl_chart_screen.dart';
 import 'package:webkit/views/other/google_map.dart';
 import 'package:webkit/views/other/sfmap_page.dart';
 import 'package:webkit/views/other/synsfusion_chart.dart';
-import 'package:webkit/views/starter.dart';
+import 'package:webkit/views/apps/system_setting/audit_logs.dart';
 import 'package:webkit/views/ui/buttons_page.dart';
 import 'package:webkit/views/ui/cards_page.dart';
 import 'package:webkit/views/ui/carousels.dart';
@@ -59,9 +59,9 @@ import 'views/error_pages/error_500.dart';
 import 'views/error_pages/maintenance_page.dart';
 import 'views/extra_pages/faqs_page.dart';
 import 'views/extra_pages/pricing.dart';
-import 'views/extra_pages/time_line_page.dart';
-import 'views/ui/landing_page.dart';
-import 'views/ui/nft_dashboard.dart';
+import 'views/apps/orders_escrow/orders_escrow_page.dart';
+import 'views/apps/system_setting/notifications_broadcasr_page.dart';
+import 'views/apps/listing_moderation/listing_moderation_view.dart';
 
 class AuthMiddleware extends GetMiddleware {
   @override
@@ -76,7 +76,7 @@ getPageRoute() {
   var routes = [
     GetPage(
         name: '/',
-        page: () => const DashboardPage(),
+        page: () => const DashboardScreen(),
         middlewares: [AuthMiddleware()]),
 
     GetPage(name: '/faqs', page: () => const FaqsPage()),
@@ -87,12 +87,12 @@ getPageRoute() {
         middlewares: [AuthMiddleware()]),
 
     GetPage(
-        name: '/starter',
-        page: () => const Starter(),
+        name: '/audit-logs',
+        page: () => const AuditLogsScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/dashboard',
-        page: () => const DashboardPage(),
+        page: () => const DashboardScreen(),
         middlewares: [AuthMiddleware()]),
 
     ///--------------- Ecommerce ---------------///
@@ -105,20 +105,20 @@ getPageRoute() {
         page: () => const AddProduct(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/apps/ecommerce/product-detail',
-        page: () => const ProductDetail(),
+        name: '/user/userdetail',
+        page: () => const UserDetail(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/apps/ecommerce/customers',
-        page: () => const Customers(),
+        name: '/user-management',
+        page: () => const UserManagementPage(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/apps/ecommerce/invoice',
-        page: () => const InvoicePage(),
+        name: '/kyc-review',
+        page: () => const KycReviewPage(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/timeline',
-        page: () => const TimeLinePage(),
+        name: '/orders',
+        page: () => const OrdersEscrowPage(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- File ----------------///
@@ -136,25 +136,25 @@ getPageRoute() {
     ///---------------- Ntf ----------------///
 
     GetPage(
-        name: '/NFTDashboard',
-        page: () => const NFTDashboardScreen(),
+        name: '/listing-moderation',
+        page: () => const ListingModerationView(),
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/calender',
         page: () => const Calender(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/shopping-customer',
-        page: () => const ShoppingCustomerScreen(),
+        name: '/dispute-center',
+        page: () => const DisputeCenterPage(),
         middlewares: [AuthMiddleware()]),
 
     GetPage(
-        name: '/fitness',
-        page: () => const FitnessScreen(),
+        name: '/driver-monitoring',
+        page: () => const DriverMonitoringScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/mila_box',
-        page: () => const MailBoxScreen(),
+        name: '/setting',
+        page: () => const SystemSettingsPage(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- KanBan ----------------///
@@ -265,8 +265,8 @@ getPageRoute() {
     //     page: () => const DiscoverJobs(),
     //     middlewares: [AuthMiddleware()]),
     GetPage(
-        name: '/ui/landing',
-        page: () => const LandingPage(),
+        name: '/notification',
+        page: () => const NotificationsPage(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- Error ----------------///
@@ -294,8 +294,8 @@ getPageRoute() {
     ///---------------- Chat ----------------///
 
     GetPage(
-        name: '/chat',
-        page: () => const ChatPage(),
+        name: '/kyc-approval',
+        page: () => const KycApprovalPage(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- Form ----------------///

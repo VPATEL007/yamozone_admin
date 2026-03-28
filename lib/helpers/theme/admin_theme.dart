@@ -51,7 +51,7 @@ class LeftBarTheme {
     this.labelColor = const Color(0xff6c757d),
     this.activeItemColor = const Color(0xff3874ff),
     // this.activeItemColor = const Color(0xff006784),
-    this.activeItemBackground = const Color(0x153874ff),
+    this.activeItemBackground = const Color(0xff073B25),
 
     // this.activeItemBackground = const Color(0x14006784),
   });
@@ -171,7 +171,7 @@ class ContentTheme {
   ContentTheme({
     this.background = const Color(0xfffafbfe),
     this.onBackground = const Color(0xffF1F1F2),
-    this.primary = const Color(0xff3874ff),
+    this.primary = const Color(0xffD4AF37),
     // this.primary = const Color(0xff006784),
     this.onPrimary = const Color(0xffffffff),
     this.disabled = const Color(0xffffffff),

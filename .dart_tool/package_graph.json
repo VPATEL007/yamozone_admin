@@ -325,7 +325,7 @@
     },
     {
       "name": "shared_preferences",
-      "version": "2.5.4",
+      "version": "2.5.5",
       "dependencies": [
         "flutter",
         "shared_preferences_android",
@@ -338,7 +338,7 @@
     },
     {
       "name": "cupertino_icons",
-      "version": "1.0.8",
+      "version": "1.0.9",
       "dependencies": []
     },
     {
@@ -495,7 +495,7 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "version": "2.0.33",
+      "version": "2.0.34",
       "dependencies": [
         "flutter"
       ]
@@ -656,7 +656,7 @@
     },
     {
       "name": "image_picker_android",
-      "version": "0.8.13+14",
+      "version": "0.8.13+15",
       "dependencies": [
         "flutter",
         "flutter_plugin_android_lifecycle",
@@ -705,7 +705,7 @@
     },
     {
       "name": "google_maps_flutter_platform_interface",
-      "version": "2.14.2",
+      "version": "2.15.0",
       "dependencies": [
         "collection",
         "flutter",
@@ -724,7 +724,7 @@
     },
     {
       "name": "google_maps_flutter_android",
-      "version": "2.19.2",
+      "version": "2.19.5",
       "dependencies": [
         "flutter",
         "flutter_plugin_android_lifecycle",
@@ -784,7 +784,7 @@
     },
     {
       "name": "url_launcher_android",
-      "version": "6.3.28",
+      "version": "6.3.29",
       "dependencies": [
         "flutter",
         "url_launcher_platform_interface"
@@ -821,7 +821,7 @@
     },
     {
       "name": "shared_preferences_platform_interface",
-      "version": "2.4.1",
+      "version": "2.4.2",
       "dependencies": [
         "flutter",
         "plugin_platform_interface"
@@ -849,7 +849,7 @@
     },
     {
       "name": "shared_preferences_android",
-      "version": "2.4.21",
+      "version": "2.4.23",
       "dependencies": [
         "flutter",
         "shared_preferences_platform_interface"
@@ -874,7 +874,7 @@
     },
     {
       "name": "async",
-      "version": "2.13.0",
+      "version": "2.13.1",
       "dependencies": [
         "collection",
         "meta"
@@ -1001,7 +1001,7 @@
     },
     {
       "name": "path_provider_android",
-      "version": "2.2.22",
+      "version": "2.2.23",
       "dependencies": [
         "flutter",
         "path_provider_platform_interface"

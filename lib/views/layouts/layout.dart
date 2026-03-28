@@ -1,6 +1,8 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
 import 'package:webkit/controller/layouts/layout_controller.dart';
 import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/helpers/theme/app_style.dart';
@@ -101,10 +103,7 @@ class Layout extends StatelessWidget {
       // extendBodyBehindAppBar: true,
       // appBar: TopBar(
       drawer: LeftBar(),
-      body: SingleChildScrollView(
-        key: controller.scrollKey,
-        child: child,
-      ),
+      body: SingleChildScrollView(key: controller.scrollKey, child: child),
     );
   }
 
@@ -112,40 +111,50 @@ class Layout extends StatelessWidget {
     return Scaffold(
       key: controller.scaffoldKey,
       endDrawer: RightBar(),
-      body: Row(
+      body: Stack(
         children: [
-          LeftBar(isCondensed: ThemeCustomizer.instance.leftBarCondensed),
-          Expanded(
-              child: Stack(
+          Image.asset(
+            "assets/images/logo/background.png",
+            width: Get.width,
+            height: Get.height,
+            fit: BoxFit.fill,
+          ),
+          Row(
             children: [
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: 0,
-                child: SingleChildScrollView(
-                  padding:
-                      MySpacing.fromLTRB(0, 58 + flexSpacing, 0, flexSpacing),
-                  key: controller.scrollKey,
-                  child: child,
-                ),
-              ),
-              Positioned(top: 0, left: 0, right: 0, child: TopBar()),
+              LeftBar(isCondensed: ThemeCustomizer.instance.leftBarCondensed),
+              Expanded(
+                  child: Stack(
+                children: [
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: 0,
+                    child: SingleChildScrollView(
+                      padding: MySpacing.fromLTRB(
+                          0, 58 + flexSpacing, 0, flexSpacing),
+                      key: controller.scrollKey,
+                      child: child,
+                    ),
+                  ),
+                  Positioned(top: 0, left: 0, right: 0, child: TopBar()),
+                ],
+              )),
+              // Expanded(
+              //     child: Column(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     TopBar(),
+              //     Expanded(
+              //         child: SingleChildScrollView(
+              //       padding: MySpacing.y(flexSpacing),
+              //       key: controller.scrollKey,
+              //       child: child,
+              //     )),
+              //   ],
+              // ))
             ],
-          )),
-          // Expanded(
-          //     child: Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     TopBar(),
-          //     Expanded(
-          //         child: SingleChildScrollView(
-          //       padding: MySpacing.y(flexSpacing),
-          //       key: controller.scrollKey,
-          //       child: child,
-          //     )),
-          //   ],
-          // ))
+          ),
         ],
       ),
     );

@@ -56,55 +56,67 @@ class _TopBarState extends State<TopBar>
                     LucideIcons.menu,
                     color: topBarTheme.onBackground,
                   )),
-              MySpacing.width(24),
-              SizedBox(
-                width: 200,
-                child: TextFormField(
-                  maxLines: 1,
-                  style: MyTextStyle.bodyMedium(),
-                  decoration: InputDecoration(
-                      hintText: "search",
-                      hintStyle: MyTextStyle.bodySmall(xMuted: true),
-                      border: outlineInputBorder,
-                      enabledBorder: outlineInputBorder,
-                      focusedBorder: focusedInputBorder,
-                      prefixIcon: const Align(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            FeatherIcons.search,
-                            size: 14,
-                          )),
-                      prefixIconConstraints: const BoxConstraints(
-                          minWidth: 36,
-                          maxWidth: 36,
-                          minHeight: 32,
-                          maxHeight: 32),
-                      contentPadding: MySpacing.xy(16, 12),
-                      isCollapsed: true,
-                      floatingLabelBehavior: FloatingLabelBehavior.never),
-                ),
-              ),
             ],
           ),
+          MySpacing.width(20),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     MyText.bodyLarge(
+          //       "Dashboard Overview",
+          //       fontWeight: 700,
+          //       fontSize: 20,
+          //     ),
+          //     MyText.titleSmall("Monitor your marketplace performance",
+          //         fontWeight: 400, fontSize: 14),
+          //   ],
+          // ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                InkWell(
-                  onTap: () {
-                    ThemeCustomizer.setTheme(
-                        ThemeCustomizer.instance.theme == ThemeMode.dark
-                            ? ThemeMode.light
-                            : ThemeMode.dark);
-                  },
-                  child: Icon(
-                    ThemeCustomizer.instance.theme == ThemeMode.dark
-                        ? FeatherIcons.sun
-                        : FeatherIcons.moon,
-                    size: 18,
-                    color: topBarTheme.onBackground,
+                SizedBox(
+                  width: 200,
+                  child: TextFormField(
+                    maxLines: 1,
+                    style: MyTextStyle.bodyMedium(),
+                    decoration: InputDecoration(
+                        hintText: "search",
+                        hintStyle: MyTextStyle.bodySmall(xMuted: true),
+                        border: outlineInputBorder,
+                        enabledBorder: outlineInputBorder,
+                        focusedBorder: focusedInputBorder,
+                        prefixIcon: const Align(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              FeatherIcons.search,
+                              size: 14,
+                            )),
+                        prefixIconConstraints: const BoxConstraints(
+                            minWidth: 36,
+                            maxWidth: 36,
+                            minHeight: 32,
+                            maxHeight: 32),
+                        contentPadding: MySpacing.xy(16, 12),
+                        isCollapsed: true,
+                        floatingLabelBehavior: FloatingLabelBehavior.never),
                   ),
                 ),
+                // InkWell(
+                //   onTap: () {
+                //     ThemeCustomizer.setTheme(
+                //         ThemeCustomizer.instance.theme == ThemeMode.dark
+                //             ? ThemeMode.light
+                //             : ThemeMode.dark);
+                //   },
+                //   child: Icon(
+                //     ThemeCustomizer.instance.theme == ThemeMode.dark
+                //         ? FeatherIcons.sun
+                //         : FeatherIcons.moon,
+                //     size: 18,
+                //     color: topBarTheme.onBackground,
+                //   ),
+                // ),
                 MySpacing.width(12),
                 CustomPopupMenu(
                   backdrop: true,

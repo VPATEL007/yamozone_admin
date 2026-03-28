@@ -22,7 +22,7 @@ class Calender extends StatefulWidget {
 
 class _CalenderState extends State<Calender>
     with SingleTickerProviderStateMixin, UIMixin {
-  late CalenderController controller; 
+  late CalenderController controller;
 
   @override
   void initState() {

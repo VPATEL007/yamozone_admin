@@ -1,977 +1,998 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/instance_manager.dart';
-import 'package:intl/intl.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/dashboard_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_dotted_line.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_list_extension.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+// ─────────────────────────────────────────────
+// COLORS & THEME
+// ─────────────────────────────────────────────
+const kPrimary = Color(0xFF1B5E20); // dark green
+const kPrimaryLight = Color(0xFF2E7D32);
+const kAccentGold = Color(0xFFD4A017);
+const kBgPage = Color(0xFFF5F5F0);
+const kCardBg = Colors.white;
+const kBorder = Color(0xFFE0E0E0);
+const kTextDark = Color(0xFF1A1A1A);
+const kTextMed = Color(0xFF555555);
+const kTextLight = Color(0xFF999999);
+const kGreen = Color(0xFF2E7D32);
+const kRed = Color(0xFFD32F2F);
+const kTagActive = Color(0xFFE8F5E9);
+const kTagActiveText = Color(0xFF2E7D32);
+const kTagBlocked = Color(0xFFFFEBEE);
+const kTagBlockedText = Color(0xFFD32F2F);
 
-  @override
-  DashboardPageState createState() => DashboardPageState();
-}
-
-class DashboardPageState extends State<DashboardPage>
-    with SingleTickerProviderStateMixin, UIMixin {
-  late DashboardController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = Get.put(DashboardController());
-  }
+// ─────────────────────────────────────────────
+// DASHBOARD SCREEN  (wraps Drawer + Body)
+// ─────────────────────────────────────────────
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: GetBuilder(
-        init: controller,
-        builder: (controller) {
-          return Column(
-            children: [
-              Padding(
-                padding: MySpacing.x(flexSpacing),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MyText.titleMedium(
-                      "dashboard".tr(),
-                      fontSize: 18,
-                      fontWeight: 600,
-                    ),
-                    MyBreadcrumb(
-                      children: [
-                        MyBreadcrumbItem(name: 'ecommerce'.tr()),
-                        MyBreadcrumbItem(name: 'dashboard'.tr(), active: true),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              MySpacing.height(flexSpacing),
-              Padding(
-                padding: MySpacing.x(flexSpacing / 2),
-                child: MyFlex(
-                  runAlignment: WrapAlignment.start,
-                  wrapCrossAlignment: WrapCrossAlignment.start,
-                  // contentPadding: false,
-                  children: [
-                    MyFlexItem(
-                      child: MyFlex(
-                        runAlignment: WrapAlignment.start,
-                        wrapCrossAlignment: WrapCrossAlignment.start,
-                        contentPadding: false,
-                        children: [
-                          MyFlexItem(
-                            sizes: "lg-3",
-                            child: MyCard(
-                              shadow: MyShadow(elevation: 0.5),
-                              child: Column(
-                                children: [
-                                  MyContainer(
-                                    color: contentTheme.warning.withAlpha(28),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                LucideIcons.alertTriangle,
-                                                size: 20,
-                                                color: contentTheme.warning,
-                                              ),
-                                              MySpacing.width(8),
-                                              Expanded(
-                                                child: MyText.bodyMedium(
-                                                  "Your free trial expired in 21 days.",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        MyText.bodyMedium(
-                                          "Upgrade",
-                                          fontWeight: 600,
-                                          decoration: TextDecoration.underline,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  MySpacing.height(16),
-                                  MyFlex(
-                                    contentPadding: false,
-                                    children: [
-                                      MyFlexItem(
-                                        sizes: "lg-6",
-                                        child: MyContainer(
-                                          height: 200,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Expanded(
-                                                child: RichText(
-                                                  text: TextSpan(
-                                                    text:
-                                                        'Upgrade Your Plan From a ',
-                                                    style:
-                                                        MyTextStyle.bodyMedium(
-                                                            fontSize: 16),
-                                                    children: const <TextSpan>[
-                                                      TextSpan(
-                                                          text: 'Free trial,',
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)),
-                                                      TextSpan(
-                                                          text:
-                                                              "to 'Premium plan'"),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              MySpacing.height(16),
-                                              MyButton(
-                                                onPressed: () {},
-                                                elevation: 0,
-                                                padding: MySpacing.xy(8, 12),
-                                                backgroundColor:
-                                                    contentTheme.primary,
-                                                borderRadiusAll: AppStyle
-                                                    .buttonRadius.medium,
-                                                child: MyText.bodySmall(
-                                                  "Upgrade Account!",
-                                                  fontSize: 12,
-                                                  color: contentTheme.onPrimary,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      MyFlexItem(
-                                        sizes: "lg-6",
-                                        child: Image.asset(
-                                          Images.dashboard[0],
-                                          height: 205,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          MyFlexItem(
-                            sizes: "lg-5",
-                            child: MyFlex(
-                              runAlignment: WrapAlignment.start,
-                              wrapCrossAlignment: WrapCrossAlignment.start,
-                              contentPadding: false,
-                              children: [
-                                MyFlexItem(
-                                  sizes: "lg-6",
-                                  child: buildCard(
-                                      contentTheme.pink,
-                                      LucideIcons.clock4,
-                                      "Reached",
-                                      "\$152",
-                                      LucideIcons.trendingUp,
-                                      contentTheme.success,
-                                      "1.25",
-                                      "Last Month"),
-                                ),
-                                MyFlexItem(
-                                  sizes: "lg-6",
-                                  child: buildCard(
-                                    contentTheme.primary,
-                                    LucideIcons.network,
-                                    "Engaged",
-                                    "\$50",
-                                    LucideIcons.trendingDown,
-                                    contentTheme.red,
-                                    "2.5",
-                                    "Last Week",
-                                  ),
-                                ),
-                                MyFlexItem(
-                                  sizes: "lg-6",
-                                  child: buildCard(
-                                      contentTheme.success,
-                                      LucideIcons.areaChart,
-                                      "Rich",
-                                      "\$304",
-                                      LucideIcons.trendingDown,
-                                      contentTheme.red,
-                                      "1.23",
-                                      "Last Month"),
-                                ),
-                                MyFlexItem(
-                                  sizes: "lg-6",
-                                  child: buildCard(
-                                      contentTheme.warning,
-                                      LucideIcons.shoppingCart,
-                                      "Engagement",
-                                      "\$189",
-                                      LucideIcons.trendingUp,
-                                      contentTheme.success,
-                                      "0.2",
-                                      "Last Day"),
-                                ),
-                              ],
-                            ),
-                          ),
-                          MyFlexItem(
-                            sizes: "lg-4",
-                            child: MyCard(
-                              shadow: MyShadow(elevation: 0.5),
-                              height: 305,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              padding:
-                                  MySpacing.only(left: 24, right: 12, top: 12),
-                              color: contentTheme.dark,
-                              child: Stack(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              MyText.titleMedium(
-                                                "New Visitors",
-                                                color: contentTheme.light,
-                                                fontWeight: 600,
-                                              ),
-                                              MySpacing.width(8),
-                                              MyContainer(
-                                                padding: MySpacing.xy(12, 2),
-                                                color: contentTheme.success,
-                                                child: MyText.bodyMedium(
-                                                  "Active",
-                                                  fontSize: 12,
-                                                  color: contentTheme.onSuccess,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: Icon(
-                                                LucideIcons.moveRight,
-                                                size: 16,
-                                                color: contentTheme.light,
-                                              ))
-                                        ],
-                                      ),
-                                      MySpacing.height(16),
-                                      Row(
-                                        children: [
-                                          MyDottedLine(
-                                            height: 50,
-                                            dottedLength: 1,
-                                            color: Colors.grey.shade400,
-                                            child: Padding(
-                                              padding: MySpacing.xy(12, 8),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  MyText.bodyMedium(
-                                                    "\$5,943",
-                                                    fontSize: 20,
-                                                    color: contentTheme.light,
-                                                  ),
-                                                  MySpacing.height(8),
-                                                  MyText.bodyMedium(
-                                                    "New Followers",
-                                                    color: contentTheme.light,
-                                                    fontWeight: 600,
-                                                    muted: true,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          MySpacing.width(16),
-                                          MyDottedLine(
-                                            height: 50,
-                                            dottedLength: 1,
-                                            color: Colors.grey.shade400,
-                                            child: Padding(
-                                              padding: MySpacing.xy(12, 8),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  MyText.bodyMedium(
-                                                    "150,000",
-                                                    fontSize: 20,
-                                                    color: contentTheme.light,
-                                                  ),
-                                                  MySpacing.height(8),
-                                                  MyText.bodyMedium(
-                                                    "Followers Goal",
-                                                    color: contentTheme.light,
-                                                    fontWeight: 600,
-                                                    muted: true,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  MySpacing.height(16),
-                                  Positioned(
-                                    right: 0,
-                                    left: 0,
-                                    top: 100,
-                                    child: SfCartesianChart(
-                                      plotAreaBorderWidth: 0,
-                                      tooltipBehavior: controller.facebook,
-                                      primaryXAxis: CategoryAxis(
-                                        isVisible: false,
-                                        majorGridLines:
-                                            const MajorGridLines(width: 0),
-                                        labelStyle:
-                                            const TextStyle(fontSize: 0),
-                                      ),
-                                      primaryYAxis: NumericAxis(
-                                          isVisible: false,
-                                          labelStyle:
-                                              const TextStyle(fontSize: 0),
-                                          majorGridLines:
-                                              const MajorGridLines(width: 0)),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    MyFlexItem(
-                      child: MyFlex(
-                        runAlignment: WrapAlignment.start,
-                        wrapCrossAlignment: WrapCrossAlignment.start,
-                        contentPadding: false,
-                        children: [
-                          MyFlexItem(
-                            sizes: "lg-8 xl-8",
-                            child: MyCard(
-                              shadow: MyShadow(elevation: 0.5),
-                              paddingAll: 0,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: MySpacing.all(16),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: MyText.titleMedium(
-                                            "Response time by location",
-                                            overflow: TextOverflow.ellipsis,
-                                            fontWeight: 600,
-                                          ),
-                                        ),
-                                        PopupMenuButton(
-                                          onSelected: controller
-                                              .onSelectedTimeByLocation,
-                                          itemBuilder: (BuildContext context) {
-                                            return [
-                                              "Year",
-                                              "Month",
-                                              "Week",
-                                              "Day",
-                                              "Hours"
-                                            ].map((behavior) {
-                                              return PopupMenuItem(
-                                                value: behavior,
-                                                height: 32,
-                                                child: MyText.bodySmall(
-                                                  behavior.toString(),
-                                                  color: theme
-                                                      .colorScheme.onBackground,
-                                                  fontWeight: 600,
-                                                ),
-                                              );
-                                            }).toList();
-                                          },
-                                          color: theme.cardTheme.color,
-                                          child: MyContainer.bordered(
-                                            padding: MySpacing.xy(12, 8),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: <Widget>[
-                                                MyText.labelMedium(
-                                                  controller
-                                                      .selectedTimeByLocation
-                                                      .toString(),
-                                                  color: theme
-                                                      .colorScheme.onBackground,
-                                                ),
-                                                Icon(
-                                                  LucideIcons.chevronDown,
-                                                  size: 22,
-                                                  color: theme
-                                                      .colorScheme.onBackground,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(),
-                                  MySpacing.height(12),
-                                  MyFlex(
-                                    children: [
-                                      MyFlexItem(
-                                        sizes: "lg-3",
-                                        child: buildResponseTimeByLocationData(
-                                          "Current Week",
-                                          "\$1859.52",
-                                          LucideIcons.cornerRightUp,
-                                          contentTheme.success,
-                                        ),
-                                      ),
-                                      MyFlexItem(
-                                        sizes: "lg-3",
-                                        child: buildResponseTimeByLocationData(
-                                          "Previous Week",
-                                          "\$1568",
-                                          LucideIcons.cornerRightDown,
-                                          contentTheme.red,
-                                        ),
-                                      ),
-                                      MyFlexItem(
-                                        sizes: "lg-3",
-                                        child: buildResponseTimeByLocationData(
-                                          "Conversation",
-                                          "5.68%",
-                                          LucideIcons.cornerRightUp,
-                                          contentTheme.success,
-                                        ),
-                                      ),
-                                      MyFlexItem(
-                                        sizes: "lg-3",
-                                        child: buildResponseTimeByLocationData(
-                                          "Customers",
-                                          "80K",
-                                          LucideIcons.cornerRightDown,
-                                          contentTheme.red,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  MySpacing.height(12),
-                                  const Divider(),
-                                  Padding(
-                                    padding: MySpacing.all(16),
-                                    child: SfCartesianChart(
-                                      primaryXAxis: CategoryAxis(),
-                                      tooltipBehavior: controller.chart,
-                                      axes: <ChartAxis>[
-                                        NumericAxis(
-                                            numberFormat:
-                                                NumberFormat.compact(),
-                                            majorGridLines:
-                                                const MajorGridLines(width: 0),
-                                            opposedPosition: true,
-                                            name: 'yAxis1',
-                                            interval: 1000,
-                                            minimum: 0,
-                                            maximum: 7000)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          MyFlexItem(
-                              sizes: "lg-4",
-                              child: MyCard(
-                                shadow: MyShadow(elevation: 0.5),
-                                paddingAll: 20,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        MyText.titleMedium(
-                                          "Cost BreakDown",
-                                          overflow: TextOverflow.ellipsis,
-                                          fontWeight: 600,
-                                        ),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              LucideIcons.moveRight,
-                                              size: 20,
-                                            ))
-                                      ],
-                                    ),
-                                    SfCircularChart(
-                                      tooltipBehavior:
-                                          TooltipBehavior(enable: true),
-                                      series: <CircularSeries>[
-                                        DoughnutSeries<ChartSampleData, String>(
-                                            radius: '80%',
-                                            explode: true,
-                                            explodeOffset: '10%',
-                                            dataSource: controller.circleChart,
-                                            pointColorMapper:
-                                                (ChartSampleData data, _) =>
-                                                    data.pointColor,
-                                            xValueMapper:
-                                                (ChartSampleData data, _) =>
-                                                    data.x,
-                                            yValueMapper:
-                                                (ChartSampleData data, _) =>
-                                                    data.y,
-                                            dataLabelSettings:
-                                                const DataLabelSettings(
-                                                    isVisible: true)),
-                                      ],
-                                    ),
-                                    // MySpacing.height(12),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            MyText.titleMedium("Top Channel"),
-                                            MyText.titleMedium("Value")
-                                          ],
-                                        ),
-                                        MySpacing.height(12),
-                                        buildCircleChartData(
-                                            const Color.fromRGBO(9, 0, 136, 1),
-                                            "Salary",
-                                            "\$41,458"),
-                                        MySpacing.height(8),
-                                        buildCircleChartData(
-                                            const Color.fromRGBO(
-                                                147, 0, 119, 1),
-                                            "Bill",
-                                            "\$48,125"),
-                                        MySpacing.height(8),
-                                        buildCircleChartData(
-                                            const Color.fromRGBO(
-                                                228, 0, 124, 1),
-                                            "Marketing",
-                                            "\$19,458"),
-                                        MySpacing.height(8),
-                                        buildCircleChartData(
-                                            const Color.fromRGBO(
-                                                255, 189, 57, 1),
-                                            "Other",
-                                            "\$10,589"),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    MyFlexItem(
-                      child: MyFlex(
-                        contentPadding: false,
-                        children: [
-                          MyFlexItem(
-                            sizes: "lg-6",
-                            child: MyCard(
-                              shadow: MyShadow(elevation: 0.5),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      MyText.titleMedium(
-                                        "High Value Design",
-                                        fontWeight: 600,
-                                      ),
-                                      Row(
-                                        children: [
-                                          PopupMenuButton(
-                                            onSelected:
-                                                controller.onSelectedTimeDesign,
-                                            itemBuilder:
-                                                (BuildContext context) {
-                                              return [
-                                                "Year",
-                                                "Month",
-                                                "Week",
-                                                "Day",
-                                                "Hours",
-                                              ].map((behavior) {
-                                                return PopupMenuItem(
-                                                  value: behavior,
-                                                  height: 32,
-                                                  child: MyText.bodySmall(
-                                                    behavior.toString(),
-                                                    color: theme.colorScheme
-                                                        .onBackground,
-                                                    fontWeight: 600,
-                                                  ),
-                                                );
-                                              }).toList();
-                                            },
-                                            color: theme.cardTheme.color,
-                                            child: MyContainer.bordered(
-                                              padding: MySpacing.xy(12, 8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
-                                                  MyText.labelMedium(
-                                                    controller
-                                                        .selectedTimeDesign
-                                                        .toString(),
-                                                    color: theme.colorScheme
-                                                        .onBackground,
-                                                  ),
-                                                  Icon(
-                                                    LucideIcons.chevronDown,
-                                                    size: 22,
-                                                    color: theme.colorScheme
-                                                        .onBackground,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  MySpacing.height(16),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: MyContainer.bordered(
-                                      paddingAll: 0,
-                                      child: DataTable(
-                                          sortAscending: true,
-                                          onSelectAll: (_) => {},
-                                          headingRowColor:
-                                              MaterialStatePropertyAll(
-                                                  contentTheme.primary
-                                                      .withAlpha(40)),
-                                          dataRowMaxHeight: 50,
-                                          columns: [
-                                            DataColumn(
-                                              label: MyText.labelLarge(
-                                                'Value',
-                                              ),
-                                            ),
-                                            DataColumn(
-                                              label: MyText.labelLarge(
-                                                'Sum',
-                                              ),
-                                            ),
-                                            DataColumn(
-                                              label: MyText.labelLarge(
-                                                'Metric',
-                                              ),
-                                            ),
-                                            DataColumn(
-                                              label: MyText.labelLarge(
-                                                'Tag',
-                                              ),
-                                            ),
-                                          ],
-                                          rows: controller.dashboard
-                                              .mapIndexed(
-                                                (index, data) => DataRow(
-                                                  cells: [
-                                                    DataCell(
-                                                      MyText.bodyMedium(
-                                                          "${data.value}"),
-                                                    ),
-                                                    DataCell(
-                                                      MyText.bodyMedium(
-                                                          "${data.sum}"),
-                                                    ),
-                                                    DataCell(
-                                                      Row(
-                                                        children: [
-                                                          MyContainer(
-                                                            paddingAll: 0,
-                                                            borderRadiusAll: 22,
-                                                            clipBehavior: Clip
-                                                                .antiAliasWithSaveLayer,
-                                                            child: Image.asset(
-                                                              controller
-                                                                  .dashboard[
-                                                                      index]
-                                                                  .image,
-                                                              height: 32,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                          MySpacing.width(16),
-                                                          Expanded(
-                                                            child: MyText
-                                                                .bodyMedium(
-                                                              data.metric,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    DataCell(
-                                                      MyText.bodyMedium(
-                                                          data.tag),
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                              .toList()),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          MyFlexItem(
-                            sizes: "lg-6",
-                            child: MyCard(
-                              shadow: MyShadow(elevation: 0.5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding: MySpacing.x(8),
-                                        child: MyText.titleMedium(
-                                          "Revenue Chart",
-                                          overflow: TextOverflow.ellipsis,
-                                          fontWeight: 600,
-                                        ),
-                                      ),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            LucideIcons.moveRight,
-                                            size: 20,
-                                          ))
-                                    ],
-                                  ),
-                                  MySpacing.height(16),
-                                  SizedBox(
-                                    height: 308,
-                                    child: SfCartesianChart(
-                                      plotAreaBorderWidth: 0,
-                                      tooltipBehavior: controller.revenue,
-                                      primaryXAxis: CategoryAxis(
-                                        majorGridLines:
-                                            const MajorGridLines(width: 0),
-                                      ),
-                                      primaryYAxis: NumericAxis(
-                                          // majorGridLines:
-                                          // const MajorGridLines(width: 0),
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-    );
+    return Scaffold(
+        backgroundColor: kBgPage,
+        body: Layout(
+          child: SizedBox(
+            width: Get.width,
+            height: Get.height,
+            child: DashboardBody(),
+          ),
+        ));
   }
+}
 
-  Widget buildCircleChartData(Color color, String name, String price) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            MyContainer.rounded(
-              paddingAll: 4,
-              color: color,
-            ),
-            MySpacing.width(8),
-            MyText.bodyMedium(name)
-          ],
-        ),
-        MyText.bodyMedium(price),
-      ],
-    );
-  }
+// ─────────────────────────────────────────────
+// LEFT DRAWER PLACEHOLDER
+// Replace this with your existing drawer widget
+// ─────────────────────────────────────────────
+class _LeftDrawer extends StatelessWidget {
+  final List<_NavItem> _items = const [
+    _NavItem(Icons.dashboard, 'Dashboard', true),
+    _NavItem(Icons.people_alt_outlined, 'User Management', false),
+    _NavItem(Icons.credit_card_outlined, 'KYC Approvals', false),
+    _NavItem(Icons.list_alt_outlined, 'Listing Moderation', false),
+    _NavItem(Icons.shopping_bag_outlined, 'Orders & Escrow', false),
+    _NavItem(Icons.build_outlined, 'Dispute Center', false),
+    _NavItem(Icons.directions_car_outlined, 'Driver Monitoring', false),
+    _NavItem(Icons.settings_outlined, 'System Settings', false),
+    _NavItem(Icons.notifications_outlined, 'Notifications', false),
+    _NavItem(Icons.receipt_long_outlined, 'Audit Logs', false),
+  ];
 
-  Widget buildResponseTimeByLocationData(
-      String currentTime, String price, IconData icon, Color iconColor) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              LucideIcons.circleDotDashed,
-              size: 16,
-            ),
-            MySpacing.width(8),
-            MyText.bodyMedium(
-              currentTime,
-            ),
-          ],
-        ),
-        MySpacing.height(12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MyText.bodyLarge(
-              price,
-              fontSize: 20,
-              fontWeight: 600,
-              muted: true,
-            ),
-            MySpacing.width(8),
-            Icon(
-              icon,
-              size: 16,
-              color: iconColor,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+  const _LeftDrawer({super.key});
 
-  Widget buildCard(
-    Color color,
-    IconData icons,
-    String accountType,
-    String price,
-    IconData trendingIcon,
-    Color trendingIconColor,
-    String percentage,
-    String month,
-  ) {
-    return MyCard(
-      shadow: MyShadow(elevation: 0.5),
-      height: 140,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      color: Colors.white,
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          const SizedBox(height: 24),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyText.bodyLarge(
-                  accountType,
-                  fontSize: 15,
-                  fontWeight: 600,
-                ),
-                MyText.bodyLarge(
-                  price,
-                  fontWeight: 600,
-                  fontSize: 20,
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      trendingIcon,
-                      color: trendingIconColor,
-                      size: 16,
-                    ),
-                    MySpacing.width(8),
-                    MyText.bodyMedium(
-                      "$percentage%",
-                    ),
-                    MySpacing.width(8),
-                    Expanded(
-                      child: MyText.bodyMedium(
-                        month,
-                        overflow: TextOverflow.ellipsis,
-                        muted: true,
-                      ),
-                    ),
-                  ],
-                ),
+                Text('Admin Panel',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: kTextDark)),
+                Text('Control Center',
+                    style: TextStyle(fontSize: 12, color: kTextLight)),
               ],
             ),
           ),
-          MyContainer(
-            height: 70,
-            width: 70,
-            paddingAll: 0,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            color: color.withAlpha(30),
-            child: Icon(
-              icons,
-              color: color,
+          const SizedBox(height: 20),
+          ..._items.map((e) => _NavTile(item: e)),
+          const Spacer(),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                const CircleAvatar(radius: 18, backgroundColor: kBorder),
+                const SizedBox(width: 8),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('John Admin',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 12)),
+                    Text('Super Admin',
+                        style: TextStyle(fontSize: 11, color: kTextLight)),
+                  ],
+                ),
+                const Spacer(),
+                Icon(Icons.logout, size: 16, color: kTextLight),
+              ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NavItem {
+  final IconData icon;
+  final String label;
+  final bool active;
+  const _NavItem(this.icon, this.label, this.active);
+}
+
+class _NavTile extends StatelessWidget {
+  final _NavItem item;
+  const _NavTile({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: item.active ? kPrimary : Colors.transparent,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: ListTile(
+        dense: true,
+        leading: Icon(item.icon,
+            size: 18, color: item.active ? Colors.white : kTextMed),
+        title: Text(item.label,
+            style: TextStyle(
+                fontSize: 13,
+                color: item.active ? Colors.white : kTextMed,
+                fontWeight: item.active ? FontWeight.w600 : FontWeight.normal)),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// DASHBOARD BODY
+// ─────────────────────────────────────────────
+class DashboardBody extends StatelessWidget {
+  const DashboardBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // ── TOP BAR ──
+        _TopBar(),
+        // ── SCROLLABLE CONTENT ──
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header
+                const Text('Dashboard Overview',
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: kTextDark)),
+                const SizedBox(height: 2),
+                const Text('Monitor your marketplace performance',
+                    style: TextStyle(fontSize: 13, color: kTextLight)),
+                const SizedBox(height: 20),
+
+                // ── STAT CARDS ──
+                _StatCardsRow(),
+                const SizedBox(height: 24),
+
+                // ── CHARTS ROW ──
+                _ChartsRow(),
+                const SizedBox(height: 24),
+
+                // ── BOTTOM TABLES ──
+                _BottomSection(),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// TOP BAR
+// ─────────────────────────────────────────────
+class _TopBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 60,
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          // Date Range Dropdown
+          _DropdownChip(label: 'Date Range'),
+          const SizedBox(width: 12),
+          // City Dropdown
+          _DropdownChip(label: 'City / Neighborhood'),
+          const Spacer(),
+          // Search
+          Container(
+            width: 200,
+            height: 36,
+            decoration: BoxDecoration(
+              color: kBgPage,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: kBorder),
+            ),
+            child: const Row(
+              children: [
+                SizedBox(width: 10),
+                Icon(Icons.search, size: 16, color: kTextLight),
+                SizedBox(width: 6),
+                Text('Search...',
+                    style: TextStyle(color: kTextLight, fontSize: 13)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DropdownChip extends StatelessWidget {
+  final String label;
+  const _DropdownChip({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      decoration: BoxDecoration(
+        color: kBgPage,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: kBorder),
+      ),
+      child: Row(
+        children: [
+          Text(label, style: const TextStyle(fontSize: 13, color: kTextDark)),
+          const SizedBox(width: 6),
+          const Icon(Icons.keyboard_arrow_down, size: 16, color: kTextMed),
+        ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// STAT CARDS ROW
+// ─────────────────────────────────────────────
+class _StatCardsRow extends StatelessWidget {
+  final List<_StatData> stats = const [
+    _StatData(Icons.people_alt, 'Total Users', '24,583', '+12%', false),
+    _StatData(Icons.storefront, 'Sellers', '3,247', '+8%', false),
+    _StatData(Icons.local_shipping, 'Drivers', '1,892', '+15%', false),
+    _StatData(Icons.shopping_bag, 'Orders', '18,429', '+23%', false),
+    _StatData(Icons.attach_money, 'Revenue', '\$847K', '+18%', false),
+    _StatData(Icons.gavel, 'Disputes', '47', '+5', false),
+    _StatData(
+        Icons.badge_outlined, 'KYC Pending', '12', 'Pending requests', true),
+    _StatData(
+        Icons.location_city, 'Ahmedabad', '(Highest Orders)', 'Top City', true),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: stats
+            .map((s) => Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: _StatCard(data: s),
+                ))
+            .toList(),
+      ),
+    );
+  }
+}
+
+class _StatData {
+  final IconData icon;
+  final String label;
+  final String value;
+  final String badge;
+  final bool badgeGold;
+  const _StatData(
+      this.icon, this.label, this.value, this.badge, this.badgeGold);
+}
+
+class _StatCard extends StatelessWidget {
+  final _StatData data;
+  const _StatCard({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width * 0.096,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: kCardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: kBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFF8E1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(data.icon, size: 18, color: kAccentGold),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: data.badgeGold
+                      ? const Color(0xFFFFF8E1)
+                      : const Color(0xFFE8F5E9),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  data.badge,
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: data.badgeGold ? kAccentGold : kGreen,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(data.label,
+              style: const TextStyle(fontSize: 11, color: kTextLight)),
+          const SizedBox(height: 4),
+          Text(data.value,
+              style: const TextStyle(
+                  fontSize: 18, fontWeight: FontWeight.bold, color: kTextDark)),
+        ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// CHARTS ROW
+// ─────────────────────────────────────────────
+class _ChartsRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+            child: _ChartCard(
+                title: 'Orders per Day', child: _BarChartPlaceholder())),
+        const SizedBox(width: 16),
+        Expanded(
+            child: _ChartCard(
+                title: 'New Users Growth', child: _LineChartPlaceholder())),
+        const SizedBox(width: 16),
+        Expanded(
+            child: _ChartCard(
+                title: 'Dispute Rate (%)', child: _AreaChartPlaceholder())),
+      ],
+    );
+  }
+}
+
+class _ChartCard extends StatelessWidget {
+  final String title;
+  final Widget child;
+  const _ChartCard({required this.title, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: kCardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: kBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w600, fontSize: 14, color: kTextDark)),
+          const SizedBox(height: 12),
+          Expanded(child: child),
+        ],
+      ),
+    );
+  }
+}
+
+// Simple bar chart using CustomPainter
+class _BarChartPlaceholder extends StatelessWidget {
+  const _BarChartPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      CustomPaint(painter: _BarPainter(), child: const SizedBox.expand());
+}
+
+class _BarPainter extends CustomPainter {
+  final List<double> values = const [
+    0.4,
+    0.65,
+    0.5,
+    0.8,
+    0.6,
+    0.75,
+    0.9,
+    0.55,
+    0.7,
+    0.85,
+    0.6,
+    0.45
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..color = kPrimary.withOpacity(0.7);
+    final highlightPaint = Paint()..color = kPrimary;
+    final w = size.width / (values.length * 1.6);
+    final gap = w * 0.6;
+    for (int i = 0; i < values.length; i++) {
+      final x = i * (w + gap);
+      final h = size.height * values[i];
+      final rect = RRect.fromRectAndRadius(
+        Rect.fromLTWH(x, size.height - h, w, h),
+        const Radius.circular(4),
+      );
+      canvas.drawRRect(rect, i == 7 ? highlightPaint : paint);
+    }
+    // X-axis labels
+    final tp = TextPainter(textDirection: TextDirection.ltr);
+    for (int i = 0; i < values.length; i++) {
+      tp.text = TextSpan(
+        text: '${i + 1}',
+        style: const TextStyle(fontSize: 8, color: kTextLight),
+      );
+      tp.layout();
+      tp.paint(canvas, Offset(i * (w + gap), size.height + 2));
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+// Simple line chart using CustomPainter
+class _LineChartPlaceholder extends StatelessWidget {
+  const _LineChartPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      CustomPaint(painter: _LinePainter(), child: const SizedBox.expand());
+}
+
+class _LinePainter extends CustomPainter {
+  final List<double> values = const [
+    0.3,
+    0.45,
+    0.4,
+    0.55,
+    0.5,
+    0.65,
+    0.6,
+    0.75,
+    0.7,
+    0.85,
+    0.8,
+    0.9
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = kPrimary
+      ..strokeWidth = 2.5
+      ..style = PaintingStyle.stroke;
+
+    final fillPaint = Paint()
+      ..shader = LinearGradient(
+        colors: [kPrimary.withOpacity(0.3), kPrimary.withOpacity(0.0)],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+
+    final path = Path();
+    final fillPath = Path();
+    final step = size.width / (values.length - 1);
+
+    for (int i = 0; i < values.length; i++) {
+      final x = i * step;
+      final y = size.height - size.height * values[i];
+      if (i == 0) {
+        path.moveTo(x, y);
+        fillPath.moveTo(x, size.height);
+        fillPath.lineTo(x, y);
+      } else {
+        path.lineTo(x, y);
+        fillPath.lineTo(x, y);
+      }
+    }
+    fillPath.lineTo((values.length - 1) * step, size.height);
+    fillPath.close();
+
+    canvas.drawPath(fillPath, fillPaint);
+    canvas.drawPath(path, paint);
+
+    // Dots
+    final dotPaint = Paint()..color = kPrimary;
+    for (int i = 0; i < values.length; i++) {
+      canvas.drawCircle(
+          Offset(i * step, size.height - size.height * values[i]), 3, dotPaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+// Simple area chart with stepped data
+class _AreaChartPlaceholder extends StatelessWidget {
+  const _AreaChartPlaceholder();
+  @override
+  Widget build(BuildContext context) =>
+      CustomPaint(painter: _AreaPainter(), child: const SizedBox.expand());
+}
+
+class _AreaPainter extends CustomPainter {
+  final List<double> values = const [
+    0.6,
+    0.55,
+    0.7,
+    0.5,
+    0.65,
+    0.4,
+    0.55,
+    0.45,
+    0.5,
+    0.35,
+    0.4,
+    0.3
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = kAccentGold
+      ..strokeWidth = 2.5
+      ..style = PaintingStyle.stroke;
+
+    final fillPaint = Paint()
+      ..shader = LinearGradient(
+        colors: [kAccentGold.withOpacity(0.4), kAccentGold.withOpacity(0.0)],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+
+    final path = Path();
+    final fillPath = Path();
+    final step = size.width / (values.length - 1);
+
+    for (int i = 0; i < values.length; i++) {
+      final x = i * step;
+      final y = size.height - size.height * values[i];
+      if (i == 0) {
+        path.moveTo(x, y);
+        fillPath.moveTo(x, size.height);
+        fillPath.lineTo(x, y);
+      } else {
+        path.lineTo(x, y);
+        fillPath.lineTo(x, y);
+      }
+    }
+    fillPath.lineTo((values.length - 1) * step, size.height);
+    fillPath.close();
+
+    canvas.drawPath(fillPath, fillPaint);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+// ─────────────────────────────────────────────
+// BOTTOM SECTION: User Management + KYC
+// ─────────────────────────────────────────────
+class _BottomSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(flex: 3, child: _UserManagementCard()),
+        const SizedBox(width: 16),
+        Expanded(flex: 2, child: _KycApprovalsCard()),
+      ],
+    );
+  }
+}
+
+// ── USER MANAGEMENT TABLE ──
+class _UserManagementCard extends StatefulWidget {
+  @override
+  State<_UserManagementCard> createState() => _UserManagementCardState();
+}
+
+class _UserManagementCardState extends State<_UserManagementCard> {
+  int _tabIndex = 0;
+  final List<String> _tabs = ['All', 'Buyers', 'Sellers', 'Drivers'];
+
+  final List<_UserRow> _users = const [
+    _UserRow('Sarah Johnson', 'Buyer • ID: #12847', 'Active', false),
+    _UserRow('Michael Chen', 'Seller • ID: #12846', 'Active', false),
+    _UserRow('David Martinez', 'Driver • ID: #12845', 'Blocked', true),
+    _UserRow('Emma Wilson', 'Buyer • ID: #12844', 'Active', false),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: kCardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: kBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('User Management',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: kTextDark)),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.add, size: 14),
+                label: const Text('Add User', style: TextStyle(fontSize: 13)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: kPrimary,
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+
+          // Search
+          Container(
+            height: 36,
+            decoration: BoxDecoration(
+              color: kBgPage,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: kBorder),
+            ),
+            child: const Row(
+              children: [
+                SizedBox(width: 10),
+                Icon(Icons.search, size: 16, color: kTextLight),
+                SizedBox(width: 6),
+                Text('Search users...',
+                    style: TextStyle(color: kTextLight, fontSize: 13)),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // Tabs
+          Row(
+            children: List.generate(_tabs.length, (i) {
+              final selected = _tabIndex == i;
+              return GestureDetector(
+                onTap: () => setState(() => _tabIndex = i),
+                child: Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: selected ? kPrimary : kBgPage,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: selected ? kPrimary : kBorder),
+                  ),
+                  child: Text(_tabs[i],
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: selected ? Colors.white : kTextMed,
+                          fontWeight:
+                              selected ? FontWeight.w600 : FontWeight.normal)),
+                ),
+              );
+            }),
+          ),
+          const SizedBox(height: 12),
+
+          // Users List
+          ..._users.map((u) => _UserTile(user: u)),
+        ],
+      ),
+    );
+  }
+}
+
+class _UserRow {
+  final String name;
+  final String subtitle;
+  final String status;
+  final bool blocked;
+  const _UserRow(this.name, this.subtitle, this.status, this.blocked);
+}
+
+class _UserTile extends StatelessWidget {
+  final _UserRow user;
+  const _UserTile({super.key, required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          // Avatar
+          CircleAvatar(
+            radius: 18,
+            backgroundColor: user.blocked ? const Color(0xFFFFCDD2) : kBorder,
+            child: Text(
+              user.name[0],
+              style: TextStyle(
+                  color: user.blocked ? kRed : kTextMed,
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(width: 10),
+          // Name & subtitle
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                        color: kTextDark)),
+                Text(user.subtitle,
+                    style: const TextStyle(fontSize: 11, color: kTextLight)),
+              ],
+            ),
+          ),
+          // Status chip
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: user.blocked ? kTagBlocked : kTagActive,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Text(
+              user.status,
+              style: TextStyle(
+                  fontSize: 11,
+                  color: user.blocked ? kTagBlockedText : kTagActiveText,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(width: 8),
+          // Actions
+          Icon(Icons.vpn_key_outlined, size: 16, color: kAccentGold),
+          const SizedBox(width: 8),
+          Icon(Icons.more_vert, size: 16, color: kTextLight),
+        ],
+      ),
+    );
+  }
+}
+
+// ── KYC APPROVALS CARD ──
+class _KycApprovalsCard extends StatefulWidget {
+  @override
+  State<_KycApprovalsCard> createState() => _KycApprovalsCardState();
+}
+
+class _KycApprovalsCardState extends State<_KycApprovalsCard> {
+  int _tab = 0;
+
+  final List<_KycEntry> _entries = const [
+    _KycEntry('James Anderson', 'Seller • Submitted 2h ago'),
+    _KycEntry('Lisa Thompson', 'Seller • Submitted 5h ago'),
+    _KycEntry('Robert Garcia', 'Seller • Submitted 1d ago'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: kCardBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: kBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('KYC Approvals',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: kTextDark)),
+              Row(
+                children: [
+                  _KycTab(
+                      label: 'Sellers',
+                      active: _tab == 0,
+                      onTap: () => setState(() => _tab = 0)),
+                  const SizedBox(width: 6),
+                  _KycTab(
+                      label: 'Drivers',
+                      active: _tab == 1,
+                      onTap: () => setState(() => _tab = 1)),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text('12 pending verifications',
+              style: TextStyle(fontSize: 12, color: kTextLight)),
+          const SizedBox(height: 14),
+
+          // KYC Entries
+          ..._entries.map((e) => _KycTile(entry: e)),
+        ],
+      ),
+    );
+  }
+}
+
+class _KycEntry {
+  final String name;
+  final String subtitle;
+  const _KycEntry(this.name, this.subtitle);
+}
+
+class _KycTab extends StatelessWidget {
+  final String label;
+  final bool active;
+  final VoidCallback onTap;
+  const _KycTab(
+      {required this.label, required this.active, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: active ? kPrimary : kBgPage,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: active ? kPrimary : kBorder),
+        ),
+        child: Text(label,
+            style: TextStyle(
+                fontSize: 12,
+                color: active ? Colors.white : kTextMed,
+                fontWeight: active ? FontWeight.w600 : FontWeight.normal)),
+      ),
+    );
+  }
+}
+
+class _KycTile extends StatelessWidget {
+  final _KycEntry entry;
+  const _KycTile({super.key, required this.entry});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 14),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 16,
+                backgroundColor: kBorder,
+                child: Text(entry.name[0],
+                    style: const TextStyle(
+                        color: kTextMed,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13)),
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(entry.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                          color: kTextDark)),
+                  Text(entry.subtitle,
+                      style: const TextStyle(fontSize: 11, color: kTextLight)),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.check, size: 14),
+                  label: const Text('Approve', style: TextStyle(fontSize: 12)),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kPrimary,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.close, size: 14),
+                  label: const Text('Reject', style: TextStyle(fontSize: 12)),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: kRed,
+                    side: const BorderSide(color: kBorder),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    backgroundColor: const Color(0xFFFFF8E1),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Container(
+                width: 32,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFF8E1),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: kBorder),
+                ),
+                child: const Icon(Icons.info_outline,
+                    size: 16, color: kAccentGold),
+              ),
+            ],
           ),
         ],
       ),

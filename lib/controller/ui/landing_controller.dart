@@ -27,20 +27,6 @@ class LandingController extends MyController {
   @override
   void onInit() {
     super.onInit();
-    timerAnimation = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (selectedAnimatedCarousel < animatedCarouselSize - 1) {
-        selectedAnimatedCarousel++;
-      } else {
-        selectedAnimatedCarousel = 0;
-      }
-
-      animatedPageController.animateToPage(
-        selectedAnimatedCarousel,
-        duration: const Duration(milliseconds: 600),
-        curve: Curves.ease,
-      );
-      update();
-    });
   }
 
   void onChangeAnimatedCarousel(int value) {

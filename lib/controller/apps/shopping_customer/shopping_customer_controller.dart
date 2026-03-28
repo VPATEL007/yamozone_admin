@@ -16,16 +16,16 @@ class ShoppingController extends MyController {
 
   @override
   void onInit() {
-    fetchData();
-    ShoppingProduct.dummyList.then((value) {
-      shopping = value;
-      shoppingProduct = shopping[0];
-      update();
-    });
-    ShoppingCart.dummyList.then((value) {
-      shoppingCart = value;
-      update();
-    });
+    // fetchData();
+    // ShoppingProduct.dummyList.then((value) {
+    //   shopping = value;
+    //   shoppingProduct = shopping[0];
+    //   update();
+    // });
+    // ShoppingCart.dummyList.then((value) {
+    //   shoppingCart = value;
+    //   update();
+    // });
 
     super.onInit();
   }
@@ -57,7 +57,7 @@ class ShoppingController extends MyController {
 
   void decrement(ShoppingCart cart) {
     if (!decreaseAble(cart)) return;
-    cart.quantity--; 
+    cart.quantity--;
     update();
   }
 
