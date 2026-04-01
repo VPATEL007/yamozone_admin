@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <!--
       If you are serving your web app in a path other than the root, change the
@@ -16,7 +17,7 @@
 
       build command: flutter build web --base-href=/webkit/web/
     -->
-    <base href="$FLUTTER_BASE_HREF">
+    <base href="/">
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -29,7 +30,7 @@
     <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
     <title>webkit</title>
     <link rel="manifest" href="manifest.json">
@@ -50,25 +51,27 @@
         }
     </style>
 </head>
-<body>
-<script>
-    window.addEventListener('load', function (ev) {
-        // Download main.dart.js
-        _flutter.loader.loadEntrypoint({
-            serviceWorker: {
-                serviceWorkerVersion: serviceWorkerVersion,
-            },
-            onEntrypointLoaded: function (engineInitializer) {
-                engineInitializer.initializeEngine().then(function (appRunner) {
-                    appRunner.runApp();
-                });
-            }
-        });
-    });
-</script>
-<div id="loader" class="container">
 
-    <img src="img/splash.png" class="center"/>
-</div>
+<body>
+    <script>
+        window.addEventListener('load', function (ev) {
+            // Download main.dart.js
+            _flutter.loader.loadEntrypoint({
+                serviceWorker: {
+                    serviceWorkerVersion: serviceWorkerVersion,
+                },
+                onEntrypointLoaded: function (engineInitializer) {
+                    engineInitializer.initializeEngine().then(function (appRunner) {
+                        appRunner.runApp();
+                    });
+                }
+            });
+        });
+    </script>
+    <div id="loader" class="container">
+
+        <img src="img/splash.png" class="center" />
+    </div>
 </body>
+
 </html>
