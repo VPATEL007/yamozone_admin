@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
@@ -30,122 +32,17 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: kBgPage,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: DashboardBody(),
-          ),
-        ));
-  }
-}
-
-// ─────────────────────────────────────────────
-// LEFT DRAWER PLACEHOLDER
-// Replace this with your existing drawer widget
-// ─────────────────────────────────────────────
-class _LeftDrawer extends StatelessWidget {
-  final List<_NavItem> _items = const [
-    _NavItem(Icons.dashboard, 'Dashboard', true),
-    _NavItem(Icons.people_alt_outlined, 'User Management', false),
-    _NavItem(Icons.credit_card_outlined, 'KYC Approvals', false),
-    _NavItem(Icons.list_alt_outlined, 'Listing Moderation', false),
-    _NavItem(Icons.shopping_bag_outlined, 'Orders & Escrow', false),
-    _NavItem(Icons.build_outlined, 'Dispute Center', false),
-    _NavItem(Icons.directions_car_outlined, 'Driver Monitoring', false),
-    _NavItem(Icons.settings_outlined, 'System Settings', false),
-    _NavItem(Icons.notifications_outlined, 'Notifications', false),
-    _NavItem(Icons.receipt_long_outlined, 'Audit Logs', false),
-  ];
-
-  const _LeftDrawer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 24),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Admin Panel',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: kTextDark)),
-                Text('Control Center',
-                    style: TextStyle(fontSize: 12, color: kTextLight)),
-              ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+          backgroundColor: kBgPage,
+          body: Layout(
+            child: SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: DashboardBody(),
             ),
-          ),
-          const SizedBox(height: 20),
-          ..._items.map((e) => _NavTile(item: e)),
-          const Spacer(),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              children: [
-                const CircleAvatar(radius: 18, backgroundColor: kBorder),
-                const SizedBox(width: 8),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('John Admin',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 12)),
-                    Text('Super Admin',
-                        style: TextStyle(fontSize: 11, color: kTextLight)),
-                  ],
-                ),
-                const Spacer(),
-                Icon(Icons.logout, size: 16, color: kTextLight),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NavItem {
-  final IconData icon;
-  final String label;
-  final bool active;
-  const _NavItem(this.icon, this.label, this.active);
-}
-
-class _NavTile extends StatelessWidget {
-  final _NavItem item;
-  const _NavTile({super.key, required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-      decoration: BoxDecoration(
-        color: item.active ? kPrimary : Colors.transparent,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListTile(
-        dense: true,
-        leading: Icon(item.icon,
-            size: 18, color: item.active ? Colors.white : kTextMed),
-        title: Text(item.label,
-            style: TextStyle(
-                fontSize: 13,
-                color: item.active ? Colors.white : kTextMed,
-                fontWeight: item.active ? FontWeight.w600 : FontWeight.normal)),
-      ),
+          )),
     );
   }
 }
@@ -278,7 +175,7 @@ class _StatCardsRow extends StatelessWidget {
     _StatData(Icons.attach_money, 'Revenue', '\$847K', '+18%', false),
     _StatData(Icons.gavel, 'Disputes', '47', '+5', false),
     _StatData(
-        Icons.badge_outlined, 'KYC Pending', '12', 'Pending requests', true),
+        Icons.badge_outlined, 'KYC Pending', '12', 'Pending\nrequests', true),
     _StatData(
         Icons.location_city, 'Ahmedabad', '(Highest Orders)', 'Top City', true),
   ];
@@ -337,21 +234,12 @@ class _StatCard extends StatelessWidget {
                 ),
                 child: Icon(data.icon, size: 18, color: kAccentGold),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: data.badgeGold
-                      ? const Color(0xFFFFF8E1)
-                      : const Color(0xFFE8F5E9),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  data.badge,
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: data.badgeGold ? kAccentGold : kGreen,
-                  ),
+              Text(
+                data.badge,
+                style: GoogleFonts.montserrat(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: ContentTheme.lightContentTheme.primary,
                 ),
               ),
             ],
@@ -361,8 +249,10 @@ class _StatCard extends StatelessWidget {
               style: const TextStyle(fontSize: 11, color: kTextLight)),
           const SizedBox(height: 4),
           Text(data.value,
-              style: const TextStyle(
-                  fontSize: 18, fontWeight: FontWeight.bold, color: kTextDark)),
+              style: TextStyle(
+                  fontSize: data.value == "(Highest Orders)" ? 13 : 18,
+                  fontWeight: FontWeight.bold,
+                  color: kTextDark)),
         ],
       ),
     );

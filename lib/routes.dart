@@ -3,11 +3,15 @@ import 'package:get/get.dart';
 import 'package:webkit/views/apps/CRM/contacts_page.dart';
 import 'package:webkit/views/apps/CRM/opportunities.dart';
 import 'package:webkit/views/apps/calender.dart';
+import 'package:webkit/views/apps/driver_monitoring/driver_profile_page.dart';
 import 'package:webkit/views/apps/kyc/kyc_approval_page.dart';
 import 'package:webkit/views/apps/contacts/edit_profile.dart';
 import 'package:webkit/views/apps/contacts/member_list.dart';
 import 'package:webkit/views/apps/contacts/profile.dart';
 import 'package:webkit/views/apps/ecommerce/add_product.dart';
+import 'package:webkit/views/apps/listing_moderation/listing_detail_view.dart';
+import 'package:webkit/views/apps/listing_moderation/listing_reported_detail_view.dart';
+import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
 import 'package:webkit/views/apps/user_management/user_management_page.dart';
 import 'package:webkit/views/apps/kyc/kyc_review_page.dart';
 import 'package:webkit/views/apps/user_management/user_detail.dart';
@@ -106,7 +110,7 @@ getPageRoute() {
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/user/userdetail',
-        page: () => const UserDetail(),
+        page: () => const UserDetailsScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/user-management',
@@ -118,7 +122,11 @@ getPageRoute() {
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/orders',
-        page: () => const OrdersEscrowPage(),
+        page: () => const OrdersEscrowScreen(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: '/orders/detail',
+        page: () => const OrderDetailPage(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- File ----------------///
@@ -137,7 +145,15 @@ getPageRoute() {
 
     GetPage(
         name: '/listing-moderation',
-        page: () => const ListingModerationView(),
+        page: () => const ListingModerationPage(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: '/listing-detail',
+        page: () => const ListingDetailView(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: '/reported/listing-detail',
+        page: () => const ReportedListingReviewScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(
         name: '/calender',
@@ -153,7 +169,15 @@ getPageRoute() {
         page: () => const DriverMonitoringScreen(),
         middlewares: [AuthMiddleware()]),
     GetPage(
+        name: '/driver/profile',
+        page: () => const DriverProfileDetailPage(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
         name: '/setting',
+        page: () => const SystemSettingsPage(),
+        middlewares: [AuthMiddleware()]),
+    GetPage(
+        name: '/audit/detail',
         page: () => const SystemSettingsPage(),
         middlewares: [AuthMiddleware()]),
 
@@ -208,7 +232,7 @@ getPageRoute() {
 
     ///---------------- Auth ----------------///
 
-    GetPage(name: '/auth/login', page: () => const LoginPage()),
+    GetPage(name: '/auth/login', page: () => const AdminLoginPage()),
     GetPage(name: '/auth/login1', page: () => const Login2()),
     GetPage(name: '/auth/forgot_password', page: () => const ForgotPassword()),
     GetPage(
@@ -295,7 +319,7 @@ getPageRoute() {
 
     GetPage(
         name: '/kyc-approval',
-        page: () => const KycApprovalPage(),
+        page: () => const KYCApprovalsScreen(),
         middlewares: [AuthMiddleware()]),
 
     ///---------------- Form ----------------///

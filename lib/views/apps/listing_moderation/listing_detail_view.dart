@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:webkit/controller/apps/kyc_controller.dart';
 import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/helpers/utils/ui_mixins.dart';
+import 'package:webkit/views/apps/listing_moderation/widget/listing_dialog.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
 class ListingDetailView extends StatefulWidget {
@@ -255,9 +256,7 @@ Widget _rightPanel() {
           ],
         ),
       ),
-
       const SizedBox(height: 15),
-
       _card(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -360,9 +359,7 @@ Widget _rightPanel() {
           ],
         ),
       ),
-
       const SizedBox(height: 15),
-
       _card(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -428,6 +425,7 @@ Widget _rightPanel() {
             ),
             SizedBox(height: 30),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -458,7 +456,6 @@ Widget _rightPanel() {
                     ],
                   ),
                 ),
-                const SizedBox(height: 8),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
@@ -468,7 +465,17 @@ Widget _rightPanel() {
                     backgroundColor:
                         LeftBarTheme.lightLeftBarTheme.activeItemBackground,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: Get.context!,
+                      builder: (_) => RejectListingDialog(
+                        onCancel: () => Navigator.pop(Get.context!),
+                        onSubmit: (category, subReason, reason, sendEmail) {
+                          Navigator.pop(Get.context!);
+                        },
+                      ),
+                    );
+                  },
                   child: Row(
                     children: [
                       Icon(
@@ -486,8 +493,7 @@ Widget _rightPanel() {
                       ),
                     ],
                   ),
-                ).paddingSymmetric(horizontal: 30),
-                const SizedBox(height: 8),
+                ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
@@ -519,43 +525,6 @@ Widget _rightPanel() {
             )
           ],
         ),
-      ),
-
-      const Spacer(),
-
-      // ACTION BUTTONS
-      Row(
-        children: [
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-              ),
-              onPressed: () {},
-              child: const Text("Approve"),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-              ),
-              onPressed: () {},
-              child: const Text("Reject"),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-              ),
-              onPressed: () {},
-              child: const Text("Edit"),
-            ),
-          ),
-        ],
       ),
     ],
   );

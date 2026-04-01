@@ -250,18 +250,31 @@ class _TemplatesGrid extends StatelessWidget {
       ),
     ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        childAspectRatio: 3.4,
-      ),
-      itemCount: templates.length,
-      itemBuilder: (_, i) => _TemplateCard(data: templates[i]),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      double width = constraints.maxWidth;
+
+      double aspectRatio;
+
+      if (width > 1200) {
+        aspectRatio = 3.2; // large screens
+      } else if (width > 800) {
+        aspectRatio = 2.5; // medium screens
+      } else {
+        aspectRatio = 1.8; // small screens
+      }
+      return GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          childAspectRatio: aspectRatio,
+        ),
+        itemCount: templates.length,
+        itemBuilder: (_, i) => _TemplateCard(data: templates[i]),
+      );
+    });
   }
 }
 

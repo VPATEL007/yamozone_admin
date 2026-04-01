@@ -404,7 +404,7 @@ class _Dropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
       decoration: BoxDecoration(
         color: kBg,
         borderRadius: BorderRadius.circular(8),
@@ -413,6 +413,7 @@ class _Dropdown extends StatelessWidget {
       child: DropdownButton<String>(
         value: value,
         isExpanded: true,
+        dropdownColor: kBg,
         underline: const SizedBox(),
         icon: const Icon(Icons.keyboard_arrow_down, color: kTextMid, size: 18),
         style: const TextStyle(fontSize: 13, color: kTextDark),
@@ -830,6 +831,7 @@ class _LogRow extends StatelessWidget {
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(_actionIcon, size: 12, color: _actionColor),
                   const SizedBox(width: 4),
@@ -845,6 +847,7 @@ class _LogRow extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 10),
 
           // Module
           Expanded(
@@ -897,6 +900,7 @@ class _LogRow extends StatelessWidget {
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Icon(Icons.check_circle, size: 12, color: kSuccess),
                   SizedBox(width: 4),
@@ -912,13 +916,13 @@ class _LogRow extends StatelessWidget {
               ),
             ),
           ),
-
+          SizedBox(width: 10),
           // Details
           Expanded(
             flex: 1,
             child: InkWell(
               onTap: () {
-                Get.to(() => AuditLogDetailScreen());
+                Get.toNamed("/audit/detail");
               },
               child: const Row(
                 mainAxisSize: MainAxisSize.min,

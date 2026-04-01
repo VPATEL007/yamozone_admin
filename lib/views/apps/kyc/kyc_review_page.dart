@@ -203,13 +203,13 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Zoom In",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 15,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff4B4B4B)),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 20, vertical: 10)),
+                                            horizontal: 15, vertical: 10)),
                                     Card(
                                         child: Column(
                                       children: [
@@ -221,13 +221,13 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Rotate",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 15,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff4B4B4B)),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 20, vertical: 10)),
+                                            horizontal: 15, vertical: 10)),
                                     Card(
                                         child: Column(
                                       children: [
@@ -239,13 +239,13 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Download",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 15,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff4B4B4B)),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 20, vertical: 10)),
+                                            horizontal: 15, vertical: 10)),
                                     Row(
                                       children: [
                                         IconButton(
@@ -256,7 +256,7 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "1 / 3",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 15,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff4B4B4B)),
                                         ),

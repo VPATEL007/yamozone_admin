@@ -380,6 +380,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/views/apps/driver_monitoring/driver_profile_page.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
@@ -1258,11 +1259,19 @@ class _TaskTable extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(
-                    width: 32,
+                    width: 26,
                     child: Checkbox(
                       value: selectedTasks.length == tasks.length &&
                           tasks.isNotEmpty,
                       onChanged: (_) => onToggleAll(),
+                      fillColor: WidgetStateProperty.resolveWith<Color>(
+                          (Set<WidgetState> states) {
+                        if (states.contains(WidgetState.disabled)) {
+                          return Colors.orange.withValues(alpha: .32);
+                        }
+                        return LeftBarTheme
+                            .lightLeftBarTheme.activeItemBackground;
+                      }),
                       activeColor: kPrimary,
                       side: const BorderSide(color: kDivider),
                     ),
@@ -1316,25 +1325,29 @@ class _TaskTable extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(t.customer,
-                              style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: kTextDark)),
-                          Text(t.phone,
-                              style: const TextStyle(
-                                  fontSize: 11, color: kTextLight)),
-                        ],
+                      child: Align(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(t.customer,
+                                style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: kTextDark)),
+                            Text(t.phone,
+                                style: const TextStyle(
+                                    fontSize: 11, color: kTextLight)),
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(
                       flex: 5,
-                      child: Text(t.address,
-                          style:
-                              const TextStyle(fontSize: 12, color: kTextMid)),
+                      child: Align(
+                        child: Text(t.address,
+                            style:
+                                const TextStyle(fontSize: 12, color: kTextMid)),
+                      ),
                     ),
                     Expanded(
                       flex: 3,
@@ -1346,19 +1359,22 @@ class _TaskTable extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 2,
-                      child: Text(t.eta,
-                          style:
-                              const TextStyle(fontSize: 12, color: kTextDark)),
+                      child: Align(
+                        child: Text(t.eta,
+                            style: const TextStyle(
+                                fontSize: 12, color: kTextDark)),
+                      ),
                     ),
                     Expanded(
                       flex: 2,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _IconBtn(
                               icon: Icons.remove_red_eye_outlined,
                               color: kTextMid,
                               onTap: () {
-                                Get.to(() => DriverProfileDetailPage());
+                                Get.toNamed("/driver/profile");
                               }),
                           _IconBtn(
                               icon: Icons.check,
@@ -1389,12 +1405,14 @@ class _HeaderCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Expanded(
         flex: flex,
-        child: Text(label,
-            style: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: kTextMid,
-                letterSpacing: 0.3)),
+        child: Align(
+          child: Text(label,
+              style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: kTextMid,
+                  letterSpacing: 0.3)),
+        ),
       );
 }
 
@@ -1543,13 +1561,15 @@ class _TaskStatusBadge extends StatelessWidget {
         bg = const Color(0xFFF3F3F3);
         text = kTextMid;
     }
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration:
-          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
-      child: Text(status,
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+    return Align(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration:
+            BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
+        child: Text(status,
+            style: TextStyle(
+                fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+      ),
     );
   }
 }
@@ -1574,13 +1594,15 @@ class _PriorityBadge extends StatelessWidget {
         bg = kPriorityLowBg;
         text = kPriorityLowText;
     }
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration:
-          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
-      child: Text(priority,
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+    return Align(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration:
+            BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
+        child: Text(priority,
+            style: TextStyle(
+                fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+      ),
     );
   }
 }

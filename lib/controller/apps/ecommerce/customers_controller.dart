@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:webkit/controller/my_controller.dart';
 import 'package:webkit/models/customer.dart';
 
-import '../../../views/apps/user_management/user_management_page.dart';
-
 class CustomersController extends MyController {
   List<Customer> customers = [];
   DataTableSource? data;
@@ -19,7 +17,7 @@ class CustomersController extends MyController {
 
     Customer.dummyList.then((value) {
       customers = value;
-      data = MyData(customers);
+
       update();
     });
   }
