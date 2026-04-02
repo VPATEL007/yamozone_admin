@@ -767,7 +767,7 @@
       "name": "webkit",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     }
   ],
   "generator": "pub",
