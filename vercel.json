@@ -1,5 +1,5 @@
 {
-    "buildCommand": "curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.6-stable.tar.xz && tar xf flutter.tar.xz && export PATH=\"$PATH:$(pwd)/flutter/bin\" && flutter pub get && flutter build web --release",
+    "buildCommand": "chmod +x build.sh && ./build.sh",
     "outputDirectory": "build/web",
     "framework": null
 }
