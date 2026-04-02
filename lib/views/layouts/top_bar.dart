@@ -47,15 +47,13 @@ class _TopBarState extends State<TopBar>
           Row(
             children: [
               InkWell(
-                  splashColor: theme.colorScheme.onBackground,
-                  highlightColor: theme.colorScheme.onBackground,
-                  onTap: () {
-                    ThemeCustomizer.toggleLeftBarCondensed();
-                  },
-                  child: Icon(
-                    LucideIcons.menu,
-                    color: topBarTheme.onBackground,
-                  )),
+                splashColor: theme.colorScheme.onBackground,
+                highlightColor: theme.colorScheme.onBackground,
+                onTap: () {
+                  ThemeCustomizer.toggleLeftBarCondensed();
+                },
+                child: Icon(LucideIcons.menu, color: topBarTheme.onBackground),
+              ),
             ],
           ),
           MySpacing.width(20),
@@ -120,7 +118,7 @@ class _TopBarState extends State<TopBar>
                 MySpacing.width(12),
                 CustomPopupMenu(
                   backdrop: true,
-                  hideFn: (_) => languageHideFn = _,
+                  hideFn: (hideFn) => languageHideFn,
                   onChange: (_) {},
                   offsetX: -36,
                   menu: Padding(
@@ -148,10 +146,7 @@ class _TopBarState extends State<TopBar>
                   menu: Padding(
                     padding: MySpacing.xy(8, 8),
                     child: const Center(
-                      child: Icon(
-                        FeatherIcons.bell,
-                        size: 18,
-                      ),
+                      child: Icon(FeatherIcons.bell, size: 18),
                     ),
                   ),
                   menuBuilder: (_) => buildNotifications(),
@@ -168,15 +163,16 @@ class _TopBarState extends State<TopBar>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         MyContainer.rounded(
-                            paddingAll: 0,
-                            child: Image.asset(
-                              Images.avatars[0],
-                              height: 28,
-                              width: 28,
-                              fit: BoxFit.cover,
-                            )),
+                          paddingAll: 0,
+                          child: Image.asset(
+                            Images.avatars[0],
+                            height: 28,
+                            width: 28,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                         MySpacing.width(8),
-                        MyText.labelLarge("Den")
+                        MyText.labelLarge("Den"),
                       ],
                     ),
                   ),
@@ -184,7 +180,7 @@ class _TopBarState extends State<TopBar>
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -197,34 +193,39 @@ class _TopBarState extends State<TopBar>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: Language.languages
-            .map((language) => MyButton.text(
-                  padding: MySpacing.xy(8, 4),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  splashColor: contentTheme.onBackground.withAlpha(20),
-                  onPressed: () async {
-                    languageHideFn?.call();
-                    // Language.changeLanguage(language);
-                    await Provider.of<AppNotifier>(context, listen: false)
-                        .changeLanguage(language, notify: true);
-                    ThemeCustomizer.notify();
-                    setState(() {});
-                  },
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          borderRadius: BorderRadius.circular(2),
-                          child: Image.asset(
-                            "assets/lang/${language.locale.languageCode}.jpg",
-                            width: 18,
-                            height: 14,
-                            fit: BoxFit.cover,
-                          )),
-                      MySpacing.width(8),
-                      MyText.labelMedium(language.languageName)
-                    ],
-                  ),
-                ))
+            .map(
+              (language) => MyButton.text(
+                padding: MySpacing.xy(8, 4),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                splashColor: contentTheme.onBackground.withAlpha(20),
+                onPressed: () async {
+                  languageHideFn?.call();
+                  // Language.changeLanguage(language);
+                  await Provider.of<AppNotifier>(
+                    context,
+                    listen: false,
+                  ).changeLanguage(language, notify: true);
+                  ThemeCustomizer.notify();
+                  setState(() {});
+                },
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      borderRadius: BorderRadius.circular(2),
+                      child: Image.asset(
+                        "assets/lang/${language.locale.languageCode}.jpg",
+                        width: 18,
+                        height: 14,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    MySpacing.width(8),
+                    MyText.labelMedium(language.languageName),
+                  ],
+                ),
+              ),
+            )
             .toList(),
       ),
     );
@@ -237,7 +238,7 @@ class _TopBarState extends State<TopBar>
         children: [
           MyText.labelLarge(title),
           MySpacing.height(4),
-          MyText.bodySmall(description)
+          MyText.bodySmall(description),
         ],
       );
     }
@@ -253,22 +254,34 @@ class _TopBarState extends State<TopBar>
             child: MyText.titleMedium("Notification", fontWeight: 600),
           ),
           MyDashedDivider(
-              height: 1, color: theme.dividerColor, dashSpace: 4, dashWidth: 6),
+            height: 1,
+            color: theme.dividerColor,
+            dashSpace: 4,
+            dashWidth: 6,
+          ),
           Padding(
             padding: MySpacing.xy(16, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildNotification("Your order is received",
-                    "Order #1232 is ready to deliver"),
+                buildNotification(
+                  "Your order is received",
+                  "Order #1232 is ready to deliver",
+                ),
                 MySpacing.height(12),
-                buildNotification("Account Security ",
-                    "Your account password changed 1 hour ago"),
+                buildNotification(
+                  "Account Security ",
+                  "Your account password changed 1 hour ago",
+                ),
               ],
             ),
           ),
           MyDashedDivider(
-              height: 1, color: theme.dividerColor, dashSpace: 4, dashWidth: 6),
+            height: 1,
+            color: theme.dividerColor,
+            dashSpace: 4,
+            dashWidth: 6,
+          ),
           Padding(
             padding: MySpacing.xy(16, 0),
             child: Row(
@@ -285,14 +298,11 @@ class _TopBarState extends State<TopBar>
                 MyButton.text(
                   onPressed: () {},
                   splashColor: contentTheme.danger.withAlpha(28),
-                  child: MyText.labelSmall(
-                    "Clear",
-                    color: contentTheme.danger,
-                  ),
+                  child: MyText.labelSmall("Clear", color: contentTheme.danger),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -329,10 +339,7 @@ class _TopBarState extends State<TopBar>
                         color: contentTheme.onBackground,
                       ),
                       MySpacing.width(8),
-                      MyText.labelMedium(
-                        "My Profile",
-                        fontWeight: 600,
-                      )
+                      MyText.labelMedium("My Profile", fontWeight: 600),
                     ],
                   ),
                 ),
@@ -355,20 +362,14 @@ class _TopBarState extends State<TopBar>
                         color: contentTheme.onBackground,
                       ),
                       MySpacing.width(8),
-                      MyText.labelMedium(
-                        "Edit Profile",
-                        fontWeight: 600,
-                      )
+                      MyText.labelMedium("Edit Profile", fontWeight: 600),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          const Divider(
-            height: 1,
-            thickness: 1,
-          ),
+          const Divider(height: 1, thickness: 1),
           Padding(
             padding: MySpacing.xy(8, 8),
             child: MyButton(
@@ -392,11 +393,11 @@ class _TopBarState extends State<TopBar>
                     "Log out",
                     fontWeight: 600,
                     color: contentTheme.danger,
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

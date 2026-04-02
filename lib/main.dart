@@ -22,10 +22,12 @@ Future<void> main() async {
   // await Translator.clearTrans();
   // Translator.getUnTrans();
 
-  runApp(ChangeNotifierProvider<AppNotifier>(
-    create: (context) => AppNotifier(),
-    child: const MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider<AppNotifier>(
+      create: (context) => AppNotifier(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -45,10 +47,11 @@ class MyApp extends StatelessWidget {
           getPages: getPageRoute(),
           // onGenerateRoute: (_) => generateRoute(context, _),
           builder: (_, child) {
-            NavigationService.registerContext(_);
+            NavigationService.registerContext(context, update: true);
             return Directionality(
-                textDirection: AppTheme.textDirection,
-                child: child ?? Container());
+              textDirection: AppTheme.textDirection,
+              child: child ?? Container(),
+            );
           },
           localizationsDelegates: [
             AppLocalizationsDelegate(context),

@@ -1,4 +1,4 @@
-// @dart=3.0
+// @dart=3.8
 // Flutter web bootstrap script for package:webkit/main.dart.
 //
 // Generated file. Do not edit.

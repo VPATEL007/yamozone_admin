@@ -76,19 +76,17 @@ class _LeftBarState extends State<LeftBar>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                      onTap: () {
-                        Get.toNamed('/dashboard');
-                      },
-                      child: Image.asset(
-                        Images.logoIcon,
-                        height: widget.isCondensed ? 24 : 32,
-                        color: contentTheme.primary,
-                      )),
-                  if (!widget.isCondensed)
-                    Flexible(
-                      fit: FlexFit.loose,
-                      child: MySpacing.width(16),
+                    onTap: () {
+                      Get.toNamed('/dashboard');
+                    },
+                    child: Image.asset(
+                      Images.logoIcon,
+                      height: widget.isCondensed ? 24 : 32,
+                      color: contentTheme.primary,
                     ),
+                  ),
+                  if (!widget.isCondensed)
+                    Flexible(fit: FlexFit.loose, child: MySpacing.width(16)),
                   if (!widget.isCondensed)
                     Flexible(
                       fit: FlexFit.loose,
@@ -102,87 +100,88 @@ class _LeftBarState extends State<LeftBar>
                         ),
                         maxLines: 1,
                       ),
-                    )
+                    ),
                 ],
               ),
             ),
             Expanded(
-                child: SingleChildScrollView(
-              physics: const PageScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  NavigationItem(
-                    iconData: LucideIcons.layoutDashboard,
-                    title: "dashboard".tr(),
-                    isCondensed: isCondensed,
-                    route: '/dashboard',
-                  ),
+              child: SingleChildScrollView(
+                physics: const PageScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    NavigationItem(
+                      iconData: LucideIcons.layoutDashboard,
+                      title: "dashboard".tr(),
+                      isCondensed: isCondensed,
+                      route: '/dashboard',
+                    ),
 
-                  //-----------------CALENDAR-----------------//
-                  NavigationItem(
-                    iconData: LucideIcons.calendarDays,
-                    title: "User Management".tr(),
-                    route: '/user-management',
-                    isCondensed: isCondensed,
-                  ),
-                  //-----------------Chat-----------------//
-                  NavigationItem(
-                    iconData: LucideIcons.messageSquare,
-                    title: "KYC Approvals".tr(),
-                    route: '/kyc-approval',
-                    isCondensed: isCondensed,
-                  ),
-                  NavigationItem(
-                    iconData: LucideIcons.messageSquare,
-                    title: "Listing Moderation".tr(),
-                    route: '/listing-moderation',
-                    isCondensed: isCondensed,
-                  ),
+                    //-----------------CALENDAR-----------------//
+                    NavigationItem(
+                      iconData: LucideIcons.calendarDays,
+                      title: "User Management".tr(),
+                      route: '/user-management',
+                      isCondensed: isCondensed,
+                    ),
+                    //-----------------Chat-----------------//
+                    NavigationItem(
+                      iconData: LucideIcons.messageSquare,
+                      title: "KYC Approvals".tr(),
+                      route: '/kyc-approval',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
+                      iconData: LucideIcons.messageSquare,
+                      title: "Listing Moderation".tr(),
+                      route: '/listing-moderation',
+                      isCondensed: isCondensed,
+                    ),
 
-                  //-----------------NFT Dashboard-----------------//
-                  NavigationItem(
-                    iconData: LucideIcons.circleDollarSign,
-                    title: "Orders & Escrow",
-                    route: '/orders',
-                    isCondensed: isCondensed,
-                  ),
-                  NavigationItem(
-                    iconData: LucideIcons.shoppingCart,
-                    title: "Dispute Center",
-                    route: '/dispute-center',
-                    isCondensed: isCondensed,
-                  ),
-                  NavigationItem(
-                    iconData: LucideIcons.dumbbell,
-                    title: "Driver Monitoring",
-                    route: '/driver-monitoring',
-                    isCondensed: isCondensed,
-                  ),
-                  NavigationItem(
-                    iconData: LucideIcons.mailbox,
-                    title: "System Settings",
-                    route: '/setting',
-                    isCondensed: isCondensed,
-                  ),
+                    //-----------------NFT Dashboard-----------------//
+                    NavigationItem(
+                      iconData: LucideIcons.circleDollarSign,
+                      title: "Orders & Escrow",
+                      route: '/orders',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
+                      iconData: LucideIcons.shoppingCart,
+                      title: "Dispute Center",
+                      route: '/dispute-center',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
+                      iconData: LucideIcons.dumbbell,
+                      title: "Driver Monitoring",
+                      route: '/driver-monitoring',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
+                      iconData: LucideIcons.mailbox,
+                      title: "System Settings",
+                      route: '/setting',
+                      isCondensed: isCondensed,
+                    ),
 
-                  //-----------------Landing-----------------//
-                  NavigationItem(
-                    iconData: LucideIcons.presentation,
-                    title: "Notifications".tr(),
-                    route: '/notification',
-                    isCondensed: isCondensed,
-                  ),
+                    //-----------------Landing-----------------//
+                    NavigationItem(
+                      iconData: LucideIcons.presentation,
+                      title: "Notifications".tr(),
+                      route: '/notification',
+                      isCondensed: isCondensed,
+                    ),
 
-                  NavigationItem(
-                    iconData: LucideIcons.file,
-                    title: "Audit Logs".tr(),
-                    route: '/audit-logs',
-                    isCondensed: isCondensed,
-                  )
-                ],
+                    NavigationItem(
+                      iconData: LucideIcons.file,
+                      title: "Audit Logs".tr(),
+                      route: '/audit-logs',
+                      isCondensed: isCondensed,
+                    ),
+                  ],
+                ),
               ),
-            ))
+            ),
           ],
         ),
       ),
@@ -213,13 +212,14 @@ class MenuWidget extends StatefulWidget {
   final bool active;
   final List<MenuItem> children;
 
-  const MenuWidget(
-      {super.key,
-      required this.iconData,
-      required this.title,
-      this.isCondensed = false,
-      this.active = false,
-      this.children = const []});
+  const MenuWidget({
+    super.key,
+    required this.iconData,
+    required this.title,
+    this.isCondensed = false,
+    this.active = false,
+    this.children = const [],
+  });
 
   @override
   _MenuWidgetState createState() => _MenuWidgetState();
@@ -238,9 +238,15 @@ class _MenuWidgetState extends State<MenuWidget>
   void initState() {
     super.initState();
     _controller = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
-    _iconTurns = _controller.drive(Tween<double>(begin: 0.0, end: 0.5)
-        .chain(CurveTween(curve: Curves.easeIn)));
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _iconTurns = _controller.drive(
+      Tween<double>(
+        begin: 0.0,
+        end: 0.5,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+    );
     LeftbarObserver.attachListener(widget.title, onChangeMenuActive);
   }
 
@@ -283,7 +289,7 @@ class _MenuWidgetState extends State<MenuWidget>
       return CustomPopupMenu(
         backdrop: true,
         show: popupShowing,
-        hideFn: (_) => hideFn = _,
+        hideFn: (hideFn) => hideFn,
         onChange: (_) {
           // popupShowing = _;
         },
@@ -349,54 +355,55 @@ class _MenuWidgetState extends State<MenuWidget>
             horizontalTitleGap: 0.0,
             minLeadingWidth: 0,
             child: ExpansionTile(
-                tilePadding: MySpacing.zero,
-                initiallyExpanded: isActive,
-                maintainState: true,
-                onExpansionChanged: (_) {
-                  LeftbarObserver.notifyAll(widget.title);
-                  onChangeExpansion(_);
-                },
-                trailing: RotationTransition(
-                  turns: _iconTurns,
-                  child: Icon(
-                    LucideIcons.chevronDown,
-                    size: 18,
-                    color: leftBarTheme.onBackground,
-                  ),
+              tilePadding: MySpacing.zero,
+              initiallyExpanded: isActive,
+              maintainState: true,
+              onExpansionChanged: (_) {
+                LeftbarObserver.notifyAll(widget.title);
+                // onChangeExpansion();
+              },
+              trailing: RotationTransition(
+                turns: _iconTurns,
+                child: Icon(
+                  LucideIcons.chevronDown,
+                  size: 18,
+                  color: leftBarTheme.onBackground,
                 ),
-                iconColor: leftBarTheme.activeItemColor,
-                childrenPadding: MySpacing.x(12),
-                title: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      widget.iconData,
-                      size: 20,
+              ),
+              iconColor: leftBarTheme.activeItemColor,
+              childrenPadding: MySpacing.x(12),
+              title: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    widget.iconData,
+                    size: 20,
+                    color: isHover || isActive
+                        ? leftBarTheme.activeItemColor
+                        : leftBarTheme.onBackground,
+                  ),
+                  MySpacing.width(18),
+                  Expanded(
+                    child: MyText.labelLarge(
+                      widget.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.start,
                       color: isHover || isActive
                           ? leftBarTheme.activeItemColor
                           : leftBarTheme.onBackground,
                     ),
-                    MySpacing.width(18),
-                    Expanded(
-                      child: MyText.labelLarge(
-                        widget.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                        color: isHover || isActive
-                            ? leftBarTheme.activeItemColor
-                            : leftBarTheme.onBackground,
-                      ),
-                    ),
-                  ],
-                ),
-                collapsedBackgroundColor: Colors.transparent,
-                shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.transparent),
-                ),
-                backgroundColor: Colors.transparent,
-                children: widget.children),
+                  ),
+                ],
+              ),
+              collapsedBackgroundColor: Colors.transparent,
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(color: Colors.transparent),
+              ),
+              backgroundColor: Colors.transparent,
+              children: widget.children,
+            ),
           ),
         ),
       );
@@ -485,13 +492,13 @@ class NavigationItem extends StatefulWidget {
   final bool isCondensed;
   final String? route;
 
-  const NavigationItem(
-      {Key? key,
-      this.iconData,
-      required this.title,
-      this.isCondensed = false,
-      this.route})
-      : super(key: key);
+  const NavigationItem({
+    Key? key,
+    this.iconData,
+    required this.title,
+    this.isCondensed = false,
+    this.route,
+  }) : super(key: key);
 
   @override
   _NavigationItemState createState() => _NavigationItemState();
@@ -543,10 +550,7 @@ class _NavigationItemState extends State<NavigationItem> with UIMixin {
                   ),
                 ),
               if (!widget.isCondensed)
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: MySpacing.width(16),
-                ),
+                Flexible(fit: FlexFit.loose, child: MySpacing.width(16)),
               if (!widget.isCondensed)
                 Expanded(
                   flex: 3,
@@ -558,7 +562,7 @@ class _NavigationItemState extends State<NavigationItem> with UIMixin {
                         ? leftBarTheme.background
                         : leftBarTheme.onBackground,
                   ),
-                )
+                ),
             ],
           ),
         ),
