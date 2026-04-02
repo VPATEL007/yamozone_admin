@@ -1,6 +1,6 @@
 {
-    "name": "webkit",
-    "short_name": "webkit",
+    "name": "Yamozone Admin",
+    "short_name": "Yamozone Admin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
