@@ -171,9 +171,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/flutter_lints-6.0.0",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/flutter_lints-3.0.2",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter_localizations",
@@ -369,9 +369,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/lints-6.1.0",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.0"
     },
     {
       "name": "logging",
@@ -627,39 +627,33 @@
     },
     {
       "name": "syncfusion_flutter_calendar",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_calendar-33.1.46",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_calendar-28.2.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.4"
     },
     {
       "name": "syncfusion_flutter_charts",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-33.1.46",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_charts-28.2.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.4"
     },
     {
       "name": "syncfusion_flutter_core",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-33.1.46",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-28.2.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.4"
     },
     {
       "name": "syncfusion_flutter_datepicker",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_datepicker-33.1.46",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_datepicker-28.2.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.4"
     },
     {
       "name": "syncfusion_flutter_maps",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_maps-33.1.46",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_flutter_maps-28.2.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
-    },
-    {
-      "name": "syncfusion_localizations",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/syncfusion_localizations-33.1.46",
-      "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.4"
     },
     {
       "name": "table_calendar",
@@ -681,9 +675,9 @@
     },
     {
       "name": "timezone",
-      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/timezone-0.11.0",
+      "rootUri": "file:///Users/vijaylaheri/.pub-cache/hosted/pub.dev/timezone-0.10.0",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "2.19"
     },
     {
       "name": "typed_data",
@@ -809,7 +803,7 @@
       "name": "webkit",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.8"
+      "languageVersion": "3.7"
     }
   ],
   "generator": "pub",

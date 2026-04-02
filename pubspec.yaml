@@ -50,7 +50,6 @@ dependencies:
   qr_flutter: ^4.1.0
   font_awesome_flutter: ^11.0.0
   table_calendar: ^3.0.9
-  syncfusion_flutter_maps: ^33.1.46
   maps_launcher: ^3.0.0+1
   socket_io_client: ^3.1.4
   get: ^4.6.5
@@ -61,10 +60,11 @@ dependencies:
   google_fonts: ^8.0.2
   fl_chart: ^1.2.0
   flutter_svg: ^2.0.8
-  syncfusion_flutter_datepicker: ^33.1.46
-  syncfusion_flutter_calendar: ^33.1.46
-  syncfusion_flutter_charts: ^33.1.46
+  syncfusion_flutter_charts: ^28.0.0
   file_picker: ^10.3.10
+  syncfusion_flutter_datepicker: ^28.2.12
+  syncfusion_flutter_calendar: ^28.2.12
+  syncfusion_flutter_maps: ^28.2.12
 
 dev_dependencies:
   flutter_test:
