@@ -32,75 +32,77 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBgCream,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              children: [
-                _TopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _TabRow(
-                          selected: _selectedTab,
-                          onTap: (i) => setState(() => _selectedTab = i),
+      backgroundColor: kBgCream,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Column(
+            children: [
+              _TopBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _TabRow(
+                        selected: _selectedTab,
+                        onTap: (i) => setState(() => _selectedTab = i),
+                      ),
+                      const SizedBox(height: 20),
+                      if (_selectedTab == 0) ...[
+                        _TemplatesGrid(),
+                        const SizedBox(height: 32),
+                        _BroadcastSection(
+                          selectedTemplate: _selectedTemplate,
+                          selectedAudience: _selectedAudience,
+                          pushEnabled: _pushEnabled,
+                          smsEnabled: _smsEnabled,
+                          titleCtrl: _titleCtrl,
+                          msgCtrl: _msgCtrl,
+                          onTemplateChanged:
+                              (v) => setState(() => _selectedTemplate = v),
+                          onAudienceChanged:
+                              (v) => setState(() => _selectedAudience = v),
+                          onPushToggle: (v) => setState(() => _pushEnabled = v),
+                          onSmsToggle: (v) => setState(() => _smsEnabled = v),
                         ),
-                        const SizedBox(height: 20),
-                        if (_selectedTab == 0) ...[
-                          _TemplatesGrid(),
-                          const SizedBox(height: 32),
-                          _BroadcastSection(
-                            selectedTemplate: _selectedTemplate,
-                            selectedAudience: _selectedAudience,
-                            pushEnabled: _pushEnabled,
-                            smsEnabled: _smsEnabled,
-                            titleCtrl: _titleCtrl,
-                            msgCtrl: _msgCtrl,
-                            onTemplateChanged: (v) =>
-                                setState(() => _selectedTemplate = v),
-                            onAudienceChanged: (v) =>
-                                setState(() => _selectedAudience = v),
-                            onPushToggle: (v) =>
-                                setState(() => _pushEnabled = v),
-                            onSmsToggle: (v) => setState(() => _smsEnabled = v),
-                          ),
-                        ],
-                        if (_selectedTab == 1)
-                          _BroadcastSection(
-                            selectedTemplate: _selectedTemplate,
-                            selectedAudience: _selectedAudience,
-                            pushEnabled: _pushEnabled,
-                            smsEnabled: _smsEnabled,
-                            titleCtrl: _titleCtrl,
-                            msgCtrl: _msgCtrl,
-                            onTemplateChanged: (v) =>
-                                setState(() => _selectedTemplate = v),
-                            onAudienceChanged: (v) =>
-                                setState(() => _selectedAudience = v),
-                            onPushToggle: (v) =>
-                                setState(() => _pushEnabled = v),
-                            onSmsToggle: (v) => setState(() => _smsEnabled = v),
-                          ),
-                        if (_selectedTab == 2)
-                          const Center(
-                              child: Padding(
-                            padding: EdgeInsets.all(48),
-                            child: Text('No history yet.',
-                                style: TextStyle(color: kTextMuted)),
-                          )),
                       ],
-                    ),
+                      if (_selectedTab == 1)
+                        _BroadcastSection(
+                          selectedTemplate: _selectedTemplate,
+                          selectedAudience: _selectedAudience,
+                          pushEnabled: _pushEnabled,
+                          smsEnabled: _smsEnabled,
+                          titleCtrl: _titleCtrl,
+                          msgCtrl: _msgCtrl,
+                          onTemplateChanged:
+                              (v) => setState(() => _selectedTemplate = v),
+                          onAudienceChanged:
+                              (v) => setState(() => _selectedAudience = v),
+                          onPushToggle: (v) => setState(() => _pushEnabled = v),
+                          onSmsToggle: (v) => setState(() => _smsEnabled = v),
+                        ),
+                      if (_selectedTab == 2)
+                        const Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(48),
+                            child: Text(
+                              'No history yet.',
+                              style: TextStyle(color: kTextMuted),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -112,8 +114,10 @@ class _LeftDrawer extends StatelessWidget {
       width: 220,
       color: kPrimaryGreen,
       child: const Center(
-        child: Text('← Your Drawer',
-            style: TextStyle(color: Colors.white54, fontSize: 13)),
+        child: Text(
+          '← Your Drawer',
+          style: TextStyle(color: Colors.white54, fontSize: 13),
+        ),
       ),
     );
   }
@@ -129,9 +133,14 @@ class _TopBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         children: [
-          const Text('Notifications & Broadcast',
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.w700, color: kTextDark)),
+          const Text(
+            'Notifications & Broadcast',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: kTextDark,
+            ),
+          ),
           const Spacer(),
           _GreenButton(
             icon: Icons.download_outlined,
@@ -167,24 +176,33 @@ class _TabRow extends StatelessWidget {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
                 margin: const EdgeInsets.only(right: 8),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: active ? kPrimaryGreen : kCardWhite,
                   borderRadius: BorderRadius.circular(8),
-                  border:
-                      Border.all(color: active ? kPrimaryGreen : kBorderColor),
+                  border: Border.all(
+                    color: active ? kPrimaryGreen : kBorderColor,
+                  ),
                 ),
                 child: Row(
                   children: [
-                    Icon(tabs[i].$1,
-                        size: 16, color: active ? Colors.white : kTextMuted),
+                    Icon(
+                      tabs[i].$1,
+                      size: 16,
+                      color: active ? Colors.white : kTextMuted,
+                    ),
                     const SizedBox(width: 6),
-                    Text(tabs[i].$2,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: active ? Colors.white : kTextMuted)),
+                    Text(
+                      tabs[i].$2,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: active ? Colors.white : kTextMuted,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -192,11 +210,7 @@ class _TabRow extends StatelessWidget {
           }),
         ),
         const Spacer(),
-        _GreenButton(
-          icon: Icons.add,
-          label: 'Create Template',
-          onTap: () {},
-        ),
+        _GreenButton(icon: Icons.add, label: 'Create Template', onTap: () {}),
       ],
     );
   }
@@ -250,31 +264,33 @@ class _TemplatesGrid extends StatelessWidget {
       ),
     ];
 
-    return LayoutBuilder(builder: (context, constraints) {
-      double width = constraints.maxWidth;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
 
-      double aspectRatio;
+        double aspectRatio;
 
-      if (width > 1200) {
-        aspectRatio = 3.2; // large screens
-      } else if (width > 800) {
-        aspectRatio = 2.5; // medium screens
-      } else {
-        aspectRatio = 1.8; // small screens
-      }
-      return GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: aspectRatio,
-        ),
-        itemCount: templates.length,
-        itemBuilder: (_, i) => _TemplateCard(data: templates[i]),
-      );
-    });
+        if (width > 1200) {
+          aspectRatio = 3.2; // large screens
+        } else if (width > 800) {
+          aspectRatio = 2.5; // medium screens
+        } else {
+          aspectRatio = 1.8; // small screens
+        }
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: aspectRatio,
+          ),
+          itemCount: templates.length,
+          itemBuilder: (_, i) => _TemplateCard(data: templates[i]),
+        );
+      },
+    );
   }
 }
 
@@ -330,14 +346,18 @@ class _TemplateCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(data.title,
-                        style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                            color: kTextDark)),
-                    Text(data.subtitle,
-                        style:
-                            const TextStyle(fontSize: 12, color: kTextMuted)),
+                    Text(
+                      data.title,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: kTextDark,
+                      ),
+                    ),
+                    Text(
+                      data.subtitle,
+                      style: const TextStyle(fontSize: 12, color: kTextMuted),
+                    ),
                   ],
                 ),
               ),
@@ -347,50 +367,62 @@ class _TemplateCard extends StatelessWidget {
           const SizedBox(height: 10),
           // Channel rows
           _ChannelRow(
-              icon: Icons.phone_android,
-              label: 'Push Notification',
-              enabled: data.hasPush),
+            icon: Icons.phone_android,
+            label: 'Push Notification',
+            enabled: data.hasPush,
+          ),
           const SizedBox(height: 4),
           _ChannelRow(
-              icon: Icons.sms_outlined,
-              label: 'SMS',
-              enabled: data.hasSms,
-              disabled: data.smsDisabled),
+            icon: Icons.sms_outlined,
+            label: 'SMS',
+            enabled: data.hasSms,
+            disabled: data.smsDisabled,
+          ),
           const SizedBox(height: 10),
           // Message preview
           RichText(
-              text: TextSpan(
-                  style: const TextStyle(fontSize: 12, color: kTextDark),
-                  children: [
+            text: TextSpan(
+              style: const TextStyle(fontSize: 12, color: kTextDark),
+              children: [
                 const TextSpan(
-                    text: 'Title: ',
-                    style: TextStyle(fontWeight: FontWeight.w600)),
+                  text: 'Title: ',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
                 TextSpan(text: data.msgTitle),
-              ])),
+              ],
+            ),
+          ),
           const SizedBox(height: 2),
           RichText(
-              text: TextSpan(
-                  style: const TextStyle(fontSize: 12, color: kTextDark),
-                  children: [
+            text: TextSpan(
+              style: const TextStyle(fontSize: 12, color: kTextDark),
+              children: [
                 const TextSpan(
-                    text: 'Message: ',
-                    style: TextStyle(fontWeight: FontWeight.w600)),
+                  text: 'Message: ',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
                 TextSpan(text: data.msgBody),
-              ])),
+              ],
+            ),
+          ),
           const Spacer(),
           // Buttons
           Row(
             children: [
               Expanded(
                 child: _GreenButton(
-                    icon: Icons.edit_outlined, label: 'Edit', onTap: () {}),
+                  icon: Icons.edit_outlined,
+                  label: 'Edit',
+                  onTap: () {},
+                ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: _OutlineButton(
-                    icon: Icons.visibility_outlined,
-                    label: 'Preview',
-                    onTap: () {}),
+                  icon: Icons.visibility_outlined,
+                  label: 'Preview',
+                  onTap: () {},
+                ),
               ),
             ],
           ),
@@ -410,9 +442,14 @@ class _ActiveBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: kActiveBadge.withOpacity(0.3)),
       ),
-      child: const Text('Active',
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w600, color: kActiveBadge)),
+      child: const Text(
+        'Active',
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: kActiveBadge,
+        ),
+      ),
     );
   }
 }
@@ -421,11 +458,12 @@ class _ChannelRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final bool enabled, disabled;
-  const _ChannelRow(
-      {required this.icon,
-      required this.label,
-      required this.enabled,
-      this.disabled = false});
+  const _ChannelRow({
+    required this.icon,
+    required this.label,
+    required this.enabled,
+    this.disabled = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -470,31 +508,39 @@ class _BroadcastSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Send Broadcast',
-            style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w700, color: kTextDark)),
+        const Text(
+          'Send Broadcast',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: kTextDark,
+          ),
+        ),
         const SizedBox(height: 4),
-        const Text('Send notifications to specific user segments',
-            style: TextStyle(fontSize: 13, color: kTextMuted)),
+        const Text(
+          'Send notifications to specific user segments',
+          style: TextStyle(fontSize: 13, color: kTextMuted),
+        ),
         const SizedBox(height: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Left form
             Expanded(
-                flex: 3,
-                child: _BroadcastForm(
-                  selectedTemplate: selectedTemplate,
-                  selectedAudience: selectedAudience,
-                  pushEnabled: pushEnabled,
-                  smsEnabled: smsEnabled,
-                  titleCtrl: titleCtrl,
-                  msgCtrl: msgCtrl,
-                  onTemplateChanged: onTemplateChanged,
-                  onAudienceChanged: onAudienceChanged,
-                  onPushToggle: onPushToggle,
-                  onSmsToggle: onSmsToggle,
-                )),
+              flex: 3,
+              child: _BroadcastForm(
+                selectedTemplate: selectedTemplate,
+                selectedAudience: selectedAudience,
+                pushEnabled: pushEnabled,
+                smsEnabled: smsEnabled,
+                titleCtrl: titleCtrl,
+                msgCtrl: msgCtrl,
+                onTemplateChanged: onTemplateChanged,
+                onAudienceChanged: onAudienceChanged,
+                onPushToggle: onPushToggle,
+                onSmsToggle: onSmsToggle,
+              ),
+            ),
             const SizedBox(width: 20),
             // Right stats
             Expanded(flex: 2, child: _ReachStats()),
@@ -545,7 +591,7 @@ class _BroadcastForm extends StatelessWidget {
               'KYC Verification',
               'Order Updates',
               'Dispute Resolution',
-              'OTP Verification'
+              'OTP Verification',
             ],
             onChanged: onTemplateChanged,
           ),
@@ -600,15 +646,17 @@ class _BroadcastForm extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.send, size: 16),
-                  label: const Text('Send Now',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
+                  label: const Text(
+                    'Send Now',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryGreen,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -616,17 +664,23 @@ class _BroadcastForm extends StatelessWidget {
               OutlinedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.schedule, size: 16, color: kAccentGold),
-                label: const Text('Schedule',
-                    style: TextStyle(
-                        color: kAccentGold,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14)),
+                label: const Text(
+                  'Schedule',
+                  style: TextStyle(
+                    color: kAccentGold,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                  ),
+                ),
                 style: OutlinedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 14,
+                  ),
                   side: const BorderSide(color: kAccentGold),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
             ],
@@ -637,39 +691,49 @@ class _BroadcastForm extends StatelessWidget {
   }
 
   InputDecoration _inputDeco(String hint) => InputDecoration(
-        hintText: hint,
-        hintStyle: const TextStyle(fontSize: 13, color: kTextMuted),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-        filled: true,
-        fillColor: kBgCream,
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: kBorderColor)),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: kBorderColor)),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: kPrimaryGreen, width: 1.5)),
-      );
+    hintText: hint,
+    hintStyle: const TextStyle(fontSize: 13, color: kTextMuted),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+    filled: true,
+    fillColor: kBgCream,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: kBorderColor),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: kBorderColor),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: kPrimaryGreen, width: 1.5),
+    ),
+  );
 }
 
 class _FieldLabel extends StatelessWidget {
   final String text;
   const _FieldLabel(this.text);
   @override
-  Widget build(BuildContext context) => Text(text,
-      style: const TextStyle(
-          fontSize: 13, fontWeight: FontWeight.w600, color: kTextDark));
+  Widget build(BuildContext context) => Text(
+    text,
+    style: const TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w600,
+      color: kTextDark,
+    ),
+  );
 }
 
 class _DropdownField extends StatelessWidget {
   final String value;
   final List<String> items;
   final ValueChanged<String> onChanged;
-  const _DropdownField(
-      {required this.value, required this.items, required this.onChanged});
+  const _DropdownField({
+    required this.value,
+    required this.items,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -684,12 +748,16 @@ class _DropdownField extends StatelessWidget {
         child: DropdownButton<String>(
           value: value,
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down,
-              color: kTextMuted, size: 20),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: kTextMuted,
+            size: 20,
+          ),
           style: const TextStyle(fontSize: 13, color: kTextDark),
-          items: items
-              .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-              .toList(),
+          items:
+              items
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
           onChanged: (v) => onChanged(v!),
         ),
       ),
@@ -702,11 +770,12 @@ class _ChannelCheckbox extends StatelessWidget {
   final String label;
   final bool value;
   final ValueChanged<bool> onChanged;
-  const _ChannelCheckbox(
-      {required this.icon,
-      required this.label,
-      required this.value,
-      required this.onChanged});
+  const _ChannelCheckbox({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -743,20 +812,28 @@ class _ReachStats extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('Estimated Reach',
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.w500)),
+              Text(
+                'Estimated Reach',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               SizedBox(height: 8),
-              Text('12,847',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white)),
+              Text(
+                '12,847',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                ),
+              ),
               SizedBox(height: 4),
-              Text('users will receive this notification',
-                  style: TextStyle(fontSize: 12, color: Colors.white60)),
+              Text(
+                'users will receive this notification',
+                style: TextStyle(fontSize: 12, color: Colors.white60),
+              ),
             ],
           ),
         ),
@@ -788,22 +865,32 @@ class _ReachStats extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.info_outline,
-                        size: 16, color: kAccentGold),
+                    const Icon(
+                      Icons.info_outline,
+                      size: 16,
+                      color: kAccentGold,
+                    ),
                     const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Cost Estimate',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: kTextDark)),
+                        Text(
+                          'Cost Estimate',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: kTextDark,
+                          ),
+                        ),
                         SizedBox(height: 4),
-                        Text('SMS: \$128.47 (12,847 recipients)',
-                            style: TextStyle(fontSize: 11, color: kTextMuted)),
-                        Text('Push: Free',
-                            style: TextStyle(fontSize: 11, color: kTextMuted)),
+                        Text(
+                          'SMS: \$128.47 (12,847 recipients)',
+                          style: TextStyle(fontSize: 11, color: kTextMuted),
+                        ),
+                        Text(
+                          'Push: Free',
+                          style: TextStyle(fontSize: 11, color: kTextMuted),
+                        ),
                       ],
                     ),
                   ],
@@ -821,8 +908,11 @@ class _SegmentRow extends StatelessWidget {
   final String label;
   final int count;
   final double fraction;
-  const _SegmentRow(
-      {required this.label, required this.count, required this.fraction});
+  const _SegmentRow({
+    required this.label,
+    required this.count,
+    required this.fraction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -832,18 +922,25 @@ class _SegmentRow extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label,
-                style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: kTextDark)),
             Text(
-                count.toString().replaceAllMapped(
-                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]},'),
-                style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: kTextDark)),
+              label,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: kTextDark,
+              ),
+            ),
+            Text(
+              count.toString().replaceAllMapped(
+                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                (m) => '${m[1]},',
+              ),
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: kTextDark,
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 6),
@@ -866,16 +963,21 @@ class _GreenButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  const _GreenButton(
-      {required this.icon, required this.label, required this.onTap});
+  const _GreenButton({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: onTap,
       icon: Icon(icon, size: 15),
-      label: Text(label,
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+      label: Text(
+        label,
+        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+      ),
       style: ElevatedButton.styleFrom(
         backgroundColor: kPrimaryGreen,
         foregroundColor: Colors.white,
@@ -891,17 +993,25 @@ class _OutlineButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  const _OutlineButton(
-      {required this.icon, required this.label, required this.onTap});
+  const _OutlineButton({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
       onPressed: onTap,
       icon: Icon(icon, size: 15, color: kAccentGold),
-      label: Text(label,
-          style: const TextStyle(
-              color: kAccentGold, fontWeight: FontWeight.w600, fontSize: 13)),
+      label: Text(
+        label,
+        style: const TextStyle(
+          color: kAccentGold,
+          fontWeight: FontWeight.w600,
+          fontSize: 13,
+        ),
+      ),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         side: const BorderSide(color: kAccentGold),

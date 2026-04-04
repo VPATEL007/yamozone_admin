@@ -423,80 +423,89 @@ class DriverModel {
   final String name, id, initials;
   final int tasks;
   final DriverStatus status;
-  const DriverModel(
-      {required this.name,
-      required this.id,
-      required this.initials,
-      required this.tasks,
-      required this.status});
+  const DriverModel({
+    required this.name,
+    required this.id,
+    required this.initials,
+    required this.tasks,
+    required this.status,
+  });
 }
 
 class TaskModel {
   final String orderId, customer, phone, address, status, priority, eta;
   final bool selected;
-  const TaskModel(
-      {required this.orderId,
-      required this.customer,
-      required this.phone,
-      required this.address,
-      required this.status,
-      required this.priority,
-      required this.eta,
-      this.selected = false});
+  const TaskModel({
+    required this.orderId,
+    required this.customer,
+    required this.phone,
+    required this.address,
+    required this.status,
+    required this.priority,
+    required this.eta,
+    this.selected = false,
+  });
 }
 
 final _drivers = [
   const DriverModel(
-      name: 'John Mitchell',
-      id: 'DRV-001',
-      initials: 'JM',
-      tasks: 3,
-      status: DriverStatus.active),
+    name: 'John Mitchell',
+    id: 'DRV-001',
+    initials: 'JM',
+    tasks: 3,
+    status: DriverStatus.active,
+  ),
   const DriverModel(
-      name: 'David Chen',
-      id: 'DRV-002',
-      initials: 'DC',
-      tasks: 2,
-      status: DriverStatus.enRoute),
+    name: 'David Chen',
+    id: 'DRV-002',
+    initials: 'DC',
+    tasks: 2,
+    status: DriverStatus.enRoute,
+  ),
   const DriverModel(
-      name: 'Sarah Wilson',
-      id: 'DRV-003',
-      initials: 'SW',
-      tasks: 1,
-      status: DriverStatus.active),
+    name: 'Sarah Wilson',
+    id: 'DRV-003',
+    initials: 'SW',
+    tasks: 1,
+    status: DriverStatus.active,
+  ),
   const DriverModel(
-      name: 'Mike Rodriguez',
-      id: 'DRV-004',
-      initials: 'MR',
-      tasks: 4,
-      status: DriverStatus.delayed),
+    name: 'Mike Rodriguez',
+    id: 'DRV-004',
+    initials: 'MR',
+    tasks: 4,
+    status: DriverStatus.delayed,
+  ),
 ];
 
 final _tasks = [
   const TaskModel(
-      orderId: '#ORD-2024-001',
-      customer: 'Emma Thompson',
-      phone: '+1 555-0123',
-      address: '123 Oak Street, Downtown',
-      status: 'In Transit',
-      priority: 'High',
-      eta: '15 mins'),
+    orderId: '#ORD-2024-001',
+    customer: 'Emma Thompson',
+    phone: '+1 555-0123',
+    address: '123 Oak Street, Downtown',
+    status: 'In Transit',
+    priority: 'High',
+    eta: '15 mins',
+  ),
   const TaskModel(
-      orderId: '#ORD-2024-002',
-      customer: 'Robert Chen',
-      phone: '+1 555-0456',
-      address: '456 Pine Avenue, Midtown',
-      status: 'Picked Up',
-      priority: 'Medium',
-      eta: '25 mins'),
+    orderId: '#ORD-2024-002',
+    customer: 'Robert Chen',
+    phone: '+1 555-0456',
+    address: '456 Pine Avenue, Midtown',
+    status: 'Picked Up',
+    priority: 'Medium',
+    eta: '25 mins',
+  ),
   const TaskModel(
-      orderId: '#ORD-2024-003',
-      customer: 'Lisa Anderson',
-      phone: '+1 555-0789',
-      address: '789 Elm Court, Uptown',
-      status: 'Assigned',
-      priority: 'Low',
-      eta: '45 mins'),
+    orderId: '#ORD-2024-003',
+    customer: 'Lisa Anderson',
+    phone: '+1 555-0789',
+    address: '789 Elm Court, Uptown',
+    status: 'Assigned',
+    priority: 'Low',
+    eta: '45 mins',
+  ),
 ];
 
 // ─────────────────────────────────────────────
@@ -528,91 +537,106 @@ class _DriverMonitoringScreenState extends State<DriverMonitoringScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBg,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              children: [
-                _TopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        // ── Top 3-column row ──
-                        LayoutBuilder(builder: (ctx, constraints) {
+      backgroundColor: kBg,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Column(
+            children: [
+              _TopBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      // ── Top 3-column row ──
+                      LayoutBuilder(
+                        builder: (ctx, constraints) {
                           final isWide = constraints.maxWidth > 800;
                           return isWide
                               ? IntrinsicHeight(
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      SizedBox(
-                                          width: 300,
-                                          child: _ActiveDriversPanel(
-                                            drivers: _drivers,
-                                            selectedIndex: _selectedDriverIndex,
-                                            onSelect: (i) => setState(
-                                                () => _selectedDriverIndex = i),
-                                            searchCtrl: _searchCtrl,
-                                          )),
-                                      const SizedBox(width: 14),
-                                      Expanded(child: _MapPanel()),
-                                      const SizedBox(width: 14),
-                                      SizedBox(
-                                          width: 260,
-                                          child: _DriverDetailsPanel(
-                                              driver: _selectedDriver)),
-                                    ],
-                                  ),
-                                )
-                              : Column(children: [
+                                child: Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    SizedBox(
+                                      width: 300,
+                                      child: _ActiveDriversPanel(
+                                        drivers: _drivers,
+                                        selectedIndex: _selectedDriverIndex,
+                                        onSelect:
+                                            (i) => setState(
+                                              () => _selectedDriverIndex = i,
+                                            ),
+                                        searchCtrl: _searchCtrl,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 14),
+                                    Expanded(child: _MapPanel()),
+                                    const SizedBox(width: 14),
+                                    SizedBox(
+                                      width: 260,
+                                      child: _DriverDetailsPanel(
+                                        driver: _selectedDriver,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                              : Column(
+                                children: [
                                   _ActiveDriversPanel(
                                     drivers: _drivers,
                                     selectedIndex: _selectedDriverIndex,
-                                    onSelect: (i) => setState(
-                                        () => _selectedDriverIndex = i),
+                                    onSelect:
+                                        (i) => setState(
+                                          () => _selectedDriverIndex = i,
+                                        ),
                                     searchCtrl: _searchCtrl,
                                   ),
                                   const SizedBox(height: 14),
                                   _MapPanel(),
                                   const SizedBox(height: 14),
                                   _DriverDetailsPanel(driver: _selectedDriver),
-                                ]);
-                        }),
-                        const SizedBox(height: 16),
-                        // ── Active Tasks Table ──
-                        _ActiveTasksSection(
-                          driver: _selectedDriver,
-                          tasks: _tasks,
-                          selectedTasks: _selectedTasks,
-                          onToggleTask: (i) => setState(() {
-                            if (_selectedTasks.contains(i)) {
-                              _selectedTasks.remove(i);
-                            } else {
-                              _selectedTasks.add(i);
-                            }
-                          }),
-                          onToggleAll: () => setState(() {
-                            if (_selectedTasks.length == _tasks.length) {
-                              _selectedTasks.clear();
-                            } else {
-                              _selectedTasks.addAll(
-                                  List.generate(_tasks.length, (i) => i));
-                            }
-                          }),
-                        ),
-                      ],
-                    ),
+                                ],
+                              );
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      // ── Active Tasks Table ──
+                      _ActiveTasksSection(
+                        driver: _selectedDriver,
+                        tasks: _tasks,
+                        selectedTasks: _selectedTasks,
+                        onToggleTask:
+                            (i) => setState(() {
+                              if (_selectedTasks.contains(i)) {
+                                _selectedTasks.remove(i);
+                              } else {
+                                _selectedTasks.add(i);
+                              }
+                            }),
+                        onToggleAll:
+                            () => setState(() {
+                              if (_selectedTasks.length == _tasks.length) {
+                                _selectedTasks.clear();
+                              } else {
+                                _selectedTasks.addAll(
+                                  List.generate(_tasks.length, (i) => i),
+                                );
+                              }
+                            }),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -630,26 +654,33 @@ class _TopBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Text('Driver Monitoring',
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: kTextDark,
-                  letterSpacing: 0.3)),
+          const Text(
+            'Driver Monitoring',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: kTextDark,
+              letterSpacing: 0.3,
+            ),
+          ),
           const Spacer(),
           ElevatedButton.icon(
             onPressed: () {},
             icon: const Icon(Icons.refresh, size: 16, color: Colors.white),
-            label: const Text('Refresh Data',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600)),
+            label: const Text(
+              'Refresh Data',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: kPrimaryDark,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
               elevation: 0,
             ),
           ),
@@ -668,11 +699,12 @@ class _ActiveDriversPanel extends StatelessWidget {
   final ValueChanged<int> onSelect;
   final TextEditingController searchCtrl;
 
-  const _ActiveDriversPanel(
-      {required this.drivers,
-      required this.selectedIndex,
-      required this.onSelect,
-      required this.searchCtrl});
+  const _ActiveDriversPanel({
+    required this.drivers,
+    required this.selectedIndex,
+    required this.onSelect,
+    required this.searchCtrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -682,24 +714,32 @@ class _ActiveDriversPanel extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text('Active Drivers',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextDark)),
+              const Text(
+                'Active Drivers',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextDark,
+                ),
+              ),
               const Spacer(),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: kPrimary.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text('12 Online',
-                    style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: kPrimary)),
+                child: const Text(
+                  '12 Online',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: kPrimary,
+                  ),
+                ),
               ),
             ],
           ),
@@ -730,7 +770,10 @@ class _ActiveDriversPanel extends StatelessWidget {
             (i) => _DriverListTile(
               driver: drivers[i],
               isSelected: i == selectedIndex,
-              onTap: () => onSelect(i),
+              onTap: () {
+                Get.toNamed('/driver/taskdetail');
+              },
+              // onTap: () => onSelect(i),
             ),
           ),
         ],
@@ -743,8 +786,11 @@ class _DriverListTile extends StatelessWidget {
   final DriverModel driver;
   final bool isSelected;
   final VoidCallback onTap;
-  const _DriverListTile(
-      {required this.driver, required this.isSelected, required this.onTap});
+  const _DriverListTile({
+    required this.driver,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -759,33 +805,41 @@ class _DriverListTile extends StatelessWidget {
               isSelected ? kPrimaryDark.withOpacity(0.06) : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              color: isSelected
-                  ? kPrimaryDark.withOpacity(0.2)
-                  : Colors.transparent),
+            color:
+                isSelected ? kPrimaryDark.withOpacity(0.2) : Colors.transparent,
+          ),
         ),
         child: Row(
           children: [
             CircleAvatar(
               radius: 20,
               backgroundColor: kPrimary.withOpacity(0.15),
-              child: Text(driver.initials,
-                  style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: kPrimary)),
+              child: Text(
+                driver.initials,
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: kPrimary,
+                ),
+              ),
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(driver.name,
-                      style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: kTextDark)),
-                  Text('ID: ${driver.id}',
-                      style: const TextStyle(fontSize: 11, color: kTextLight)),
+                  Text(
+                    driver.name,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: kTextDark,
+                    ),
+                  ),
+                  Text(
+                    'ID: ${driver.id}',
+                    style: const TextStyle(fontSize: 11, color: kTextLight),
+                  ),
                 ],
               ),
             ),
@@ -794,8 +848,10 @@ class _DriverListTile extends StatelessWidget {
               children: [
                 _StatusBadge(status: driver.status),
                 const SizedBox(height: 4),
-                Text('${driver.tasks} task${driver.tasks > 1 ? 's' : ''}',
-                    style: const TextStyle(fontSize: 11, color: kTextLight)),
+                Text(
+                  '${driver.tasks} task${driver.tasks > 1 ? 's' : ''}',
+                  style: const TextStyle(fontSize: 11, color: kTextLight),
+                ),
               ],
             ),
           ],
@@ -821,14 +877,19 @@ class _MapPanel extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text('Driver Location Map',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: kTextDark)),
+                Text(
+                  'Driver Location Map',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: kTextDark,
+                  ),
+                ),
                 SizedBox(height: 2),
-                Text('Real-time driver positions and routes',
-                    style: TextStyle(fontSize: 12, color: kTextLight)),
+                Text(
+                  'Real-time driver positions and routes',
+                  style: TextStyle(fontSize: 12, color: kTextLight),
+                ),
               ],
             ),
           ),
@@ -842,8 +903,9 @@ class _MapPanel extends StatelessWidget {
                 Container(
                   decoration: const BoxDecoration(
                     color: Color(0xFFEEF2E6),
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(14)),
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(14),
+                    ),
                   ),
                   child: CustomPaint(
                     painter: _MapGridPainter(),
@@ -852,28 +914,34 @@ class _MapPanel extends StatelessWidget {
                 ),
                 // Driver pins
                 Positioned(
-                    left: 140,
-                    top: 100,
-                    child: _MapPin(color: kStatusActive, label: 'JM')),
+                  left: 140,
+                  top: 100,
+                  child: _MapPin(color: kStatusActive, label: 'JM'),
+                ),
                 Positioned(
-                    left: 220,
-                    top: 160,
-                    child: _MapPin(color: kStatusEnRoute, label: 'DC')),
+                  left: 220,
+                  top: 160,
+                  child: _MapPin(color: kStatusEnRoute, label: 'DC'),
+                ),
                 Positioned(
-                    left: 80,
-                    top: 200,
-                    child: _MapPin(color: kStatusActive, label: 'SW')),
+                  left: 80,
+                  top: 200,
+                  child: _MapPin(color: kStatusActive, label: 'SW'),
+                ),
                 Positioned(
-                    left: 300,
-                    top: 80,
-                    child: _MapPin(color: kStatusDelayed, label: 'MR')),
+                  left: 300,
+                  top: 80,
+                  child: _MapPin(color: kStatusDelayed, label: 'MR'),
+                ),
                 // Legend
                 Positioned(
                   top: 12,
                   left: 12,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 10),
+                      horizontal: 12,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.92),
                       borderRadius: BorderRadius.circular(10),
@@ -885,10 +953,14 @@ class _MapPanel extends StatelessWidget {
                         _LegendItem(color: kStatusActive, label: 'Active (8)'),
                         SizedBox(height: 5),
                         _LegendItem(
-                            color: kStatusEnRoute, label: 'En Route (3)'),
+                          color: kStatusEnRoute,
+                          label: 'En Route (3)',
+                        ),
                         SizedBox(height: 5),
                         _LegendItem(
-                            color: kStatusDelayed, label: 'Delayed (1)'),
+                          color: kStatusDelayed,
+                          label: 'Delayed (1)',
+                        ),
                       ],
                     ),
                   ),
@@ -904,8 +976,11 @@ class _MapPanel extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                       border: Border.all(color: kDivider),
                     ),
-                    child:
-                        const Icon(Icons.fullscreen, size: 18, color: kTextMid),
+                    child: const Icon(
+                      Icons.fullscreen,
+                      size: 18,
+                      color: kTextMid,
+                    ),
                   ),
                 ),
               ],
@@ -927,9 +1002,10 @@ class _LegendItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-            width: 9,
-            height: 9,
-            decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+          width: 9,
+          height: 9,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
         const SizedBox(width: 6),
         Text(label, style: const TextStyle(fontSize: 12, color: kTextDark)),
       ],
@@ -952,16 +1028,20 @@ class _MapPin extends StatelessWidget {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                  color: color.withOpacity(0.4),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2))
+                color: color.withOpacity(0.4),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
             ],
           ),
-          child: Text(label,
-              style: const TextStyle(
-                  fontSize: 9,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white)),
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 9,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
         ),
         Container(width: 2, height: 8, color: color.withOpacity(0.6)),
       ],
@@ -972,9 +1052,10 @@ class _MapPin extends StatelessWidget {
 class _MapGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFFD8DFD0)
-      ..strokeWidth = 0.8;
+    final paint =
+        Paint()
+          ..color = const Color(0xFFD8DFD0)
+          ..strokeWidth = 0.8;
     for (double x = 0; x < size.width; x += 40) {
       canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);
     }
@@ -982,10 +1063,11 @@ class _MapGridPainter extends CustomPainter {
       canvas.drawLine(Offset(0, y), Offset(size.width, y), paint);
     }
     // Simulate roads
-    final roadPaint = Paint()
-      ..color = Colors.white
-      ..strokeWidth = 6
-      ..strokeCap = StrokeCap.round;
+    final roadPaint =
+        Paint()
+          ..color = Colors.white
+          ..strokeWidth = 6
+          ..strokeCap = StrokeCap.round;
     canvas.drawLine(const Offset(0, 120), Offset(size.width, 150), roadPaint);
     canvas.drawLine(const Offset(180, 0), Offset(160, size.height), roadPaint);
     canvas.drawLine(const Offset(0, 220), Offset(size.width, 200), roadPaint);
@@ -1009,19 +1091,27 @@ class _DriverDetailsPanel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Driver Details',
-              style: TextStyle(
-                  fontSize: 15, fontWeight: FontWeight.w700, color: kTextDark)),
+          const Text(
+            'Driver Details',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: kTextDark,
+            ),
+          ),
           const SizedBox(height: 2),
-          Text('${driver.name} - ${driver.id}',
-              style: const TextStyle(fontSize: 12, color: kTextLight)),
+          Text(
+            '${driver.name} - ${driver.id}',
+            style: const TextStyle(fontSize: 12, color: kTextLight),
+          ),
           const SizedBox(height: 16),
           const Divider(color: kDivider, height: 1),
           const SizedBox(height: 14),
           _DetailRow(
-              label: 'Current Status:',
-              value: '',
-              widget: _StatusBadge(status: driver.status)),
+            label: 'Current Status:',
+            value: '',
+            widget: _StatusBadge(status: driver.status),
+          ),
           _DetailRow(label: 'Vehicle:', value: 'Honda CRV - ABC123'),
           _DetailRow(label: 'Last Update:', value: '2 mins ago'),
           _DetailRow(label: 'Total Deliveries:', value: '847'),
@@ -1030,11 +1120,14 @@ class _DriverDetailsPanel extends StatelessWidget {
             value: '',
             widget: Row(
               children: [
-                const Text('4.8',
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: kTextDark)),
+                const Text(
+                  '4.8',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: kTextDark,
+                  ),
+                ),
                 const SizedBox(width: 6),
                 Row(
                   children: List.generate(
@@ -1048,29 +1141,38 @@ class _DriverDetailsPanel extends StatelessWidget {
           const SizedBox(height: 20),
           const Divider(color: kDivider, height: 1),
           const SizedBox(height: 14),
-          const Text('Quick Actions',
-              style: TextStyle(
-                  fontSize: 14, fontWeight: FontWeight.w700, color: kTextDark)),
+          const Text(
+            'Quick Actions',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: kTextDark,
+            ),
+          ),
           const SizedBox(height: 12),
           _QuickActionBtn(
-              icon: Icons.phone_outlined,
-              label: 'Contact Driver',
-              color: kPrimaryDark),
+            icon: Icons.phone_outlined,
+            label: 'Contact Driver',
+            color: kPrimaryDark,
+          ),
           const SizedBox(height: 8),
           _QuickActionBtn(
-              icon: Icons.warning_amber_outlined,
-              label: 'Mark as Delayed',
-              color: kPrimaryDark),
+            icon: Icons.warning_amber_outlined,
+            label: 'Mark as Delayed',
+            color: kPrimaryDark,
+          ),
           const SizedBox(height: 8),
           _QuickActionBtn(
-              icon: Icons.cancel_outlined,
-              label: 'Force Failed Delivery',
-              color: kPrimaryDark),
+            icon: Icons.cancel_outlined,
+            label: 'Force Failed Delivery',
+            color: kPrimaryDark,
+          ),
           const SizedBox(height: 8),
           _QuickActionBtn(
-              icon: Icons.pause_circle_outline,
-              label: 'Set Offline',
-              color: kPrimaryDark),
+            icon: Icons.pause_circle_outline,
+            label: 'Set Offline',
+            color: kPrimaryDark,
+          ),
         ],
       ),
     );
@@ -1092,18 +1194,24 @@ class _DetailRow extends StatelessWidget {
         children: [
           Expanded(
             flex: 5,
-            child: Text(label,
-                style: const TextStyle(fontSize: 12, color: kTextMid)),
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 12, color: kTextMid),
+            ),
           ),
           Expanded(
             flex: 5,
-            child: widget ??
-                Text(value,
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: kTextDark)),
+            child:
+                widget ??
+                Text(
+                  value,
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: kTextDark,
+                  ),
+                ),
           ),
         ],
       ),
@@ -1115,8 +1223,11 @@ class _QuickActionBtn extends StatelessWidget {
   final IconData icon;
   final String label;
   final Color color;
-  const _QuickActionBtn(
-      {required this.icon, required this.label, required this.color});
+  const _QuickActionBtn({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1125,16 +1236,20 @@ class _QuickActionBtn extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: () {},
         icon: Icon(icon, size: 15, color: Colors.white),
-        label: Text(label,
-            style: const TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.w600)),
+        label: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
           padding: const EdgeInsets.symmetric(vertical: 12),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           elevation: 0,
         ),
       ),
@@ -1152,12 +1267,13 @@ class _ActiveTasksSection extends StatelessWidget {
   final ValueChanged<int> onToggleTask;
   final VoidCallback onToggleAll;
 
-  const _ActiveTasksSection(
-      {required this.driver,
-      required this.tasks,
-      required this.selectedTasks,
-      required this.onToggleTask,
-      required this.onToggleAll});
+  const _ActiveTasksSection({
+    required this.driver,
+    required this.tasks,
+    required this.selectedTasks,
+    required this.onToggleTask,
+    required this.onToggleAll,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1168,26 +1284,35 @@ class _ActiveTasksSection extends StatelessWidget {
           // Header
           Row(
             children: [
-              Text('Active Tasks - ${driver.name}',
-                  style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextDark)),
+              Text(
+                'Active Tasks - ${driver.name}',
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextDark,
+                ),
+              ),
               const Spacer(),
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.check, size: 14, color: Colors.white),
-                label: const Text('Mark Complete',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600)),
+                label: const Text(
+                  'Mark Complete',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryDark,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   elevation: 0,
                 ),
               ),
@@ -1195,17 +1320,23 @@ class _ActiveTasksSection extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.close, size: 14, color: Colors.white),
-                label: const Text('Force Fail',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600)),
+                label: const Text(
+                  'Force Fail',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimary,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   elevation: 0,
                 ),
               ),
@@ -1234,11 +1365,12 @@ class _TaskTable extends StatelessWidget {
   final ValueChanged<int> onToggleTask;
   final VoidCallback onToggleAll;
 
-  const _TaskTable(
-      {required this.tasks,
-      required this.selectedTasks,
-      required this.onToggleTask,
-      required this.onToggleAll});
+  const _TaskTable({
+    required this.tasks,
+    required this.selectedTasks,
+    required this.onToggleTask,
+    required this.onToggleAll,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1261,16 +1393,19 @@ class _TaskTable extends StatelessWidget {
                   SizedBox(
                     width: 26,
                     child: Checkbox(
-                      value: selectedTasks.length == tasks.length &&
+                      value:
+                          selectedTasks.length == tasks.length &&
                           tasks.isNotEmpty,
                       onChanged: (_) => onToggleAll(),
-                      fillColor: WidgetStateProperty.resolveWith<Color>(
-                          (Set<WidgetState> states) {
+                      fillColor: WidgetStateProperty.resolveWith<Color>((
+                        Set<WidgetState> states,
+                      ) {
                         if (states.contains(WidgetState.disabled)) {
                           return Colors.orange.withValues(alpha: .32);
                         }
                         return LeftBarTheme
-                            .lightLeftBarTheme.activeItemBackground;
+                            .lightLeftBarTheme
+                            .activeItemBackground;
                       }),
                       activeColor: kPrimary,
                       side: const BorderSide(color: kDivider),
@@ -1291,17 +1426,21 @@ class _TaskTable extends StatelessWidget {
               final t = tasks[i];
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 3),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
-                  color: selectedTasks.contains(i)
-                      ? kPrimary.withOpacity(0.05)
-                      : kCardBg,
+                  color:
+                      selectedTasks.contains(i)
+                          ? kPrimary.withOpacity(0.05)
+                          : kCardBg,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: selectedTasks.contains(i)
-                        ? kPrimary.withOpacity(0.2)
-                        : kDivider,
+                    color:
+                        selectedTasks.contains(i)
+                            ? kPrimary.withOpacity(0.2)
+                            : kDivider,
                   ),
                 ),
                 child: Row(
@@ -1317,11 +1456,14 @@ class _TaskTable extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 3,
-                      child: Text(t.orderId,
-                          style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: kPrimary)),
+                      child: Text(
+                        t.orderId,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: kPrimary,
+                        ),
+                      ),
                     ),
                     Expanded(
                       flex: 4,
@@ -1329,14 +1471,21 @@ class _TaskTable extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(t.customer,
-                                style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: kTextDark)),
-                            Text(t.phone,
-                                style: const TextStyle(
-                                    fontSize: 11, color: kTextLight)),
+                            Text(
+                              t.customer,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: kTextDark,
+                              ),
+                            ),
+                            Text(
+                              t.phone,
+                              style: const TextStyle(
+                                fontSize: 11,
+                                color: kTextLight,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -1344,9 +1493,10 @@ class _TaskTable extends StatelessWidget {
                     Expanded(
                       flex: 5,
                       child: Align(
-                        child: Text(t.address,
-                            style:
-                                const TextStyle(fontSize: 12, color: kTextMid)),
+                        child: Text(
+                          t.address,
+                          style: const TextStyle(fontSize: 12, color: kTextMid),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -1360,9 +1510,13 @@ class _TaskTable extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: Align(
-                        child: Text(t.eta,
-                            style: const TextStyle(
-                                fontSize: 12, color: kTextDark)),
+                        child: Text(
+                          t.eta,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: kTextDark,
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -1371,19 +1525,22 @@ class _TaskTable extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _IconBtn(
-                              icon: Icons.remove_red_eye_outlined,
-                              color: kTextMid,
-                              onTap: () {
-                                Get.toNamed("/driver/profile");
-                              }),
+                            icon: Icons.remove_red_eye_outlined,
+                            color: kTextMid,
+                            onTap: () {
+                              Get.toNamed("/driver/profile");
+                            },
+                          ),
                           _IconBtn(
-                              icon: Icons.check,
-                              color: kStatusActive,
-                              onTap: () {}),
+                            icon: Icons.check,
+                            color: kStatusActive,
+                            onTap: () {},
+                          ),
                           _IconBtn(
-                              icon: Icons.close,
-                              color: kStatusDelayed,
-                              onTap: () {}),
+                            icon: Icons.close,
+                            color: kStatusDelayed,
+                            onTap: () {},
+                          ),
                         ],
                       ),
                     ),
@@ -1404,32 +1561,38 @@ class _HeaderCell extends StatelessWidget {
   const _HeaderCell(this.label, {required this.flex});
   @override
   Widget build(BuildContext context) => Expanded(
-        flex: flex,
-        child: Align(
-          child: Text(label,
-              style: const TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: kTextMid,
-                  letterSpacing: 0.3)),
+    flex: flex,
+    child: Align(
+      child: Text(
+        label,
+        style: const TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: kTextMid,
+          letterSpacing: 0.3,
         ),
-      );
+      ),
+    ),
+  );
 }
 
 class _IconBtn extends StatelessWidget {
   final IconData icon;
   final Color color;
   final VoidCallback onTap;
-  const _IconBtn(
-      {required this.icon, required this.color, required this.onTap});
+  const _IconBtn({
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 3),
-          child: Icon(icon, size: 16, color: color),
-        ),
-      );
+    onTap: onTap,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3),
+      child: Icon(icon, size: 16, color: color),
+    ),
+  );
 }
 
 // Mobile fallback
@@ -1439,52 +1602,66 @@ class _MobileTaskList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: tasks.map((t) {
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 5),
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: kCardBg,
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: kDivider),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      children:
+          tasks.map((t) {
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: kCardBg,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: kDivider),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(t.orderId,
-                      style: const TextStyle(
+                  Row(
+                    children: [
+                      Text(
+                        t.orderId,
+                        style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
-                          color: kPrimary)),
-                  const Spacer(),
-                  _TaskStatusBadge(status: t.status),
-                  const SizedBox(width: 6),
-                  _PriorityBadge(priority: t.priority),
-                ],
-              ),
-              const SizedBox(height: 6),
-              Text(t.customer,
-                  style: const TextStyle(
+                          color: kPrimary,
+                        ),
+                      ),
+                      const Spacer(),
+                      _TaskStatusBadge(status: t.status),
+                      const SizedBox(width: 6),
+                      _PriorityBadge(priority: t.priority),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    t.customer,
+                    style: const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: kTextDark)),
-              Text(t.phone,
-                  style: const TextStyle(fontSize: 11, color: kTextLight)),
-              const SizedBox(height: 4),
-              Text(t.address,
-                  style: const TextStyle(fontSize: 12, color: kTextMid)),
-              const SizedBox(height: 6),
-              Text('ETA: ${t.eta}',
-                  style: const TextStyle(
+                      color: kTextDark,
+                    ),
+                  ),
+                  Text(
+                    t.phone,
+                    style: const TextStyle(fontSize: 11, color: kTextLight),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    t.address,
+                    style: const TextStyle(fontSize: 12, color: kTextMid),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'ETA: ${t.eta}',
+                    style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                      color: kTextDark)),
-            ],
-          ),
-        );
-      }).toList(),
+                      color: kTextDark,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
     );
   }
 }
@@ -1522,19 +1699,27 @@ class _StatusBadge extends StatelessWidget {
     }
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration:
-          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-              width: 6,
-              height: 6,
-              decoration: BoxDecoration(color: dot, shape: BoxShape.circle)),
+            width: 6,
+            height: 6,
+            decoration: BoxDecoration(color: dot, shape: BoxShape.circle),
+          ),
           const SizedBox(width: 5),
-          Text(label,
-              style: TextStyle(
-                  fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: text,
+            ),
+          ),
         ],
       ),
     );
@@ -1564,11 +1749,18 @@ class _TaskStatusBadge extends StatelessWidget {
     return Align(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration:
-            BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
-        child: Text(status,
-            style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          status,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: text,
+          ),
+        ),
       ),
     );
   }
@@ -1597,11 +1789,18 @@ class _PriorityBadge extends StatelessWidget {
     return Align(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration:
-            BoxDecoration(color: bg, borderRadius: BorderRadius.circular(20)),
-        child: Text(priority,
-            style: TextStyle(
-                fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          priority,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: text,
+          ),
+        ),
       ),
     );
   }
@@ -1629,7 +1828,7 @@ class _Card extends StatelessWidget {
             color: Colors.black.withOpacity(0.04),
             blurRadius: 10,
             offset: const Offset(0, 2),
-          )
+          ),
         ],
       ),
       child: child,

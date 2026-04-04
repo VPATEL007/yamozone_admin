@@ -53,10 +53,7 @@ class _ProfilePageState extends State<ProfilePage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Profile",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Profile", fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: "Contact"),
@@ -90,14 +87,18 @@ class _ProfilePageState extends State<ProfilePage>
                                     height: 150,
                                     decoration: const BoxDecoration(
                                       borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(4),
-                                          topLeft: Radius.circular(4)),
-                                      gradient: LinearGradient(colors: [
-                                        Color(0xff8360c3),
-                                        Color(0xff6a82fb),
-                                        Color(0xff6495ED),
-                                        Color(0xff008088),
-                                      ], tileMode: TileMode.repeated),
+                                        topRight: Radius.circular(4),
+                                        topLeft: Radius.circular(4),
+                                      ),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xff8360c3),
+                                          Color(0xff6a82fb),
+                                          Color(0xff6495ED),
+                                          Color(0xff008088),
+                                        ],
+                                        tileMode: TileMode.repeated,
+                                      ),
                                     ),
                                   ),
                                   Align(
@@ -194,21 +195,15 @@ class _ProfilePageState extends State<ProfilePage>
                                 children: [
                                   const Icon(LucideIcons.users, size: 16),
                                   MySpacing.width(8),
-                                  MyText.bodyMedium(
-                                    "128 Contacts",
-                                  ),
+                                  MyText.bodyMedium("128 Contacts"),
                                   MySpacing.width(12),
                                   Icon(LucideIcons.folderGit, size: 16),
                                   MySpacing.width(8),
-                                  MyText.bodyMedium(
-                                    "14 Projects",
-                                  ),
+                                  MyText.bodyMedium("14 Projects"),
                                 ],
                               ),
                             ),
-                            const Divider(
-                              height: 40,
-                            ),
+                            const Divider(height: 40),
                             Padding(
                               padding: MySpacing.left(20),
                               child: MyText.titleMedium("Inbox"),
@@ -228,10 +223,12 @@ class _ProfilePageState extends State<ProfilePage>
                                       elevation: 0,
                                       borderRadiusAll: 8,
                                       backgroundColor: theme
-                                          .colorScheme.background
+                                          .colorScheme
+                                          .background
                                           .withAlpha(5),
                                       splashColor: theme
-                                          .colorScheme.onBackground
+                                          .colorScheme
+                                          .onBackground
                                           .withAlpha(10),
                                       child: SizedBox(
                                         height: 60,
@@ -263,13 +260,15 @@ class _ProfilePageState extends State<ProfilePage>
                                                 children: [
                                                   MyText.labelLarge(
                                                     controller
-                                                        .chat[index].firstName,
+                                                        .chat[index]
+                                                        .firstName,
                                                   ),
                                                   SizedBox(
                                                     width: 300,
                                                     child: MyText.bodySmall(
                                                       controller
-                                                          .chat[index].message,
+                                                          .chat[index]
+                                                          .message,
                                                       muted: true,
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -282,29 +281,23 @@ class _ProfilePageState extends State<ProfilePage>
                                             Row(
                                               children: [
                                                 MyText.bodySmall(
-                                                  '${Utils.getTimeStringFromDateTime(
-                                                    controller
-                                                        .chat[index].sendAt,
-                                                    showSecond: false,
-                                                  )}',
+                                                  '${Utils.getTimeStringFromDateTime(controller.chat[index].sendAt, showSecond: false)}',
                                                   muted: true,
                                                   fontWeight: 600,
                                                 ),
                                               ],
-                                            )
+                                            ),
                                           ],
                                         ),
                                       ),
                                     );
                                   },
                                   separatorBuilder: (context, index) {
-                                    return const SizedBox(
-                                      height: 12,
-                                    );
+                                    return const SizedBox(height: 12);
                                   },
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -415,10 +408,7 @@ class _ProfilePageState extends State<ProfilePage>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                MyText.titleLarge(
-                                  "Social",
-                                  fontWeight: 600,
-                                ),
+                                MyText.titleLarge("Social", fontWeight: 600),
                                 MySpacing.height(16),
                                 MyFlex(
                                   children: [
@@ -460,11 +450,11 @@ class _ProfilePageState extends State<ProfilePage>
                                         children: [
                                           Row(
                                             children: [
-                                              FaIcon(
-                                                LucideIcons.linkedin
-                                                    as FaIconData,
-                                                color: Color(0xff0A66C2),
-                                              ),
+                                              // FaIcon(
+                                              //   LucideIcons.linkedin
+                                              //       ,
+                                              //   color: Color(0xff0A66C2),
+                                              // ),
                                               MySpacing.width(8),
                                               Expanded(
                                                 child: MyText.bodyMedium(
@@ -478,11 +468,11 @@ class _ProfilePageState extends State<ProfilePage>
                                           MySpacing.height(16),
                                           Row(
                                             children: [
-                                              FaIcon(
-                                                LucideIcons.twitter
-                                                    as FaIconData,
-                                                color: Color(0xff00acee),
-                                              ),
+                                              // Icons(
+                                              //   is:LucideIcons.twitter
+
+                                              //   color: Color(0xff00acee),
+                                              // ),
                                               MySpacing.width(8),
                                               Expanded(
                                                 child: MyText.bodyMedium(
@@ -520,7 +510,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -540,18 +530,10 @@ class _ProfilePageState extends State<ProfilePage>
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                MyText.bodyMedium(
-                  productType,
-                ),
-              ],
-            ),
-            MyText.bodyMedium(
-              productName,
-            ),
+            Row(children: [MyText.bodyMedium(productType)]),
+            MyText.bodyMedium(productName),
           ],
-        )
+        ),
       ],
     );
   }
@@ -565,10 +547,7 @@ class _ProfilePageState extends State<ProfilePage>
       backgroundColor: colors,
       splashColor: colors,
       borderRadiusAll: AppStyle.buttonRadius.medium,
-      child: MyText.bodySmall(
-        buttonName,
-        color: textColor,
-      ),
+      child: MyText.bodySmall(buttonName, color: textColor),
     );
   }
 }

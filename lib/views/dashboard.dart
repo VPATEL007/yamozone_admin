@@ -35,14 +35,15 @@ class DashboardScreen extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: Scaffold(
-          backgroundColor: kBgPage,
-          body: Layout(
-            child: SizedBox(
-              width: Get.width,
-              height: Get.height,
-              child: DashboardBody(),
-            ),
-          )),
+        backgroundColor: kBgPage,
+        body: Layout(
+          child: SizedBox(
+            width: Get.width,
+            height: Get.height,
+            child: DashboardBody(),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -67,14 +68,19 @@ class DashboardBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header
-                const Text('Dashboard Overview',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: kTextDark)),
+                const Text(
+                  'Dashboard Overview',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: kTextDark,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                const Text('Monitor your marketplace performance',
-                    style: TextStyle(fontSize: 13, color: kTextLight)),
+                const Text(
+                  'Monitor your marketplace performance',
+                  style: TextStyle(fontSize: 13, color: kTextLight),
+                ),
                 const SizedBox(height: 20),
 
                 // ── STAT CARDS ──
@@ -128,8 +134,10 @@ class _TopBar extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(Icons.search, size: 16, color: kTextLight),
                 SizedBox(width: 6),
-                Text('Search...',
-                    style: TextStyle(color: kTextLight, fontSize: 13)),
+                Text(
+                  'Search...',
+                  style: TextStyle(color: kTextLight, fontSize: 13),
+                ),
               ],
             ),
           ),
@@ -168,16 +176,21 @@ class _DropdownChip extends StatelessWidget {
 // ─────────────────────────────────────────────
 class _StatCardsRow extends StatelessWidget {
   final List<_StatData> stats = const [
-    _StatData(Icons.people_alt, 'Total Users', '24,583', '+12%', false),
-    _StatData(Icons.storefront, 'Sellers', '3,247', '+8%', false),
-    _StatData(Icons.local_shipping, 'Drivers', '1,892', '+15%', false),
+    _StatData(Icons.people_alt, 'Total Users', '24,583', '+12%', true),
+    _StatData(Icons.storefront, 'Sellers', '3,247', '+8%', true),
+    _StatData(Icons.local_shipping, 'Drivers', '1,892', '+15%', true),
     _StatData(Icons.shopping_bag, 'Orders', '18,429', '+23%', false),
     _StatData(Icons.attach_money, 'Revenue', '\$847K', '+18%', false),
     _StatData(Icons.gavel, 'Disputes', '47', '+5', false),
     _StatData(
-        Icons.badge_outlined, 'KYC Pending', '12', 'Pending\nrequests', true),
-    _StatData(
-        Icons.location_city, 'Ahmedabad', '(Highest Orders)', 'Top City', true),
+      Icons.badge_outlined,
+      'KYC Pending',
+      '12',
+      'Pending\nrequests',
+      false,
+    ),
+    // _StatData(
+    //     Icons.location_city, 'Ahmedabad', '(Highest Orders)', 'Top City', true),
   ];
 
   @override
@@ -185,12 +198,15 @@ class _StatCardsRow extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: stats
-            .map((s) => Padding(
-                  padding: const EdgeInsets.only(right: 12),
-                  child: _StatCard(data: s),
-                ))
-            .toList(),
+        children:
+            stats
+                .map(
+                  (s) => Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: _StatCard(data: s),
+                  ),
+                )
+                .toList(),
       ),
     );
   }
@@ -203,17 +219,22 @@ class _StatData {
   final String badge;
   final bool badgeGold;
   const _StatData(
-      this.icon, this.label, this.value, this.badge, this.badgeGold);
+    this.icon,
+    this.label,
+    this.value,
+    this.badge,
+    this.badgeGold,
+  );
 }
 
 class _StatCard extends StatelessWidget {
   final _StatData data;
-  const _StatCard({super.key, required this.data});
+  const _StatCard({required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width * 0.096,
+      width: Get.width * 0.11,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: kCardBg,
@@ -245,14 +266,52 @@ class _StatCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(data.label,
-              style: const TextStyle(fontSize: 11, color: kTextLight)),
-          const SizedBox(height: 4),
-          Text(data.value,
-              style: TextStyle(
-                  fontSize: data.value == "(Highest Orders)" ? 13 : 18,
-                  fontWeight: FontWeight.bold,
-                  color: kTextDark)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    data.label,
+                    style: const TextStyle(fontSize: 11, color: kTextLight),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    data.value,
+                    style: TextStyle(
+                      fontSize: data.value == "(Highest Orders)" ? 13 : 18,
+                      fontWeight: FontWeight.bold,
+                      color: kTextDark,
+                    ),
+                  ),
+                ],
+              ),
+              Visibility(visible: data.badgeGold, child: Spacer()),
+              Visibility(
+                visible: data.badgeGold,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Top City",
+                      style: const TextStyle(fontSize: 11, color: kTextLight),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "California",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: kTextDark,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -268,16 +327,25 @@ class _ChartsRow extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: _ChartCard(
-                title: 'Orders per Day', child: _BarChartPlaceholder())),
+          child: _ChartCard(
+            title: 'Orders per Day',
+            child: _BarChartPlaceholder(),
+          ),
+        ),
         const SizedBox(width: 16),
         Expanded(
-            child: _ChartCard(
-                title: 'New Users Growth', child: _LineChartPlaceholder())),
+          child: _ChartCard(
+            title: 'New Users Growth',
+            child: _LineChartPlaceholder(),
+          ),
+        ),
         const SizedBox(width: 16),
         Expanded(
-            child: _ChartCard(
-                title: 'Dispute Rate (%)', child: _AreaChartPlaceholder())),
+          child: _ChartCard(
+            title: 'Dispute Rate (%)',
+            child: _AreaChartPlaceholder(),
+          ),
+        ),
       ],
     );
   }
@@ -301,9 +369,14 @@ class _ChartCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w600, fontSize: 14, color: kTextDark)),
+          Text(
+            title,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              color: kTextDark,
+            ),
+          ),
           const SizedBox(height: 12),
           Expanded(child: child),
         ],
@@ -333,7 +406,7 @@ class _BarPainter extends CustomPainter {
     0.7,
     0.85,
     0.6,
-    0.45
+    0.45,
   ];
 
   @override
@@ -388,22 +461,24 @@ class _LinePainter extends CustomPainter {
     0.7,
     0.85,
     0.8,
-    0.9
+    0.9,
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = kPrimary
-      ..strokeWidth = 2.5
-      ..style = PaintingStyle.stroke;
+    final paint =
+        Paint()
+          ..color = kPrimary
+          ..strokeWidth = 2.5
+          ..style = PaintingStyle.stroke;
 
-    final fillPaint = Paint()
-      ..shader = LinearGradient(
-        colors: [kPrimary.withOpacity(0.3), kPrimary.withOpacity(0.0)],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    final fillPaint =
+        Paint()
+          ..shader = LinearGradient(
+            colors: [kPrimary.withOpacity(0.3), kPrimary.withOpacity(0.0)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 
     final path = Path();
     final fillPath = Path();
@@ -431,7 +506,10 @@ class _LinePainter extends CustomPainter {
     final dotPaint = Paint()..color = kPrimary;
     for (int i = 0; i < values.length; i++) {
       canvas.drawCircle(
-          Offset(i * step, size.height - size.height * values[i]), 3, dotPaint);
+        Offset(i * step, size.height - size.height * values[i]),
+        3,
+        dotPaint,
+      );
     }
   }
 
@@ -460,22 +538,27 @@ class _AreaPainter extends CustomPainter {
     0.5,
     0.35,
     0.4,
-    0.3
+    0.3,
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = kAccentGold
-      ..strokeWidth = 2.5
-      ..style = PaintingStyle.stroke;
+    final paint =
+        Paint()
+          ..color = kAccentGold
+          ..strokeWidth = 2.5
+          ..style = PaintingStyle.stroke;
 
-    final fillPaint = Paint()
-      ..shader = LinearGradient(
-        colors: [kAccentGold.withOpacity(0.4), kAccentGold.withOpacity(0.0)],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    final fillPaint =
+        Paint()
+          ..shader = LinearGradient(
+            colors: [
+              kAccentGold.withOpacity(0.4),
+              kAccentGold.withOpacity(0.0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
 
     final path = Path();
     final fillPath = Path();
@@ -554,11 +637,14 @@ class _UserManagementCardState extends State<_UserManagementCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('User Management',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: kTextDark)),
+              const Text(
+                'User Management',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: kTextDark,
+                ),
+              ),
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: const Icon(Icons.add, size: 14),
@@ -566,10 +652,13 @@ class _UserManagementCardState extends State<_UserManagementCard> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimary,
                   foregroundColor: Colors.white,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 8,
+                  ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
             ],
@@ -589,8 +678,10 @@ class _UserManagementCardState extends State<_UserManagementCard> {
                 SizedBox(width: 10),
                 Icon(Icons.search, size: 16, color: kTextLight),
                 SizedBox(width: 6),
-                Text('Search users...',
-                    style: TextStyle(color: kTextLight, fontSize: 13)),
+                Text(
+                  'Search users...',
+                  style: TextStyle(color: kTextLight, fontSize: 13),
+                ),
               ],
             ),
           ),
@@ -604,19 +695,24 @@ class _UserManagementCardState extends State<_UserManagementCard> {
                 onTap: () => setState(() => _tabIndex = i),
                 child: Container(
                   margin: const EdgeInsets.only(right: 8),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: selected ? kPrimary : kBgPage,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: selected ? kPrimary : kBorder),
                   ),
-                  child: Text(_tabs[i],
-                      style: TextStyle(
-                          fontSize: 12,
-                          color: selected ? Colors.white : kTextMed,
-                          fontWeight:
-                              selected ? FontWeight.w600 : FontWeight.normal)),
+                  child: Text(
+                    _tabs[i],
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: selected ? Colors.white : kTextMed,
+                      fontWeight:
+                          selected ? FontWeight.w600 : FontWeight.normal,
+                    ),
+                  ),
                 ),
               );
             }),
@@ -656,9 +752,10 @@ class _UserTile extends StatelessWidget {
             child: Text(
               user.name[0],
               style: TextStyle(
-                  color: user.blocked ? kRed : kTextMed,
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold),
+                color: user.blocked ? kRed : kTextMed,
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(width: 10),
@@ -667,13 +764,18 @@ class _UserTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(user.name,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                        color: kTextDark)),
-                Text(user.subtitle,
-                    style: const TextStyle(fontSize: 11, color: kTextLight)),
+                Text(
+                  user.name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                    color: kTextDark,
+                  ),
+                ),
+                Text(
+                  user.subtitle,
+                  style: const TextStyle(fontSize: 11, color: kTextLight),
+                ),
               ],
             ),
           ),
@@ -687,9 +789,10 @@ class _UserTile extends StatelessWidget {
             child: Text(
               user.status,
               style: TextStyle(
-                  fontSize: 11,
-                  color: user.blocked ? kTagBlockedText : kTagActiveText,
-                  fontWeight: FontWeight.w600),
+                fontSize: 11,
+                color: user.blocked ? kTagBlockedText : kTagActiveText,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -734,29 +837,36 @@ class _KycApprovalsCardState extends State<_KycApprovalsCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('KYC Approvals',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: kTextDark)),
+              const Text(
+                'KYC Approvals',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: kTextDark,
+                ),
+              ),
               Row(
                 children: [
                   _KycTab(
-                      label: 'Sellers',
-                      active: _tab == 0,
-                      onTap: () => setState(() => _tab = 0)),
+                    label: 'Sellers',
+                    active: _tab == 0,
+                    onTap: () => setState(() => _tab = 0),
+                  ),
                   const SizedBox(width: 6),
                   _KycTab(
-                      label: 'Drivers',
-                      active: _tab == 1,
-                      onTap: () => setState(() => _tab = 1)),
+                    label: 'Drivers',
+                    active: _tab == 1,
+                    onTap: () => setState(() => _tab = 1),
+                  ),
                 ],
               ),
             ],
           ),
           const SizedBox(height: 4),
-          const Text('12 pending verifications',
-              style: TextStyle(fontSize: 12, color: kTextLight)),
+          const Text(
+            '12 pending verifications',
+            style: TextStyle(fontSize: 12, color: kTextLight),
+          ),
           const SizedBox(height: 14),
 
           // KYC Entries
@@ -777,8 +887,11 @@ class _KycTab extends StatelessWidget {
   final String label;
   final bool active;
   final VoidCallback onTap;
-  const _KycTab(
-      {required this.label, required this.active, required this.onTap});
+  const _KycTab({
+    required this.label,
+    required this.active,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -791,11 +904,14 @@ class _KycTab extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: active ? kPrimary : kBorder),
         ),
-        child: Text(label,
-            style: TextStyle(
-                fontSize: 12,
-                color: active ? Colors.white : kTextMed,
-                fontWeight: active ? FontWeight.w600 : FontWeight.normal)),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            color: active ? Colors.white : kTextMed,
+            fontWeight: active ? FontWeight.w600 : FontWeight.normal,
+          ),
+        ),
       ),
     );
   }
@@ -816,23 +932,31 @@ class _KycTile extends StatelessWidget {
               CircleAvatar(
                 radius: 16,
                 backgroundColor: kBorder,
-                child: Text(entry.name[0],
-                    style: const TextStyle(
-                        color: kTextMed,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13)),
+                child: Text(
+                  entry.name[0],
+                  style: const TextStyle(
+                    color: kTextMed,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
+                ),
               ),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(entry.name,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: kTextDark)),
-                  Text(entry.subtitle,
-                      style: const TextStyle(fontSize: 11, color: kTextLight)),
+                  Text(
+                    entry.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: kTextDark,
+                    ),
+                  ),
+                  Text(
+                    entry.subtitle,
+                    style: const TextStyle(fontSize: 11, color: kTextLight),
+                  ),
                 ],
               ),
             ],
@@ -850,7 +974,8 @@ class _KycTile extends StatelessWidget {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -865,7 +990,8 @@ class _KycTile extends StatelessWidget {
                     side: const BorderSide(color: kBorder),
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     backgroundColor: const Color(0xFFFFF8E1),
                   ),
                 ),
@@ -879,8 +1005,11 @@ class _KycTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: kBorder),
                 ),
-                child: const Icon(Icons.info_outline,
-                    size: 16, color: kAccentGold),
+                child: const Icon(
+                  Icons.info_outline,
+                  size: 16,
+                  color: kAccentGold,
+                ),
               ),
             ],
           ),

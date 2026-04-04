@@ -752,7 +752,7 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
       email: 'michael.j@email.com',
       company: 'Tech Store LLC',
       phone: '+1 (555) 123-4567',
-      submittedDate: 'Dec 15, 2024',
+      submittedDate: ' Jan 10, 2024 at 2:35 PM',
       status: KYCStatus.pendingReview,
       tags: ['ID Verified', 'Business License', 'Tax Documents', '+3 more'],
       avatarInitials: 'MJ',
@@ -762,7 +762,7 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
       email: 'sarah.w@fashionstore.com',
       company: 'Fashion Hub Co.',
       phone: '+1 (555) 987-6543',
-      submittedDate: 'Dec 14, 2024',
+      submittedDate: ' Jan 10, 2024 at 2:35 PM',
       status: KYCStatus.underReview,
       tags: ['ID Verified', 'Business License', 'Tax Pending'],
       avatarInitials: 'SW',
@@ -772,7 +772,7 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
       email: 'david.chen@electronics.com',
       company: 'Electronics Plus',
       phone: '+1 (555) 456-7890',
-      submittedDate: 'Dec 13, 2024',
+      submittedDate: ' Jan 10, 2024 at 2:35 PM',
       status: KYCStatus.moreInfoNeeded,
       tags: ['ID Verified', 'License Expired'],
       avatarInitials: 'DC',
@@ -782,38 +782,39 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.background,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildStatCards(),
-                        const SizedBox(height: 24),
-                        _buildQueueTabs(),
-                        const SizedBox(height: 16),
-                        _buildFiltersRow(),
-                        const SizedBox(height: 16),
-                        ..._applicants.map((a) => _buildApplicantCard(a)),
-                        const SizedBox(height: 16),
-                        _buildPagination(),
-                      ],
-                    ),
+      backgroundColor: AppColors.background,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTopBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildStatCards(),
+                      const SizedBox(height: 24),
+                      _buildQueueTabs(),
+                      const SizedBox(height: 16),
+                      _buildFiltersRow(),
+                      const SizedBox(height: 16),
+                      ..._applicants.map((a) => _buildApplicantCard(a)),
+                      const SizedBox(height: 16),
+                      _buildPagination(),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   // ── Top Bar ────────────────────────────────────────────────────────────────
@@ -858,8 +859,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search...',
-                      hintStyle:
-                          TextStyle(color: Color(0xFF999988), fontSize: 14),
+                      hintStyle: TextStyle(
+                        color: Color(0xFF999988),
+                        fontSize: 14,
+                      ),
                       border: InputBorder.none,
                       isDense: true,
                     ),
@@ -912,14 +915,17 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
     ];
 
     return Row(
-      children: stats
-          .map((s) => Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 12),
-                  child: _buildStatCard(s),
+      children:
+          stats
+              .map(
+                (s) => Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: _buildStatCard(s),
+                  ),
                 ),
-              ))
-          .toList(),
+              )
+              .toList(),
     );
   }
 
@@ -931,7 +937,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
           BoxShadow(
-              color: Color(0x0A000000), blurRadius: 6, offset: Offset(0, 2)),
+            color: Color(0x0A000000),
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
         ],
       ),
       child: Column(
@@ -954,9 +963,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: data.positive
-                      ? AppColors.statChange
-                      : AppColors.statChangeBad,
+                  color:
+                      data.positive
+                          ? AppColors.statChange
+                          : AppColors.statChangeBad,
                 ),
               ),
             ],
@@ -1018,9 +1028,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.accent.withOpacity(0.12)
-              : Colors.transparent,
+          color:
+              isSelected
+                  ? AppColors.accent.withOpacity(0.12)
+                  : Colors.transparent,
           border: Border(
             bottom: BorderSide(
               color: isSelected ? AppColors.accent : Colors.transparent,
@@ -1030,9 +1041,11 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         ),
         child: Row(
           children: [
-            Icon(icon,
-                size: 16,
-                color: isSelected ? AppColors.accent : const Color(0xFF888877)),
+            Icon(
+              icon,
+              size: 16,
+              color: isSelected ? AppColors.accent : const Color(0xFF888877),
+            ),
             const SizedBox(width: 6),
             Text(
               label,
@@ -1075,7 +1088,7 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
             'All Status',
             'Pending Review',
             'Under Review',
-            'More Info Needed'
+            'More Info Needed',
           ],
           onChanged: (v) => setState(() => _selectedStatus = v!),
         ),
@@ -1094,10 +1107,13 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            textStyle:
-                const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            textStyle: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
             elevation: 0,
           ),
         ),
@@ -1121,12 +1137,15 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
-          items: items
-              .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(e, style: const TextStyle(fontSize: 13)),
-                  ))
-              .toList(),
+          items:
+              items
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e,
+                      child: Text(e, style: const TextStyle(fontSize: 13)),
+                    ),
+                  )
+                  .toList(),
           onChanged: onChanged,
           dropdownColor: Colors.white,
           icon: const Icon(Icons.keyboard_arrow_down, size: 18),
@@ -1147,7 +1166,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
           BoxShadow(
-              color: Color(0x0A000000), blurRadius: 6, offset: Offset(0, 2)),
+            color: Color(0x0A000000),
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
         ],
       ),
       child: Row(
@@ -1201,8 +1223,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
             children: [
               _infoChip(Icons.phone_outlined, applicant.phone),
               const SizedBox(height: 8),
-              _infoChip(Icons.calendar_today_outlined,
-                  'Submitted: ${applicant.submittedDate}'),
+              _infoChip(
+                Icons.calendar_today_outlined,
+                'Submitted: ${applicant.submittedDate}',
+              ),
             ],
           ),
           const SizedBox(width: 24),
@@ -1259,9 +1283,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-              color: AppColors.primary.withOpacity(0.3),
-              blurRadius: 8,
-              offset: const Offset(0, 3)),
+            color: AppColors.primary.withOpacity(0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
         ],
       ),
       child: Center(
@@ -1306,9 +1331,14 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
         color: bg,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(label,
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w600, color: text)),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: text,
+        ),
+      ),
     );
   }
 
@@ -1318,8 +1348,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
       children: [
         Icon(icon, size: 13, color: const Color(0xFF888877)),
         const SizedBox(width: 4),
-        Text(text,
-            style: const TextStyle(fontSize: 12, color: Color(0xFF666655))),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 12, color: Color(0xFF666655)),
+        ),
       ],
     );
   }
@@ -1400,25 +1432,29 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
     );
   }
 
-  Widget _pageBtn(String label,
-      {bool isSelected = false,
-      bool isText = false,
-      required VoidCallback onTap}) {
+  Widget _pageBtn(
+    String label, {
+    bool isSelected = false,
+    bool isText = false,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),
         width: isText ? null : 34,
         height: 34,
-        padding: isText
-            ? const EdgeInsets.symmetric(horizontal: 10)
-            : EdgeInsets.zero,
+        padding:
+            isText
+                ? const EdgeInsets.symmetric(horizontal: 10)
+                : EdgeInsets.zero,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(6),
-          border: isSelected || isText
-              ? null
-              : Border.all(color: const Color(0xFFDDDDCC)),
+          border:
+              isSelected || isText
+                  ? null
+                  : Border.all(color: const Color(0xFFDDDDCC)),
         ),
         child: Center(
           child: Text(
@@ -1426,9 +1462,10 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
             style: TextStyle(
               fontSize: 13,
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
-              color: isSelected
-                  ? Colors.white
-                  : isText
+              color:
+                  isSelected
+                      ? Colors.white
+                      : isText
                       ? AppColors.primary
                       : const Color(0xFF444433),
             ),

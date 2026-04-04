@@ -5,6 +5,7 @@ import 'package:webkit/controller/apps/kyc_controller.dart';
 import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/helpers/utils/ui_mixins.dart';
 import 'package:webkit/views/apps/listing_moderation/widget/listing_dialog.dart';
+import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
 class ListingDetailView extends StatefulWidget {
@@ -34,22 +35,54 @@ class _ListingDetailViewState extends State<ListingDetailView>
             width: Get.width,
             height: Get.height,
             child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.all(15),
+              child: Column(
                 children: [
-                  // LEFT CONTENT
-                  Expanded(
-                    flex: 2,
-                    child: _listingDetailSection(),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: kBg,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: kBorder),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            size: 18,
+                            color: kTextPrimary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      const Text(
+                        'Listing Detail',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: kTextPrimary,
+                          letterSpacing: -0.3,
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 15),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // LEFT CONTENT
+                      Expanded(flex: 2, child: _listingDetailSection()),
 
-                  const SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
-                  // RIGHT PANEL
-                  Expanded(
-                    flex: 1,
-                    child: _rightPanel(),
+                      // RIGHT PANEL
+                      Expanded(flex: 1, child: _rightPanel()),
+                    ],
                   ),
                 ],
               ),
@@ -97,7 +130,10 @@ class _ListingDetailViewState extends State<ListingDetailView>
         Text(
           "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
           style: GoogleFonts.montserrat(
-              fontSize: 28, fontWeight: FontWeight.w700, color: Colors.black),
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
         ),
 
         const SizedBox(height: 10),
@@ -105,11 +141,14 @@ class _ListingDetailViewState extends State<ListingDetailView>
         // PRICE + TAGS
         Row(
           children: [
-            Text("\$299.99",
-                style: GoogleFonts.montserrat(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w700,
-                    color: contentTheme.primary)),
+            Text(
+              "\$299.99",
+              style: GoogleFonts.montserrat(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                color: contentTheme.primary,
+              ),
+            ),
             const SizedBox(width: 10),
             _tag("Electronics"),
             const SizedBox(width: 8),
@@ -139,7 +178,10 @@ class _ListingDetailViewState extends State<ListingDetailView>
           "Premium wireless noise-canceling headphones in excellent condition. "
           "Used only for a few months, comes with original packaging, charging cable, and carrying case.",
           style: GoogleFonts.montserrat(
-              fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
         ),
 
         const SizedBox(height: 15),
@@ -179,11 +221,14 @@ Widget _tag(String text) {
       color: ContentTheme.lightContentTheme.primary.withValues(alpha: 0.10),
       borderRadius: BorderRadius.circular(20),
     ),
-    child: Text(text,
-        style: GoogleFonts.montserrat(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            color: ContentTheme.lightContentTheme.primary)),
+    child: Text(
+      text,
+      style: GoogleFonts.montserrat(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: ContentTheme.lightContentTheme.primary,
+      ),
+    ),
   );
 }
 
@@ -194,17 +239,23 @@ Widget _rightPanel() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Seller Information",
-                style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
+            Text(
+              "Seller Information",
+              style: GoogleFonts.montserrat(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
             SizedBox(height: 10),
-            Text("Alex Johnson",
-                style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
+            Text(
+              "Alex Johnson",
+              style: GoogleFonts.montserrat(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
             SizedBox(height: 5),
             Text("⭐⭐⭐⭐⭐ 4.9"),
             SizedBox(height: 10),
@@ -218,16 +269,18 @@ Widget _rightPanel() {
                     Text(
                       "Total Listings",
                       style: GoogleFonts.montserrat(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff4B4B4B)),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff4B4B4B),
+                      ),
                     ),
                     Text(
                       "47",
                       style: GoogleFonts.montserrat(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -238,21 +291,23 @@ Widget _rightPanel() {
                     Text(
                       "Account Age",
                       style: GoogleFonts.montserrat(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff4B4B4B)),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff4B4B4B),
+                      ),
                     ),
                     Text(
                       "2.5 years",
                       style: GoogleFonts.montserrat(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -261,11 +316,14 @@ Widget _rightPanel() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Seller History",
-                style: GoogleFonts.montserrat(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
+            Text(
+              "Seller History",
+              style: GoogleFonts.montserrat(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -273,16 +331,18 @@ Widget _rightPanel() {
                 Text(
                   "Approved Listings",
                   style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
                 ),
                 Text(
                   "45",
                   style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff073B25)),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff073B25),
+                  ),
                 ),
               ],
             ),
@@ -293,15 +353,19 @@ Widget _rightPanel() {
                 Text(
                   "Rejected Listings",
                   style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
                 ),
-                Text("2",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: ContentTheme.lightContentTheme.primary)),
+                Text(
+                  "2",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: ContentTheme.lightContentTheme.primary,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 5),
@@ -311,15 +375,19 @@ Widget _rightPanel() {
                 Text(
                   "Reports",
                   style: GoogleFonts.montserrat(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
                 ),
-                Text("0",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff073B25))),
+                Text(
+                  "0",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff073B25),
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 10),
@@ -327,35 +395,33 @@ Widget _rightPanel() {
             SizedBox(height: 10),
             Row(
               children: [
-                Icon(
-                  Icons.check_circle,
-                  size: 18,
-                  color: Colors.green,
-                ),
+                Icon(Icons.check_circle, size: 18, color: Colors.green),
                 SizedBox(width: 10),
-                Text("Verified Email",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff4B4B4B))),
+                Text(
+                  "Verified Email",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff4B4B4B),
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 10),
             Row(
               children: [
-                Icon(
-                  Icons.check_circle,
-                  size: 18,
-                  color: Colors.green,
-                ),
+                Icon(Icons.check_circle, size: 18, color: Colors.green),
                 SizedBox(width: 10),
-                Text("Verified Phone",
-                    style: GoogleFonts.montserrat(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff4B4B4B))),
+                Text(
+                  "Verified Phone",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff4B4B4B),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -364,64 +430,74 @@ Widget _rightPanel() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Listing History",
-                style: GoogleFonts.montserrat(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black)),
+            Text(
+              "Listing History",
+              style: GoogleFonts.montserrat(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
             SizedBox(height: 10),
             Text(
               "Created Date",
               style: GoogleFonts.montserrat(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
             Text(
               "January 8, 2024",
               style: GoogleFonts.montserrat(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black),
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
             ),
             SizedBox(height: 10),
             Text(
               "Last Edited",
               style: GoogleFonts.montserrat(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
             Text(
               "January 10, 2024",
               style: GoogleFonts.montserrat(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black),
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
             ),
             SizedBox(height: 10),
             Text(
               "Status",
               style: GoogleFonts.montserrat(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
             Text("Pending Review"),
             SizedBox(height: 10),
             Text(
               "Reports",
               style: GoogleFonts.montserrat(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
             ),
             Text(
               "No reports filed",
               style: GoogleFonts.montserrat(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black),
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              ),
             ),
             SizedBox(height: 30),
             Row(
@@ -432,26 +508,22 @@ Widget _rightPanel() {
                     elevation: 0,
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     backgroundColor: const Color(0xffd4a32b),
                   ),
-                  onPressed: () {
-                    Get.toNamed("/kyc-review");
-                  },
+                  onPressed: () {},
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.done,
-                        size: 20,
-                        color: Colors.white,
-                      ),
+                      Icon(Icons.done, size: 20, color: Colors.white),
                       SizedBox(width: 6),
                       Text(
                         "Approve",
                         style: GoogleFonts.montserrat(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -461,35 +533,34 @@ Widget _rightPanel() {
                     elevation: 0,
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     backgroundColor:
                         LeftBarTheme.lightLeftBarTheme.activeItemBackground,
                   ),
                   onPressed: () {
                     showDialog(
                       context: Get.context!,
-                      builder: (_) => RejectListingDialog(
-                        onCancel: () => Navigator.pop(Get.context!),
-                        onSubmit: (category, subReason, reason, sendEmail) {
-                          Navigator.pop(Get.context!);
-                        },
-                      ),
+                      builder:
+                          (_) => RejectListingDialog(
+                            onCancel: () => Navigator.pop(Get.context!),
+                            onSubmit: (category, subReason, reason, sendEmail) {
+                              Navigator.pop(Get.context!);
+                            },
+                          ),
                     );
                   },
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.close,
-                        size: 20,
-                        color: Colors.white,
-                      ),
+                      Icon(Icons.close, size: 20, color: Colors.white),
                       SizedBox(width: 6),
                       Text(
                         "Reject",
                         style: GoogleFonts.montserrat(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -499,7 +570,8 @@ Widget _rightPanel() {
                     elevation: 0,
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     backgroundColor: const Color(0xffd4a32b),
                   ),
                   onPressed: () {},
@@ -514,15 +586,16 @@ Widget _rightPanel() {
                       Text(
                         "Edit",
                         style: GoogleFonts.montserrat(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -538,10 +611,7 @@ Widget _card({required Widget child}) {
       color: Colors.white,
       borderRadius: BorderRadius.circular(16),
       boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.05),
-          blurRadius: 10,
-        )
+        BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10),
       ],
     ),
     child: child,
@@ -559,17 +629,23 @@ class _infoTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,
-            style: GoogleFonts.montserrat(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black)),
+        Text(
+          title,
+          style: GoogleFonts.montserrat(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
         const SizedBox(height: 4),
-        Text(value,
-            style: GoogleFonts.montserrat(
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
-                color: Colors.black)),
+        Text(
+          value,
+          style: GoogleFonts.montserrat(
+            fontSize: 13,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

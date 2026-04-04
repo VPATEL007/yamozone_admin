@@ -522,6 +522,7 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
   final Color _primaryGreen = const Color(0xFF2D5A27);
   final Color _accentGold = const Color(0xFFB8860B);
   final Color _bgColor = const Color(0xFFFAF8F0);
+  PageController _pageController = PageController();
 
   @override
   void dispose() {
@@ -545,7 +546,16 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
               const SizedBox(height: 16),
               _buildQueueToolbar(),
               const SizedBox(height: 12),
-              Expanded(child: _buildListings()),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  children: [
+                    _buildListings(isRejected: false),
+                    _buildListings(isRejected: true),
+                    _buildListings(isRejected: false),
+                  ],
+                ),
+              ),
               _buildPagination(),
             ],
           ),
@@ -561,9 +571,7 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(
-          bottom: BorderSide(color: Colors.grey.shade200),
-        ),
+        border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
       ),
       child: Text(
         'Listing Moderation',
@@ -587,16 +595,22 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
           final tab = _tabs[i];
           final isSelected = _selectedTab == i;
           return GestureDetector(
-            onTap: () => setState(() => _selectedTab = i),
+            onTap: () {
+              setState(() => _selectedTab = i);
+              print("Index===$i");
+
+              print("Kepp Page===${_pageController.initialPage}");
+            },
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
               margin: const EdgeInsets.only(right: 28),
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color: isSelected
-                        ? const Color(0xFFB8860B)
-                        : Colors.transparent,
+                    color:
+                        isSelected
+                            ? const Color(0xFFB8860B)
+                            : Colors.transparent,
                     width: 2.5,
                   ),
                 ),
@@ -609,20 +623,24 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                       fontSize: 14,
                       fontWeight:
                           isSelected ? FontWeight.w600 : FontWeight.w400,
-                      color: isSelected
-                          ? const Color(0xFFB8860B)
-                          : Colors.grey.shade600,
+                      color:
+                          isSelected
+                              ? const Color(0xFFB8860B)
+                              : Colors.grey.shade600,
                     ),
                   ),
                   if (tab['count'] != null) ...[
                     const SizedBox(width: 6),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 7, vertical: 2),
+                        horizontal: 7,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
-                        color: isSelected
-                            ? const Color(0xFFB8860B)
-                            : Colors.grey.shade300,
+                        color:
+                            isSelected
+                                ? const Color(0xFFB8860B)
+                                : Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
@@ -674,18 +692,11 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                 value: _selectedCategory,
                 dropdownColor: Colors.white,
                 icon: const Icon(Icons.keyboard_arrow_down, size: 18),
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.grey.shade700,
-                ),
-                items: [
-                  'All Categories',
-                  'Electronics',
-                  'Clothing',
-                  'Furniture'
-                ]
-                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
-                    .toList(),
+                style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                items:
+                    ['All Categories', 'Electronics', 'Clothing', 'Furniture']
+                        .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                        .toList(),
                 onChanged: (val) => setState(() => _selectedCategory = val!),
               ),
             ),
@@ -701,8 +712,11 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
               decoration: InputDecoration(
                 hintText: 'Search listings...',
                 hintStyle: TextStyle(fontSize: 13, color: Colors.grey.shade400),
-                prefixIcon:
-                    Icon(Icons.search, size: 18, color: Colors.grey.shade400),
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 18,
+                  color: Colors.grey.shade400,
+                ),
                 contentPadding: const EdgeInsets.symmetric(vertical: 0),
                 filled: true,
                 fillColor: Colors.white,
@@ -727,17 +741,18 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
   }
 
   // ── Listings ──────────────────────────────────
-  Widget _buildListings() {
+  Widget _buildListings({required bool isRejected}) {
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       itemCount: _listings.length,
       separatorBuilder: (_, __) => const SizedBox(height: 0),
-      itemBuilder: (context, index) =>
-          _buildListingCard(_listings[index], index),
+      itemBuilder:
+          (context, index) =>
+              _buildListingCard(_listings[index], index, isRejected),
     );
   }
 
-  Widget _buildListingCard(ListingItem item, int index) {
+  Widget _buildListingCard(ListingItem item, int index, bool isRejected) {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(16),
@@ -763,8 +778,11 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
               width: 64,
               height: 64,
               color: Colors.grey.shade100,
-              child: Icon(Icons.phone_iphone,
-                  size: 36, color: Colors.grey.shade500),
+              child: Icon(
+                Icons.phone_iphone,
+                size: 36,
+                color: Colors.grey.shade500,
+              ),
             ),
           ),
           const SizedBox(width: 14),
@@ -784,10 +802,7 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                 const SizedBox(height: 3),
                 Text(
                   item.subtitle,
-                  style: TextStyle(
-                    fontSize: 12.5,
-                    color: Colors.grey.shade500,
-                  ),
+                  style: TextStyle(fontSize: 12.5, color: Colors.grey.shade500),
                 ),
                 const SizedBox(height: 6),
                 Text(
@@ -801,19 +816,33 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    Icon(Icons.person_outline,
-                        size: 13, color: Colors.grey.shade500),
+                    Icon(
+                      Icons.person_outline,
+                      size: 13,
+                      color: Colors.grey.shade500,
+                    ),
                     const SizedBox(width: 4),
-                    Text(item.seller,
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade600)),
+                    Text(
+                      item.seller,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
                     const SizedBox(width: 12),
-                    Icon(Icons.access_time,
-                        size: 13, color: Colors.grey.shade500),
+                    Icon(
+                      Icons.access_time,
+                      size: 13,
+                      color: Colors.grey.shade500,
+                    ),
                     const SizedBox(width: 4),
-                    Text(item.timeAgo,
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade600)),
+                    Text(
+                      item.timeAgo,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
                     const SizedBox(width: 12),
                     _buildStatusBadge(item.status),
                   ],
@@ -831,7 +860,12 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                 color: Colors.grey.shade600,
                 bgColor: Colors.grey.shade100,
                 onTap: () {
-                  Get.toNamed("/listing-detail");
+                  if (isRejected) {
+                    print("Hello");
+                    Get.toNamed("/reported/listing-detail");
+                  } else {
+                    Get.toNamed("/listing-detail");
+                  }
                 },
               ),
               const SizedBox(width: 8),
@@ -841,9 +875,7 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
                 icon: Icons.check,
                 bgColor: _primaryGreen,
                 textColor: Colors.white,
-                onTap: () {
-                  Get.toNamed("/reported/listing-detail");
-                },
+                onTap: () {},
               ),
               const SizedBox(width: 6),
               // Reject
@@ -928,9 +960,7 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: borderColor ?? bgColor,
-          ),
+          border: Border.all(color: borderColor ?? bgColor),
         ),
         child: Row(
           children: [
@@ -970,8 +1000,10 @@ class _ListingModerationPageState extends State<ListingModerationPage> {
           ...[1, 2, 3].map((n) => _buildPageNum(n, isActive: n == 1)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Text('–',
-                style: TextStyle(color: Colors.grey.shade400, fontSize: 13)),
+            child: Text(
+              '–',
+              style: TextStyle(color: Colors.grey.shade400, fontSize: 13),
+            ),
           ),
           _buildPageNum(249, isActive: false),
           const SizedBox(width: 6),

@@ -519,6 +519,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:webkit/views/apps/orders_escrow/widget/order_dialog.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
@@ -609,8 +610,10 @@ class _TopBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () {},
+          InkWell(
+            onTap: () {
+              Get.back();
+            },
             child: Container(
               width: 36,
               height: 36,
@@ -619,8 +622,11 @@ class _TopBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: kBorder),
               ),
-              child:
-                  const Icon(Icons.arrow_back, size: 18, color: kTextPrimary),
+              child: const Icon(
+                Icons.arrow_back,
+                size: 18,
+                color: kTextPrimary,
+              ),
             ),
           ),
           const SizedBox(width: 16),
@@ -650,7 +656,9 @@ class _OrderSummaryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _SectionTitle(
-              icon: Icons.receipt_long_outlined, label: 'Order Summary'),
+            icon: Icons.receipt_long_outlined,
+            label: 'Order Summary',
+          ),
           const SizedBox(height: 20),
           Row(
             children: [
@@ -722,22 +730,29 @@ class _PartyTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(role,
-                    style: const TextStyle(
-                        fontSize: 11,
-                        color: kTextSecondary,
-                        fontWeight: FontWeight.w500)),
+                Text(
+                  role,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: kTextSecondary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(name,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        color: kTextPrimary,
-                        fontWeight: FontWeight.w700)),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: kTextPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 if (sub.isNotEmpty) ...[
                   const SizedBox(height: 4),
-                  Text(sub,
-                      style:
-                          const TextStyle(fontSize: 11, color: kTextSecondary)),
+                  Text(
+                    sub,
+                    style: const TextStyle(fontSize: 11, color: kTextSecondary),
+                  ),
                 ],
               ],
             ),
@@ -766,7 +781,9 @@ class _AmountBreakdownCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _SectionTitle(
-              icon: Icons.receipt_outlined, label: 'Amount Breakdown'),
+            icon: Icons.receipt_outlined,
+            label: 'Amount Breakdown',
+          ),
           const SizedBox(height: 20),
           _AmountRow(label: 'Item Price', amount: '\$299.99'),
           const SizedBox(height: 12),
@@ -779,16 +796,22 @@ class _AmountBreakdownCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Total Paid',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
-              const Text('\$327.97',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'Total Paid',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
+              const Text(
+                '\$327.97',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -802,16 +825,22 @@ class _AmountBreakdownCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Escrow Held Amount',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: kTextPrimary)),
-                Text('\$327.97',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: kGoldAccent)),
+                const Text(
+                  'Escrow Held Amount',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: kTextPrimary,
+                  ),
+                ),
+                Text(
+                  '\$327.97',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: kGoldAccent,
+                  ),
+                ),
               ],
             ),
           ),
@@ -831,13 +860,18 @@ class _AmountRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label,
-            style: const TextStyle(fontSize: 14, color: kTextSecondary)),
-        Text(amount,
-            style: const TextStyle(
-                fontSize: 14,
-                color: kTextPrimary,
-                fontWeight: FontWeight.w500)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 14, color: kTextSecondary),
+        ),
+        Text(
+          amount,
+          style: const TextStyle(
+            fontSize: 14,
+            color: kTextPrimary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ],
     );
   }
@@ -854,7 +888,9 @@ class _DeliveryProofCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _SectionTitle(
-              icon: Icons.camera_alt_outlined, label: 'Delivery Proof'),
+            icon: Icons.camera_alt_outlined,
+            label: 'Delivery Proof',
+          ),
           const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -872,45 +908,58 @@ class _DeliveryProofCard extends StatelessWidget {
                     color: kGoldLight,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child:
-                      const Icon(Icons.image_outlined, size: 20, color: kGold),
+                  child: const Icon(
+                    Icons.image_outlined,
+                    size: 20,
+                    color: kGold,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text('delivery-proof-image.jpg',
-                          style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: kTextPrimary)),
+                      Text(
+                        'delivery-proof-image.jpg',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: kTextPrimary,
+                        ),
+                      ),
                       SizedBox(height: 2),
-                      Text('Uploaded 2 hours ago',
-                          style:
-                              TextStyle(fontSize: 11, color: kTextSecondary)),
+                      Text(
+                        'Uploaded 2 hours ago',
+                        style: TextStyle(fontSize: 11, color: kTextSecondary),
+                      ),
                     ],
                   ),
                 ),
                 TextButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.download_outlined, size: 16, color: kGold),
-                  label: Text('Download',
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: kGold,
-                          fontWeight: FontWeight.w600)),
+                  label: Text(
+                    'Download',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: kGold,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 16),
-          const Text('Driver Notes',
-              style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: kTextPrimary)),
+          const Text(
+            'Driver Notes',
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: kTextPrimary,
+            ),
+          ),
           const SizedBox(height: 6),
           const Text(
             '"Package delivered to front door as requested. Customer was not home, but delivery was confirmed via doorbell camera."',
@@ -933,7 +982,9 @@ class _EscrowTimelineCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _SectionTitle(
-              icon: Icons.timeline_outlined, label: 'Escrow Timeline'),
+            icon: Icons.timeline_outlined,
+            label: 'Escrow Timeline',
+          ),
           const SizedBox(height: 20),
           _TimelineItem(
             status: TimelineStatus.done,
@@ -1018,19 +1069,21 @@ class _TimelineItem extends StatelessWidget {
                   height: 28,
                   decoration: BoxDecoration(
                     color: dotColor.withOpacity(
-                        status == TimelineStatus.pending ? 0.15 : 1.0),
+                      status == TimelineStatus.pending ? 0.15 : 1.0,
+                    ),
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(dotIcon,
-                      size: 13,
-                      color: status == TimelineStatus.pending
-                          ? const Color(0xFFAA9977)
-                          : Colors.white),
+                  child: Icon(
+                    dotIcon,
+                    size: 13,
+                    color:
+                        status == TimelineStatus.pending
+                            ? const Color(0xFFAA9977)
+                            : Colors.white,
+                  ),
                 ),
                 if (!isLast)
-                  Expanded(
-                    child: Container(width: 2, color: kBorder),
-                  ),
+                  Expanded(child: Container(width: 2, color: kBorder)),
               ],
             ),
           ),
@@ -1041,17 +1094,22 @@ class _TimelineItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(label,
-                      style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: status == TimelineStatus.pending
+                  Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color:
+                          status == TimelineStatus.pending
                               ? kTextSecondary
-                              : kTextPrimary)),
+                              : kTextPrimary,
+                    ),
+                  ),
                   const SizedBox(height: 2),
-                  Text(sub,
-                      style:
-                          const TextStyle(fontSize: 11, color: kTextSecondary)),
+                  Text(
+                    sub,
+                    style: const TextStyle(fontSize: 11, color: kTextSecondary),
+                  ),
                 ],
               ),
             ),
@@ -1078,21 +1136,58 @@ class _ActionsCard extends StatelessWidget {
             label: 'Release Escrow',
             icon: Icons.lock_open_outlined,
             style: _ActionStyle.gold,
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder:
+                    (_) => PartialRefundDialog(
+                      escrowAmount: 2450,
+                      onCancel: () => Navigator.pop(context),
+                      onProcess: (amount, reason) {
+                        print('Refund \$amount | reason: \$reason');
+                        Navigator.pop(context);
+                      },
+                    ),
+              );
+            },
           ),
           const SizedBox(height: 10),
           _ActionButton(
             label: 'Partial Refund',
             icon: Icons.percent_outlined,
             style: _ActionStyle.darkGreen,
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder:
+                    (_) => PartialRefundDialog(
+                      escrowAmount: 2450,
+                      onCancel: () => Navigator.pop(context),
+                      onProcess: (amount, reason) {
+                        Navigator.pop(context);
+                      },
+                    ),
+              );
+            },
           ),
           const SizedBox(height: 10),
           _ActionButton(
             label: 'Full Refund',
             icon: Icons.refresh_outlined,
             style: _ActionStyle.gold,
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder:
+                    (_) => FullRefundConfirmationDialog(
+                      escrowAmount: 2450,
+                      onCancel: () => Navigator.pop(context),
+                      onConfirm: (reason) {
+                        Navigator.pop(context);
+                      },
+                    ),
+              );
+            },
           ),
           const SizedBox(height: 10),
           _ActionButton(
@@ -1139,12 +1234,15 @@ class _ActionButton extends StatelessWidget {
           children: [
             Icon(icon, size: 16, color: Colors.white),
             const SizedBox(width: 8),
-            Text(label,
-                style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                    letterSpacing: 0.2)),
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                letterSpacing: 0.2,
+              ),
+            ),
           ],
         ),
       ),
@@ -1192,12 +1290,15 @@ class _SectionTitle extends StatelessWidget {
       children: [
         Icon(icon, size: 18, color: kGold),
         const SizedBox(width: 8),
-        Text(label,
-            style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
-                color: kTextPrimary,
-                letterSpacing: -0.2)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
+            color: kTextPrimary,
+            letterSpacing: -0.2,
+          ),
+        ),
       ],
     );
   }

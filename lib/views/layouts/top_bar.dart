@@ -116,41 +116,41 @@ class _TopBarState extends State<TopBar>
                 //   ),
                 // ),
                 MySpacing.width(12),
-                CustomPopupMenu(
-                  backdrop: true,
-                  hideFn: (hideFn) => languageHideFn,
-                  onChange: (_) {},
-                  offsetX: -36,
-                  menu: Padding(
-                    padding: MySpacing.xy(8, 8),
-                    child: Center(
-                      child: ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        borderRadius: BorderRadius.circular(2),
-                        child: Image.asset(
-                          "assets/lang/${ThemeCustomizer.instance.currentLanguage.locale.languageCode}.jpg",
-                          width: 24,
-                          height: 18,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  menuBuilder: (_) => buildLanguageSelector(),
-                ),
-                MySpacing.width(6),
-                CustomPopupMenu(
-                  backdrop: true,
-                  onChange: (_) {},
-                  offsetX: -120,
-                  menu: Padding(
-                    padding: MySpacing.xy(8, 8),
-                    child: const Center(
-                      child: Icon(FeatherIcons.bell, size: 18),
-                    ),
-                  ),
-                  menuBuilder: (_) => buildNotifications(),
-                ),
+                // CustomPopupMenu(
+                //   backdrop: true,
+                //   hideFn: (hideFn) => languageHideFn,
+                //   onChange: (_) {},
+                //   offsetX: -36,
+                //   menu: Padding(
+                //     padding: MySpacing.xy(8, 8),
+                //     child: Center(
+                //       child: ClipRRect(
+                //         clipBehavior: Clip.antiAliasWithSaveLayer,
+                //         borderRadius: BorderRadius.circular(2),
+                //         child: Image.asset(
+                //           "assets/lang/${ThemeCustomizer.instance.currentLanguage.locale.languageCode}.jpg",
+                //           width: 24,
+                //           height: 18,
+                //           fit: BoxFit.cover,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                //   menuBuilder: (_) => buildLanguageSelector(),
+                // ),
+                // MySpacing.width(6),
+                // CustomPopupMenu(
+                //   backdrop: true,
+                //   onChange: (_) {},
+                //   offsetX: -120,
+                //   menu: Padding(
+                //     padding: MySpacing.xy(8, 8),
+                //     child: const Center(
+                //       child: Icon(FeatherIcons.bell, size: 18),
+                //     ),
+                //   ),
+                //   menuBuilder: (_) => buildNotifications(),
+                // ),
                 MySpacing.width(4),
                 CustomPopupMenu(
                   backdrop: true,
@@ -192,41 +192,42 @@ class _TopBarState extends State<TopBar>
       width: 125,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: Language.languages
-            .map(
-              (language) => MyButton.text(
-                padding: MySpacing.xy(8, 4),
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                splashColor: contentTheme.onBackground.withAlpha(20),
-                onPressed: () async {
-                  languageHideFn?.call();
-                  // Language.changeLanguage(language);
-                  await Provider.of<AppNotifier>(
-                    context,
-                    listen: false,
-                  ).changeLanguage(language, notify: true);
-                  ThemeCustomizer.notify();
-                  setState(() {});
-                },
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      borderRadius: BorderRadius.circular(2),
-                      child: Image.asset(
-                        "assets/lang/${language.locale.languageCode}.jpg",
-                        width: 18,
-                        height: 14,
-                        fit: BoxFit.cover,
-                      ),
+        children:
+            Language.languages
+                .map(
+                  (language) => MyButton.text(
+                    padding: MySpacing.xy(8, 4),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    splashColor: contentTheme.onBackground.withAlpha(20),
+                    onPressed: () async {
+                      languageHideFn?.call();
+                      // Language.changeLanguage(language);
+                      await Provider.of<AppNotifier>(
+                        context,
+                        listen: false,
+                      ).changeLanguage(language, notify: true);
+                      ThemeCustomizer.notify();
+                      setState(() {});
+                    },
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          borderRadius: BorderRadius.circular(2),
+                          child: Image.asset(
+                            "assets/lang/${language.locale.languageCode}.jpg",
+                            width: 18,
+                            height: 14,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        MySpacing.width(8),
+                        MyText.labelMedium(language.languageName),
+                      ],
                     ),
-                    MySpacing.width(8),
-                    MyText.labelMedium(language.languageName),
-                  ],
-                ),
-              ),
-            )
-            .toList(),
+                  ),
+                )
+                .toList(),
       ),
     );
   }
@@ -322,7 +323,7 @@ class _TopBarState extends State<TopBar>
               children: [
                 MyButton(
                   onPressed: () {
-                    Get.toNamed('/contacts/profile');
+                    Get.toNamed('/contacts/edit-profile');
                     setState(() {});
                   },
                   // onPressed: () =>
@@ -343,29 +344,29 @@ class _TopBarState extends State<TopBar>
                     ],
                   ),
                 ),
-                MySpacing.height(4),
-                MyButton(
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  onPressed: () {
-                    Get.toNamed('/contacts/edit-profile');
-                    setState(() {});
-                  },
-                  borderRadiusAll: AppStyle.buttonRadius.medium,
-                  padding: MySpacing.xy(8, 4),
-                  splashColor: theme.colorScheme.onBackground.withAlpha(20),
-                  backgroundColor: Colors.transparent,
-                  child: Row(
-                    children: [
-                      Icon(
-                        FeatherIcons.edit,
-                        size: 14,
-                        color: contentTheme.onBackground,
-                      ),
-                      MySpacing.width(8),
-                      MyText.labelMedium("Edit Profile", fontWeight: 600),
-                    ],
-                  ),
-                ),
+                // MySpacing.height(4),
+                // MyButton(
+                //   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                //   onPressed: () {
+                //     Get.toNamed('/contacts/edit-profile');
+                //     setState(() {});
+                //   },
+                //   borderRadiusAll: AppStyle.buttonRadius.medium,
+                //   padding: MySpacing.xy(8, 4),
+                //   splashColor: theme.colorScheme.onBackground.withAlpha(20),
+                //   backgroundColor: Colors.transparent,
+                //   child: Row(
+                //     children: [
+                //       Icon(
+                //         FeatherIcons.edit,
+                //         size: 14,
+                //         color: contentTheme.onBackground,
+                //       ),
+                //       MySpacing.width(8),
+                //       MyText.labelMedium("Edit Profile", fontWeight: 600),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

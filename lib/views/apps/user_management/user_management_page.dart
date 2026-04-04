@@ -593,6 +593,7 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:webkit/helpers/theme/admin_theme.dart';
 import 'package:webkit/views/apps/user_management/user_detail.dart';
+import 'package:webkit/views/apps/user_management/widget/user_dialog.dart';
 import 'package:webkit/views/layouts/layout.dart';
 
 // ─── Data Model ────────────────────────────────────────────────────────────
@@ -854,9 +855,14 @@ class _UserManagementPageState extends State<UserManagementPage> {
                   decoration: InputDecoration(
                     hintText: 'Search users...',
                     hintStyle: const TextStyle(
-                        color: AppColors.textMuted, fontSize: 14),
-                    prefixIcon: const Icon(Icons.search,
-                        color: AppColors.textMuted, size: 20),
+                      color: AppColors.textMuted,
+                      fontSize: 14,
+                    ),
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: AppColors.textMuted,
+                      size: 20,
+                    ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 12),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -919,14 +925,21 @@ class _UserManagementPageState extends State<UserManagementPage> {
   }) {
     return DropdownButtonFormField<String>(
       value: value,
-      items: items
-          .map((e) => DropdownMenuItem(
-              value: e, child: Text(e, style: const TextStyle(fontSize: 13))))
-          .toList(),
+      items:
+          items
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e,
+                  child: Text(e, style: const TextStyle(fontSize: 13)),
+                ),
+              )
+              .toList(),
       onChanged: onChanged,
       decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 12,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.divider),
@@ -982,27 +995,26 @@ class _UserManagementPageState extends State<UserManagementPage> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       child: Row(
         children: [
-          SizedBox(
-            width: 40,
-            child: Checkbox(
-              value: _selectAll,
-              onChanged: _toggleSelectAll,
-              fillColor: WidgetStateProperty.resolveWith<Color>(
-                  (Set<WidgetState> states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return Colors.transparent;
-                }
-                return LeftBarTheme.lightLeftBarTheme.activeItemBackground;
-              }),
-              activeColor: AppColors.primary,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4)),
-            ),
-          ),
-          const Expanded(
-            flex: 2,
-            child: Text('User', style: _headerStyle),
-          ),
+          // SizedBox(
+          //   width: 40,
+          //   child: Checkbox(
+          //     value: _selectAll,
+          //     onChanged: _toggleSelectAll,
+          //     fillColor: WidgetStateProperty.resolveWith<Color>((
+          //       Set<WidgetState> states,
+          //     ) {
+          //       if (states.contains(WidgetState.disabled)) {
+          //         return Colors.transparent;
+          //       }
+          //       return LeftBarTheme.lightLeftBarTheme.activeItemBackground;
+          //     }),
+          //     activeColor: AppColors.primary,
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(4),
+          //     ),
+          //   ),
+          // ),
+          const Expanded(flex: 2, child: Text('User', style: _headerStyle)),
           SizedBox(width: 15),
           const Expanded(
             flex: 2,
@@ -1020,8 +1032,11 @@ class _UserManagementPageState extends State<UserManagementPage> {
           const SizedBox(
             width: 120,
             child: Align(
-              child: Text('Actions',
-                  style: _headerStyle, textAlign: TextAlign.right),
+              child: Text(
+                'Actions',
+                style: _headerStyle,
+                textAlign: TextAlign.right,
+              ),
             ),
           ),
           // Total users count
@@ -1052,23 +1067,25 @@ class _UserManagementPageState extends State<UserManagementPage> {
       child: Row(
         children: [
           // Checkbox
-          SizedBox(
-            width: 40,
-            child: Checkbox(
-              value: user.isSelected,
-              onChanged: (v) => _toggleUser(index, v),
-              activeColor: AppColors.primary,
-              fillColor: WidgetStateProperty.resolveWith<Color>(
-                  (Set<WidgetState> states) {
-                if (states.contains(WidgetState.disabled)) {
-                  return Colors.transparent;
-                }
-                return LeftBarTheme.lightLeftBarTheme.activeItemBackground;
-              }),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4)),
-            ),
-          ),
+          // SizedBox(
+          //   width: 40,
+          //   child: Checkbox(
+          //     value: user.isSelected,
+          //     onChanged: (v) => _toggleUser(index, v),
+          //     activeColor: AppColors.primary,
+          //     fillColor: WidgetStateProperty.resolveWith<Color>((
+          //       Set<WidgetState> states,
+          //     ) {
+          //       if (states.contains(WidgetState.disabled)) {
+          //         return Colors.transparent;
+          //       }
+          //       return LeftBarTheme.lightLeftBarTheme.activeItemBackground;
+          //     }),
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(4),
+          //     ),
+          //   ),
+          // ),
 
           // User info
           Expanded(
@@ -1112,7 +1129,9 @@ class _UserManagementPageState extends State<UserManagementPage> {
 
           // Status badge
           Expanded(
-              flex: 2, child: Align(child: _buildStatusBadge(user.status))),
+            flex: 2,
+            child: Align(child: _buildStatusBadge(user.status)),
+          ),
           SizedBox(width: 15),
 
           // Last login
@@ -1146,7 +1165,17 @@ class _UserManagementPageState extends State<UserManagementPage> {
                   Icons.block_outlined,
                   Colors.redAccent,
                   'Block User',
-                  () {},
+                  () {
+                    showDialog(
+                      context: context,
+                      barrierColor: Colors.black.withOpacity(0.4),
+                      builder:
+                          (context) => const BlockUserDialog(
+                            userName: 'John Anderson',
+                            userId: 'USR-24589',
+                          ),
+                    );
+                  },
                 ),
                 const SizedBox(width: 8),
                 _actionIcon(
@@ -1166,26 +1195,27 @@ class _UserManagementPageState extends State<UserManagementPage> {
   }
 
   Widget _buildTypeBadge(UserType type) {
-    final config = {
-      UserType.buyer: (
-        Icons.shopping_bag_outlined,
-        'Buyer',
-        AppColors.buyerBg,
-        AppColors.buyerText
-      ),
-      UserType.seller: (
-        Icons.storefront_outlined,
-        'Seller',
-        AppColors.sellerBg,
-        AppColors.sellerText
-      ),
-      UserType.driver: (
-        Icons.directions_car_outlined,
-        'Driver',
-        AppColors.driverBg,
-        AppColors.driverText
-      ),
-    }[type]!;
+    final config =
+        {
+          UserType.buyer: (
+            Icons.shopping_bag_outlined,
+            'Buyer',
+            AppColors.buyerBg,
+            AppColors.buyerText,
+          ),
+          UserType.seller: (
+            Icons.storefront_outlined,
+            'Seller',
+            AppColors.sellerBg,
+            AppColors.sellerText,
+          ),
+          UserType.driver: (
+            Icons.directions_car_outlined,
+            'Driver',
+            AppColors.driverBg,
+            AppColors.driverText,
+          ),
+        }[type]!;
 
     return Align(
       child: Container(
@@ -1214,23 +1244,24 @@ class _UserManagementPageState extends State<UserManagementPage> {
   }
 
   Widget _buildStatusBadge(UserStatus status) {
-    final config = {
-      UserStatus.active: (
-        'Active',
-        AppColors.statusActiveText,
-        const Color(0xFFDCFCE7)
-      ),
-      UserStatus.blocked: (
-        'Blocked',
-        AppColors.statusBlocked,
-        const Color(0xFFFEE2E2)
-      ),
-      UserStatus.pending: (
-        'Pending',
-        AppColors.statusPending,
-        const Color(0xFFFEF9C3)
-      ),
-    }[status]!;
+    final config =
+        {
+          UserStatus.active: (
+            'Active',
+            AppColors.statusActiveText,
+            const Color(0xFFDCFCE7),
+          ),
+          UserStatus.blocked: (
+            'Blocked',
+            AppColors.statusBlocked,
+            const Color(0xFFFEE2E2),
+          ),
+          UserStatus.pending: (
+            'Pending',
+            AppColors.statusPending,
+            const Color(0xFFFEF9C3),
+          ),
+        }[status]!;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -1251,7 +1282,11 @@ class _UserManagementPageState extends State<UserManagementPage> {
   }
 
   Widget _actionIcon(
-      IconData icon, Color color, String tooltip, Function()? onTap) {
+    IconData icon,
+    Color color,
+    String tooltip,
+    Function()? onTap,
+  ) {
     return Tooltip(
       message: tooltip,
       child: InkWell(
@@ -1304,8 +1339,10 @@ class _UserManagementPageState extends State<UserManagementPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       ),
-      child: Text(label,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+      child: Text(
+        label,
+        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+      ),
     );
   }
 

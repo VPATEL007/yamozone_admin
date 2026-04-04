@@ -146,6 +146,12 @@ class _LeftBarState extends State<LeftBar>
                       isCondensed: isCondensed,
                     ),
                     NavigationItem(
+                      iconData: LucideIcons.circleDollarSign,
+                      title: "Withdrawal Requests",
+                      route: '/withdrawal',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
                       iconData: LucideIcons.shoppingCart,
                       title: "Dispute Center",
                       route: '/dispute-center',
@@ -192,16 +198,16 @@ class _LeftBarState extends State<LeftBar>
     return isCondensed
         ? MySpacing.empty()
         : Container(
-            padding: MySpacing.xy(24, 8),
-            child: MyText.labelSmall(
-              label.toUpperCase(),
-              color: leftBarTheme.labelColor,
-              muted: true,
-              maxLines: 1,
-              overflow: TextOverflow.clip,
-              fontWeight: 700,
-            ),
-          );
+          padding: MySpacing.xy(24, 8),
+          child: MyText.labelSmall(
+            label.toUpperCase(),
+            color: leftBarTheme.labelColor,
+            muted: true,
+            maxLines: 1,
+            overflow: TextOverflow.clip,
+            fontWeight: 700,
+          ),
+        );
   }
 }
 
@@ -308,30 +314,33 @@ class _MenuWidgetState extends State<MenuWidget>
           },
           child: MyContainer.transparent(
             margin: MySpacing.fromLTRB(16, 0, 16, 8),
-            color: isActive || isHover
-                ? leftBarTheme.activeItemBackground
-                : Colors.transparent,
+            color:
+                isActive || isHover
+                    ? leftBarTheme.activeItemBackground
+                    : Colors.transparent,
             padding: MySpacing.xy(8, 8),
             child: Center(
               child: Icon(
                 widget.iconData,
-                color: (isHover || isActive)
-                    ? leftBarTheme.activeItemColor
-                    : leftBarTheme.onBackground,
+                color:
+                    (isHover || isActive)
+                        ? leftBarTheme.activeItemColor
+                        : leftBarTheme.onBackground,
                 size: 20,
               ),
             ),
           ),
         ),
-        menuBuilder: (_) => MyContainer.bordered(
-          paddingAll: 8,
-          width: 190,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: widget.children,
-          ),
-        ),
+        menuBuilder:
+            (_) => MyContainer.bordered(
+              paddingAll: 8,
+              width: 190,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: widget.children,
+              ),
+            ),
       );
     } else {
       return MouseRegion(
@@ -379,9 +388,10 @@ class _MenuWidgetState extends State<MenuWidget>
                   Icon(
                     widget.iconData,
                     size: 20,
-                    color: isHover || isActive
-                        ? leftBarTheme.activeItemColor
-                        : leftBarTheme.onBackground,
+                    color:
+                        isHover || isActive
+                            ? leftBarTheme.activeItemColor
+                            : leftBarTheme.onBackground,
                   ),
                   MySpacing.width(18),
                   Expanded(
@@ -390,9 +400,10 @@ class _MenuWidgetState extends State<MenuWidget>
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
-                      color: isHover || isActive
-                          ? leftBarTheme.activeItemColor
-                          : leftBarTheme.onBackground,
+                      color:
+                          isHover || isActive
+                              ? leftBarTheme.activeItemColor
+                              : leftBarTheme.onBackground,
                     ),
                   ),
                 ],
@@ -464,9 +475,10 @@ class _MenuItemState extends State<MenuItem> with UIMixin {
         },
         child: MyContainer.transparent(
           margin: MySpacing.fromLTRB(4, 0, 8, 4),
-          color: isActive || isHover
-              ? leftBarTheme.activeItemBackground
-              : Colors.transparent,
+          color:
+              isActive || isHover
+                  ? leftBarTheme.activeItemBackground
+                  : Colors.transparent,
           width: MediaQuery.of(context).size.width,
           padding: MySpacing.xy(18, 7),
           child: MyText.bodySmall(
@@ -475,9 +487,10 @@ class _MenuItemState extends State<MenuItem> with UIMixin {
             maxLines: 1,
             textAlign: TextAlign.left,
             fontSize: 12.5,
-            color: isActive || isHover
-                ? leftBarTheme.activeItemColor
-                : leftBarTheme.onBackground,
+            color:
+                isActive || isHover
+                    ? leftBarTheme.activeItemColor
+                    : leftBarTheme.onBackground,
             fontWeight: isActive || isHover ? 600 : 500,
           ),
         ),
@@ -532,9 +545,10 @@ class _NavigationItemState extends State<NavigationItem> with UIMixin {
         },
         child: MyContainer.transparent(
           margin: MySpacing.fromLTRB(16, 0, 16, 8),
-          color: isActive || isHover
-              ? leftBarTheme.activeItemBackground
-              : Colors.transparent,
+          color:
+              isActive || isHover
+                  ? leftBarTheme.activeItemBackground
+                  : Colors.transparent,
           padding: MySpacing.xy(8, 8),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -543,9 +557,10 @@ class _NavigationItemState extends State<NavigationItem> with UIMixin {
                 Center(
                   child: Icon(
                     widget.iconData,
-                    color: (isHover || isActive)
-                        ? leftBarTheme.background
-                        : leftBarTheme.onBackground,
+                    color:
+                        (isHover || isActive)
+                            ? leftBarTheme.background
+                            : leftBarTheme.onBackground,
                     size: 20,
                   ),
                 ),
@@ -558,9 +573,10 @@ class _NavigationItemState extends State<NavigationItem> with UIMixin {
                     widget.title,
                     overflow: TextOverflow.clip,
                     maxLines: 1,
-                    color: isActive || isHover
-                        ? leftBarTheme.background
-                        : leftBarTheme.onBackground,
+                    color:
+                        isActive || isHover
+                            ? leftBarTheme.background
+                            : leftBarTheme.onBackground,
                   ),
                 ),
             ],

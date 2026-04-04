@@ -1151,60 +1151,61 @@ class UserDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBg,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              children: [
-                _TopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _ProfileHeader(),
-                        const SizedBox(height: 20),
-                        _StatsRow(),
-                        const SizedBox(height: 20),
-                        // KYC + Wallet + Quick Actions row
-                        IntrinsicHeight(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(flex: 3, child: _KycCard()),
-                              const SizedBox(width: 16),
-                              Expanded(flex: 4, child: _WalletCard()),
-                              const SizedBox(width: 16),
-                              Expanded(flex: 3, child: _QuickActionsCard()),
-                            ],
-                          ),
+      backgroundColor: kBg,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Column(
+            children: [
+              _TopBar(),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _ProfileHeader(),
+                      const SizedBox(height: 20),
+                      _StatsRow(),
+                      const SizedBox(height: 20),
+                      // KYC + Wallet + Quick Actions row
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(flex: 3, child: _KycCard()),
+                            const SizedBox(width: 16),
+                            Expanded(flex: 4, child: _WalletCard()),
+                            const SizedBox(width: 16),
+                            Expanded(flex: 3, child: _QuickActionsCard()),
+                          ],
                         ),
-                        const SizedBox(height: 20),
-                        // Orders + Disputes row
-                        IntrinsicHeight(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(child: _RecentOrdersCard()),
-                              const SizedBox(width: 16),
-                              Expanded(child: _ActiveDisputesCard()),
-                            ],
-                          ),
+                      ),
+                      const SizedBox(height: 20),
+                      // Orders + Disputes row
+                      IntrinsicHeight(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: _RecentOrdersCard()),
+                            const SizedBox(width: 16),
+                            Expanded(child: _ActiveDisputesCard()),
+                          ],
                         ),
-                        const SizedBox(height: 20),
-                        _RecentTransactionsCard(),
-                        const SizedBox(height: 24),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 20),
+                      _RecentTransactionsCard(),
+                      const SizedBox(height: 24),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -1217,38 +1218,51 @@ class _TopBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       child: Row(
         children: [
-          const Icon(Icons.arrow_back, size: 20, color: kTextSecondary),
+          InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(Icons.arrow_back, size: 20, color: kTextSecondary),
+          ),
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('User Details',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
-              Text('Complete user profile and activity management',
-                  style: TextStyle(fontSize: 12, color: kTextSecondary)),
+              Text(
+                'User Details',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
+              Text(
+                'Complete user profile and activity management',
+                style: TextStyle(fontSize: 12, color: kTextSecondary),
+              ),
             ],
           ),
           const Spacer(),
           _ActionButton(
-              icon: Icons.lock_reset,
-              label: 'Reset Password',
-              color: kGreen,
-              textColor: Colors.white),
+            icon: Icons.lock_reset,
+            label: 'Reset Password',
+            color: kGreen,
+            textColor: Colors.white,
+          ),
           const SizedBox(width: 8),
           _ActionButton(
-              icon: Icons.logout,
-              label: 'Force Logout',
-              color: kGold,
-              textColor: Colors.white),
+            icon: Icons.logout,
+            label: 'Force Logout',
+            color: kGold,
+            textColor: Colors.white,
+          ),
           const SizedBox(width: 8),
           _ActionButton(
-              icon: Icons.block,
-              label: 'Block User',
-              color: kRed,
-              textColor: Colors.white),
+            icon: Icons.block,
+            label: 'Block User',
+            color: kRed,
+            textColor: Colors.white,
+          ),
         ],
       ),
     );
@@ -1261,20 +1275,26 @@ class _ActionButton extends StatelessWidget {
   final Color color;
   final Color textColor;
 
-  const _ActionButton(
-      {required this.icon,
-      required this.label,
-      required this.color,
-      required this.textColor});
+  const _ActionButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () {},
       icon: Icon(icon, size: 14, color: textColor),
-      label: Text(label,
-          style: TextStyle(
-              fontSize: 12, fontWeight: FontWeight.w600, color: textColor)),
+      label: Text(
+        label,
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: textColor,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
         elevation: 0,
@@ -1316,11 +1336,14 @@ class _ProfileHeader extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Text('John Anderson',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: kTextPrimary)),
+                    const Text(
+                      'John Anderson',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: kTextPrimary,
+                      ),
+                    ),
                     const SizedBox(width: 10),
                     _Badge(label: 'Active', color: kSuccess),
                     const SizedBox(width: 6),
@@ -1328,26 +1351,34 @@ class _ProfileHeader extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 4),
-                const Text('john.anderson@email.com',
-                    style: TextStyle(fontSize: 13, color: kTextSecondary)),
-                const Text('+1 (555) 123-4567',
-                    style: TextStyle(fontSize: 13, color: kTextSecondary)),
+                const Text(
+                  'john.anderson@email.com',
+                  style: TextStyle(fontSize: 13, color: kTextSecondary),
+                ),
+                const Text(
+                  '+1 (555) 123-4567',
+                  style: TextStyle(fontSize: 13, color: kTextSecondary),
+                ),
                 const SizedBox(height: 4),
                 const Text(
-                    'User ID: USR-2024-45891  |  Member since: Jan 15, 2024',
-                    style: TextStyle(fontSize: 12, color: kTextSecondary)),
+                  'User ID: USR-2024-45891  |  Member since: Jan 15, 2024',
+                  style: TextStyle(fontSize: 12, color: kTextSecondary),
+                ),
               ],
             ),
           ),
           OutlinedButton.icon(
             onPressed: () {},
             icon: const Icon(Icons.edit, size: 14, color: kTextSecondary),
-            label: const Text('Edit Profile',
-                style: TextStyle(fontSize: 13, color: kTextSecondary)),
+            label: const Text(
+              'Edit Profile',
+              style: TextStyle(fontSize: 13, color: kTextSecondary),
+            ),
             style: OutlinedButton.styleFrom(
               side: const BorderSide(color: kBorder),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
           ),
         ],
@@ -1361,8 +1392,11 @@ class _Badge extends StatelessWidget {
   final Color color;
   final bool bgOpacity;
 
-  const _Badge(
-      {required this.label, required this.color, this.bgOpacity = false});
+  const _Badge({
+    required this.label,
+    required this.color,
+    this.bgOpacity = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1373,9 +1407,14 @@ class _Badge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: color.withOpacity(0.3)),
       ),
-      child: Text(label,
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.w600, color: color)),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: color,
+        ),
+      ),
     );
   }
 }
@@ -1389,65 +1428,81 @@ class _StatsRow extends StatelessWidget {
         'icon': Icons.shopping_bag_outlined,
         'value': '247',
         'label': 'Total Orders',
-        'color': kGold
+        'color': kGold,
       },
       {
         'icon': Icons.attach_money,
         'value': '\$45,892',
         'label': 'Total Spent',
-        'color': kSuccess
+        'color': kSuccess,
       },
       {
         'icon': Icons.account_balance_wallet_outlined,
         'value': '\$2,450',
         'label': 'Wallet Balance',
-        'color': kGold
+        'color': kGold,
       },
       {
         'icon': Icons.balance_outlined,
         'value': '3',
         'label': 'Active Disputes',
-        'color': kGold
+        'color': kGold,
       },
       {
         'icon': Icons.star_outlined,
         'value': '4.8',
         'label': 'Rating',
-        'color': kGold
+        'color': kGold,
       },
     ];
 
     return Row(
-      children: stats.map((s) {
-        return Expanded(
-          child: Container(
-            margin: EdgeInsets.only(
-                right: stats.indexOf(s) < stats.length - 1 ? 12 : 0),
-            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
-            decoration: BoxDecoration(
-              color: kCard,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: kBorder),
-            ),
-            child: Column(
-              children: [
-                Icon(s['icon'] as IconData,
-                    size: 24, color: s['color'] as Color),
-                const SizedBox(height: 8),
-                Text(s['value'] as String,
-                    style: const TextStyle(
+      children:
+          stats.map((s) {
+            return Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  right: stats.indexOf(s) < stats.length - 1 ? 12 : 0,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 18,
+                  horizontal: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: kCard,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: kBorder),
+                ),
+                child: Column(
+                  children: [
+                    Icon(
+                      s['icon'] as IconData,
+                      size: 24,
+                      color: s['color'] as Color,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      s['value'] as String,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
-                        color: kTextPrimary)),
-                const SizedBox(height: 2),
-                Text(s['label'] as String,
-                    style: const TextStyle(fontSize: 12, color: kTextSecondary),
-                    textAlign: TextAlign.center),
-              ],
-            ),
-          ),
-        );
-      }).toList(),
+                        color: kTextPrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      s['label'] as String,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: kTextSecondary,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
     );
   }
 }
@@ -1476,32 +1531,42 @@ class _KycCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('KYC Verification',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'KYC Verification',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
               _Badge(label: 'Verified', color: kSuccess),
             ],
           ),
           const SizedBox(height: 16),
-          ...items.map((item) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Row(
-                  children: [
-                    const Icon(Icons.check_circle, size: 18, color: kSuccess),
-                    const SizedBox(width: 10),
-                    Text(item,
-                        style:
-                            const TextStyle(fontSize: 13, color: kTextPrimary)),
-                  ],
-                ),
-              )),
+          ...items.map(
+            (item) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Row(
+                children: [
+                  const Icon(Icons.check_circle, size: 18, color: kSuccess),
+                  const SizedBox(width: 10),
+                  Text(
+                    item,
+                    style: const TextStyle(fontSize: 13, color: kTextPrimary),
+                  ),
+                ],
+              ),
+            ),
+          ),
           const SizedBox(height: 8),
-          const Text('Verified on: March 12, 2024',
-              style: TextStyle(fontSize: 11, color: kTextSecondary)),
-          const Text('Verified by: Admin Team',
-              style: TextStyle(fontSize: 11, color: kTextSecondary)),
+          const Text(
+            'Verified on: March 12, 2024',
+            style: TextStyle(fontSize: 11, color: kTextSecondary),
+          ),
+          const Text(
+            'Verified by: Admin Team',
+            style: TextStyle(fontSize: 11, color: kTextSecondary),
+          ),
           const SizedBox(height: 14),
           SizedBox(
             width: double.infinity,
@@ -1510,11 +1575,14 @@ class _KycCard extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: kBorder),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 padding: const EdgeInsets.symmetric(vertical: 10),
               ),
-              child: const Text('View Documents',
-                  style: TextStyle(fontSize: 13, color: kTextPrimary)),
+              child: const Text(
+                'View Documents',
+                style: TextStyle(fontSize: 13, color: kTextPrimary),
+              ),
             ),
           ),
         ],
@@ -1540,11 +1608,14 @@ class _WalletCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Wallet Overview',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'Wallet Overview',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
               const Icon(Icons.account_balance_wallet, size: 18, color: kGold),
             ],
           ),
@@ -1560,30 +1631,39 @@ class _WalletCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text('Available Balance',
-                    style: TextStyle(fontSize: 12, color: Colors.white60)),
+                Text(
+                  'Available Balance',
+                  style: TextStyle(fontSize: 12, color: Colors.white60),
+                ),
                 SizedBox(height: 6),
-                Text('\$2,450.00',
-                    style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)),
+                Text(
+                  '\$2,450.00',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
                 SizedBox(height: 4),
-                Text('Last updated: 2 hours ago',
-                    style: TextStyle(fontSize: 11, color: Colors.white54)),
+                Text(
+                  'Last updated: 2 hours ago',
+                  style: TextStyle(fontSize: 11, color: Colors.white54),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 16),
           _WalletRow(
-              label: 'Total Deposits',
-              value: '\$48,340.00',
-              color: kTextPrimary),
+            label: 'Total Deposits',
+            value: '\$48,340.00',
+            color: kTextPrimary,
+          ),
           const SizedBox(height: 8),
           _WalletRow(
-              label: 'Total Withdrawals',
-              value: '\$45,890.00',
-              color: kTextPrimary),
+            label: 'Total Withdrawals',
+            value: '\$45,890.00',
+            color: kTextPrimary,
+          ),
           const SizedBox(height: 8),
           _WalletRow(label: 'Pending Payouts', value: '\$850.00', color: kRed),
           const SizedBox(height: 16),
@@ -1593,17 +1673,21 @@ class _WalletCard extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 14, color: Colors.white),
-                  label: const Text('Add Funds',
-                      style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white)),
+                  label: const Text(
+                    'Add Funds',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kBalanceBg,
                     elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 11),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -1611,15 +1695,21 @@ class _WalletCard extends StatelessWidget {
               Expanded(
                 child: OutlinedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.history,
-                      size: 14, color: kTextSecondary),
-                  label: const Text('History',
-                      style: TextStyle(fontSize: 13, color: kTextSecondary)),
+                  icon: const Icon(
+                    Icons.history,
+                    size: 14,
+                    color: kTextSecondary,
+                  ),
+                  label: const Text(
+                    'History',
+                    style: TextStyle(fontSize: 13, color: kTextSecondary),
+                  ),
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: kBorder),
                     padding: const EdgeInsets.symmetric(vertical: 11),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ),
@@ -1636,19 +1726,29 @@ class _WalletRow extends StatelessWidget {
   final String value;
   final Color color;
 
-  const _WalletRow(
-      {required this.label, required this.value, required this.color});
+  const _WalletRow({
+    required this.label,
+    required this.value,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label,
-            style: const TextStyle(fontSize: 13, color: kTextSecondary)),
-        Text(value,
-            style: TextStyle(
-                fontSize: 13, fontWeight: FontWeight.w600, color: color)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 13, color: kTextSecondary),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: color,
+          ),
+        ),
       ],
     );
   }
@@ -1677,16 +1777,21 @@ class _QuickActionsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Quick Actions',
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: kTextPrimary)),
+          const Text(
+            'Quick Actions',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: kTextPrimary,
+            ),
+          ),
           const SizedBox(height: 12),
-          ...actions.map((a) => _QuickActionTile(
-                icon: a['icon'] as IconData,
-                label: a['label'] as String,
-              )),
+          ...actions.map(
+            (a) => _QuickActionTile(
+              icon: a['icon'] as IconData,
+              label: a['label'] as String,
+            ),
+          ),
         ],
       ),
     );
@@ -1707,10 +1812,15 @@ class _QuickActionTile extends StatelessWidget {
         dense: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
         leading: Icon(icon, size: 18, color: kGold),
-        title: Text(label,
-            style: const TextStyle(fontSize: 13, color: kTextPrimary)),
-        trailing:
-            const Icon(Icons.chevron_right, size: 18, color: kTextSecondary),
+        title: Text(
+          label,
+          style: const TextStyle(fontSize: 13, color: kTextPrimary),
+        ),
+        trailing: const Icon(
+          Icons.chevron_right,
+          size: 18,
+          color: kTextSecondary,
+        ),
         onTap: () {},
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         hoverColor: kBg,
@@ -1729,28 +1839,28 @@ class _RecentOrdersCard extends StatelessWidget {
         'date': 'March 18, 2024',
         'amount': '\$245.00',
         'status': 'Completed',
-        'color': kSuccess
+        'color': kSuccess,
       },
       {
         'id': '#ORD-8891',
         'date': 'March 16, 2024',
         'amount': '\$189.50',
         'status': 'Processing',
-        'color': kGold
+        'color': kGold,
       },
       {
         'id': '#ORD-8845',
         'date': 'March 14, 2024',
         'amount': '\$567.00',
         'status': 'Shipped',
-        'color': kGreenLight
+        'color': kGreenLight,
       },
       {
         'id': '#ORD-8823',
         'date': 'March 12, 2024',
         'amount': '\$412.75',
         'status': 'Delivered',
-        'color': kSuccess
+        'color': kSuccess,
       },
     ];
 
@@ -1767,72 +1877,95 @@ class _RecentOrdersCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Recent Orders',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'Recent Orders',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
               TextButton(
                 onPressed: () {},
-                child: const Text('View All',
-                    style: TextStyle(fontSize: 13, color: kGold)),
+                child: const Text(
+                  'View All',
+                  style: TextStyle(fontSize: 13, color: kGold),
+                ),
               ),
             ],
           ),
           const SizedBox(height: 8),
-          ...orders.map((o) => Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: kBg,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: kBorder),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: kGold.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(Icons.shopping_bag_outlined,
-                          size: 18, color: kGold),
+          ...orders.map(
+            (o) => Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: kBg,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: kBorder),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: kGold.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Order ${o['id']}',
-                              style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
-                                  color: kTextPrimary)),
-                          Text(o['date'] as String,
-                              style: const TextStyle(
-                                  fontSize: 12, color: kTextSecondary)),
-                        ],
-                      ),
+                    child: const Icon(
+                      Icons.shopping_bag_outlined,
+                      size: 18,
+                      color: kGold,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(o['amount'] as String,
-                            style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: kTextPrimary)),
-                        Text(o['status'] as String,
-                            style: TextStyle(
-                                fontSize: 12,
-                                color: o['color'] as Color,
-                                fontWeight: FontWeight.w500)),
+                        Text(
+                          'Order ${o['id']}',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: kTextPrimary,
+                          ),
+                        ),
+                        Text(
+                          o['date'] as String,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: kTextSecondary,
+                          ),
+                        ),
                       ],
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        o['amount'] as String,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: kTextPrimary,
+                        ),
+                      ),
+                      Text(
+                        o['status'] as String,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: o['color'] as Color,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -1886,81 +2019,109 @@ class _ActiveDisputesCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Active Disputes',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'Active Disputes',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 3,
+                ),
                 decoration: BoxDecoration(
                   color: kHighPriority.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text('3 Active',
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: kHighPriority)),
+                child: const Text(
+                  '3 Active',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: kHighPriority,
+                  ),
+                ),
               ),
             ],
           ),
           const SizedBox(height: 12),
-          ...disputes.map((d) => Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: d['bgColor'] as Color,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: kBorder),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Dispute ${d['id']}',
-                            style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: kTextPrimary)),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color:
-                                (d['priorityColor'] as Color).withOpacity(0.12),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(d['priority'] as String,
-                              style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600,
-                                  color: d['priorityColor'] as Color)),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Text(d['desc'] as String,
+          ...disputes.map(
+            (d) => Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: d['bgColor'] as Color,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: kBorder),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Dispute ${d['id']}',
                         style: const TextStyle(
-                            fontSize: 12, color: kTextSecondary)),
-                    const SizedBox(height: 4),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(d['order'] as String,
-                            style: const TextStyle(
-                                fontSize: 12, color: kTextSecondary)),
-                        Text(d['time'] as String,
-                            style: const TextStyle(
-                                fontSize: 11, color: kTextSecondary)),
-                      ],
-                    ),
-                  ],
-                ),
-              )),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: kTextPrimary,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: (d['priorityColor'] as Color).withOpacity(
+                            0.12,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          d['priority'] as String,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: d['priorityColor'] as Color,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    d['desc'] as String,
+                    style: const TextStyle(fontSize: 12, color: kTextSecondary),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        d['order'] as String,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: kTextSecondary,
+                        ),
+                      ),
+                      Text(
+                        d['time'] as String,
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: kTextSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
           const SizedBox(height: 6),
           SizedBox(
             width: double.infinity,
@@ -1971,13 +2132,17 @@ class _ActiveDisputesCard extends StatelessWidget {
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(vertical: 13),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              child: const Text('Manage All Disputes',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white)),
+              child: const Text(
+                'Manage All Disputes',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ],
@@ -2027,15 +2192,20 @@ class _RecentTransactionsCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Recent Transactions',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: kTextPrimary)),
+              const Text(
+                'Recent Transactions',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: kTextPrimary,
+                ),
+              ),
               TextButton(
                 onPressed: () {},
-                child: const Text('View All',
-                    style: TextStyle(fontSize: 13, color: kGold)),
+                child: const Text(
+                  'View All',
+                  style: TextStyle(fontSize: 13, color: kGold),
+                ),
               ),
             ],
           ),
@@ -2055,35 +2225,49 @@ class _RecentTransactionsCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: isPos
-                          ? kSuccess.withOpacity(0.1)
-                          : kRed.withOpacity(0.1),
+                      color:
+                          isPos
+                              ? kSuccess.withOpacity(0.1)
+                              : kRed.withOpacity(0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(t['icon'] as IconData,
-                        size: 16, color: isPos ? kSuccess : kRed),
+                    child: Icon(
+                      t['icon'] as IconData,
+                      size: 16,
+                      color: isPos ? kSuccess : kRed,
+                    ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(t['type'] as String,
-                            style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w600,
-                                color: kTextPrimary)),
-                        Text(t['date'] as String,
-                            style: const TextStyle(
-                                fontSize: 12, color: kTextSecondary)),
+                        Text(
+                          t['type'] as String,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: kTextPrimary,
+                          ),
+                        ),
+                        Text(
+                          t['date'] as String,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: kTextSecondary,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  Text(t['amount'] as String,
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: isPos ? kSuccess : kRed)),
+                  Text(
+                    t['amount'] as String,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: isPos ? kSuccess : kRed,
+                    ),
+                  ),
                 ],
               ),
             );

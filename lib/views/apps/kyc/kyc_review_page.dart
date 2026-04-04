@@ -35,165 +35,176 @@ class _KycReviewPageState extends State<KycReviewPage>
         init: controller,
         builder: (controller) {
           return SizedBox(
-              width: Get.width,
-              height: Get.height,
-              child: Column(
-                children: [
-                  /// HEADER
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.arrow_back),
+            width: Get.width,
+            height: Get.height,
+            child: Column(
+              children: [
+                /// HEADER
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      "KYC Review",
+                      style: GoogleFonts.montserrat(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
-                      const SizedBox(width: 10),
-                      Text(
-                        "KYC Review",
-                        style: GoogleFonts.montserrat(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black),
-                      )
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                /// USER CARD
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 5,
+                        spreadRadius: 1,
+                      ),
                     ],
                   ),
-
-                  const SizedBox(height: 20),
-
-                  /// USER CARD
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 5,
-                            spreadRadius: 1)
-                      ],
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Color(0xffE4C98A),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const CircleAvatar(
+                        radius: 28,
+                        backgroundColor: Color(0xffE4C98A),
+                      ),
+                      const SizedBox(width: 15),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Michael Anderson",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "User ID: USR-2024-00847",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff4B4B4B),
+                            ),
+                          ),
+                          Text(
+                            "Submitted: Jan 10, 2024 at 2:35 PM",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff4B4B4B),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 6,
                         ),
-                        const SizedBox(width: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        decoration: BoxDecoration(
+                          color: contentTheme.primary.withValues(alpha: .14),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
                           children: [
-                            Text(
-                              "Michael Anderson",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                            Icon(
+                              Icons.timelapse_rounded,
+                              size: 20,
+                              color: contentTheme.primary,
                             ),
+                            SizedBox(width: 10),
                             Text(
-                              "User ID: USR-2024-00847",
+                              "Pending Review",
                               style: GoogleFonts.montserrat(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff4B4B4B)),
-                            ),
-                            Text(
-                              "Submitted: Jan 10, 2024 at 2:35 PM",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff4B4B4B)),
+                                fontSize: 14,
+                                color: contentTheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ],
                         ),
-                        const Spacer(),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 14, vertical: 6),
-                          decoration: BoxDecoration(
-                              color:
-                                  contentTheme.primary.withValues(alpha: .14),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.timelapse_rounded,
-                                size: 20,
-                                color: contentTheme.primary,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "Pending Review",
-                                style: GoogleFonts.montserrat(
-                                    fontSize: 14,
-                                    color: contentTheme.primary,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
 
-                  const SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                  /// MAIN CONTENT
-                  SizedBox(
-                    width: Get.width,
-                    height: Get.height * 0.60,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        /// DOCUMENT VIEWER
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Document Viewer",
-                                      style: GoogleFonts.montserrat(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    ),
-                                    chip("ID Card"),
-                                    const SizedBox(width: 8),
-                                    chip("Business License"),
-                                  ],
-                                ),
-
-                                const SizedBox(height: 10),
-
-                                /// DOCUMENT AREA
-                                Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade300,
-                                      borderRadius: BorderRadius.circular(10),
+                /// MAIN CONTENT
+                SizedBox(
+                  width: Get.width,
+                  height: Get.height * 0.60,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /// DOCUMENT VIEWER
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Document Viewer",
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
                                     ),
                                   ),
+                                  chip("ID Card"),
+                                  const SizedBox(width: 8),
+                                  chip("Business License"),
+                                ],
+                              ),
+
+                              const SizedBox(height: 10),
+
+                              /// DOCUMENT AREA
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
+                              ),
 
-                                const SizedBox(height: 10),
+                              const SizedBox(height: 10),
 
-                                /// ACTION BUTTONS
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Card(
-                                        child: Column(
+                              /// ACTION BUTTONS
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    child: Column(
                                       children: [
                                         Icon(
                                           Icons.zoom_in,
@@ -203,15 +214,19 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Zoom In",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff4B4B4B)),
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff4B4B4B),
+                                          ),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 15, vertical: 10)),
-                                    Card(
-                                        child: Column(
+                                      horizontal: 15,
+                                      vertical: 10,
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Column(
                                       children: [
                                         Icon(
                                           Icons.rotate_right_rounded,
@@ -221,15 +236,19 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Rotate",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff4B4B4B)),
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff4B4B4B),
+                                          ),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 15, vertical: 10)),
-                                    Card(
-                                        child: Column(
+                                      horizontal: 15,
+                                      vertical: 10,
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Column(
                                       children: [
                                         Icon(
                                           Icons.download_outlined,
@@ -239,224 +258,244 @@ class _KycReviewPageState extends State<KycReviewPage>
                                         Text(
                                           "Download",
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff4B4B4B)),
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff4B4B4B),
+                                          ),
                                         ),
                                       ],
                                     ).paddingSymmetric(
-                                            horizontal: 15, vertical: 10)),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon:
-                                              const Icon(Icons.arrow_back_ios),
+                                      horizontal: 15,
+                                      vertical: 10,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.arrow_back_ios),
+                                      ),
+                                      Text(
+                                        "1 / 3",
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff4B4B4B),
                                         ),
-                                        Text(
-                                          "1 / 3",
-                                          style: GoogleFonts.montserrat(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xff4B4B4B)),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.arrow_forward_ios,
                                         ),
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                              Icons.arrow_forward_ios),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
+                      ),
 
-                        const SizedBox(width: 20),
+                      const SizedBox(width: 20),
 
-                        /// EXTRACTED INFO
-                        Expanded(
-                          flex: 3,
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Extracted Information",
-                                  style: GoogleFonts.montserrat(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black),
-                                ),
-                                SizedBox(height: 20),
-                                infoRow("Full Name", "Michael James Anderson"),
-                                SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    infoRow("Date of Birth", "March 15, 1985"),
-                                    SizedBox(width: 150),
-                                    infoRow("ID Number", "DL-8473629"),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                infoRow("Address",
-                                    "2847 Oak Street, San Francisco, CA 94102"),
-                                SizedBox(height: 10),
-                                Divider(),
-                                SizedBox(height: 10),
-                                Text(
-                                  "Business Information",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 10),
-                                infoRow("Business Name",
-                                    "Anderson Tech Solutions LLC"),
-                                SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    infoRow("Tax ID (EIN)", "45-8392847"),
-                                    SizedBox(width: 150),
-                                    infoRow("Registration Date", "Jan 2020"),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                infoRow("Business Address",
-                                    "1250 Market St, Suite 400, San Francisco, CA 94102"),
-                                SizedBox(height: 10),
-                                Divider(),
-                                SizedBox(height: 10),
-                              ],
-                            ),
+                      /// EXTRACTED INFO
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                        )
-                      ],
-                    ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Extracted Information",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              infoRow("Full Name", "Michael James Anderson"),
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  infoRow("Date of Birth", "March 15, 1985"),
+                                  SizedBox(width: 150),
+                                  infoRow("ID Number", "DL-8473629"),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              infoRow(
+                                "Address",
+                                "2847 Oak Street, San Francisco, CA 94102",
+                              ),
+                              SizedBox(height: 10),
+                              Divider(),
+                              SizedBox(height: 10),
+                              Text(
+                                "Business Information",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 10),
+                              infoRow(
+                                "Business Name",
+                                "Anderson Tech Solutions LLC",
+                              ),
+                              SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  infoRow("Tax ID (EIN)", "45-8392847"),
+                                  SizedBox(width: 150),
+                                  infoRow("Registration Date", "30 Jan 2020"),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              infoRow(
+                                "Business Address",
+                                "1250 Market St, Suite 400, San Francisco, CA 94102",
+                              ),
+                              SizedBox(height: 10),
+                              Divider(),
+                              SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                ),
 
-                  const SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-                  /// BOTTOM BUTTONS
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: const Color(0xffd4a32b),
+                /// BOTTOM BUTTONS
+                Row(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15,
+                          horizontal: 25,
                         ),
-                        onPressed: () {
-                          Get.toNamed("/kyc-review");
-                        },
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.done,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 6),
-                            Text(
-                              "Approve KYC",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                            ),
-                          ],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
+                        backgroundColor: const Color(0xffd4a32b),
                       ),
-                      const SizedBox(width: 15),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 35),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: LeftBarTheme
-                              .lightLeftBarTheme.activeItemBackground,
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.close,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 6),
-                            Text(
-                              "Reject KYC",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 15),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 10),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: const Color(0xffd4a32b),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.question_mark_rounded,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 6),
-                            Text(
-                              "Request Info",
-                              style: GoogleFonts.montserrat(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Spacer(),
-                      OutlinedButton.icon(
-                        onPressed: () {
-                          showKycHistoryDialog(context);
-                        },
-                        style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.transparent),
-                                borderRadius: BorderRadius.circular(8)),
-                            backgroundColor: Color(0xffF3F4F6)),
-                        icon: const Icon(Icons.history),
-                        label: Text(
-                          "View History",
-                          style: GoogleFonts.montserrat(
+                      onPressed: () {
+                        Get.toNamed("/kyc-review");
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.done, size: 20, color: Colors.white),
+                          SizedBox(width: 6),
+                          Text(
+                            "Approve KYC",
+                            style: GoogleFonts.montserrat(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xff4B4B4B)),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15,
+                          horizontal: 35,
                         ),
-                      )
-                    ],
-                  )
-                ],
-              ).paddingSymmetric(horizontal: 20));
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        backgroundColor:
+                            LeftBarTheme.lightLeftBarTheme.activeItemBackground,
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Icon(Icons.close, size: 20, color: Colors.white),
+                          SizedBox(width: 6),
+                          Text(
+                            "Reject KYC",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15,
+                          horizontal: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        backgroundColor: const Color(0xffd4a32b),
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.question_mark_rounded,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 6),
+                          Text(
+                            "Request Info",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    OutlinedButton.icon(
+                      onPressed: () {
+                        showKycHistoryDialog(context);
+                      },
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        backgroundColor: Color(0xffF3F4F6),
+                      ),
+                      icon: const Icon(Icons.history),
+                      label: Text(
+                        "View History",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff4B4B4B),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ).paddingSymmetric(horizontal: 20),
+          );
         },
       ),
     );
@@ -483,10 +522,7 @@ class _KycReviewPageState extends State<KycReviewPage>
                   /// TITLE
                   const Text(
                     "Request More Information",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
 
                   const SizedBox(height: 6),
@@ -538,20 +574,23 @@ class _KycReviewPageState extends State<KycReviewPage>
                   const SizedBox(height: 12),
 
                   documentTile(
-                      icon: Icons.badge,
-                      title: "New ID",
-                      subtitle: "Government-issued identification document"),
+                    icon: Icons.badge,
+                    title: "New ID",
+                    subtitle: "Government-issued identification document",
+                  ),
 
                   documentTile(
-                      icon: Icons.home,
-                      title: "Address Proof",
-                      subtitle:
-                          "Utility bill or bank statement (within 3 months)"),
+                    icon: Icons.home,
+                    title: "Address Proof",
+                    subtitle:
+                        "Utility bill or bank statement (within 3 months)",
+                  ),
 
                   documentTile(
-                      icon: Icons.business_center,
-                      title: "Business License",
-                      subtitle: "Valid business registration certificate"),
+                    icon: Icons.business_center,
+                    title: "Business License",
+                    subtitle: "Valid business registration certificate",
+                  ),
 
                   const SizedBox(height: 25),
 
@@ -600,14 +639,16 @@ class _KycReviewPageState extends State<KycReviewPage>
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xff0B4D3A),
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 14),
+                            horizontal: 20,
+                            vertical: 14,
+                          ),
                         ),
                         onPressed: () {},
                         icon: const Icon(Icons.send),
                         label: const Text("Send Request"),
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -631,10 +672,7 @@ class _KycReviewPageState extends State<KycReviewPage>
       ),
       child: Row(
         children: [
-          Checkbox(
-            value: false,
-            onChanged: (v) {},
-          ),
+          Checkbox(value: false, onChanged: (v) {}),
           const SizedBox(width: 6),
           Container(
             padding: const EdgeInsets.all(8),
@@ -653,9 +691,9 @@ class _KycReviewPageState extends State<KycReviewPage>
               Text(
                 subtitle,
                 style: const TextStyle(fontSize: 12, color: Colors.grey),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -671,9 +709,10 @@ class _KycReviewPageState extends State<KycReviewPage>
       child: Text(
         title,
         style: GoogleFonts.montserrat(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: contentTheme.primary),
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          color: contentTheme.primary,
+        ),
       ),
     );
   }
@@ -685,16 +724,20 @@ class _KycReviewPageState extends State<KycReviewPage>
         Text(
           title,
           style: GoogleFonts.montserrat(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: Color(0xff4B4B4B)),
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff4B4B4B),
+          ),
         ),
         const SizedBox(height: 4),
-        Text(value,
-            style: GoogleFonts.montserrat(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Colors.black)),
+        Text(
+          value,
+          style: GoogleFonts.montserrat(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

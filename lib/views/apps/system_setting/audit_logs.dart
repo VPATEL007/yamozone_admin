@@ -128,115 +128,116 @@ class _AuditLogsScreenState extends State<AuditLogsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBg,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(28),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // ── Page Title ──────────────────────────────────
-                  const Text(
-                    'Audit Logs',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w700,
-                      color: kTextDark,
-                      letterSpacing: -0.5,
+      backgroundColor: kBg,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // ── Page Title ──────────────────────────────────
+                const Text(
+                  'Audit Logs',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: kTextDark,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // ── Filter Bar ──────────────────────────────────
+                _FilterBar(
+                  searchCtrl: _searchCtrl,
+                  actionType: _actionType,
+                  module: _module,
+                  onActionChanged: (v) => setState(() => _actionType = v),
+                  onModuleChanged: (v) => setState(() => _module = v),
+                ),
+                const SizedBox(height: 20),
+
+                // ── Action Buttons ──────────────────────────────
+                Row(
+                  children: [
+                    _PrimaryButton(
+                      icon: Icons.filter_alt,
+                      label: 'Apply Filters',
+                      onTap: () {},
                     ),
-                  ),
-                  const SizedBox(height: 24),
+                    const SizedBox(width: 10),
+                    _OutlineButton(
+                      icon: Icons.refresh,
+                      label: 'Reset',
+                      onTap: () {},
+                    ),
+                    const Spacer(),
+                    _PrimaryButton(
+                      icon: Icons.download,
+                      label: 'Export CSV',
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 28),
 
-                  // ── Filter Bar ──────────────────────────────────
-                  _FilterBar(
-                    searchCtrl: _searchCtrl,
-                    actionType: _actionType,
-                    module: _module,
-                    onActionChanged: (v) => setState(() => _actionType = v),
-                    onModuleChanged: (v) => setState(() => _module = v),
-                  ),
-                  const SizedBox(height: 20),
+                // ── Stats Cards ─────────────────────────────────
+                Row(
+                  children: const [
+                    Expanded(
+                      child: _StatCard(
+                        label: 'Total Actions',
+                        value: '24,582',
+                        sub: '↑ 12% vs last month',
+                        subColor: kSuccess,
+                        icon: Icons.description_outlined,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: _StatCard(
+                        label: "Today's Actions",
+                        value: '342',
+                        sub: 'Last 24 hours',
+                        subColor: kTextLight,
+                        icon: Icons.access_time,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: _StatCard(
+                        label: 'Active Admins',
+                        value: '18',
+                        sub: 'Currently online',
+                        subColor: kTextLight,
+                        icon: Icons.people_alt_outlined,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: _StatCard(
+                        label: 'Critical Actions',
+                        value: '23',
+                        sub: '⚠ Requires review',
+                        subColor: kAccent,
+                        icon: Icons.warning_amber_rounded,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 28),
 
-                  // ── Action Buttons ──────────────────────────────
-                  Row(
-                    children: [
-                      _PrimaryButton(
-                        icon: Icons.filter_alt,
-                        label: 'Apply Filters',
-                        onTap: () {},
-                      ),
-                      const SizedBox(width: 10),
-                      _OutlineButton(
-                        icon: Icons.refresh,
-                        label: 'Reset',
-                        onTap: () {},
-                      ),
-                      const Spacer(),
-                      _PrimaryButton(
-                        icon: Icons.download,
-                        label: 'Export CSV',
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 28),
-
-                  // ── Stats Cards ─────────────────────────────────
-                  Row(
-                    children: const [
-                      Expanded(
-                        child: _StatCard(
-                          label: 'Total Actions',
-                          value: '24,582',
-                          sub: '↑ 12% vs last month',
-                          subColor: kSuccess,
-                          icon: Icons.description_outlined,
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                      Expanded(
-                        child: _StatCard(
-                          label: "Today's Actions",
-                          value: '342',
-                          sub: 'Last 24 hours',
-                          subColor: kTextLight,
-                          icon: Icons.access_time,
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                      Expanded(
-                        child: _StatCard(
-                          label: 'Active Admins',
-                          value: '18',
-                          sub: 'Currently online',
-                          subColor: kTextLight,
-                          icon: Icons.people_alt_outlined,
-                        ),
-                      ),
-                      SizedBox(width: 16),
-                      Expanded(
-                        child: _StatCard(
-                          label: 'Critical Actions',
-                          value: '23',
-                          sub: '⚠ Requires review',
-                          subColor: kAccent,
-                          icon: Icons.warning_amber_rounded,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 28),
-
-                  // ── Recent Activity Logs Table ──────────────────
-                  _ActivityTable(),
-                ],
-              ),
+                // ── Recent Activity Logs Table ──────────────────
+                _ActivityTable(),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -286,8 +287,11 @@ class _FilterBar extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Search by admin, action, or entity...',
                   hintStyle: const TextStyle(color: kTextLight, fontSize: 13),
-                  prefixIcon:
-                      const Icon(Icons.search, color: kTextLight, size: 18),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: kTextLight,
+                    size: 18,
+                  ),
                   filled: true,
                   fillColor: kBg,
                   border: OutlineInputBorder(
@@ -322,7 +326,7 @@ class _FilterBar extends StatelessWidget {
                   'Approve',
                   'Update',
                   'Resolve',
-                  'Create'
+                  'Create',
                 ],
                 onChanged: onActionChanged,
               ),
@@ -352,17 +356,11 @@ class _FilterBar extends StatelessWidget {
           const SizedBox(width: 16),
 
           // Date From
-          Expanded(
-            flex: 2,
-            child: _buildLabel('Date From', _DateField()),
-          ),
+          Expanded(flex: 2, child: _buildLabel('Date From', _DateField())),
           const SizedBox(width: 16),
 
           // Date To
-          Expanded(
-            flex: 2,
-            child: _buildLabel('Date To', _DateField()),
-          ),
+          Expanded(flex: 2, child: _buildLabel('Date To', _DateField())),
         ],
       ),
     );
@@ -417,9 +415,10 @@ class _Dropdown extends StatelessWidget {
         underline: const SizedBox(),
         icon: const Icon(Icons.keyboard_arrow_down, color: kTextMid, size: 18),
         style: const TextStyle(fontSize: 13, color: kTextDark),
-        items: items
-            .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-            .toList(),
+        items:
+            items
+                .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                .toList(),
         onChanged: (v) {
           if (v != null) onChanged(v);
         },
@@ -475,8 +474,10 @@ class _PrimaryButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: onTap,
       icon: Icon(icon, size: 16),
-      label: Text(label,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+      label: Text(
+        label,
+        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+      ),
       style: ElevatedButton.styleFrom(
         backgroundColor: kPrimary,
         foregroundColor: Colors.white,
@@ -504,8 +505,10 @@ class _OutlineButton extends StatelessWidget {
     return OutlinedButton.icon(
       onPressed: onTap,
       icon: Icon(icon, size: 16),
-      label: Text(label,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+      label: Text(
+        label,
+        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+      ),
       style: OutlinedButton.styleFrom(
         foregroundColor: kTextMid,
         side: const BorderSide(color: kBorder),
@@ -643,8 +646,10 @@ class _ActivityTable extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(color: kBorder),
                     borderRadius: BorderRadius.circular(6),
@@ -654,9 +659,12 @@ class _ActivityTable extends StatelessWidget {
                     underline: const SizedBox(),
                     isDense: true,
                     style: const TextStyle(fontSize: 13, color: kTextDark),
-                    items: ['25', '50', '100']
-                        .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                        .toList(),
+                    items:
+                        ['25', '50', '100']
+                            .map(
+                              (e) => DropdownMenuItem(value: e, child: Text(e)),
+                            )
+                            .toList(),
                     onChanged: (_) {},
                   ),
                 ),
@@ -689,8 +697,8 @@ class _ActivityTable extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: _logs.length,
-            separatorBuilder: (_, __) =>
-                const Divider(height: 1, color: kBorder),
+            separatorBuilder:
+                (_, __) => const Divider(height: 1, color: kBorder),
             itemBuilder: (context, i) => _LogRow(log: _logs[i]),
           ),
         ],
@@ -793,8 +801,11 @@ class _LogRow extends StatelessWidget {
             flex: 2,
             child: Text(
               log.timestamp,
-              style:
-                  const TextStyle(fontSize: 12, color: kTextMid, height: 1.5),
+              style: const TextStyle(
+                fontSize: 12,
+                color: kTextMid,
+                height: 1.5,
+              ),
             ),
           ),
 
@@ -961,15 +972,3 @@ class _LogRow extends StatelessWidget {
 //    ),
 //  )
 //
-void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Roboto'),
-      home: Scaffold(
-        backgroundColor: kBg,
-        body: const AuditLogsScreen(),
-      ),
-    ),
-  );
-}
