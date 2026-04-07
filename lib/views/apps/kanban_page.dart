@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/apps/kanban_controller.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/kanban_controller.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class KanBanPage extends StatefulWidget {
   const KanBanPage({Key? key}) : super(key: key);
@@ -47,11 +47,7 @@ class _KanBanPageState extends State<KanBanPage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "KanBan",
-                      fontSize: 18,
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("KanBan", fontSize: 18, fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Apps'),
@@ -73,8 +69,9 @@ class _KanBanPageState extends State<KanBanPage>
                   cardBuilder: (context, group, groupItem) {
                     return AppFlowyGroupCard(
                       key: ValueKey(groupItem.id),
-                      decoration:
-                          BoxDecoration(color: theme.colorScheme.background),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.background,
+                      ),
                       child: buildCard(groupItem),
                     );
                   },
@@ -103,9 +100,7 @@ class _KanBanPageState extends State<KanBanPage>
                       ),
                     );
                   },
-                  groupConstraints: const BoxConstraints.tightFor(
-                    width: 400,
-                  ),
+                  groupConstraints: const BoxConstraints.tightFor(width: 400),
                 ),
               ),
             ],
@@ -135,27 +130,19 @@ class _KanBanPageState extends State<KanBanPage>
                     color: contentTheme.onPrimary,
                   ),
                 ),
-                MyText.bodyMedium(item.date, muted: true)
+                MyText.bodyMedium(item.date, muted: true),
               ],
             ),
             MySpacing.height(12),
-            MyText.bodyMedium(
-              item.title,
-            ),
+            MyText.bodyMedium(item.title),
             MySpacing.height(12),
             Row(
               children: [
-                const Icon(
-                  LucideIcons.luggage,
-                  size: 16,
-                ),
+                const Icon(LucideIcons.luggage, size: 16),
                 MySpacing.width(8),
                 MyText.bodyMedium(item.jobTypeName, muted: true),
                 MySpacing.width(16),
-                const Icon(
-                  LucideIcons.messageSquare,
-                  size: 20,
-                ),
+                const Icon(LucideIcons.messageSquare, size: 20),
                 MySpacing.width(8),
                 MyText.bodyMedium("${item.comment} comments", muted: true),
               ],
@@ -173,9 +160,7 @@ class _KanBanPageState extends State<KanBanPage>
                       child: Image.asset(item.image),
                     ),
                     MySpacing.width(8),
-                    MyText.bodyMedium(
-                      item.name,
-                    ),
+                    MyText.bodyMedium(item.name),
                   ],
                 ),
                 MyContainer.none(
@@ -184,68 +169,58 @@ class _KanBanPageState extends State<KanBanPage>
                   child: PopupMenuButton(
                     offset: const Offset(-150, 15),
                     position: PopupMenuPosition.under,
-                    itemBuilder: (BuildContext context) => [
-                      PopupMenuItem(
-                          padding: MySpacing.xy(16, 8),
-                          height: 10,
-                          child: Row(
-                            children: [
-                              const Icon(
-                                LucideIcons.plusCircle,
-                                size: 20,
-                              ),
-                              MySpacing.width(8),
-                              MyText.bodySmall("Add People"),
-                            ],
-                          )),
-                      PopupMenuItem(
-                          padding: MySpacing.xy(16, 8),
-                          height: 10,
-                          child: Row(
-                            children: [
-                              const Icon(
-                                LucideIcons.edit,
-                                size: 20,
-                              ),
-                              MySpacing.width(8),
-                              MyText.bodySmall("Edit"),
-                            ],
-                          )),
-                      PopupMenuItem(
-                          padding: MySpacing.xy(16, 8),
-                          height: 10,
-                          child: Row(
-                            children: [
-                              const Icon(
-                                LucideIcons.trash,
-                                size: 20,
-                              ),
-                              MySpacing.width(8),
-                              MyText.bodySmall("Delete"),
-                            ],
-                          )),
-                      PopupMenuItem(
-                          padding: MySpacing.xy(16, 8),
-                          height: 10,
-                          child: Row(
-                            children: [
-                              const Icon(
-                                LucideIcons.logOut,
-                                size: 20,
-                              ),
-                              MySpacing.width(8),
-                              MyText.bodySmall("Leave"),
-                            ],
-                          )),
-                    ],
-                    child: const Icon(
-                      LucideIcons.moreVertical,
-                      size: 18,
-                    ),
+                    itemBuilder:
+                        (BuildContext context) => [
+                          PopupMenuItem(
+                            padding: MySpacing.xy(16, 8),
+                            height: 10,
+                            child: Row(
+                              children: [
+                                const Icon(LucideIcons.plusCircle, size: 20),
+                                MySpacing.width(8),
+                                MyText.bodySmall("Add People"),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            padding: MySpacing.xy(16, 8),
+                            height: 10,
+                            child: Row(
+                              children: [
+                                const Icon(LucideIcons.edit, size: 20),
+                                MySpacing.width(8),
+                                MyText.bodySmall("Edit"),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            padding: MySpacing.xy(16, 8),
+                            height: 10,
+                            child: Row(
+                              children: [
+                                const Icon(LucideIcons.trash, size: 20),
+                                MySpacing.width(8),
+                                MyText.bodySmall("Delete"),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            padding: MySpacing.xy(16, 8),
+                            height: 10,
+                            child: Row(
+                              children: [
+                                const Icon(LucideIcons.logOut, size: 20),
+                                MySpacing.width(8),
+                                MyText.bodySmall("Leave"),
+                              ],
+                            ),
+                          ),
+                        ],
+                    child: const Icon(LucideIcons.moreVertical, size: 18),
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       );
@@ -262,10 +237,7 @@ class _KanBanPageState extends State<KanBanPage>
 class RichTextCard extends StatefulWidget {
   final RichTextItem item;
 
-  const RichTextCard({
-    required this.item,
-    Key? key,
-  }) : super(key: key);
+  const RichTextCard({required this.item, Key? key}) : super(key: key);
 
   @override
   State<RichTextCard> createState() => _RichTextCardState();

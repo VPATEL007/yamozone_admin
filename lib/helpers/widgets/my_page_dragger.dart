@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_page_indicator.dart';
+import 'package:yamazone/helpers/widgets/my_page_indicator.dart';
 
 class MyPageDragger extends StatefulWidget {
   final canDragLeftToRight;
@@ -51,17 +51,16 @@ class _MyPageDraggerState extends State<MyPageDragger> {
       } else {
         slidePercent = 0.0;
       }
-      widget.slideUpdateStream!
-          .add(SlideUpdate(UpdateType.dragging, slideDirection, slidePercent));
+      widget.slideUpdateStream!.add(
+        SlideUpdate(UpdateType.dragging, slideDirection, slidePercent),
+      );
     }
   }
 
   onDragEnd(DragEndDetails details) {
-    widget.slideUpdateStream!.add(SlideUpdate(
-      UpdateType.doneDragging,
-      SlideDirection.none,
-      0.0,
-    ));
+    widget.slideUpdateStream!.add(
+      SlideUpdate(UpdateType.doneDragging, SlideDirection.none, 0.0),
+    );
 
     dragStart = null;
   }
@@ -101,32 +100,37 @@ class AnimatedPageDragger {
       final slideRemaining = 1.0 - slidePercent;
 
       duration = Duration(
-          milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round());
+        milliseconds: (slideRemaining / PERCENT_PER_MILLISECOND).round(),
+      );
     } else {
       endSlidePercent = 0.0;
       duration = Duration(
-          milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round());
+        milliseconds: (slidePercent / PERCENT_PER_MILLISECOND).round(),
+      );
     }
 
     completionAnimationController =
         AnimationController(duration: duration, vsync: vsync)
           ..addListener(() {
-            slidePercent = lerpDouble(startSlidePercent, endSlidePercent,
-                completionAnimationController.value);
+            slidePercent = lerpDouble(
+              startSlidePercent,
+              endSlidePercent,
+              completionAnimationController.value,
+            );
 
-            slideUpdateStream!.add(SlideUpdate(
-              UpdateType.animating,
-              slideDirection,
-              slidePercent,
-            ));
+            slideUpdateStream!.add(
+              SlideUpdate(UpdateType.animating, slideDirection, slidePercent),
+            );
           })
           ..addStatusListener((AnimationStatus status) {
             if (status == AnimationStatus.completed) {
-              slideUpdateStream!.add(SlideUpdate(
-                UpdateType.doneAnimating,
-                slideDirection,
-                endSlidePercent,
-              ));
+              slideUpdateStream!.add(
+                SlideUpdate(
+                  UpdateType.doneAnimating,
+                  slideDirection,
+                  endSlidePercent,
+                ),
+              );
             }
           });
   }
@@ -140,17 +144,9 @@ class AnimatedPageDragger {
   }
 }
 
-enum TransitionGoal {
-  open,
-  close,
-}
+enum TransitionGoal { open, close }
 
-enum UpdateType {
-  dragging,
-  doneDragging,
-  animating,
-  doneAnimating,
-}
+enum UpdateType { dragging, doneDragging, animating, doneAnimating }
 
 class SlideUpdate {
   final updateType;

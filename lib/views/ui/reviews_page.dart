@@ -3,18 +3,18 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/ui/reviews_controller.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/ui/reviews_controller.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ReviewsPage extends StatefulWidget {
   const ReviewsPage({Key? key}) : super(key: key);
@@ -127,23 +127,27 @@ class _ReviewsPageState extends State<ReviewsPage>
                             height: 200,
                             child: SfCircularChart(
                               legend: Legend(
-                                  isVisible: true,
-                                  overflowMode: LegendItemOverflowMode.wrap,
-                                  position: LegendPosition.left),
+                                isVisible: true,
+                                overflowMode: LegendItemOverflowMode.wrap,
+                                position: LegendPosition.left,
+                              ),
                               series: <DoughnutSeries<ChartSampleData, String>>[
                                 DoughnutSeries<ChartSampleData, String>(
-                                    radius: '80%',
-                                    explode: true,
-                                    explodeOffset: '10%',
-                                    dataSource: controller.doughnutChartData,
-                                    xValueMapper: (ChartSampleData data, _) =>
-                                        data.x as String,
-                                    yValueMapper: (ChartSampleData data, _) =>
-                                        data.y,
-                                    dataLabelMapper:
-                                        (ChartSampleData data, _) => data.text,
-                                    dataLabelSettings: const DataLabelSettings(
-                                        isVisible: true))
+                                  radius: '80%',
+                                  explode: true,
+                                  explodeOffset: '10%',
+                                  dataSource: controller.doughnutChartData,
+                                  xValueMapper:
+                                      (ChartSampleData data, _) =>
+                                          data.x as String,
+                                  yValueMapper:
+                                      (ChartSampleData data, _) => data.y,
+                                  dataLabelMapper:
+                                      (ChartSampleData data, _) => data.text,
+                                  dataLabelSettings: const DataLabelSettings(
+                                    isVisible: true,
+                                  ),
+                                ),
                               ],
                               tooltipBehavior: TooltipBehavior(enable: true),
                             ),
@@ -152,10 +156,7 @@ class _ReviewsPageState extends State<ReviewsPage>
                       ],
                     ),
                     MySpacing.height(16),
-                    MyText.titleMedium(
-                      "Review Growth",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Review Growth", fontWeight: 600),
                     MySpacing.height(16),
                     MyContainer(
                       child: Column(
@@ -172,10 +173,7 @@ class _ReviewsPageState extends State<ReviewsPage>
                                     fontSize: 24,
                                   ),
                                   MySpacing.width(8),
-                                  MyText.bodyMedium(
-                                    "Reviews",
-                                    muted: true,
-                                  )
+                                  MyText.bodyMedium("Reviews", muted: true),
                                 ],
                               ),
                               PopupMenuButton(
@@ -215,7 +213,7 @@ class _ReviewsPageState extends State<ReviewsPage>
                                         LucideIcons.chevronDown,
                                         size: 22,
                                         color: theme.colorScheme.onBackground,
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -231,14 +229,15 @@ class _ReviewsPageState extends State<ReviewsPage>
                           MySpacing.height(16),
                           SfCartesianChart(
                             legend: Legend(
-                                isVisible: true,
-                                overflowMode: LegendItemOverflowMode.wrap,
-                                position: LegendPosition.top),
+                              isVisible: true,
+                              overflowMode: LegendItemOverflowMode.wrap,
+                              position: LegendPosition.top,
+                            ),
                             tooltipBehavior: controller.tooltipBehavior,
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

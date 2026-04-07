@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
-import 'package:webkit/models/contacts.dart';
-import 'package:webkit/views/apps/CRM/contacts_page.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/models/contacts.dart';
+import 'package:yamazone/views/apps/CRM/contacts_page.dart';
 
 class ContactsController extends MyController {
   List<Contacts> contacts = [];
@@ -10,8 +10,10 @@ class ContactsController extends MyController {
 
   ContactsController();
 
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   @override
   void onInit() {

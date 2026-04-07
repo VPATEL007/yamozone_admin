@@ -1,5 +1,5 @@
-import 'package:webkit/helpers/utils/my_string_utils.dart';
-import 'package:webkit/helpers/widgets/my_field_validator.dart';
+import 'package:yamazone/helpers/utils/my_string_utils.dart';
+import 'package:yamazone/helpers/widgets/my_field_validator.dart';
 
 class MyEmailValidator extends MyFieldValidatorRule<String> {
   @override
@@ -21,12 +21,13 @@ class MyLengthValidator implements MyFieldValidatorRule<String> {
   final bool short, required;
   final int? min, max, exact;
 
-  MyLengthValidator(
-      {this.required = true,
-      this.exact,
-      this.min,
-      this.max,
-      this.short = false});
+  MyLengthValidator({
+    this.required = true,
+    this.exact,
+    this.min,
+    this.max,
+    this.short = false,
+  });
 
   @override
   String? validate(String? value, bool required, Map<String, dynamic> data) {

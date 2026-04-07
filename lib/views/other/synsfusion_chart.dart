@@ -5,19 +5,19 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/other/syncfusion_charts_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/other/syncfusion_charts_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class SyncFusionChart extends StatefulWidget {
   const SyncFusionChart({Key? key}) : super(key: key);
@@ -80,14 +80,16 @@ class _SyncFusionChartState extends State<SyncFusionChart>
                               tooltipBehavior: controller.chart,
                               axes: <ChartAxis>[
                                 NumericAxis(
-                                    numberFormat: NumberFormat.compact(),
-                                    majorGridLines:
-                                        const MajorGridLines(width: 0),
-                                    opposedPosition: true,
-                                    name: 'yAxis1',
-                                    interval: 1000,
-                                    minimum: 0,
-                                    maximum: 7000)
+                                  numberFormat: NumberFormat.compact(),
+                                  majorGridLines: const MajorGridLines(
+                                    width: 0,
+                                  ),
+                                  opposedPosition: true,
+                                  name: 'yAxis1',
+                                  interval: 1000,
+                                  minimum: 0,
+                                  maximum: 7000,
+                                ),
                               ],
                             ),
                           ],
@@ -117,27 +119,28 @@ class _SyncFusionChartState extends State<SyncFusionChart>
                             MyText.titleMedium("Bubble Chart"),
                             MySpacing.height(flexSpacing),
                             SfCartesianChart(
-                                plotAreaBorderWidth: 0,
-                                primaryXAxis: NumericAxis(
-                                    majorGridLines:
-                                        const MajorGridLines(width: 0),
-                                    minimum: 60,
-                                    maximum: 100),
-                                tooltipBehavior: controller.tooltipBehavior,
-                                series: <BubbleSeries<ChartSampleData, num>>[
-                                  BubbleSeries<ChartSampleData, num>(
-                                    opacity: 0.7,
-                                    color: contentTheme.primary,
-                                    dataSource: controller.bubbleChartData,
-                                    xValueMapper: (ChartSampleData sales, _) =>
-                                        sales.xValue as num,
-                                    yValueMapper: (ChartSampleData sales, _) =>
-                                        sales.y,
-                                    sizeValueMapper:
-                                        (ChartSampleData sales, _) =>
-                                            sales.size,
-                                  )
-                                ]),
+                              plotAreaBorderWidth: 0,
+                              primaryXAxis: NumericAxis(
+                                majorGridLines: const MajorGridLines(width: 0),
+                                minimum: 60,
+                                maximum: 100,
+                              ),
+                              tooltipBehavior: controller.tooltipBehavior,
+                              series: <BubbleSeries<ChartSampleData, num>>[
+                                BubbleSeries<ChartSampleData, num>(
+                                  opacity: 0.7,
+                                  color: contentTheme.primary,
+                                  dataSource: controller.bubbleChartData,
+                                  xValueMapper:
+                                      (ChartSampleData sales, _) =>
+                                          sales.xValue as num,
+                                  yValueMapper:
+                                      (ChartSampleData sales, _) => sales.y,
+                                  sizeValueMapper:
+                                      (ChartSampleData sales, _) => sales.size,
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -181,9 +184,9 @@ class _SyncFusionChartState extends State<SyncFusionChart>
                       ),
                     ),
                     MyFlexItem(
-                        sizes: "lg-7",
-                        child: MyContainer(
-                            child: Column(
+                      sizes: "lg-7",
+                      child: MyContainer(
+                        child: Column(
                           children: [
                             MyText.titleMedium("Range Chart"),
                             MySpacing.height(flexSpacing),
@@ -192,147 +195,159 @@ class _SyncFusionChartState extends State<SyncFusionChart>
                               tooltipBehavior: controller.rangeSlider,
                             ),
                           ],
-                        ))),
+                        ),
+                      ),
+                    ),
                     MyFlexItem(
-                        sizes: "lg-7",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium("Doughnut Chart"),
-                              MySpacing.height(flexSpacing),
-                              SfCircularChart(
-                                legend: Legend(
+                      sizes: "lg-7",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium("Doughnut Chart"),
+                            MySpacing.height(flexSpacing),
+                            SfCircularChart(
+                              legend: Legend(
+                                isVisible: true,
+                                overflowMode: LegendItemOverflowMode.wrap,
+                                position: LegendPosition.bottom,
+                              ),
+                              series: <DoughnutSeries<ChartSampleData, String>>[
+                                DoughnutSeries<ChartSampleData, String>(
+                                  radius: '80%',
+                                  explode: true,
+                                  explodeOffset: '10%',
+                                  dataSource: controller.doughnutChartData,
+                                  xValueMapper:
+                                      (ChartSampleData data, _) =>
+                                          data.x as String,
+                                  yValueMapper:
+                                      (ChartSampleData data, _) => data.y,
+                                  dataLabelMapper:
+                                      (ChartSampleData data, _) => data.text,
+                                  dataLabelSettings: const DataLabelSettings(
                                     isVisible: true,
-                                    overflowMode: LegendItemOverflowMode.wrap,
-                                    position: LegendPosition.bottom),
-                                series: <DoughnutSeries<ChartSampleData,
-                                    String>>[
-                                  DoughnutSeries<ChartSampleData, String>(
-                                      radius: '80%',
-                                      explode: true,
-                                      explodeOffset: '10%',
-                                      dataSource: controller.doughnutChartData,
-                                      xValueMapper: (ChartSampleData data, _) =>
-                                          data.x as String,
-                                      yValueMapper: (ChartSampleData data, _) =>
-                                          data.y,
-                                      dataLabelMapper:
-                                          (ChartSampleData data, _) =>
-                                              data.text,
-                                      dataLabelSettings:
-                                          const DataLabelSettings(
-                                              isVisible: true))
-                                ],
-                                tooltipBehavior: TooltipBehavior(enable: true),
-                              ),
-                            ],
-                          ),
-                        )),
+                                  ),
+                                ),
+                              ],
+                              tooltipBehavior: TooltipBehavior(enable: true),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     MyFlexItem(
-                        sizes: "lg-7",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium("Pie Chart"),
-                              MySpacing.height(flexSpacing),
-                              SfCircularChart(
-                                legend: Legend(
+                      sizes: "lg-7",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium("Pie Chart"),
+                            MySpacing.height(flexSpacing),
+                            SfCircularChart(
+                              legend: Legend(
+                                isVisible: true,
+                                position: LegendPosition.bottom,
+                              ),
+                              series: <PieSeries<ChartSampleData, String>>[
+                                PieSeries<ChartSampleData, String>(
+                                  explode: true,
+                                  explodeIndex: 0,
+                                  explodeOffset: '10%',
+                                  dataSource: controller.pieChartData,
+                                  xValueMapper:
+                                      (ChartSampleData data, _) =>
+                                          data.x as String,
+                                  yValueMapper:
+                                      (ChartSampleData data, _) => data.y,
+                                  dataLabelMapper:
+                                      (ChartSampleData data, _) => data.text,
+                                  startAngle: 90,
+                                  endAngle: 90,
+                                  dataLabelSettings: const DataLabelSettings(
                                     isVisible: true,
-                                    position: LegendPosition.bottom),
-                                series: <PieSeries<ChartSampleData, String>>[
-                                  PieSeries<ChartSampleData, String>(
-                                      explode: true,
-                                      explodeIndex: 0,
-                                      explodeOffset: '10%',
-                                      dataSource: controller.pieChartData,
-                                      xValueMapper: (ChartSampleData data, _) =>
-                                          data.x as String,
-                                      yValueMapper: (ChartSampleData data, _) =>
-                                          data.y,
-                                      dataLabelMapper:
-                                          (ChartSampleData data, _) =>
-                                              data.text,
-                                      startAngle: 90,
-                                      endAngle: 90,
-                                      dataLabelSettings:
-                                          const DataLabelSettings(
-                                              isVisible: true)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     MyFlexItem(
-                        sizes: "lg-7",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium("Radial Chart"),
-                              MySpacing.height(flexSpacing),
-                              SfCircularChart(
-                                key: GlobalKey(),
-                                series: <RadialBarSeries<ChartSampleData,
-                                    String>>[
-                                  RadialBarSeries<ChartSampleData, String>(
-                                      maximumValue: 15,
-                                      dataLabelSettings:
-                                          const DataLabelSettings(
-                                              isVisible: true,
-                                              textStyle:
-                                                  TextStyle(fontSize: 10.0)),
-                                      dataSource: controller.radialChartData,
-                                      cornerStyle: CornerStyle.bothCurve,
-                                      gap: '10%',
-                                      radius: '90%',
-                                      xValueMapper: (ChartSampleData data, _) =>
+                      sizes: "lg-7",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium("Radial Chart"),
+                            MySpacing.height(flexSpacing),
+                            SfCircularChart(
+                              key: GlobalKey(),
+                              series: <
+                                RadialBarSeries<ChartSampleData, String>
+                              >[
+                                RadialBarSeries<ChartSampleData, String>(
+                                  maximumValue: 15,
+                                  dataLabelSettings: const DataLabelSettings(
+                                    isVisible: true,
+                                    textStyle: TextStyle(fontSize: 10.0),
+                                  ),
+                                  dataSource: controller.radialChartData,
+                                  cornerStyle: CornerStyle.bothCurve,
+                                  gap: '10%',
+                                  radius: '90%',
+                                  xValueMapper:
+                                      (ChartSampleData data, _) =>
                                           data.x as String,
-                                      yValueMapper: (ChartSampleData data, _) =>
-                                          data.y,
-                                      pointRadiusMapper:
-                                          (ChartSampleData data, _) =>
-                                              data.text,
-                                      pointColorMapper:
-                                          (ChartSampleData data, _) =>
-                                              data.pointColor,
-                                      dataLabelMapper:
-                                          (ChartSampleData data, _) =>
-                                              data.x as String)
-                                ],
-                                tooltipBehavior:
-                                    controller.radialTooltipBehavior,
-                              ),
-                            ],
-                          ),
-                        )),
+                                  yValueMapper:
+                                      (ChartSampleData data, _) => data.y,
+                                  pointRadiusMapper:
+                                      (ChartSampleData data, _) => data.text,
+                                  pointColorMapper:
+                                      (ChartSampleData data, _) =>
+                                          data.pointColor,
+                                  dataLabelMapper:
+                                      (ChartSampleData data, _) =>
+                                          data.x as String,
+                                ),
+                              ],
+                              tooltipBehavior: controller.radialTooltipBehavior,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     MyFlexItem(
-                        sizes: "lg-7",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium("Radial Chart"),
-                              MySpacing.height(flexSpacing),
-                              SfPyramidChart(
-                                title: ChartTitle(
-                                    text: 'comparison_of_calories'.tr(),
-                                    textStyle: MyTextStyle.bodySmall()),
-                                tooltipBehavior: TooltipBehavior(enable: true),
-                                series: PyramidSeries<ChartSampleData, String>(
-                                    dataSource: controller.pyramidChartData,
-                                    height: '90%',
-                                    explode: false,
-                                    gapRatio: 0,
-                                    pyramidMode: PyramidMode.linear,
-                                    xValueMapper: (ChartSampleData data, _) =>
+                      sizes: "lg-7",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium("Radial Chart"),
+                            MySpacing.height(flexSpacing),
+                            SfPyramidChart(
+                              title: ChartTitle(
+                                text: 'comparison_of_calories'.tr(),
+                                textStyle: MyTextStyle.bodySmall(),
+                              ),
+                              tooltipBehavior: TooltipBehavior(enable: true),
+                              series: PyramidSeries<ChartSampleData, String>(
+                                dataSource: controller.pyramidChartData,
+                                height: '90%',
+                                explode: false,
+                                gapRatio: 0,
+                                pyramidMode: PyramidMode.linear,
+                                xValueMapper:
+                                    (ChartSampleData data, _) =>
                                         data.x as String,
-                                    yValueMapper: (ChartSampleData data, _) =>
-                                        data.y,
-                                    dataLabelSettings: const DataLabelSettings(
-                                      isVisible: true,
-                                    )),
+                                yValueMapper:
+                                    (ChartSampleData data, _) => data.y,
+                                dataLabelSettings: const DataLabelSettings(
+                                  isVisible: true,
+                                ),
                               ),
-                            ],
-                          ),
-                        ))
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

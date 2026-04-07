@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_page_dragger.dart';
-import 'package:webkit/helpers/widgets/my_page_indicator.dart';
-import 'package:webkit/helpers/widgets/my_page_reveal.dart';
-import 'package:webkit/helpers/widgets/my_pages.dart';
+import 'package:yamazone/helpers/widgets/my_page_dragger.dart';
+import 'package:yamazone/helpers/widgets/my_page_indicator.dart';
+import 'package:yamazone/helpers/widgets/my_page_reveal.dart';
+import 'package:yamazone/helpers/widgets/my_pages.dart';
 
 class MyOnBoarding extends StatefulWidget {
   final List<PageViewModel> pages;
@@ -12,14 +12,14 @@ class MyOnBoarding extends StatefulWidget {
   final Color unSelectedIndicatorColor;
   final Widget skipWidget, doneWidget;
 
-  const MyOnBoarding(
-      {Key? key,
-      required this.pages,
-      required this.selectedIndicatorColor,
-      required this.unSelectedIndicatorColor,
-      required this.skipWidget,
-      required this.doneWidget})
-      : super(key: key);
+  const MyOnBoarding({
+    Key? key,
+    required this.pages,
+    required this.selectedIndicatorColor,
+    required this.unSelectedIndicatorColor,
+    required this.skipWidget,
+    required this.doneWidget,
+  }) : super(key: key);
 
   @override
   _MyOnBoardingState createState() => _MyOnBoardingState();
@@ -114,20 +114,21 @@ class _MyOnBoardingState extends State<MyOnBoarding>
           ),
           MyPagerIndicator(
             viewModel: PagerIndicatorViewModel(
-                widget.pages,
-                activeIndex,
-                slideDirection,
-                slidePercent,
-                widget.selectedIndicatorColor,
-                widget.unSelectedIndicatorColor,
-                widget.skipWidget,
-                widget.doneWidget),
+              widget.pages,
+              activeIndex,
+              slideDirection,
+              slidePercent,
+              widget.selectedIndicatorColor,
+              widget.unSelectedIndicatorColor,
+              widget.skipWidget,
+              widget.doneWidget,
+            ),
           ),
           MyPageDragger(
             canDragLeftToRight: activeIndex > 0,
             canDragRightToLeft: activeIndex < widget.pages.length - 1,
             slideUpdateStream: slideUpdateStream,
-          )
+          ),
         ],
       ),
     );

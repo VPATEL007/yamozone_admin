@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─── Color Palette ───────────────────────────────────────────────────────────
 const kPrimaryGreen = Color(0xFF1A3C34);

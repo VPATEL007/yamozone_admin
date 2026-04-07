@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:webkit/helpers/services/auth_services.dart';
+import 'package:yamazone/helpers/services/auth_services.dart';
 
 class AdminLoginPage extends StatefulWidget {
   const AdminLoginPage({super.key});
@@ -46,7 +46,8 @@ class _AdminLoginPageState extends State<AdminLoginPage>
       begin: const Offset(0, 0.08),
       end: Offset.zero,
     ).animate(
-        CurvedAnimation(parent: _animController, curve: Curves.easeOutCubic));
+      CurvedAnimation(parent: _animController, curve: Curves.easeOutCubic),
+    );
 
     _animController.forward();
   }
@@ -103,10 +104,7 @@ class _AdminLoginPageState extends State<AdminLoginPage>
       body: Stack(
         children: [
           // Background grid pattern
-          CustomPaint(
-            size: Size.infinite,
-            painter: _GridPainter(),
-          ),
+          CustomPaint(size: Size.infinite, painter: _GridPainter()),
           // Ambient glow at top
           Positioned(
             top: -100,
@@ -118,10 +116,7 @@ class _AdminLoginPageState extends State<AdminLoginPage>
                 height: 400,
                 decoration: const BoxDecoration(
                   gradient: RadialGradient(
-                    colors: [
-                      Color(0x1F4F7EF8),
-                      Colors.transparent,
-                    ],
+                    colors: [Color(0x1F4F7EF8), Colors.transparent],
                   ),
                 ),
               ),
@@ -158,7 +153,9 @@ class _AdminLoginPageState extends State<AdminLoginPage>
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 36, vertical: 44),
+                        horizontal: 36,
+                        vertical: 44,
+                      ),
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -231,10 +228,7 @@ class _AdminLoginPageState extends State<AdminLoginPage>
             ),
             children: [
               TextSpan(text: 'Admin'),
-              TextSpan(
-                text: 'Panel',
-                style: TextStyle(color: _accent),
-              ),
+              TextSpan(text: 'Panel', style: TextStyle(color: _accent)),
             ],
           ),
         ),
@@ -279,8 +273,9 @@ class _AdminLoginPageState extends State<AdminLoginPage>
             if (value == null || value.trim().isEmpty) {
               return 'Please enter your email';
             }
-            if (!RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$')
-                .hasMatch(value.trim())) {
+            if (!RegExp(
+              r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+            ).hasMatch(value.trim())) {
               return 'Enter a valid email address';
             }
             return null;
@@ -321,8 +316,8 @@ class _AdminLoginPageState extends State<AdminLoginPage>
                 color: _muted,
                 size: 20,
               ),
-              onPressed: () =>
-                  setState(() => _obscurePassword = !_obscurePassword),
+              onPressed:
+                  () => setState(() => _obscurePassword = !_obscurePassword),
             ),
           ),
           validator: (value) {
@@ -355,13 +350,12 @@ class _AdminLoginPageState extends State<AdminLoginPage>
                 decoration: BoxDecoration(
                   color: _rememberMe ? _accent : _inputBg,
                   borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    color: _rememberMe ? _accent : _border,
-                  ),
+                  border: Border.all(color: _rememberMe ? _accent : _border),
                 ),
-                child: _rememberMe
-                    ? const Icon(Icons.check, color: Colors.white, size: 12)
-                    : null,
+                child:
+                    _rememberMe
+                        ? const Icon(Icons.check, color: Colors.white, size: 12)
+                        : null,
               ),
               const SizedBox(width: 8),
               const Text(
@@ -405,23 +399,24 @@ class _AdminLoginPageState extends State<AdminLoginPage>
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: _isLoading
-            ? const SizedBox(
-                width: 22,
-                height: 22,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  color: Colors.white,
+        child:
+            _isLoading
+                ? const SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.5,
+                    color: Colors.white,
+                  ),
+                )
+                : const Text(
+                  'Sign In to Dashboard',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.2,
+                  ),
                 ),
-              )
-            : const Text(
-                'Sign In to Dashboard',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.2,
-                ),
-              ),
       ),
     );
   }
@@ -502,9 +497,10 @@ class _AdminLoginPageState extends State<AdminLoginPage>
 class _GridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFF4F7EF8).withOpacity(0.04)
-      ..strokeWidth = 1;
+    final paint =
+        Paint()
+          ..color = const Color(0xFF4F7EF8).withOpacity(0.04)
+          ..strokeWidth = 1;
 
     const spacing = 48.0;
 

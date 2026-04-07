@@ -7,16 +7,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:webkit/helpers/localizations/language.dart';
-import 'package:webkit/helpers/localizations/translator.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/helpers/services/navigation_service.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/theme/app_notifier.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/localizations/language.dart';
+import 'package:yamazone/helpers/localizations/translator.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/helpers/services/navigation_service.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/theme/app_notifier.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
 
-typedef ThemeChangeCallback = void Function(
-    ThemeCustomizer oldVal, ThemeCustomizer newVal);
+typedef ThemeChangeCallback =
+    void Function(ThemeCustomizer oldVal, ThemeCustomizer newVal);
 
 class ThemeCustomizer {
   ThemeCustomizer();
@@ -52,8 +52,11 @@ class ThemeCustomizer {
     instance = ThemeCustomizer();
     if (json != null && json.trim().isNotEmpty) {
       JSONDecoder decoder = JSONDecoder(json);
-      instance.theme =
-          decoder.getEnum('theme', ThemeMode.values, ThemeMode.light);
+      instance.theme = decoder.getEnum(
+        'theme',
+        ThemeMode.values,
+        ThemeMode.light,
+      );
     }
     return instance;
   }
@@ -70,8 +73,10 @@ class ThemeCustomizer {
     AdminTheme.setTheme();
     AppStyle.changeMyTheme();
     if (NavigationService.globalContext != null) {
-      Provider.of<AppNotifier>(NavigationService.globalContext!, listen: false)
-          .updateTheme(instance);
+      Provider.of<AppNotifier>(
+        NavigationService.globalContext!,
+        listen: false,
+      ).updateTheme(instance);
     }
     for (var value in _notifier) {
       value(oldInstance, instance);

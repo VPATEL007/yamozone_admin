@@ -1,16 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class DragDrop extends IdentifierModel {
   final String name, phoneNumber;
   final int number, balance;
   final DateTime sendAt;
 
-  DragDrop(super.id, this.name, this.phoneNumber, this.number, this.balance,
-      this.sendAt);
+  DragDrop(
+    super.id,
+    this.name,
+    this.phoneNumber,
+    this.number,
+    this.balance,
+    this.sendAt,
+  );
 
   static DragDrop fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);

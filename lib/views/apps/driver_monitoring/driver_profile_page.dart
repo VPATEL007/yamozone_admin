@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:webkit/views/apps/driver_monitoring/widget/proof_of_delivery_dialog.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/apps/driver_monitoring/widget/proof_of_delivery_dialog.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 //  THEME CONSTANTS
@@ -32,34 +32,35 @@ class DriverProfileDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBg,
-        // Replace with your existing drawer widget
+      backgroundColor: kBg,
 
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      _DriverHeader(),
-                      SizedBox(height: 24),
-                      _KycSection(),
-                      SizedBox(height: 24),
-                      _VehicleDocumentsSection(),
-                      SizedBox(height: 24),
-                      _PayoutSection(),
-                      SizedBox(height: 32),
-                    ],
-                  ),
-                ],
-              ),
+      // Replace with your existing drawer widget
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    _DriverHeader(),
+                    SizedBox(height: 24),
+                    _KycSection(),
+                    SizedBox(height: 24),
+                    _VehicleDocumentsSection(),
+                    SizedBox(height: 24),
+                    _PayoutSection(),
+                    SizedBox(height: 32),
+                  ],
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -78,10 +79,11 @@ class _TopBar extends StatelessWidget {
         children: [
           if (isNarrow)
             Builder(
-              builder: (ctx) => IconButton(
-                icon: const Icon(Icons.menu, color: kTextDark),
-                onPressed: () => Scaffold.of(ctx).openDrawer(),
-              ),
+              builder:
+                  (ctx) => IconButton(
+                    icon: const Icon(Icons.menu, color: kTextDark),
+                    onPressed: () => Scaffold.of(ctx).openDrawer(),
+                  ),
             ),
           const Text(
             'Driver Profile Detail',
@@ -198,9 +200,7 @@ class _KycSection extends StatelessWidget {
             ),
           ];
           return isWide
-              ? Row(
-                  children: cards.map((c) => Expanded(child: c)).toList(),
-                )
+              ? Row(children: cards.map((c) => Expanded(child: c)).toList())
               : Column(children: cards);
         },
       ),
@@ -240,26 +240,33 @@ class _KycDocCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: kTextDark)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: kTextDark,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(subtitle,
-                    style: const TextStyle(fontSize: 12, color: kTextGrey)),
+                Text(
+                  subtitle,
+                  style: const TextStyle(fontSize: 12, color: kTextGrey),
+                ),
                 const SizedBox(height: 10),
                 Row(
                   children: [
                     _OutlineButton(
-                        icon: Icons.visibility_outlined, label: 'View'),
+                      icon: Icons.visibility_outlined,
+                      label: 'View',
+                    ),
                     const SizedBox(width: 8),
                     _OutlineButton(icon: Icons.zoom_in, label: 'Zoom'),
                   ],
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -281,51 +288,56 @@ class _VehicleDocumentsSection extends StatelessWidget {
         children: [
           const SizedBox(height: 12),
           // Vehicle type & number row
-          LayoutBuilder(builder: (ctx, constraints) {
-            final isWide = constraints.maxWidth > 400;
-            final info = [
-              _LabelValue(label: 'Vehicle Type', value: 'Auto Rickshaw'),
-              _LabelValue(label: 'Vehicle Number', value: 'MH 12 AB 1234'),
-            ];
-            return isWide
-                ? Row(children: info.map((w) => Expanded(child: w)).toList())
-                : Column(
+          LayoutBuilder(
+            builder: (ctx, constraints) {
+              final isWide = constraints.maxWidth > 400;
+              final info = [
+                _LabelValue(label: 'Vehicle Type', value: 'Auto Rickshaw'),
+                _LabelValue(label: 'Vehicle Number', value: 'MH 12 AB 1234'),
+              ];
+              return isWide
+                  ? Row(children: info.map((w) => Expanded(child: w)).toList())
+                  : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: info);
-          }),
+                    children: info,
+                  );
+            },
+          ),
           const SizedBox(height: 20),
           // Three document cards
-          LayoutBuilder(builder: (ctx, constraints) {
-            final isWide = constraints.maxWidth > 600;
-            final docs = [
-              _VehicleDocCard(
-                icon: Icons.description_outlined,
-                iconBg: const Color(0xFFFFF8E1),
-                iconColor: kPrimary,
-                title: 'RC Book',
-                subtitle: 'Registration Certificate',
-              ),
-              _VehicleDocCard(
-                icon: Icons.shield_outlined,
-                iconBg: const Color(0xFFE3F2FD),
-                iconColor: Colors.blue,
-                title: 'Insurance',
-                subtitle: 'Policy Certificate',
-                hasCarImage: true,
-              ),
-              _VehicleDocCard(
-                icon: Icons.directions_bike_outlined,
-                iconBg: const Color(0xFFF3E5F5),
-                iconColor: Colors.purple,
-                title: 'Vehicle Photo',
-                subtitle: 'Front View',
-                hasVehicleImage: true,
-              ),
-            ];
-            return isWide
-                ? Row(children: docs.map((d) => Expanded(child: d)).toList())
-                : Column(children: docs);
-          }),
+          LayoutBuilder(
+            builder: (ctx, constraints) {
+              final isWide = constraints.maxWidth > 600;
+              final docs = [
+                _VehicleDocCard(
+                  icon: Icons.description_outlined,
+                  iconBg: const Color(0xFFFFF8E1),
+                  iconColor: kPrimary,
+                  title: 'RC Book',
+                  subtitle: 'Registration Certificate',
+                ),
+                _VehicleDocCard(
+                  icon: Icons.shield_outlined,
+                  iconBg: const Color(0xFFE3F2FD),
+                  iconColor: Colors.blue,
+                  title: 'Insurance',
+                  subtitle: 'Policy Certificate',
+                  hasCarImage: true,
+                ),
+                _VehicleDocCard(
+                  icon: Icons.directions_bike_outlined,
+                  iconBg: const Color(0xFFF3E5F5),
+                  iconColor: Colors.purple,
+                  title: 'Vehicle Photo',
+                  subtitle: 'Front View',
+                  hasVehicleImage: true,
+                ),
+              ];
+              return isWide
+                  ? Row(children: docs.map((d) => Expanded(child: d)).toList())
+                  : Column(children: docs);
+            },
+          ),
         ],
       ),
     );
@@ -380,14 +392,19 @@ class _VehicleDocCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
-                            color: kTextDark)),
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                        color: kTextDark,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(subtitle,
-                        style: const TextStyle(fontSize: 11, color: kTextGrey)),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(fontSize: 11, color: kTextGrey),
+                    ),
                   ],
                 ),
               ],
@@ -395,8 +412,10 @@ class _VehicleDocCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-            child:
-                _PrimaryButton(label: 'View', icon: Icons.visibility_outlined),
+            child: _PrimaryButton(
+              label: 'View',
+              icon: Icons.visibility_outlined,
+            ),
           ),
         ],
       ),
@@ -435,22 +454,33 @@ class _PayoutSection extends StatelessWidget {
             child: const Row(
               children: [
                 Expanded(
-                    child: Text('Date',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
-                            color: kTextGrey))),
-                Expanded(
-                    child: Text('Amount',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
-                            color: kTextGrey))),
-                Text('Status',
+                  child: Text(
+                    'Date',
                     style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                        color: kTextGrey)),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: kTextGrey,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    'Amount',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: kTextGrey,
+                    ),
+                  ),
+                ),
+                Text(
+                  'Status',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                    color: kTextGrey,
+                  ),
+                ),
               ],
             ),
           ),
@@ -470,15 +500,19 @@ class _PayoutSection extends StatelessWidget {
                     TextSpan(
                       text: 'Total Earned: ',
                       style: TextStyle(
-                          fontSize: 13, color: kTextGrey, fontFamily: 'Roboto'),
+                        fontSize: 13,
+                        color: kTextGrey,
+                        fontFamily: 'Roboto',
+                      ),
                     ),
                     TextSpan(
                       text: '₹3,120',
                       style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                          color: kTextDark,
-                          fontFamily: 'Roboto'),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: kTextDark,
+                        fontFamily: 'Roboto',
+                      ),
                     ),
                   ],
                 ),
@@ -495,8 +529,11 @@ class _PayoutRow extends StatelessWidget {
   final String date;
   final String amount;
   final bool isPaid;
-  const _PayoutRow(
-      {required this.date, required this.amount, required this.isPaid});
+  const _PayoutRow({
+    required this.date,
+    required this.amount,
+    required this.isPaid,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -508,15 +545,20 @@ class _PayoutRow extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(date,
-                style: const TextStyle(fontSize: 13, color: kTextDark)),
+            child: Text(
+              date,
+              style: const TextStyle(fontSize: 13, color: kTextDark),
+            ),
           ),
           Expanded(
-            child: Text(amount,
-                style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: kTextDark)),
+            child: Text(
+              amount,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: kTextDark,
+              ),
+            ),
           ),
           _StatusBadge(
             label: isPaid ? 'Paid' : 'Pending',
@@ -563,11 +605,14 @@ class _SectionCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: kTextDark)),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: kTextDark,
+                ),
+              ),
               if (trailing != null) trailing!,
             ],
           ),
@@ -614,9 +659,14 @@ class _StatusBadge extends StatelessWidget {
             ),
             const SizedBox(width: 5),
           ],
-          Text(label,
-              style: TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.w600, color: color)),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: color,
+            ),
+          ),
         ],
       ),
     );
@@ -663,11 +713,14 @@ class _PrimaryButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: () {},
         icon: Icon(icon, size: 16, color: Colors.white),
-        label: Text(label,
-            style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: Colors.white)),
+        label: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimary,
           elevation: 0,
@@ -694,9 +747,14 @@ class _LabelValue extends StatelessWidget {
         children: [
           Text(label, style: const TextStyle(fontSize: 12, color: kTextGrey)),
           const SizedBox(height: 2),
-          Text(value,
-              style: const TextStyle(
-                  fontSize: 14, fontWeight: FontWeight.w700, color: kTextDark)),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: kTextDark,
+            ),
+          ),
         ],
       ),
     );
@@ -733,9 +791,10 @@ class _PlaceholderDrawer extends StatelessWidget {
     _NavItem(icon: Icons.receipt_long_outlined, label: 'Orders & Escrow'),
     _NavItem(icon: Icons.gavel_outlined, label: 'Dispute Center'),
     _NavItem(
-        icon: Icons.directions_car_outlined,
-        label: 'Driver Monitoring',
-        isActive: true),
+      icon: Icons.directions_car_outlined,
+      label: 'Driver Monitoring',
+      isActive: true,
+    ),
     _NavItem(icon: Icons.settings_outlined, label: 'System Settings'),
     _NavItem(icon: Icons.notifications_outlined, label: 'Notifications'),
     _NavItem(icon: Icons.history_outlined, label: 'Audit Logs'),
@@ -756,13 +815,18 @@ class _PlaceholderDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text('Admin Panel',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700)),
-                Text('Control Center',
-                    style: TextStyle(color: Colors.white54, fontSize: 11)),
+                Text(
+                  'Admin Panel',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  'Control Center',
+                  style: TextStyle(color: Colors.white54, fontSize: 11),
+                ),
               ],
             ),
           ),
@@ -788,14 +852,18 @@ class _PlaceholderDrawer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('John Admin',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600)),
-                      Text('Super Admin',
-                          style:
-                              TextStyle(color: Colors.white54, fontSize: 10)),
+                      Text(
+                        'John Admin',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'Super Admin',
+                        style: TextStyle(color: Colors.white54, fontSize: 10),
+                      ),
                     ],
                   ),
                 ),
@@ -816,8 +884,11 @@ class _NavItem {
   final IconData icon;
   final String label;
   final bool isActive;
-  const _NavItem(
-      {required this.icon, required this.label, this.isActive = false});
+  const _NavItem({
+    required this.icon,
+    required this.label,
+    this.isActive = false,
+  });
 }
 
 class _DrawerItem extends StatelessWidget {
@@ -834,13 +905,19 @@ class _DrawerItem extends StatelessWidget {
       ),
       child: ListTile(
         dense: true,
-        leading: Icon(item.icon,
-            size: 18, color: item.isActive ? kPrimary : Colors.white60),
-        title: Text(item.label,
-            style: TextStyle(
-                color: item.isActive ? kPrimary : Colors.white70,
-                fontSize: 13,
-                fontWeight: item.isActive ? FontWeight.w600 : FontWeight.w400)),
+        leading: Icon(
+          item.icon,
+          size: 18,
+          color: item.isActive ? kPrimary : Colors.white60,
+        ),
+        title: Text(
+          item.label,
+          style: TextStyle(
+            color: item.isActive ? kPrimary : Colors.white70,
+            fontSize: 13,
+            fontWeight: item.isActive ? FontWeight.w600 : FontWeight.w400,
+          ),
+        ),
         onTap: () {},
       ),
     );

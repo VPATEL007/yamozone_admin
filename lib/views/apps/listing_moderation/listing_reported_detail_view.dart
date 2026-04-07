@@ -1,11 +1,11 @@
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:webkit/controller/apps/kyc_controller.dart';
-// import 'package:webkit/helpers/theme/admin_theme.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/views/apps/listing_moderation/widget/listing_dialog.dart';
-// import 'package:webkit/views/layouts/layout.dart';
+// import 'package:yamazone/controller/apps/kyc_controller.dart';
+// import 'package:yamazone/helpers/theme/admin_theme.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/views/apps/listing_moderation/widget/listing_dialog.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
 
 // class ListingReportedDetailView extends StatefulWidget {
 //   const ListingReportedDetailView({super.key});
@@ -584,8 +584,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/views/apps/listing_moderation/widget/listing_dialog.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/apps/listing_moderation/widget/listing_dialog.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ReportedListingReviewScreen extends StatefulWidget {
   const ReportedListingReviewScreen({super.key});
@@ -603,7 +603,7 @@ class _ReportedListingReviewScreenState
   final List<String> _tabs = [
     'Pending Listings',
     'Reported Listings',
-    'Recently Approved'
+    'Recently Approved',
   ];
   final List<int> _tabCounts = [24, 8, 0];
 
@@ -674,8 +674,9 @@ class _ReportedListingReviewScreenState
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
               color: const Color(0xFFFFF3F3),
-              border:
-                  Border.all(color: const Color(0xFFFF4444).withOpacity(0.4)),
+              border: Border.all(
+                color: const Color(0xFFFF4444).withOpacity(0.4),
+              ),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -733,9 +734,10 @@ class _ReportedListingReviewScreenState
                     _tabs[i],
                     style: TextStyle(
                       fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
-                      color: selected
-                          ? const Color(0xFF1A1A1A)
-                          : const Color(0xFF888888),
+                      color:
+                          selected
+                              ? const Color(0xFF1A1A1A)
+                              : const Color(0xFF888888),
                       fontSize: 14,
                     ),
                   ),
@@ -743,11 +745,14 @@ class _ReportedListingReviewScreenState
                     const SizedBox(width: 6),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 7, vertical: 2),
+                        horizontal: 7,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
-                        color: selected
-                            ? const Color(0xFFD4A017)
-                            : const Color(0xFFEEEEEE),
+                        color:
+                            selected
+                                ? const Color(0xFFD4A017)
+                                : const Color(0xFFEEEEEE),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
@@ -803,8 +808,11 @@ class _ReportedListingReviewScreenState
                 height: 260,
                 color: const Color(0xFFF8F8F8),
                 child: Center(
-                  child: Icon(Icons.image_outlined,
-                      size: 64, color: Colors.grey[300]),
+                  child: Icon(
+                    Icons.image_outlined,
+                    size: 64,
+                    color: Colors.grey[300],
+                  ),
                 ),
               ),
               Positioned(
@@ -832,9 +840,10 @@ class _ReportedListingReviewScreenState
                       height: 7,
                       margin: const EdgeInsets.symmetric(horizontal: 3),
                       decoration: BoxDecoration(
-                        color: i == _currentImageIndex
-                            ? const Color(0xFFD4A017)
-                            : Colors.grey[300],
+                        color:
+                            i == _currentImageIndex
+                                ? const Color(0xFFD4A017)
+                                : Colors.grey[300],
                         borderRadius: BorderRadius.circular(4),
                       ),
                     );
@@ -855,12 +864,19 @@ class _ReportedListingReviewScreenState
                   decoration: BoxDecoration(
                     color: const Color(0xFFF0F0F0),
                     borderRadius: BorderRadius.circular(8),
-                    border: i == _currentImageIndex
-                        ? Border.all(color: const Color(0xFFD4A017), width: 2)
-                        : null,
+                    border:
+                        i == _currentImageIndex
+                            ? Border.all(
+                              color: const Color(0xFFD4A017),
+                              width: 2,
+                            )
+                            : null,
                   ),
-                  child: Icon(Icons.image_outlined,
-                      size: 24, color: Colors.grey[400]),
+                  child: Icon(
+                    Icons.image_outlined,
+                    size: 24,
+                    color: Colors.grey[400],
+                  ),
                 );
               }),
             ),
@@ -881,9 +897,10 @@ class _ReportedListingReviewScreenState
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withOpacity(0.12),
-                blurRadius: 8,
-                offset: const Offset(0, 2))
+              color: Colors.black.withOpacity(0.12),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
           ],
         ),
         child: Icon(icon, size: 20, color: const Color(0xFF333333)),
@@ -921,11 +938,17 @@ class _ReportedListingReviewScreenState
                 ),
               ),
               const SizedBox(width: 10),
-              _tag('Watches & Accessories', const Color(0xFFF0F0F0),
-                  const Color(0xFF555555)),
+              _tag(
+                'Watches & Accessories',
+                const Color(0xFFF0F0F0),
+                const Color(0xFF555555),
+              ),
               const SizedBox(width: 6),
-              _tag('Brand New', const Color(0xFFE8F5E9),
-                  const Color(0xFF2E7D32)),
+              _tag(
+                'Brand New',
+                const Color(0xFFE8F5E9),
+                const Color(0xFF2E7D32),
+              ),
             ],
           ),
           const SizedBox(height: 12),
@@ -975,9 +998,10 @@ class _ReportedListingReviewScreenState
         color: bg,
         borderRadius: BorderRadius.circular(6),
       ),
-      child: Text(label,
-          style:
-              TextStyle(fontSize: 12, color: fg, fontWeight: FontWeight.w500)),
+      child: Text(
+        label,
+        style: TextStyle(fontSize: 12, color: fg, fontWeight: FontWeight.w500),
+      ),
     );
   }
 
@@ -1012,39 +1036,47 @@ class _ReportedListingReviewScreenState
             childAspectRatio: 10,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
-            children: specs.map((s) {
-              final hasWarning = s[2] as bool;
-              return Row(
-                children: [
-                  Icon(
-                    hasWarning
-                        ? Icons.warning_amber_rounded
-                        : Icons.check_circle,
-                    size: 16,
-                    color: hasWarning
-                        ? const Color(0xFFFF9800)
-                        : const Color(0xFF4CAF50),
-                  ),
-                  const SizedBox(width: 8),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+            children:
+                specs.map((s) {
+                  final hasWarning = s[2] as bool;
+                  return Row(
                     children: [
-                      Text(s[0] as String,
-                          style: const TextStyle(
+                      Icon(
+                        hasWarning
+                            ? Icons.warning_amber_rounded
+                            : Icons.check_circle,
+                        size: 16,
+                        color:
+                            hasWarning
+                                ? const Color(0xFFFF9800)
+                                : const Color(0xFF4CAF50),
+                      ),
+                      const SizedBox(width: 8),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            s[0] as String,
+                            style: const TextStyle(
                               fontSize: 11,
                               color: Color(0xFF888888),
-                              fontWeight: FontWeight.w500)),
-                      Text(s[1] as String,
-                          style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            s[1] as String,
+                            style: const TextStyle(
                               fontSize: 13,
                               color: Color(0xFF1A1A1A),
-                              fontWeight: FontWeight.w600)),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
-                  ),
-                ],
-              );
-            }).toList(),
+                  );
+                }).toList(),
           ),
         ],
       ),
@@ -1063,8 +1095,11 @@ class _ReportedListingReviewScreenState
         children: [
           Row(
             children: [
-              const Icon(Icons.folder_open_outlined,
-                  size: 18, color: Color(0xFFD4A017)),
+              const Icon(
+                Icons.folder_open_outlined,
+                size: 18,
+                color: Color(0xFFD4A017),
+              ),
               const SizedBox(width: 8),
               const Text(
                 'Evidence Submitted',
@@ -1086,8 +1121,11 @@ class _ReportedListingReviewScreenState
                   child: Stack(
                     children: [
                       Center(
-                        child: Icon(Icons.image_outlined,
-                            size: 32, color: Colors.grey[400]),
+                        child: Icon(
+                          Icons.image_outlined,
+                          size: 32,
+                          color: Colors.grey[400],
+                        ),
                       ),
                       Positioned(
                         bottom: 0,
@@ -1095,18 +1133,22 @@ class _ReportedListingReviewScreenState
                         right: 0,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 7),
+                            horizontal: 10,
+                            vertical: 7,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.55),
                             borderRadius: const BorderRadius.vertical(
-                                bottom: Radius.circular(8)),
+                              bottom: Radius.circular(8),
+                            ),
                           ),
                           child: Text(
                             'Evidence ${i + 1}',
                             style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500),
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -1152,64 +1194,85 @@ class _ReportedListingReviewScreenState
                   color: const Color(0xFFFFF3F3),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child:
-                    const Icon(Icons.flag, color: Color(0xFFFF4444), size: 18),
+                child: const Icon(
+                  Icons.flag,
+                  color: Color(0xFFFF4444),
+                  size: 18,
+                ),
               ),
               const SizedBox(width: 10),
               const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Report Details',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                  Text('Review and take action',
-                      style: TextStyle(fontSize: 12, color: Color(0xFF888888))),
+                  Text(
+                    'Report Details',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  Text(
+                    'Review and take action',
+                    style: TextStyle(fontSize: 12, color: Color(0xFF888888)),
+                  ),
                 ],
               ),
             ],
           ),
           const Divider(height: 24),
-          _detailRow('Report Reason', null,
-              chip: _tag('Counterfeit Item', const Color(0xFFFFF8E1),
-                  const Color(0xFFC9941A))),
+          _detailRow(
+            'Report Reason',
+            null,
+            chip: _tag(
+              'Counterfeit Item',
+              const Color(0xFFFFF8E1),
+              const Color(0xFFC9941A),
+            ),
+          ),
           const SizedBox(height: 14),
-          _detailRow('Reported by', null,
-              custom: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 13,
-                    backgroundColor: Colors.grey[300],
-                    child:
-                        const Icon(Icons.person, size: 14, color: Colors.grey),
+          _detailRow(
+            'Reported by',
+            null,
+            custom: Row(
+              children: [
+                CircleAvatar(
+                  radius: 13,
+                  backgroundColor: Colors.grey[300],
+                  child: const Icon(Icons.person, size: 14, color: Colors.grey),
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  'John D',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+                ),
+                const SizedBox(width: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
                   ),
-                  const SizedBox(width: 8),
-                  const Text('John D',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
-                  const SizedBox(width: 4),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEEEEEE),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: const Text('Buyer',
-                        style:
-                            TextStyle(fontSize: 10, color: Color(0xFF666666))),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFEEEEEE),
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                ],
-              )),
+                  child: const Text(
+                    'Buyer',
+                    style: TextStyle(fontSize: 10, color: Color(0xFF666666)),
+                  ),
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 14),
           _detailRow('Reported on', '12 Mar 2024'),
           const SizedBox(height: 14),
           _detailRow('Priority', null, chip: _priorityBadge()),
           const SizedBox(height: 14),
-          const Text('User Note',
-              style: TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF888888),
-                  fontWeight: FontWeight.w500)),
+          const Text(
+            'User Note',
+            style: TextStyle(
+              fontSize: 12,
+              color: Color(0xFF888888),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.all(12),
@@ -1233,23 +1296,33 @@ class _ReportedListingReviewScreenState
     );
   }
 
-  Widget _detailRow(String label, String? value,
-      {Widget? chip, Widget? custom}) {
+  Widget _detailRow(
+    String label,
+    String? value, {
+    Widget? chip,
+    Widget? custom,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xFF888888),
-                fontWeight: FontWeight.w500)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Color(0xFF888888),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         const SizedBox(height: 5),
         if (value != null)
-          Text(value,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
-                  color: Color(0xFF1A1A1A)))
+          Text(
+            value,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 13,
+              color: Color(0xFF1A1A1A),
+            ),
+          )
         else if (chip != null)
           chip
         else if (custom != null)
@@ -1265,14 +1338,19 @@ class _ReportedListingReviewScreenState
           width: 9,
           height: 9,
           decoration: const BoxDecoration(
-              color: Color(0xFFFF9800), shape: BoxShape.circle),
+            color: Color(0xFFFF9800),
+            shape: BoxShape.circle,
+          ),
         ),
         const SizedBox(width: 6),
-        const Text('High',
-            style: TextStyle(
-                color: Color(0xFFFF9800),
-                fontWeight: FontWeight.bold,
-                fontSize: 13)),
+        const Text(
+          'High',
+          style: TextStyle(
+            color: Color(0xFFFF9800),
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+          ),
+        ),
       ],
     );
   }
@@ -1287,19 +1365,22 @@ class _ReportedListingReviewScreenState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Actions',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+          const Text(
+            'Actions',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
           const SizedBox(height: 14),
           _actionButton(
             onTap: () {
               showDialog(
                 context: Get.context!,
-                builder: (_) => RejectListingDialog(
-                  onCancel: () => Navigator.pop(Get.context!),
-                  onSubmit: (category, subReason, reason, sendEmail) {
-                    Navigator.pop(Get.context!);
-                  },
-                ),
+                builder:
+                    (_) => RejectListingDialog(
+                      onCancel: () => Navigator.pop(Get.context!),
+                      onSubmit: (category, subReason, reason, sendEmail) {
+                        Navigator.pop(Get.context!);
+                      },
+                    ),
               );
             },
             Icons.delete_outline,
@@ -1314,12 +1395,13 @@ class _ReportedListingReviewScreenState
             onTap: () {
               showDialog(
                 context: Get.context!,
-                builder: (_) => RejectListingDialog(
-                  onCancel: () => Navigator.pop(Get.context!),
-                  onSubmit: (category, subReason, reason, sendEmail) {
-                    Navigator.pop(Get.context!);
-                  },
-                ),
+                builder:
+                    (_) => RejectListingDialog(
+                      onCancel: () => Navigator.pop(Get.context!),
+                      onSubmit: (category, subReason, reason, sendEmail) {
+                        Navigator.pop(Get.context!);
+                      },
+                    ),
               );
             },
             const Color(0xFF1A3A2A),
@@ -1354,8 +1436,13 @@ class _ReportedListingReviewScreenState
   }
 
   Widget _actionButton(
-      IconData icon, String label, Color bgColor, Color textColor,
-      {bool bordered = false, Function()? onTap}) {
+    IconData icon,
+    String label,
+    Color bgColor,
+    Color textColor, {
+    bool bordered = false,
+    Function()? onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -1371,11 +1458,14 @@ class _ReportedListingReviewScreenState
           children: [
             Icon(icon, size: 17, color: textColor),
             const SizedBox(width: 8),
-            Text(label,
-                style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13.5)),
+            Text(
+              label,
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 13.5,
+              ),
+            ),
           ],
         ),
       ),
@@ -1420,8 +1510,10 @@ class _ReportedListingReviewScreenState
             children: [
               const Icon(Icons.history, size: 18, color: Color(0xFFD4A017)),
               const SizedBox(width: 8),
-              const Text('Activity History',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              const Text(
+                'Activity History',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
             ],
           ),
           const SizedBox(height: 14),
@@ -1479,15 +1571,22 @@ class _ReportedListingReviewScreenState
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: Color(0xFF1A1A1A))),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: Color(0xFF1A1A1A),
+                    ),
+                  ),
                   const SizedBox(height: 3),
-                  Text(time,
-                      style: const TextStyle(
-                          fontSize: 11.5, color: Color(0xFF888888))),
+                  Text(
+                    time,
+                    style: const TextStyle(
+                      fontSize: 11.5,
+                      color: Color(0xFF888888),
+                    ),
+                  ),
                 ],
               ),
             ),

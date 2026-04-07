@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
 
 extension IntUtil on int {
-  String textFromSeconds(
-      {bool withZeros = false,
-      bool withHours = false,
-      bool withMinutes = false,
-      bool withSeconds = false,
-      bool withSpace = false}) {
+  String textFromSeconds({
+    bool withZeros = false,
+    bool withHours = false,
+    bool withMinutes = false,
+    bool withSeconds = false,
+    bool withSpace = false,
+  }) {
     int time = this;
     int hour = (time / 3600).floor();
     int minute = ((time - 3600 * hour) / 60).floor();

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/controller/apps/kyc_controller.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/views/apps/listing_moderation/widget/listing_dialog.dart';
-import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/kyc_controller.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/views/apps/listing_moderation/widget/listing_dialog.dart';
+import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ListingDetailView extends StatefulWidget {
   const ListingDetailView({super.key});

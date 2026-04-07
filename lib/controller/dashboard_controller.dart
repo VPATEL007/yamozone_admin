@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/my_controller.dart';
+import 'package:yamazone/controller/my_controller.dart';
 
 import '../models/dashboard.dart';
 
 class ChartSampleData {
-  ChartSampleData({this.x,
+  ChartSampleData({
+    this.x,
     this.y,
     this.xValue,
     this.yValue,
@@ -21,7 +22,8 @@ class ChartSampleData {
     this.close,
     this.low,
     this.high,
-    this.volume});
+    this.volume,
+  });
 
   final dynamic x;
   final num? y;
@@ -56,7 +58,7 @@ class DashboardController extends MyController {
     ChartSampleData(x: 'The', y: 30),
     ChartSampleData(x: 'Fri', y: 45),
     ChartSampleData(x: 'Sat', y: 40),
-    ChartSampleData(x: 'Sun', y: 55)
+    ChartSampleData(x: 'Sun', y: 55),
   ];
   final List<ChartSampleData> revenueChart2 = <ChartSampleData>[
     ChartSampleData(x: 'Mon', y: 10),
@@ -65,7 +67,7 @@ class DashboardController extends MyController {
     ChartSampleData(x: 'The', y: 20),
     ChartSampleData(x: 'Fri', y: 35),
     ChartSampleData(x: 'Sat', y: 30),
-    ChartSampleData(x: 'Sun', y: 45)
+    ChartSampleData(x: 'Sun', y: 45),
   ];
 
   final TooltipBehavior revenue = TooltipBehavior(
@@ -91,7 +93,6 @@ class DashboardController extends MyController {
     format: 'point.x : point.yValue1 : point.yValue2',
   );
 
-
   final List<ChartSampleData> facebookChart = [
     ChartSampleData(x: 1, y: 35),
     ChartSampleData(x: 2, y: 23),
@@ -111,13 +112,25 @@ class DashboardController extends MyController {
 
   final List<ChartSampleData> circleChart = [
     ChartSampleData(
-        x: 'David', y: 25, pointColor: const Color.fromRGBO(9, 0, 136, 1)),
+      x: 'David',
+      y: 25,
+      pointColor: const Color.fromRGBO(9, 0, 136, 1),
+    ),
     ChartSampleData(
-        x: 'Steve', y: 38, pointColor: const Color.fromRGBO(147, 0, 119, 1)),
+      x: 'Steve',
+      y: 38,
+      pointColor: const Color.fromRGBO(147, 0, 119, 1),
+    ),
     ChartSampleData(
-        x: 'Jack', y: 34, pointColor: const Color.fromRGBO(228, 0, 124, 1)),
+      x: 'Jack',
+      y: 34,
+      pointColor: const Color.fromRGBO(228, 0, 124, 1),
+    ),
     ChartSampleData(
-        x: 'Others', y: 52, pointColor: const Color.fromRGBO(255, 189, 57, 1))
+      x: 'Others',
+      y: 52,
+      pointColor: const Color.fromRGBO(255, 189, 57, 1),
+    ),
   ];
 
   void onSelectedTime(String time) {

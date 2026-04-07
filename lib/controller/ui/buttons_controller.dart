@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/my_controller.dart';
+import 'package:yamazone/controller/my_controller.dart';
 
 class ButtonsController extends MyController {
   List<bool> selected = List.filled(3, false);
@@ -13,11 +13,20 @@ class ButtonsController extends MyController {
   final TickerProvider tickerProvider;
 
   late TabController normalTabController = TabController(
-      length: 5, vsync: tickerProvider, initialIndex: normalIndex);
+    length: 5,
+    vsync: tickerProvider,
+    initialIndex: normalIndex,
+  );
   late TabController roundedTabController = TabController(
-      length: 5, vsync: tickerProvider, initialIndex: roundedIndex);
+    length: 5,
+    vsync: tickerProvider,
+    initialIndex: roundedIndex,
+  );
   late TabController groupAndSizedTabController = TabController(
-      length: 2, vsync: tickerProvider, initialIndex: groupAndSizedButtons);
+    length: 2,
+    vsync: tickerProvider,
+    initialIndex: groupAndSizedButtons,
+  );
 
   // ButtonsController(this.tickerProvider);
 

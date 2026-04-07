@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
 
 class CardsController extends MyController {
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   MyShadowPosition shadowPosition = MyShadowPosition.center;
   double shadowElevation = 10;

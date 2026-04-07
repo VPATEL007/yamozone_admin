@@ -1,14 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_pages.dart';
+import 'package:yamazone/helpers/widgets/my_pages.dart';
 
 class MyPagerIndicator extends StatelessWidget {
   final PagerIndicatorViewModel? viewModel;
 
-  MyPagerIndicator({
-    this.viewModel,
-  });
+  MyPagerIndicator({this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +28,19 @@ class MyPagerIndicator extends StatelessWidget {
         percentActive = 0.0;
       }
 
-      bool isActive = ((i == viewModel!.activeIndex) && percentActive! > 0.4 ||
-          (i != viewModel!.activeIndex && percentActive! > 0.6));
+      bool isActive =
+          ((i == viewModel!.activeIndex) && percentActive! > 0.4 ||
+              (i != viewModel!.activeIndex && percentActive! > 0.6));
 
       bubbles.add(
         PageBubble(
           viewModel: PageBubbleViewModel(
-              page.color,
-              percentActive,
-              isActive,
-              viewModel!.selectedIndicatorColor,
-              viewModel!.unSelectedIndicatorColor),
+            page.color,
+            percentActive,
+            isActive,
+            viewModel!.selectedIndicatorColor,
+            viewModel!.unSelectedIndicatorColor,
+          ),
         ),
       );
     }
@@ -65,11 +65,13 @@ class MyPagerIndicator extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Opacity(
-                opacity: (viewModel!.activeIndex ==
-                            viewModel!.pages.length - 1 &&
-                        viewModel!.slideDirection == SlideDirection.leftToRight
-                    ? viewModel!.slidePercent!
-                    : (viewModel!.activeIndex == viewModel!.pages.length - 2 &&
+                opacity:
+                    (viewModel!.activeIndex == viewModel!.pages.length - 1 &&
+                            viewModel!.slideDirection ==
+                                SlideDirection.leftToRight
+                        ? viewModel!.slidePercent!
+                        : (viewModel!.activeIndex ==
+                                viewModel!.pages.length - 2 &&
                             viewModel!.slideDirection ==
                                 SlideDirection.rightToLeft)
                         ? (1 - viewModel!.slidePercent!)
@@ -89,11 +91,13 @@ class MyPagerIndicator extends StatelessWidget {
                 ),
               ),
               Opacity(
-                opacity: (viewModel!.activeIndex ==
-                            viewModel!.pages.length - 2 &&
-                        viewModel!.slideDirection == SlideDirection.rightToLeft
-                    ? viewModel!.slidePercent!
-                    : (viewModel!.activeIndex == viewModel!.pages.length - 1 &&
+                opacity:
+                    (viewModel!.activeIndex == viewModel!.pages.length - 2 &&
+                            viewModel!.slideDirection ==
+                                SlideDirection.rightToLeft
+                        ? viewModel!.slidePercent!
+                        : (viewModel!.activeIndex ==
+                                viewModel!.pages.length - 1 &&
                             viewModel!.slideDirection ==
                                 SlideDirection.leftToRight)
                         ? (1 - viewModel!.slidePercent!)
@@ -101,7 +105,7 @@ class MyPagerIndicator extends StatelessWidget {
                             ? 1
                             : 0)),
                 child: viewModel!.doidget,
-              )
+              ),
             ],
           ),
         ),
@@ -110,11 +114,7 @@ class MyPagerIndicator extends StatelessWidget {
   }
 }
 
-enum SlideDirection {
-  leftToRight,
-  rightToLeft,
-  none,
-}
+enum SlideDirection { leftToRight, rightToLeft, none }
 
 class PagerIndicatorViewModel {
   final List<PageViewModel> pages;
@@ -152,16 +152,19 @@ class PageBubble extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-              width: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
-              height: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
-              decoration: BoxDecoration(
-                //shape: BoxShape.circle,
-                color: viewModel!.isActive
-                    ? viewModel!.selectedIndicatorColor
-                        .withAlpha((255 * viewModel!.activePercent!).floor())
-                    : viewModel!.unSelectedIndicatorColor,
-              ),
-              child: Container()),
+            width: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
+            height: lerpDouble(25.0, 75.0, viewModel!.activePercent!),
+            decoration: BoxDecoration(
+              //shape: BoxShape.circle,
+              color:
+                  viewModel!.isActive
+                      ? viewModel!.selectedIndicatorColor.withAlpha(
+                        (255 * viewModel!.activePercent!).floor(),
+                      )
+                      : viewModel!.unSelectedIndicatorColor,
+            ),
+            child: Container(),
+          ),
         ],
       ),
     );

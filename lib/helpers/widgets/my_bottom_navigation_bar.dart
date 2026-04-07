@@ -1,16 +1,13 @@
 // ignore_for_file: unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/widgets/my_bottom_navigation_bar_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/widgets/my_bottom_navigation_bar_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
 
-enum MyBottomNavigationBarType {
-  normal,
-  containered,
-}
+enum MyBottomNavigationBarType { normal, containered }
 
 class MyBottomNavigationBar extends StatefulWidget {
   final List<MyBottomNavigationBarItem>? itemList;
@@ -43,36 +40,37 @@ class MyBottomNavigationBar extends StatefulWidget {
   final EdgeInsetsGeometry? containerPadding;
   final double? containerRadius;
 
-  MyBottomNavigationBar(
-      {required this.itemList,
-      this.animationDuration,
-      this.indicatorColor,
-      this.indicatorSize,
-      this.indicatorDecoration,
-      this.myBottomNavigationBarType,
-      this.showLabel = true,
-      this.activeContainerColor,
-      this.backgroundColor,
-      this.showActiveLabel,
-      this.labelDirection = Axis.horizontal,
-      this.labelSpacing = 8,
-      this.activeTitleStyle,
-      this.titleStyle,
-      this.initialIndex = 0,
-      this.activeTitleColor,
-      this.titleColor,
-      this.activeTitleSize,
-      this.titleSize,
-      this.iconColor,
-      this.activeIconColor,
-      this.iconSize,
-      this.activeIconSize,
-      this.containerDecoration,
-      this.containerShape,
-      this.outerPadding,
-      this.outerMargin,
-      this.containerRadius,
-      this.containerPadding});
+  MyBottomNavigationBar({
+    required this.itemList,
+    this.animationDuration,
+    this.indicatorColor,
+    this.indicatorSize,
+    this.indicatorDecoration,
+    this.myBottomNavigationBarType,
+    this.showLabel = true,
+    this.activeContainerColor,
+    this.backgroundColor,
+    this.showActiveLabel,
+    this.labelDirection = Axis.horizontal,
+    this.labelSpacing = 8,
+    this.activeTitleStyle,
+    this.titleStyle,
+    this.initialIndex = 0,
+    this.activeTitleColor,
+    this.titleColor,
+    this.activeTitleSize,
+    this.titleSize,
+    this.iconColor,
+    this.activeIconColor,
+    this.iconSize,
+    this.activeIconSize,
+    this.containerDecoration,
+    this.containerShape,
+    this.outerPadding,
+    this.outerMargin,
+    this.containerRadius,
+    this.containerPadding,
+  });
 
   @override
   _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
@@ -119,9 +117,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
     itemList = widget.itemList;
     _currentIndex = widget.initialIndex;
     _tabController = TabController(
-        length: itemList!.length,
-        initialIndex: widget.initialIndex,
-        vsync: this);
+      length: itemList!.length,
+      initialIndex: widget.initialIndex,
+      vsync: this,
+    );
     _tabController!.addListener(_handleTabSelection);
     _tabController!.animation!.addListener(() {
       final animationValue = _tabController!.animation!.value;
@@ -157,70 +156,81 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
 
     if (MyBottomNavigationBarType == MyBottomNavigationBarType.normal) {
       return Container(
-        child: (_currentIndex == index)
-            ? Wrap(
-                direction: widget.labelDirection!,
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  item.activeIcon ??
-                      Icon(
-                        item.activeIconData,
-                        size: activeIconSize ?? item.activeIconSize ?? 14,
-                        color: activeIconColor ??
-                            item.activeIconColor ??
-                            theme.primaryColor,
-                      ),
-                  widget.labelDirection == Axis.horizontal
-                      ? MySpacing.width(
-                          showActiveLabel ? widget.labelSpacing : 0)
-                      : MySpacing.height(
-                          showActiveLabel ? widget.labelSpacing : 0),
-                  showActiveLabel
-                      ? Text(
+        child:
+            (_currentIndex == index)
+                ? Wrap(
+                  direction: widget.labelDirection!,
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    item.activeIcon ??
+                        Icon(
+                          item.activeIconData,
+                          size: activeIconSize ?? item.activeIconSize ?? 14,
+                          color:
+                              activeIconColor ??
+                              item.activeIconColor ??
+                              theme.primaryColor,
+                        ),
+                    widget.labelDirection == Axis.horizontal
+                        ? MySpacing.width(
+                          showActiveLabel ? widget.labelSpacing : 0,
+                        )
+                        : MySpacing.height(
+                          showActiveLabel ? widget.labelSpacing : 0,
+                        ),
+                    showActiveLabel
+                        ? Text(
                           item.title!,
-                          style: activeTitleStyle ??
+                          style:
+                              activeTitleStyle ??
                               item.activeTitleStyle ??
                               MyTextStyle.labelSmall(
-                                  color: activeTitleColor ??
-                                      item.activeTitleColor ??
-                                      theme.primaryColor,
-                                  fontSize:
-                                      activeTitleSize ?? item.activeTitleSize),
+                                color:
+                                    activeTitleColor ??
+                                    item.activeTitleColor ??
+                                    theme.primaryColor,
+                                fontSize:
+                                    activeTitleSize ?? item.activeTitleSize,
+                              ),
                         )
-                      : Container(),
-                ],
-              )
-            : Wrap(
-                direction: widget.labelDirection!,
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  item.icon ??
-                      Icon(
-                        item.iconData,
-                        size: iconSize ?? item.iconSize ?? 14,
-                        color: iconColor ??
-                            item.iconColor ??
-                            theme.colorScheme.onBackground,
-                      ),
-                  widget.labelDirection == Axis.horizontal
-                      ? MySpacing.width(showLabel ? widget.labelSpacing : 0)
-                      : MySpacing.height(showLabel ? widget.labelSpacing : 0),
-                  showLabel
-                      ? Text(
+                        : Container(),
+                  ],
+                )
+                : Wrap(
+                  direction: widget.labelDirection!,
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    item.icon ??
+                        Icon(
+                          item.iconData,
+                          size: iconSize ?? item.iconSize ?? 14,
+                          color:
+                              iconColor ??
+                              item.iconColor ??
+                              theme.colorScheme.onBackground,
+                        ),
+                    widget.labelDirection == Axis.horizontal
+                        ? MySpacing.width(showLabel ? widget.labelSpacing : 0)
+                        : MySpacing.height(showLabel ? widget.labelSpacing : 0),
+                    showLabel
+                        ? Text(
                           item.title!,
-                          style: titleStyle ??
+                          style:
+                              titleStyle ??
                               item.titleStyle ??
                               MyTextStyle.labelSmall(
-                                  color: titleColor ??
-                                      item.titleColor ??
-                                      theme.colorScheme.onBackground,
-                                  fontSize: widget.titleSize ?? item.titleSize),
+                                color:
+                                    titleColor ??
+                                    item.titleColor ??
+                                    theme.colorScheme.onBackground,
+                                fontSize: widget.titleSize ?? item.titleSize,
+                              ),
                         )
-                      : Container(),
-                ],
-              ),
+                        : Container(),
+                  ],
+                ),
       );
     } else {
       Widget iconWidget;
@@ -236,36 +246,39 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
 
       return (_currentIndex == index)
           ? MyContainer(
-              padding: containerPadding ?? MySpacing.all(8),
-              borderRadiusAll: containerRadius ?? 8,
-              shape: containerShape ?? BoxShape.rectangle,
-              color: activeContainerColor,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  iconWidget,
-                  MySpacing.width(showActiveLabel ? 8 : 0),
-                  showActiveLabel
-                      ? Text(
-                          item.title!,
-                          style: activeTitleStyle ??
-                              item.activeTitleStyle ??
-                              MyTextStyle.labelSmall(
-                                  color: activeTitleColor ??
-                                      item.activeTitleColor ??
-                                      theme.primaryColor,
-                                  fontSize:
-                                      activeTitleSize ?? item.activeTitleSize),
-                        )
-                      : Container(),
-                ],
-              ),
-            )
+            padding: containerPadding ?? MySpacing.all(8),
+            borderRadiusAll: containerRadius ?? 8,
+            shape: containerShape ?? BoxShape.rectangle,
+            color: activeContainerColor,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                iconWidget,
+                MySpacing.width(showActiveLabel ? 8 : 0),
+                showActiveLabel
+                    ? Text(
+                      item.title!,
+                      style:
+                          activeTitleStyle ??
+                          item.activeTitleStyle ??
+                          MyTextStyle.labelSmall(
+                            color:
+                                activeTitleColor ??
+                                item.activeTitleColor ??
+                                theme.primaryColor,
+                            fontSize: activeTitleSize ?? item.activeTitleSize,
+                          ),
+                    )
+                    : Container(),
+              ],
+            ),
+          )
           : item.icon ??
               Icon(
                 item.iconData,
                 size: iconSize ?? item.iconSize ?? 24,
-                color: iconColor ??
+                color:
+                    iconColor ??
                     item.iconColor ??
                     theme.colorScheme.onBackground.withAlpha(150),
               );
@@ -275,28 +288,32 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
   List<Widget> getListOfItems() {
     List<Widget> list = [];
 
-    double singleWidth = (MediaQuery.of(context).size.width - 50) /
+    double singleWidth =
+        (MediaQuery.of(context).size.width - 50) /
         (itemList!.length +
             (widget.showLabel ? 0 : (showActiveLabel ? 0.5 : 0)));
 
     for (int i = 0; i < itemList!.length; i++) {
-      double containerWidth = widget.showLabel
-          ? (singleWidth)
-          : (showActiveLabel
-              ? (i == _currentIndex ? singleWidth * 1.5 : singleWidth)
-              : singleWidth);
-      list.add(SizedBox(
-        width: containerWidth,
-        child: InkWell(
-          child: Center(child: getItem(i)),
-          onTap: () {
-            setState(() {
-              _currentIndex = i;
-              _tabController!.index = i;
-            });
-          },
+      double containerWidth =
+          widget.showLabel
+              ? (singleWidth)
+              : (showActiveLabel
+                  ? (i == _currentIndex ? singleWidth * 1.5 : singleWidth)
+                  : singleWidth);
+      list.add(
+        SizedBox(
+          width: containerWidth,
+          child: InkWell(
+            child: Center(child: getItem(i)),
+            onTap: () {
+              setState(() {
+                _currentIndex = i;
+                _tabController!.index = i;
+              });
+            },
+          ),
         ),
-      ));
+      );
     }
     return list;
   }
@@ -342,13 +359,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar>
         Container(
           padding: outerPadding ?? MySpacing.all(16),
           margin: outerMargin ?? MySpacing.zero,
-          decoration: containerDecoration ??
-              BoxDecoration(
-                color: backgroundColor,
-              ),
-          child: Row(
-            children: getListOfItems(),
-          ),
+          decoration:
+              containerDecoration ?? BoxDecoration(color: backgroundColor),
+          child: Row(children: getListOfItems()),
         ),
       ],
     );

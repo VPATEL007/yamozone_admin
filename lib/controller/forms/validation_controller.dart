@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/forms/basic_controller.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_field_validator.dart';
-import 'package:webkit/helpers/widgets/my_form_validator.dart';
-import 'package:webkit/helpers/widgets/my_validators.dart';
+import 'package:yamazone/controller/forms/basic_controller.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_field_validator.dart';
+import 'package:yamazone/helpers/widgets/my_form_validator.dart';
+import 'package:yamazone/helpers/widgets/my_validators.dart';
 
 class GenderValidator extends MyFieldValidatorRule<Gender> {
   @override
@@ -16,22 +16,28 @@ class ValidationController extends MyController {
   MyFormValidator basicValidator = MyFormValidator();
 
   ValidationController() {
-    basicValidator.addField('full_name',
-        required: true,
-        label: "Full Name",
-        controller: TextEditingController());
+    basicValidator.addField(
+      'full_name',
+      required: true,
+      label: "Full Name",
+      controller: TextEditingController(),
+    );
 
-    basicValidator.addField('email',
-        required: true,
-        label: "Email",
-        validators: [MyEmailValidator()],
-        controller: TextEditingController());
+    basicValidator.addField(
+      'email',
+      required: true,
+      label: "Email",
+      validators: [MyEmailValidator()],
+      controller: TextEditingController(),
+    );
 
-    basicValidator.addField('password',
-        required: true,
-        label: "Password",
-        validators: [MyLengthValidator(min: 6, max: 10)],
-        controller: TextEditingController());
+    basicValidator.addField(
+      'password',
+      required: true,
+      label: "Password",
+      validators: [MyLengthValidator(min: 6, max: 10)],
+      controller: TextEditingController(),
+    );
 
     basicValidator.addField(
       'gender',

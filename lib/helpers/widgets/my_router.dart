@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_middleware.dart';
-import 'package:webkit/helpers/widgets/my_route.dart';
-import 'package:webkit/helpers/widgets/my_route_exception.dart';
-import 'package:webkit/helpers/widgets/my_routes.dart';
+import 'package:yamazone/helpers/widgets/my_middleware.dart';
+import 'package:yamazone/helpers/widgets/my_route.dart';
+import 'package:yamazone/helpers/widgets/my_route_exception.dart';
+import 'package:yamazone/helpers/widgets/my_routes.dart';
 
 class MyRouter {
   static T? getArgs<T>(BuildContext context) {
@@ -12,7 +12,8 @@ class MyRouter {
       return null;
     } catch (e) {
       throw RouteException(
-          "Use getArgs in onReady state. Don't use in constructor or initState");
+        "Use getArgs in onReady state. Don't use in constructor or initState",
+      );
     }
   }
 
@@ -61,7 +62,8 @@ class MyRouter {
     if (route == null) {
       throw RouteException("'$routeName' Route is not implemented");
     }
-    return Navigator.of(context)
-        .pushReplacementNamed<T, TO>(route.name, arguments: arguments);
+    return Navigator.of(
+      context,
+    ).pushReplacementNamed<T, TO>(route.name, arguments: arguments);
   }
 }

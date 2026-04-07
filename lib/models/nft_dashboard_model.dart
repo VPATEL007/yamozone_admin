@@ -3,17 +3,25 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class NFTDashboardModel extends IdentifierModel {
   final String name, companyName, cartoonImage, image;
   final int number, item;
   final double ETH;
 
-  NFTDashboardModel(super.id, this.name, this.companyName, this.number,
-      this.item, this.ETH, this.cartoonImage, this.image);
+  NFTDashboardModel(
+    super.id,
+    this.name,
+    this.companyName,
+    this.number,
+    this.item,
+    this.ETH,
+    this.cartoonImage,
+    this.image,
+  );
 
   static NFTDashboardModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -26,8 +34,16 @@ class NFTDashboardModel extends IdentifierModel {
     String cartoonImage = Images.randomImage(Images.cartoon);
     String image = Images.randomImage(Images.cartoonBackground);
 
-    return NFTDashboardModel(decoder.getId, name, companyName, number, item,
-        ETH, cartoonImage, image);
+    return NFTDashboardModel(
+      decoder.getId,
+      name,
+      companyName,
+      number,
+      item,
+      ETH,
+      cartoonImage,
+      image,
+    );
   }
 
   static List<NFTDashboardModel> listFromJSON(List<dynamic> list) {

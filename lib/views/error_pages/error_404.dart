@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/error_pages/error_404_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
+import 'package:yamazone/controller/error_pages/error_404_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
 
 class Error404 extends StatefulWidget {
   const Error404({Key? key}) : super(key: key);
@@ -38,20 +38,14 @@ class _Error404State extends State<Error404>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
-                      LucideIcons.alertCircle,
-                      size: 52,
-                    ),
+                    const Icon(LucideIcons.alertCircle, size: 52),
                     MySpacing.width(20),
-                    MyText.bodyMedium(
-                      "Error 404",
-                      fontSize: 52,
-                    )
+                    MyText.bodyMedium("Error 404", fontSize: 52),
                   ],
                 ),
                 MyText.bodyMedium(
                   "Something went wrong or the page doesn't exist anymore",
-                )
+                ),
               ],
             ),
           );

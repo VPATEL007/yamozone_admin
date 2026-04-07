@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
 
 class Info {
-  static message(String message,
-      {GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-      BuildContext? context,
-      Duration? duration,
-      SnackBarBehavior snackBarBehavior = SnackBarBehavior.fixed}) {
+  static message(
+    String message, {
+    GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+    BuildContext? context,
+    Duration? duration,
+    SnackBarBehavior snackBarBehavior = SnackBarBehavior.fixed,
+  }) {
     duration ??= Duration(seconds: 3);
     ThemeData theme = AppTheme.theme;
 
     SnackBar snackBar = SnackBar(
       duration: duration,
-      content: MyText(
-        message,
-        color: theme.colorScheme.onPrimary,
-      ),
+      content: MyText(message, color: theme.colorScheme.onPrimary),
       backgroundColor: theme.colorScheme.primary,
       behavior: snackBarBehavior,
     );
@@ -28,20 +27,19 @@ class Info {
     } else {}
   }
 
-  static error(String message,
-      {GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-      BuildContext? context,
-      Duration? duration,
-      SnackBarBehavior snackBarBehavior = SnackBarBehavior.fixed}) {
+  static error(
+    String message, {
+    GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+    BuildContext? context,
+    Duration? duration,
+    SnackBarBehavior snackBarBehavior = SnackBarBehavior.fixed,
+  }) {
     duration ??= Duration(seconds: 3);
     ThemeData theme = AppTheme.theme;
 
     SnackBar snackBar = SnackBar(
       duration: duration,
-      content: MyText(
-        message,
-        color: theme.colorScheme.onError,
-      ),
+      content: MyText(message, color: theme.colorScheme.onError),
       backgroundColor: theme.colorScheme.error,
       behavior: snackBarBehavior,
     );

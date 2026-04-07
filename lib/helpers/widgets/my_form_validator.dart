@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:webkit/helpers/widgets/my_field_validator.dart';
+import 'package:yamazone/helpers/widgets/my_field_validator.dart';
 
 class MyFormValidator {
   Map<String, dynamic> errors = {};
@@ -13,13 +13,19 @@ class MyFormValidator {
   final Map<String, TextEditingController> _controllers = {};
   final Map<String, dynamic> _data = {};
 
-  void addField<T>(String name,
-      {bool required = false,
-      List<MyFieldValidatorRule<T>> validators = const [],
-      String? label,
-      TextEditingController? controller}) {
-    _validators[name] = _createValidation<T>(name,
-        required: required, validators: validators, label: label);
+  void addField<T>(
+    String name, {
+    bool required = false,
+    List<MyFieldValidatorRule<T>> validators = const [],
+    String? label,
+    TextEditingController? controller,
+  }) {
+    _validators[name] = _createValidation<T>(
+      name,
+      required: required,
+      validators: validators,
+      label: label,
+    );
     if (controller != null) _controllers[name] = controller;
   }
 
@@ -29,10 +35,12 @@ class MyFormValidator {
           : null;
   TextEditingController? getController(String name) => _controllers[name];
 
-  MyFieldValidator<T> _createValidation<T>(String name,
-      {bool required = false,
-      List<MyFieldValidatorRule<T>> validators = const [],
-      String? label}) {
+  MyFieldValidator<T> _createValidation<T>(
+    String name, {
+    bool required = false,
+    List<MyFieldValidatorRule<T>> validators = const [],
+    String? label,
+  }) {
     return (T? value) {
       label ??= name.capitalize;
       String? error = getError(name);
@@ -44,8 +52,11 @@ class MyFormValidator {
         return "$label is required";
       }
       for (MyFieldValidatorRule validator in validators) {
-        String? validationError =
-            validator.validate(value, required, getData());
+        String? validationError = validator.validate(
+          value,
+          required,
+          getData(),
+        );
         if (validationError != null) {
           return validationError;
         }
@@ -92,9 +103,7 @@ class MyFormValidator {
   }
 
   Map<String, dynamic> getData() {
-    var map = {
-      ..._data,
-    };
+    var map = {..._data};
     for (var key in _controllers.keys) {
       if (_controllers[key]?.text != null) {
         map[key] = _controllers[key]!.text;

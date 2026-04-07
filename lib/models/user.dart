@@ -1,4 +1,4 @@
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class User extends IdentifierModel {
   final String email, firstName, lastName;

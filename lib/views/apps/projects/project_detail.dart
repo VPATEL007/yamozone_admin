@@ -4,25 +4,25 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/apps/project/project_detail_controller.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/utils/utils.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_list_extension.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/project/project_detail_controller.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/utils/utils.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_list_extension.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ProjectDetail extends StatefulWidget {
   const ProjectDetail({Key? key}) : super(key: key);
@@ -170,55 +170,84 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                     PopupMenuPosition.under,
                                                 itemBuilder:
                                                     (BuildContext context) => [
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: Row(children: [
-                                                        const Icon(
-                                                          LucideIcons.edit,
-                                                          size: 16,
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
                                                         ),
-                                                        MySpacing.width(8),
-                                                        MyText.bodySmall("Edit")
-                                                      ])),
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: Row(children: [
-                                                        const Icon(
-                                                            LucideIcons.trash,
-                                                            size: 16),
-                                                        MySpacing.width(8),
-                                                        MyText.bodySmall(
-                                                            "Delete")
-                                                      ])),
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: Row(children: [
-                                                        const Icon(
-                                                            LucideIcons.mail,
-                                                            size: 16),
-                                                        MySpacing.width(8),
-                                                        MyText.bodySmall(
-                                                            "Invite")
-                                                      ])),
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: Row(children: [
-                                                        const Icon(
-                                                            LucideIcons.logOut,
-                                                            size: 16),
-                                                        MySpacing.width(8),
-                                                        MyText.bodySmall(
-                                                            "Leave")
-                                                      ])),
-                                                ],
+                                                        height: 10,
+                                                        child: Row(
+                                                          children: [
+                                                            const Icon(
+                                                              LucideIcons.edit,
+                                                              size: 16,
+                                                            ),
+                                                            MySpacing.width(8),
+                                                            MyText.bodySmall(
+                                                              "Edit",
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
+                                                        ),
+                                                        height: 10,
+                                                        child: Row(
+                                                          children: [
+                                                            const Icon(
+                                                              LucideIcons.trash,
+                                                              size: 16,
+                                                            ),
+                                                            MySpacing.width(8),
+                                                            MyText.bodySmall(
+                                                              "Delete",
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
+                                                        ),
+                                                        height: 10,
+                                                        child: Row(
+                                                          children: [
+                                                            const Icon(
+                                                              LucideIcons.mail,
+                                                              size: 16,
+                                                            ),
+                                                            MySpacing.width(8),
+                                                            MyText.bodySmall(
+                                                              "Invite",
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
+                                                        ),
+                                                        height: 10,
+                                                        child: Row(
+                                                          children: [
+                                                            const Icon(
+                                                              LucideIcons
+                                                                  .logOut,
+                                                              size: 16,
+                                                            ),
+                                                            MySpacing.width(8),
+                                                            MyText.bodySmall(
+                                                              "Leave",
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
                                                 child: const Icon(
                                                   LucideIcons.moreVertical,
                                                   size: 18,
@@ -231,8 +260,9 @@ class _ProjectDetailState extends State<ProjectDetail>
                                         MyContainer(
                                           paddingAll: 0,
                                           borderRadiusAll: 12,
-                                          color: contentTheme.primary
-                                              .withAlpha(28),
+                                          color: contentTheme.primary.withAlpha(
+                                            28,
+                                          ),
                                           child: Padding(
                                             padding: MySpacing.xy(8, 2),
                                             child: MyText.bodyMedium(
@@ -292,12 +322,13 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 MyText.titleMedium(
-                                                    "Start Data"),
+                                                  "Start Data",
+                                                ),
                                                 MySpacing.height(8),
                                                 MyText.bodyMedium(
                                                   "17 March 2019 1:00 PM",
                                                   muted: true,
-                                                )
+                                                ),
                                               ],
                                             ),
                                             Column(
@@ -309,7 +340,7 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                 MyText.bodyMedium(
                                                   "22 December 2019 1:00 PM",
                                                   muted: true,
-                                                )
+                                                ),
                                               ],
                                             ),
                                             Column(
@@ -321,9 +352,9 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                 MyText.bodyMedium(
                                                   "\$15,800",
                                                   muted: true,
-                                                )
+                                                ),
                                               ],
-                                            )
+                                            ),
                                           ],
                                         ),
                                         MySpacing.height(16),
@@ -333,26 +364,30 @@ class _ProjectDetailState extends State<ProjectDetail>
                                         ),
                                         MySpacing.height(16),
                                         Row(
-                                          children: controller.images
-                                              .mapIndexed(
-                                                (index, element) =>
-                                                    MyContainer.roundBordered(
-                                                  marginAll: 4,
-                                                  paddingAll: 2,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                    child: Image.asset(
+                                          children:
+                                              controller.images
+                                                  .mapIndexed(
+                                                    (
+                                                      index,
                                                       element,
-                                                      height: 32,
-                                                      width: 32,
-                                                      fit: BoxFit.cover,
+                                                    ) => MyContainer.roundBordered(
+                                                      marginAll: 4,
+                                                      paddingAll: 2,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              20,
+                                                            ),
+                                                        child: Image.asset(
+                                                          element,
+                                                          height: 32,
+                                                          width: 32,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                              )
-                                              .toList(),
+                                                  )
+                                                  .toList(),
                                         ),
                                       ],
                                     ),
@@ -383,19 +418,27 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                     PopupMenuPosition.under,
                                                 itemBuilder:
                                                     (BuildContext context) => [
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: MyText.bodySmall(
-                                                          "Latest")),
-                                                  PopupMenuItem(
-                                                      padding:
-                                                          MySpacing.xy(16, 8),
-                                                      height: 10,
-                                                      child: MyText.bodySmall(
-                                                          "Popular")),
-                                                ],
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
+                                                        ),
+                                                        height: 10,
+                                                        child: MyText.bodySmall(
+                                                          "Latest",
+                                                        ),
+                                                      ),
+                                                      PopupMenuItem(
+                                                        padding: MySpacing.xy(
+                                                          16,
+                                                          8,
+                                                        ),
+                                                        height: 10,
+                                                        child: MyText.bodySmall(
+                                                          "Popular",
+                                                        ),
+                                                      ),
+                                                    ],
                                                 child: const Icon(
                                                   LucideIcons.moreVertical,
                                                   size: 18,
@@ -416,17 +459,20 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                 decoration: InputDecoration(
                                                   enabledBorder:
                                                       const UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        style:
-                                                            BorderStyle.none),
-                                                  ),
+                                                        borderSide: BorderSide(
+                                                          style:
+                                                              BorderStyle.none,
+                                                        ),
+                                                      ),
                                                   hintText:
                                                       "Write somethings...",
                                                   hintStyle:
                                                       MyTextStyle.bodySmall(
-                                                          xMuted: true),
-                                                  contentPadding:
-                                                      MySpacing.all(16),
+                                                        xMuted: true,
+                                                      ),
+                                                  contentPadding: MySpacing.all(
+                                                    16,
+                                                  ),
                                                   isCollapsed: true,
                                                   floatingLabelBehavior:
                                                       FloatingLabelBehavior
@@ -489,16 +535,21 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                     MyButton(
                                                       onPressed: () {},
                                                       elevation: 0,
-                                                      padding:
-                                                          MySpacing.xy(16, 12),
+                                                      padding: MySpacing.xy(
+                                                        16,
+                                                        12,
+                                                      ),
                                                       backgroundColor:
                                                           contentTheme.primary,
-                                                      borderRadiusAll: AppStyle
-                                                          .buttonRadius.medium,
+                                                      borderRadiusAll:
+                                                          AppStyle
+                                                              .buttonRadius
+                                                              .medium,
                                                       child: MyText.bodySmall(
                                                         'Post',
-                                                        color: contentTheme
-                                                            .onPrimary,
+                                                        color:
+                                                            contentTheme
+                                                                .onPrimary,
                                                       ),
                                                     ),
                                                   ],
@@ -511,8 +562,10 @@ class _ProjectDetailState extends State<ProjectDetail>
                                         Column(
                                           children: [
                                             MyContainer.none(
-                                              padding:
-                                                  MySpacing.xy(flexSpacing, 12),
+                                              padding: MySpacing.xy(
+                                                flexSpacing,
+                                                12,
+                                              ),
                                               child: Row(
                                                 children: [
                                                   MyContainer.rounded(
@@ -538,10 +591,7 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                         fontSize: 12,
                                                       ),
                                                       MyText.titleMedium(
-                                                        "${Utils.getTimeStringFromDateTime(
-                                                          DateTime.now(),
-                                                          showSecond: false,
-                                                        )} Minutes Ago",
+                                                        "${Utils.getTimeStringFromDateTime(DateTime.now(), showSecond: false)} Minutes Ago",
                                                         fontWeight: 700,
                                                         fontSize: 10,
                                                         muted: true,
@@ -557,8 +607,8 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                 controller.dummyTexts[0],
                                                 maxLines: 2,
                                                 style: const TextStyle(
-                                                    fontStyle:
-                                                        FontStyle.italic),
+                                                  fontStyle: FontStyle.italic,
+                                                ),
                                                 overflow: TextOverflow.ellipsis,
                                                 fontSize: 20,
                                                 muted: true,
@@ -598,8 +648,7 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                               fontWeight: 600,
                                                             ),
                                                             Expanded(
-                                                              child: MyText
-                                                                  .bodySmall(
+                                                              child: MyText.bodySmall(
                                                                 "about 2 minutes ago",
                                                                 fontSize: 10,
                                                                 muted: true,
@@ -616,16 +665,17 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                           fontSize: 12,
                                                           muted: true,
                                                           maxLines: 2,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
+                                                          overflow:
+                                                              TextOverflow
+                                                                  .ellipsis,
                                                         ),
                                                         MySpacing.height(16),
                                                         Row(
                                                           children: [
                                                             const Icon(
-                                                                LucideIcons
-                                                                    .reply,
-                                                                size: 16),
+                                                              LucideIcons.reply,
+                                                              size: 16,
+                                                            ),
                                                             MySpacing.width(8),
                                                             MyText.bodySmall(
                                                               "Reply",
@@ -634,7 +684,7 @@ class _ProjectDetailState extends State<ProjectDetail>
                                                         ),
                                                       ],
                                                     ),
-                                                  )
+                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -660,15 +710,16 @@ class _ProjectDetailState extends State<ProjectDetail>
                                       primaryXAxis: CategoryAxis(),
                                       axes: <ChartAxis>[
                                         NumericAxis(
-                                            numberFormat:
-                                                NumberFormat.compact(),
-                                            majorGridLines:
-                                                const MajorGridLines(width: 0),
-                                            opposedPosition: true,
-                                            name: 'yAxis1',
-                                            interval: 1000,
-                                            minimum: 0,
-                                            maximum: 7000)
+                                          numberFormat: NumberFormat.compact(),
+                                          majorGridLines: const MajorGridLines(
+                                            width: 0,
+                                          ),
+                                          opposedPosition: true,
+                                          name: 'yAxis1',
+                                          interval: 1000,
+                                          minimum: 0,
+                                          maximum: 7000,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -680,21 +731,28 @@ class _ProjectDetailState extends State<ProjectDetail>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        MyText.titleMedium(
-                                          "File",
+                                        MyText.titleMedium("File"),
+                                        MySpacing.height(16),
+                                        MyContainer.bordered(
+                                          child: buildFile(
+                                            "WebKit-file-1",
+                                            1363148,
+                                          ),
                                         ),
                                         MySpacing.height(16),
                                         MyContainer.bordered(
-                                            child: buildFile(
-                                                "WebKit-file-1", 1363148)),
+                                          child: buildFile(
+                                            "WebKit-file-2",
+                                            10485760,
+                                          ),
+                                        ),
                                         MySpacing.height(16),
                                         MyContainer.bordered(
-                                            child: buildFile(
-                                                "WebKit-file-2", 10485760)),
-                                        MySpacing.height(16),
-                                        MyContainer.bordered(
-                                            child: buildFile(
-                                                "WebKit-file-3", 1610612736)),
+                                          child: buildFile(
+                                            "WebKit-file-3",
+                                            1610612736,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -723,43 +781,36 @@ class _ProjectDetailState extends State<ProjectDetail>
           height: 32,
           width: 32,
           // color: contentTheme.warning,
-          child: Icon(
-            LucideIcons.folderArchive,
-            size: 20,
-          ),
+          child: Icon(LucideIcons.folderArchive, size: 20),
         ),
         MySpacing.width(16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MyText.bodyMedium(
-                text,
-                fontSize: 16,
-              ),
-              MyText.bodyMedium(
-                Utils.getStorageStringFromByte(bytes),
-              ),
+              MyText.bodyMedium(text, fontSize: 16),
+              MyText.bodyMedium(Utils.getStorageStringFromByte(bytes)),
             ],
           ),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(LucideIcons.download))
+        IconButton(onPressed: () {}, icon: const Icon(LucideIcons.download)),
       ],
     );
   }
 
   Widget buildProjectState(
-      Color color, IconData icons, double countUp, String projectStateName) {
+    Color color,
+    IconData icons,
+    double countUp,
+    String projectStateName,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MyContainer.rounded(
           paddingAll: 28,
           color: color.withAlpha(28),
-          child: Icon(
-            icons,
-            color: color,
-          ),
+          child: Icon(icons, color: color),
         ),
         Expanded(
           child: Column(
@@ -770,19 +821,17 @@ class _ProjectDetailState extends State<ProjectDetail>
                 end: countUp,
                 duration: const Duration(seconds: 1),
                 separator: ',',
-                style: MyTextStyle.titleLarge(
-                  fontSize: 24,
-                ),
+                style: MyTextStyle.titleLarge(fontSize: 24),
               ),
               MySpacing.height(12),
               MyText.bodyMedium(
                 projectStateName,
                 fontSize: 20,
                 overflow: TextOverflow.ellipsis,
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

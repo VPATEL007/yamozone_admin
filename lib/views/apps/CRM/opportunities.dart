@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/apps/CRM/opportunities_controller.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/CRM/opportunities_controller.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class OpportunitiesPage extends StatefulWidget {
   const OpportunitiesPage({Key? key}) : super(key: key);
@@ -50,10 +50,7 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Opportunities",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Opportunities", fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: "CRM"),
@@ -79,27 +76,28 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  MyText.titleLarge(
-                                    "Status Chart",
-                                  ),
+                                  MyText.titleLarge("Status Chart"),
                                   SfCircularChart(
-                                      legend: Legend(
-                                          isVisible: true,
-                                          position: LegendPosition.bottom),
-                                      series: <CircularSeries>[
-                                        PieSeries<ChartData1, String>(
-                                            dataSource: controller.chartData1,
-                                            pointColorMapper:
-                                                (ChartData1 data, _) =>
-                                                    data.color,
-                                            xValueMapper:
-                                                (ChartData1 data, _) => data.x,
-                                            yValueMapper:
-                                                (ChartData1 data, _) => data.y,
-                                            dataLabelSettings:
-                                                const DataLabelSettings(
-                                                    isVisible: true)),
-                                      ])
+                                    legend: Legend(
+                                      isVisible: true,
+                                      position: LegendPosition.bottom,
+                                    ),
+                                    series: <CircularSeries>[
+                                      PieSeries<ChartData1, String>(
+                                        dataSource: controller.chartData1,
+                                        pointColorMapper:
+                                            (ChartData1 data, _) => data.color,
+                                        xValueMapper:
+                                            (ChartData1 data, _) => data.x,
+                                        yValueMapper:
+                                            (ChartData1 data, _) => data.y,
+                                        dataLabelSettings:
+                                            const DataLabelSettings(
+                                              isVisible: true,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -107,14 +105,15 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                           MyFlexItem(
                             sizes: "lg-12",
                             child: MyCard(
-                                shadow: MyShadow(elevation: 0.5),
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      MyText.bodyMedium("Leads Statics"),
-                                      MySpacing.height(16),
-                                    ])),
+                              shadow: MyShadow(elevation: 0.5),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  MyText.bodyMedium("Leads Statics"),
+                                  MySpacing.height(16),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -140,15 +139,17 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                           "Cold",
                                           "InProgress",
                                           "Lost",
-                                          "Won"
+                                          "Won",
                                         ].map((behavior) {
                                           return PopupMenuItem(
                                             value: behavior,
                                             height: 32,
                                             child: MyText.bodySmall(
                                               behavior.toString(),
-                                              color: theme
-                                                  .colorScheme.onBackground,
+                                              color:
+                                                  theme
+                                                      .colorScheme
+                                                      .onBackground,
                                               fontWeight: 600,
                                             ),
                                           );
@@ -165,116 +166,155 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                 theme.colorScheme.onBackground,
                                           ),
                                           Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 4),
+                                            margin: const EdgeInsets.only(
+                                              left: 4,
+                                            ),
                                             child: Icon(
                                               LucideIcons.chevronDown,
                                               size: 22,
-                                              color: theme
-                                                  .colorScheme.onBackground,
+                                              color:
+                                                  theme
+                                                      .colorScheme
+                                                      .onBackground,
                                             ),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ],
                                 ),
                                 MyButton(
-                                  onPressed: () => showDialog(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      title: MyText.titleMedium(
-                                        "Add item",
+                                  onPressed:
+                                      () => showDialog(
+                                        context: context,
+                                        builder:
+                                            (context) => AlertDialog(
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
+                                              title: MyText.titleMedium(
+                                                "Add item",
+                                              ),
+                                              titlePadding: MySpacing.xy(
+                                                16,
+                                                12,
+                                              ),
+                                              insetPadding: MySpacing.y(300),
+                                              actionsPadding: MySpacing.xy(
+                                                190,
+                                                16,
+                                              ),
+                                              contentPadding: MySpacing.x(16),
+                                              content: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  MyText.bodyMedium("Name"),
+                                                  MySpacing.height(8),
+                                                  TextFormField(
+                                                    keyboardType:
+                                                        TextInputType
+                                                            .emailAddress,
+                                                    decoration: InputDecoration(
+                                                      labelText: "Enter Name",
+                                                      labelStyle:
+                                                          MyTextStyle.bodySmall(
+                                                            xMuted: true,
+                                                          ),
+                                                      border:
+                                                          outlineInputBorder,
+                                                      contentPadding:
+                                                          MySpacing.all(16),
+                                                      isCollapsed: true,
+                                                      floatingLabelBehavior:
+                                                          FloatingLabelBehavior
+                                                              .never,
+                                                    ),
+                                                  ),
+                                                  MySpacing.height(16),
+                                                  MyText.bodyMedium("Email"),
+                                                  MySpacing.height(8),
+                                                  TextFormField(
+                                                    keyboardType:
+                                                        TextInputType
+                                                            .emailAddress,
+                                                    decoration: InputDecoration(
+                                                      labelText: "Enter Email",
+                                                      labelStyle:
+                                                          MyTextStyle.bodySmall(
+                                                            xMuted: true,
+                                                          ),
+                                                      border:
+                                                          outlineInputBorder,
+                                                      contentPadding:
+                                                          MySpacing.all(16),
+                                                      isCollapsed: true,
+                                                      floatingLabelBehavior:
+                                                          FloatingLabelBehavior
+                                                              .never,
+                                                    ),
+                                                  ),
+                                                  MySpacing.height(16),
+                                                  MyText.bodyMedium("Phone"),
+                                                  MySpacing.height(8),
+                                                  TextFormField(
+                                                    keyboardType:
+                                                        TextInputType
+                                                            .emailAddress,
+                                                    decoration: InputDecoration(
+                                                      labelText:
+                                                          "Enter Phone Number",
+                                                      labelStyle:
+                                                          MyTextStyle.bodySmall(
+                                                            xMuted: true,
+                                                          ),
+                                                      border:
+                                                          outlineInputBorder,
+                                                      contentPadding:
+                                                          MySpacing.all(16),
+                                                      isCollapsed: true,
+                                                      floatingLabelBehavior:
+                                                          FloatingLabelBehavior
+                                                              .never,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              actions: [
+                                                MyButton(
+                                                  onPressed: () {},
+                                                  elevation: 0,
+                                                  backgroundColor:
+                                                      contentTheme.primary,
+                                                  borderRadiusAll:
+                                                      AppStyle
+                                                          .buttonRadius
+                                                          .medium,
+                                                  child: MyText.bodyMedium(
+                                                    "Ok",
+                                                    color:
+                                                        contentTheme.onPrimary,
+                                                  ),
+                                                ),
+                                                MyButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  elevation: 0,
+                                                  backgroundColor:
+                                                      contentTheme.primary,
+                                                  borderRadiusAll:
+                                                      AppStyle
+                                                          .buttonRadius
+                                                          .medium,
+                                                  child: MyText.bodyMedium(
+                                                    "Cancel",
+                                                    color:
+                                                        contentTheme.onPrimary,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                       ),
-                                      titlePadding: MySpacing.xy(16, 12),
-                                      insetPadding: MySpacing.y(300),
-                                      actionsPadding: MySpacing.xy(190, 16),
-                                      contentPadding: MySpacing.x(16),
-                                      content: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          MyText.bodyMedium("Name"),
-                                          MySpacing.height(8),
-                                          TextFormField(
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            decoration: InputDecoration(
-                                              labelText: "Enter Name",
-                                              labelStyle: MyTextStyle.bodySmall(
-                                                  xMuted: true),
-                                              border: outlineInputBorder,
-                                              contentPadding: MySpacing.all(16),
-                                              isCollapsed: true,
-                                              floatingLabelBehavior:
-                                                  FloatingLabelBehavior.never,
-                                            ),
-                                          ),
-                                          MySpacing.height(16),
-                                          MyText.bodyMedium("Email"),
-                                          MySpacing.height(8),
-                                          TextFormField(
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            decoration: InputDecoration(
-                                              labelText: "Enter Email",
-                                              labelStyle: MyTextStyle.bodySmall(
-                                                  xMuted: true),
-                                              border: outlineInputBorder,
-                                              contentPadding: MySpacing.all(16),
-                                              isCollapsed: true,
-                                              floatingLabelBehavior:
-                                                  FloatingLabelBehavior.never,
-                                            ),
-                                          ),
-                                          MySpacing.height(16),
-                                          MyText.bodyMedium("Phone"),
-                                          MySpacing.height(8),
-                                          TextFormField(
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            decoration: InputDecoration(
-                                              labelText: "Enter Phone Number",
-                                              labelStyle: MyTextStyle.bodySmall(
-                                                  xMuted: true),
-                                              border: outlineInputBorder,
-                                              contentPadding: MySpacing.all(16),
-                                              isCollapsed: true,
-                                              floatingLabelBehavior:
-                                                  FloatingLabelBehavior.never,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      actions: [
-                                        MyButton(
-                                          onPressed: () {},
-                                          elevation: 0,
-                                          backgroundColor: contentTheme.primary,
-                                          borderRadiusAll:
-                                              AppStyle.buttonRadius.medium,
-                                          child: MyText.bodyMedium(
-                                            "Ok",
-                                            color: contentTheme.onPrimary,
-                                          ),
-                                        ),
-                                        MyButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          elevation: 0,
-                                          backgroundColor: contentTheme.primary,
-                                          borderRadiusAll:
-                                              AppStyle.buttonRadius.medium,
-                                          child: MyText.bodyMedium(
-                                            "Cancel",
-                                            color: contentTheme.onPrimary,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                   elevation: 0,
                                   padding: MySpacing.xy(12, 18),
                                   backgroundColor: contentTheme.primary,
@@ -283,7 +323,7 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                     "Add Contact",
                                     color: contentTheme.onPrimary,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -325,9 +365,11 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  MyText.bodyMedium(controller
-                                                      .opportunities[index]
-                                                      .name),
+                                                  MyText.bodyMedium(
+                                                    controller
+                                                        .opportunities[index]
+                                                        .name,
+                                                  ),
                                                   MySpacing.height(12),
                                                   MyText.bodyMedium(
                                                     "Location: ${controller.opportunities[index].location}",
@@ -357,14 +399,13 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                       ),
                                                       MySpacing.width(12),
                                                       Expanded(
-                                                        child:
-                                                            MyText.bodyMedium(
+                                                        child: MyText.bodyMedium(
                                                           controller
-                                                              .opportunities[
-                                                                  index]
+                                                              .opportunities[index]
                                                               .email,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
+                                                          overflow:
+                                                              TextOverflow
+                                                                  .ellipsis,
                                                         ),
                                                       ),
                                                     ],
@@ -378,14 +419,13 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                       ),
                                                       MySpacing.width(12),
                                                       Expanded(
-                                                        child:
-                                                            MyText.bodyMedium(
+                                                        child: MyText.bodyMedium(
                                                           controller
-                                                              .opportunities[
-                                                                  index]
+                                                              .opportunities[index]
                                                               .phoneNumber,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
+                                                          overflow:
+                                                              TextOverflow
+                                                                  .ellipsis,
                                                         ),
                                                       ),
                                                     ],
@@ -401,8 +441,10 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                   MyButton(
                                                     onPressed: () {},
                                                     elevation: 0,
-                                                    padding:
-                                                        MySpacing.xy(12, 12),
+                                                    padding: MySpacing.xy(
+                                                      12,
+                                                      12,
+                                                    ),
                                                     borderColor:
                                                         contentTheme.primary,
                                                     backgroundColor:
@@ -411,8 +453,10 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                     splashColor: contentTheme
                                                         .primary
                                                         .withOpacity(0.2),
-                                                    borderRadiusAll: AppStyle
-                                                        .buttonRadius.medium,
+                                                    borderRadiusAll:
+                                                        AppStyle
+                                                            .buttonRadius
+                                                            .medium,
                                                     child: MyText.bodySmall(
                                                       'Assign',
                                                       color:
@@ -422,16 +466,21 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                   MyButton(
                                                     onPressed: () {},
                                                     elevation: 0,
-                                                    padding:
-                                                        MySpacing.xy(12, 12),
+                                                    padding: MySpacing.xy(
+                                                      12,
+                                                      12,
+                                                    ),
                                                     backgroundColor:
                                                         contentTheme.primary,
-                                                    borderRadiusAll: AppStyle
-                                                        .buttonRadius.medium,
+                                                    borderRadiusAll:
+                                                        AppStyle
+                                                            .buttonRadius
+                                                            .medium,
                                                     child: MyText.bodySmall(
                                                       'Call',
-                                                      color: contentTheme
-                                                          .onPrimary,
+                                                      color:
+                                                          contentTheme
+                                                              .onPrimary,
                                                     ),
                                                   ),
                                                 ],
@@ -460,11 +509,12 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                                     ),
                                                   ),
                                                   IconButton(
-                                                      onPressed: () {},
-                                                      icon: const Icon(
-                                                        LucideIcons.trash2,
-                                                        size: 16,
-                                                      )),
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                      LucideIcons.trash2,
+                                                      size: 16,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -476,12 +526,10 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
                                 );
                               },
                               separatorBuilder: (context, index) {
-                                return const SizedBox(
-                                  height: 16,
-                                );
+                                return const SizedBox(height: 16);
                               },
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

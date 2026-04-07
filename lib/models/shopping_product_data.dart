@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/extensions/extensions.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/extensions/extensions.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class ShoppingProduct extends IdentifierModel {
   String name, image, description;
@@ -13,16 +13,17 @@ class ShoppingProduct extends IdentifierModel {
   bool favorite;
 
   ShoppingProduct(
-      super.id,
-      this.name,
-      this.image,
-      this.description,
-      this.rating,
-      this.price,
-      this.review,
-      this.quantity,
-      this.color,
-      this.favorite);
+    super.id,
+    this.name,
+    this.image,
+    this.description,
+    this.rating,
+    this.price,
+    this.review,
+    this.quantity,
+    this.color,
+    this.favorite,
+  );
   static ShoppingProduct fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 

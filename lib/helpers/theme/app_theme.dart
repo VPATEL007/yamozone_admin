@@ -5,9 +5,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/helpers/theme/custom_theme.dart';
-import 'package:webkit/helpers/theme/theme_type.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/theme/custom_theme.dart';
+import 'package:yamazone/helpers/theme/theme_type.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
 
 export 'custom_theme.dart';
 export 'navigation_theme.dart';
@@ -24,11 +24,12 @@ class AppTheme {
   static ThemeData nftTheme = getNFTTheme();
   static ThemeData rentalServiceTheme = getRentalServiceTheme();
 
-  static ThemeData cookifyTheme = AppTheme.themeType == ThemeType.light
-      ? cookifyLightTheme
-      : cookifyDarkTheme;
+  static ThemeData cookifyTheme =
+      AppTheme.themeType == ThemeType.light
+          ? cookifyLightTheme
+          : cookifyDarkTheme;
 
-//---------------------------NEW-----------------------------------------
+  //---------------------------NEW-----------------------------------------
 
   static ThemeData plantTheme =
       AppTheme.themeType == ThemeType.light ? plantLightTheme : plantDarkTheme;
@@ -72,122 +73,135 @@ class AppTheme {
   );
   static ThemeData cookifyDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xfffcccc5),
-        primary: Color(0xfffcccc5),
-        onPrimary: Color(0xffec371a),
-        primaryContainer: Color(0xffec6d5a),
-        onPrimaryContainer: Color(0xffffeeec),
-        secondary: Color(0xfffcc18e),
-        onSecondary: Color(0xff381f01),
-        secondaryContainer: Color(0xff54381e),
-        onSecondaryContainer: Color(0xffe7cbae),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xfffcccc5),
+      primary: Color(0xfffcccc5),
+      onPrimary: Color(0xffec371a),
+      primaryContainer: Color(0xffec6d5a),
+      onPrimaryContainer: Color(0xffffeeec),
+      secondary: Color(0xfffcc18e),
+      onSecondary: Color(0xff381f01),
+      secondaryContainer: Color(0xff54381e),
+      onSecondaryContainer: Color(0xffe7cbae),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
-  static ThemeData datingTheme = AppTheme.themeType == ThemeType.light
-      ? datingLightTheme
-      : datingDarkTheme;
+  static ThemeData datingTheme =
+      AppTheme.themeType == ThemeType.light
+          ? datingLightTheme
+          : datingDarkTheme;
 
   static ThemeData datingLightTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xffB428C3),
-        secondary: Color(0xfff15f5f),
-        onSecondary: Color(0xffffffff),
-        secondaryContainer: Color(0xfffcd8d8),
-        onSecondaryContainer: Color(0xffea2929)),
+      seedColor: Color(0xffB428C3),
+      secondary: Color(0xfff15f5f),
+      onSecondary: Color(0xffffffff),
+      secondaryContainer: Color(0xfffcd8d8),
+      onSecondaryContainer: Color(0xffea2929),
+    ),
   );
   static ThemeData datingDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xfff1b0f8),
-        primary: Color(0xfff1b0f8),
-        onPrimary: Color(0xff9614a4),
-        primaryContainer: Color(0xffde4cef),
-        onPrimaryContainer: Color(0xfff8d8fd),
-        secondary: Color(0xfff88686),
-        onSecondary: Color(0xff8f1313),
-        secondaryContainer: Color(0xffec3535),
-        onSecondaryContainer: Color(0xfff6cdcd),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xfff1b0f8),
+      primary: Color(0xfff1b0f8),
+      onPrimary: Color(0xff9614a4),
+      primaryContainer: Color(0xffde4cef),
+      onPrimaryContainer: Color(0xfff8d8fd),
+      secondary: Color(0xfff88686),
+      onSecondary: Color(0xff8f1313),
+      secondaryContainer: Color(0xffec3535),
+      onSecondaryContainer: Color(0xfff6cdcd),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
   // Change
-  static ThemeData estateTheme = AppTheme.themeType == ThemeType.light
-      ? estateLightTheme
-      : estateDarkTheme;
+  static ThemeData estateTheme =
+      AppTheme.themeType == ThemeType.light
+          ? estateLightTheme
+          : estateDarkTheme;
 
   static ThemeData estateLightTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xff1c8c8c),
-        primaryContainer: Color(0xffdafafa),
-        secondary: Color(0xfff15f5f),
-        onSecondary: Color(0xffffffff),
-        secondaryContainer: Color(0xfff8d6d6),
-        onSecondaryContainer: Color(0xff570202)),
+      seedColor: Color(0xff1c8c8c),
+      primaryContainer: Color(0xffdafafa),
+      secondary: Color(0xfff15f5f),
+      onSecondary: Color(0xffffffff),
+      secondaryContainer: Color(0xfff8d6d6),
+      onSecondaryContainer: Color(0xff570202),
+    ),
   );
   static ThemeData estateDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xffcaffff),
-        primary: Color(0xffcaffff),
-        onPrimary: Color(0xff0b7777),
-        primaryContainer: Color(0xff18a6a6),
-        onPrimaryContainer: Color(0xffe5fdfd),
-        secondary: Color(0xffeea6a6),
-        onSecondary: Color(0xff491818),
-        secondaryContainer: Color(0xff7a2f2f),
-        onSecondaryContainer: Color(0xffefdada),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xffcaffff),
+      primary: Color(0xffcaffff),
+      onPrimary: Color(0xff0b7777),
+      primaryContainer: Color(0xff18a6a6),
+      onPrimaryContainer: Color(0xffe5fdfd),
+      secondary: Color(0xffeea6a6),
+      onSecondary: Color(0xff491818),
+      secondaryContainer: Color(0xff7a2f2f),
+      onSecondaryContainer: Color(0xffefdada),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
-  static ThemeData homemadeTheme = AppTheme.themeType == ThemeType.light
-      ? homemadeLightTheme
-      : homemadeDarkTheme;
+  static ThemeData homemadeTheme =
+      AppTheme.themeType == ThemeType.light
+          ? homemadeLightTheme
+          : homemadeDarkTheme;
 
   static ThemeData homemadeLightTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xffc5558e),
-        secondary: Color(0xffCC9D60),
-        onSecondary: Color(0xffffffff),
-        secondaryContainer: Color(0xfffce7cf),
-        onSecondaryContainer: Color(0xffc47712)),
+      seedColor: Color(0xffc5558e),
+      secondary: Color(0xffCC9D60),
+      onSecondary: Color(0xffffffff),
+      secondaryContainer: Color(0xfffce7cf),
+      onSecondaryContainer: Color(0xffc47712),
+    ),
   );
   static ThemeData homemadeDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xfffaafd4),
-        primary: Color(0xfffaafd4),
-        onPrimary: Color(0xffbb2e75),
-        primaryContainer: Color(0xffd95a9b),
-        onPrimaryContainer: Color(0xfffadaea),
-        secondary: Color(0xffecc797),
-        onSecondary: Color(0xff4f3616),
-        secondaryContainer: Color(0xff855b25),
-        onSecondaryContainer: Color(0xfff5e6d6),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xfffaafd4),
+      primary: Color(0xfffaafd4),
+      onPrimary: Color(0xffbb2e75),
+      primaryContainer: Color(0xffd95a9b),
+      onPrimaryContainer: Color(0xfffadaea),
+      secondary: Color(0xffecc797),
+      onSecondary: Color(0xff4f3616),
+      secondaryContainer: Color(0xff855b25),
+      onSecondaryContainer: Color(0xfff5e6d6),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
-  static ThemeData learningTheme = AppTheme.themeType == ThemeType.light
-      ? learningLightTheme
-      : learningDarkTheme;
+  static ThemeData learningTheme =
+      AppTheme.themeType == ThemeType.light
+          ? learningLightTheme
+          : learningDarkTheme;
 
   static ThemeData learningLightTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xff6874E8),
-        secondary: Color(0xff548c2f),
-        onSecondary: Color(0xffffffff),
-        secondaryContainer: Color(0xffdef0d1),
-        onSecondaryContainer: Color(0xff131F0a)),
+      seedColor: Color(0xff6874E8),
+      secondary: Color(0xff548c2f),
+      onSecondary: Color(0xffffffff),
+      secondaryContainer: Color(0xffdef0d1),
+      onSecondaryContainer: Color(0xff131F0a),
+    ),
   );
   static ThemeData learningDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xffcfd2ff),
-        primary: Color(0xffcfd2ff),
-        onPrimary: Color(0xff1529e8),
-        primaryContainer: Color(0xff5563e8),
-        onPrimaryContainer: Color(0xffe6e7fd),
-        secondary: Color(0xffd3ebc1),
-        onSecondary: Color(0xff253e14),
-        secondaryContainer: Color(0xff4B7b28),
-        onSecondaryContainer: Color(0xffe9f5e0),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xffcfd2ff),
+      primary: Color(0xffcfd2ff),
+      onPrimary: Color(0xff1529e8),
+      primaryContainer: Color(0xff5563e8),
+      onPrimaryContainer: Color(0xffe6e7fd),
+      secondary: Color(0xffd3ebc1),
+      onSecondary: Color(0xff253e14),
+      secondaryContainer: Color(0xff4B7b28),
+      onSecondaryContainer: Color(0xffe9f5e0),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
   static ThemeData shoppingManagerTheme = getShoppingManagerTheme();
@@ -196,9 +210,10 @@ class AppTheme {
     return createThemeM3(themeType, Color(0xff5a4a94));
   }
 
-  static ThemeData shoppingTheme = AppTheme.themeType == ThemeType.light
-      ? shoppingLightTheme
-      : shoppingDarkTheme;
+  static ThemeData shoppingTheme =
+      AppTheme.themeType == ThemeType.light
+          ? shoppingLightTheme
+          : shoppingDarkTheme;
 
   static ThemeData shoppingLightTheme = createTheme(
     ColorScheme.fromSeed(
@@ -212,16 +227,17 @@ class AppTheme {
   );
   static ThemeData shoppingDarkTheme = createTheme(
     ColorScheme.fromSeed(
-        seedColor: Color(0xffcaffff),
-        primary: Color(0xffcaffff),
-        onPrimary: Color(0xff0b7777),
-        primaryContainer: Color(0xff18a6a6),
-        onPrimaryContainer: Color(0xffe5fdfd),
-        secondary: Color(0xffeea6a6),
-        onSecondary: Color(0xff491818),
-        secondaryContainer: Color(0xff7a2f2f),
-        onSecondaryContainer: Color(0xffefdada),
-        onBackground: Color(0xffe6e1e5)),
+      seedColor: Color(0xffcaffff),
+      primary: Color(0xffcaffff),
+      onPrimary: Color(0xff0b7777),
+      primaryContainer: Color(0xff18a6a6),
+      onPrimaryContainer: Color(0xffe5fdfd),
+      secondary: Color(0xffeea6a6),
+      onSecondary: Color(0xff491818),
+      secondaryContainer: Color(0xff7a2f2f),
+      onSecondaryContainer: Color(0xffefdada),
+      onBackground: Color(0xffe6e1e5),
+    ),
   );
 
   AppTheme._();
@@ -287,34 +303,40 @@ class AppTheme {
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(
-        backgroundColor: Color(0xffffffff),
-        iconTheme: IconThemeData(color: Color(0xff495057)),
-        actionsIconTheme: IconThemeData(color: Color(0xff495057))),
+      backgroundColor: Color(0xffffffff),
+      iconTheme: IconThemeData(color: Color(0xff495057)),
+      actionsIconTheme: IconThemeData(color: Color(0xff495057)),
+    ),
 
     /// Card Theme
     cardTheme: CardThemeData(color: Color(0xfff0f0f0)),
     cardColor: Color(0xfff0f0f0),
 
     textTheme: TextTheme(
-        titleLarge: GoogleFonts.aBeeZee(), bodyLarge: GoogleFonts.abel()),
+      titleLarge: GoogleFonts.aBeeZee(),
+      bodyLarge: GoogleFonts.abel(),
+    ),
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color(0xff3C4EC5),
-        splashColor: Color(0xffeeeeee).withAlpha(100),
-        highlightElevation: 8,
-        elevation: 4,
-        focusColor: Color(0xff3C4EC5),
-        hoverColor: Color(0xff3C4EC5),
-        foregroundColor: Color(0xffeeeeee)),
+      backgroundColor: Color(0xff3C4EC5),
+      splashColor: Color(0xffeeeeee).withAlpha(100),
+      highlightElevation: 8,
+      elevation: 4,
+      focusColor: Color(0xff3C4EC5),
+      hoverColor: Color(0xff3C4EC5),
+      foregroundColor: Color(0xffeeeeee),
+    ),
 
     /// Divider Theme
     dividerTheme: DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
     dividerColor: Color(0xffe8e8e8),
 
     /// Bottom AppBar Theme
-    bottomAppBarTheme:
-        BottomAppBarThemeData(color: Color(0xffeeeeee), elevation: 2),
+    bottomAppBarTheme: BottomAppBarThemeData(
+      color: Color(0xffeeeeee),
+      elevation: 2,
+    ),
 
     /// Tab bar Theme
     tabBarTheme: TabBarThemeData(
@@ -377,9 +399,7 @@ class AppTheme {
       tickMarkShape: RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
       valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
-        color: Color(0xffeeeeee),
-      ),
+      valueIndicatorTextStyle: TextStyle(color: Color(0xffeeeeee)),
     ),
 
     /// Other Colors
@@ -387,7 +407,9 @@ class AppTheme {
     indicatorColor: Color(0xffeeeeee),
     highlightColor: Color(0xffeeeeee),
     colorScheme: ColorScheme.fromSeed(
-            seedColor: Color(0xff3C4EC5), brightness: Brightness.light)
+          seedColor: Color(0xff3C4EC5),
+          brightness: Brightness.light,
+        )
         .copyWith(background: Color(0xffffffff))
         .copyWith(error: Color(0xfff0323c)),
   );
@@ -422,8 +444,9 @@ class AppTheme {
         borderSide: BorderSide(width: 1, color: Colors.white70),
       ),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide(width: 1, color: Colors.white70)),
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1, color: Colors.white70),
+      ),
     ),
 
     /// Divider Color
@@ -432,17 +455,20 @@ class AppTheme {
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color(0xff069DEF),
-        splashColor: Colors.white.withAlpha(100),
-        highlightElevation: 8,
-        elevation: 4,
-        focusColor: Color(0xff069DEF),
-        hoverColor: Color(0xff069DEF),
-        foregroundColor: Colors.white),
+      backgroundColor: Color(0xff069DEF),
+      splashColor: Colors.white.withAlpha(100),
+      highlightElevation: 8,
+      elevation: 4,
+      focusColor: Color(0xff069DEF),
+      hoverColor: Color(0xff069DEF),
+      foregroundColor: Colors.white,
+    ),
 
     /// Bottom AppBar Theme
-    bottomAppBarTheme:
-        BottomAppBarThemeData(color: Color(0xff464c52), elevation: 2),
+    bottomAppBarTheme: BottomAppBarThemeData(
+      color: Color(0xff464c52),
+      elevation: 2,
+    ),
 
     /// Tab bar Theme
     tabBarTheme: TabBarThemeData(
@@ -494,9 +520,7 @@ class AppTheme {
       tickMarkShape: RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
       valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
-        color: Colors.white,
-      ),
+      valueIndicatorTextStyle: TextStyle(color: Colors.white),
     ),
 
     ///Other Color
@@ -505,29 +529,32 @@ class AppTheme {
     highlightColor: Colors.white.withAlpha(28),
     splashColor: Colors.white.withAlpha(56),
     colorScheme: ColorScheme.fromSeed(
-            seedColor: Color(0xff069DEF), brightness: Brightness.dark)
-        .copyWith(background: Color(0xff161616))
-        .copyWith(error: Colors.orange),
+      seedColor: Color(0xff069DEF),
+      brightness: Brightness.dark,
+    ).copyWith(background: Color(0xff161616)).copyWith(error: Colors.orange),
   );
 
   static ThemeData createThemeM3(ThemeType themeType, Color seedColor) {
     if (themeType == ThemeType.light) {
       return lightTheme.copyWith(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: seedColor, brightness: Brightness.light));
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: seedColor,
+          brightness: Brightness.light,
+        ),
+      );
     }
     return darkTheme.copyWith(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: seedColor,
-            brightness: Brightness.dark,
-            onBackground: Color(0xFFDAD9CA)));
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: seedColor,
+        brightness: Brightness.dark,
+        onBackground: Color(0xFFDAD9CA),
+      ),
+    );
   }
 
   static ThemeData createTheme(ColorScheme colorScheme) {
     if (themeType != ThemeType.light) {
-      return darkTheme.copyWith(
-        colorScheme: colorScheme,
-      );
+      return darkTheme.copyWith(colorScheme: colorScheme);
     }
     return lightTheme.copyWith(colorScheme: colorScheme);
   }
@@ -535,14 +562,19 @@ class AppTheme {
   static ThemeData getNFTTheme() {
     if (themeType == ThemeType.light) {
       return lightTheme.copyWith(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Color(0xff232245), brightness: Brightness.light));
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color(0xff232245),
+          brightness: Brightness.light,
+        ),
+      );
     } else {
       return darkTheme.copyWith(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Color(0xff232245),
-              brightness: Brightness.dark,
-              onBackground: Color(0xFFDAD9CA)));
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color(0xff232245),
+          brightness: Brightness.dark,
+          onBackground: Color(0xFFDAD9CA),
+        ),
+      );
     }
     // return createTheme(ColorScheme.fromSeed(seedColor: Color(0xff232245)));
   }
@@ -554,29 +586,35 @@ class AppTheme {
   static resetThemeData() {
     nftTheme = getNFTTheme();
 
-    estateTheme = AppTheme.themeType == ThemeType.light
-        ? estateLightTheme
-        : estateDarkTheme;
+    estateTheme =
+        AppTheme.themeType == ThemeType.light
+            ? estateLightTheme
+            : estateDarkTheme;
 
-    shoppingTheme = AppTheme.themeType == ThemeType.light
-        ? shoppingLightTheme
-        : shoppingDarkTheme;
+    shoppingTheme =
+        AppTheme.themeType == ThemeType.light
+            ? shoppingLightTheme
+            : shoppingDarkTheme;
 
-    cookifyTheme = AppTheme.themeType == ThemeType.light
-        ? cookifyLightTheme
-        : cookifyDarkTheme;
+    cookifyTheme =
+        AppTheme.themeType == ThemeType.light
+            ? cookifyLightTheme
+            : cookifyDarkTheme;
 
-    datingTheme = AppTheme.themeType == ThemeType.light
-        ? datingLightTheme
-        : datingDarkTheme;
+    datingTheme =
+        AppTheme.themeType == ThemeType.light
+            ? datingLightTheme
+            : datingDarkTheme;
 
-    homemadeTheme = AppTheme.themeType == ThemeType.light
-        ? homemadeLightTheme
-        : homemadeDarkTheme;
+    homemadeTheme =
+        AppTheme.themeType == ThemeType.light
+            ? homemadeLightTheme
+            : homemadeDarkTheme;
 
-    learningTheme = AppTheme.themeType == ThemeType.light
-        ? learningLightTheme
-        : learningDarkTheme;
+    learningTheme =
+        AppTheme.themeType == ThemeType.light
+            ? learningLightTheme
+            : learningDarkTheme;
 
     shoppingManagerTheme = getShoppingManagerTheme();
     rentalServiceTheme = getRentalServiceTheme();

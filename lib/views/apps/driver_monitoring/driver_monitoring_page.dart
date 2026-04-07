@@ -1,10 +1,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:webkit/controller/apps/fitness/fitness_controller.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/views/apps/driver_monitoring/driver_profile_page.dart';
-// import 'package:webkit/views/layouts/layout.dart';
+// import 'package:yamazone/controller/apps/fitness/fitness_controller.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/views/apps/driver_monitoring/driver_profile_page.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
 
 // class DriverMonitoringPage extends StatefulWidget {
 //   const DriverMonitoringPage({super.key});
@@ -380,9 +380,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/views/apps/driver_monitoring/driver_profile_page.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/views/apps/driver_monitoring/driver_profile_page.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // THEME CONSTANTS

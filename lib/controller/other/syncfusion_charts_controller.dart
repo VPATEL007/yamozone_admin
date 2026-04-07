@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/my_controller.dart';
+import 'package:yamazone/controller/my_controller.dart';
 
 class ChartSampleData {
-  ChartSampleData(
-      {this.x,
-      this.y,
-      this.xValue,
-      this.yValue,
-      this.secondSeriesYValue,
-      this.thirdSeriesYValue,
-      this.pointColor,
-      this.size,
-      this.text,
-      this.open,
-      this.close,
-      this.low,
-      this.high,
-      this.volume});
+  ChartSampleData({
+    this.x,
+    this.y,
+    this.xValue,
+    this.yValue,
+    this.secondSeriesYValue,
+    this.thirdSeriesYValue,
+    this.pointColor,
+    this.size,
+    this.text,
+    this.open,
+    this.close,
+    this.low,
+    this.high,
+    this.volume,
+  });
 
   final dynamic x;
   final num? y;
@@ -45,10 +46,12 @@ class SyncfusionChartsController extends MyController {
     ChartSampleData(x: 2015, y: 8),
     ChartSampleData(x: 2016, y: 30),
     ChartSampleData(x: 2017, y: 33),
-    ChartSampleData(x: 2018, y: 40)
+    ChartSampleData(x: 2018, y: 40),
   ];
-  final TooltipBehavior dashedSpLine =
-      TooltipBehavior(enable: true, format: 'point.x : point.y');
+  final TooltipBehavior dashedSpLine = TooltipBehavior(
+    enable: true,
+    format: 'point.x : point.y',
+  );
   final List<ChartSampleData> rangeColumnChart = [
     ChartSampleData(x: 'Jan', high: 2, low: 4),
     ChartSampleData(x: 'Feb', high: 5, low: 8),
@@ -63,8 +66,10 @@ class SyncfusionChartsController extends MyController {
     ChartSampleData(x: 'Nov', high: 29, low: 44),
     ChartSampleData(x: 'Dec', high: 32, low: 48),
   ];
-  final TooltipBehavior rangeSlider =
-      TooltipBehavior(enable: true, format: 'point.x : point.high : point.low');
+  final TooltipBehavior rangeSlider = TooltipBehavior(
+    enable: true,
+    format: 'point.x : point.high : point.low',
+  );
   final List<ChartSampleData> verticalSpLineChart = <ChartSampleData>[
     ChartSampleData(x: 'Jan', y: 21),
     ChartSampleData(x: 'Feb', y: 24),
@@ -77,10 +82,12 @@ class SyncfusionChartsController extends MyController {
     ChartSampleData(x: 'Sep', y: 38),
     ChartSampleData(x: 'Oct', y: 54),
     ChartSampleData(x: 'Nov', y: 38),
-    ChartSampleData(x: 'Dec', y: 54)
+    ChartSampleData(x: 'Dec', y: 54),
   ];
-  final TooltipBehavior vertical =
-      TooltipBehavior(enable: true, format: 'point.x : point.y  ');
+  final TooltipBehavior vertical = TooltipBehavior(
+    enable: true,
+    format: 'point.x : point.y  ',
+  );
 
   final List<ChartSampleData> chartData = <ChartSampleData>[
     ChartSampleData(x: 'Jan', y: 45, yValue: 1000),
@@ -94,10 +101,12 @@ class SyncfusionChartsController extends MyController {
     ChartSampleData(x: 'Sep', y: 180, yValue: 6500),
     ChartSampleData(x: 'Oct', y: 90, yValue: 3000),
     ChartSampleData(x: 'Nov', y: 50, yValue: 2000),
-    ChartSampleData(x: 'Dec', y: 30, yValue: 1000)
+    ChartSampleData(x: 'Dec', y: 30, yValue: 1000),
   ];
   final TooltipBehavior chart = TooltipBehavior(
-      enable: true, format: 'point.x : point.yValue1 : point.yValue2');
+    enable: true,
+    format: 'point.x : point.yValue1 : point.yValue2',
+  );
   final List<ChartSampleData> gradientChartData = <ChartSampleData>[
     ChartSampleData(x: 'Jan', y: 35.53),
     ChartSampleData(x: 'Feb', y: 46.06),
@@ -112,8 +121,10 @@ class SyncfusionChartsController extends MyController {
     ChartSampleData(x: 'Nov', y: 46.33),
     ChartSampleData(x: 'Dec', y: 35.71),
   ];
-  final TooltipBehavior gradient =
-      TooltipBehavior(enable: true, format: 'point.x : point.y ');
+  final TooltipBehavior gradient = TooltipBehavior(
+    enable: true,
+    format: 'point.x : point.y ',
+  );
   final List<ChartSampleData> bubbleChartData = <ChartSampleData>[
     ChartSampleData(x: 'China', xValue: 92.2, y: 7.8, size: 1.347),
     ChartSampleData(x: 'India', xValue: 74, y: 6.5, size: 1.241),
@@ -160,33 +171,40 @@ class SyncfusionChartsController extends MyController {
 
   final List<ChartSampleData> radialChartData = <ChartSampleData>[
     ChartSampleData(
-        x: 'John',
-        y: 10,
-        text: '100%',
-        pointColor: const Color.fromRGBO(248, 177, 149, 1.0)),
+      x: 'John',
+      y: 10,
+      text: '100%',
+      pointColor: const Color.fromRGBO(248, 177, 149, 1.0),
+    ),
     ChartSampleData(
-        x: 'Almaida',
-        y: 11,
-        text: '100%',
-        pointColor: const Color.fromRGBO(246, 114, 128, 1.0)),
+      x: 'Almaida',
+      y: 11,
+      text: '100%',
+      pointColor: const Color.fromRGBO(246, 114, 128, 1.0),
+    ),
     ChartSampleData(
-        x: 'Don',
-        y: 12,
-        text: '100%',
-        pointColor: const Color.fromRGBO(61, 205, 171, 1.0)),
+      x: 'Don',
+      y: 12,
+      text: '100%',
+      pointColor: const Color.fromRGBO(61, 205, 171, 1.0),
+    ),
     ChartSampleData(
-        x: 'Tom',
-        y: 13,
-        text: '100%',
-        pointColor: const Color.fromRGBO(1, 174, 190, 1.0)),
+      x: 'Tom',
+      y: 13,
+      text: '100%',
+      pointColor: const Color.fromRGBO(1, 174, 190, 1.0),
+    ),
     ChartSampleData(
-        x: 'Jon',
-        y: 14,
-        text: '100%',
-        pointColor: const Color.fromRGBO(23, 300, 120, 1.0)),
+      x: 'Jon',
+      y: 14,
+      text: '100%',
+      pointColor: const Color.fromRGBO(23, 300, 120, 1.0),
+    ),
   ];
-  final TooltipBehavior radialTooltipBehavior =
-      TooltipBehavior(enable: true, format: 'point.x : point.ym');
+  final TooltipBehavior radialTooltipBehavior = TooltipBehavior(
+    enable: true,
+    format: 'point.x : point.ym',
+  );
 
   final List<ChartSampleData> pyramidChartData = <ChartSampleData>[
     ChartSampleData(x: 'Walnuts', y: 654),

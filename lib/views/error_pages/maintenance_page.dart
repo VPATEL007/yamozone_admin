@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/controller/error_pages/maintenance_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
+import 'package:yamazone/controller/error_pages/maintenance_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
 
 class MaintenancePage extends StatefulWidget {
   const MaintenancePage({Key? key}) : super(key: key);
@@ -33,14 +33,11 @@ class _MaintenancePageState extends State<MaintenancePage>
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                MyText.bodyMedium(
-                  "Oops !",
-                  fontSize: 52,
-                ),
+                MyText.bodyMedium("Oops !", fontSize: 52),
                 MyText.bodyMedium(
                   "We are down for maintenance. Please check back later.",
                   fontSize: 24,
-                )
+                ),
               ],
             ),
           );

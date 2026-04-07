@@ -1,4 +1,4 @@
-import 'package:webkit/models/user.dart';
+import 'package:yamazone/models/user.dart';
 
 import '../storage/local_storage.dart';
 
@@ -9,7 +9,8 @@ class AuthService {
       User(-1, "webkit@getappui.com", "Denish", "Navadiya");
 
   static Future<Map<String, String>?> loginUser(
-      Map<String, dynamic> data) async {
+    Map<String, dynamic> data,
+  ) async {
     await Future.delayed(Duration(seconds: 1));
     if (data['email'] != dummyUser.email) {
       return {"email": "This email is not registered"};

@@ -7,15 +7,15 @@
 // import 'package:get/instance_manager.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:lucide_icons/lucide_icons.dart';
-// import 'package:webkit/controller/apps/ecommerce/customers_controller.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/helpers/utils/utils.dart';
-// import 'package:webkit/helpers/widgets/my_container.dart';
-// import 'package:webkit/helpers/widgets/my_spacing.dart';
-// import 'package:webkit/helpers/widgets/my_text.dart';
-// import 'package:webkit/images.dart';
-// import 'package:webkit/models/customer.dart';
-// import 'package:webkit/views/layouts/layout.dart';
+// import 'package:yamazone/controller/apps/ecommerce/customers_controller.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/helpers/utils/utils.dart';
+// import 'package:yamazone/helpers/widgets/my_container.dart';
+// import 'package:yamazone/helpers/widgets/my_spacing.dart';
+// import 'package:yamazone/helpers/widgets/my_text.dart';
+// import 'package:yamazone/images.dart';
+// import 'package:yamazone/models/customer.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
 
 // class UserManagementPage extends StatefulWidget {
 //   const UserManagementPage({super.key});
@@ -591,10 +591,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/views/apps/user_management/user_detail.dart';
-import 'package:webkit/views/apps/user_management/widget/user_dialog.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/views/apps/user_management/user_detail.dart';
+import 'package:yamazone/views/apps/user_management/widget/user_dialog.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─── Data Model ────────────────────────────────────────────────────────────
 

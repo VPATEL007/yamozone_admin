@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/widgets/my_constant.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/widgets/my_constant.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
 
 class My {
   // entry point of the package
@@ -25,7 +25,8 @@ class My {
   }
 
   static void changeDefaultTextFontWeight(
-      Map<MyTextType, int> defaultFontWeight) {
+    Map<MyTextType, int> defaultFontWeight,
+  ) {
     MyTextStyle.changeDefaultTextFontWeight(defaultFontWeight);
   }
 
@@ -34,7 +35,8 @@ class My {
   }
 
   static void changeDefaultLetterSpacing(
-      Map<MyTextType, double> defaultLetterSpacing) {
+    Map<MyTextType, double> defaultLetterSpacing,
+  ) {
     MyTextStyle.changeDefaultLetterSpacing(defaultLetterSpacing);
   }
 

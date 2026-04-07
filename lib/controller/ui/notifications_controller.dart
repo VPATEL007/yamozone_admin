@@ -3,23 +3,26 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
 
 class NotificationsController extends MyController {
   final TickerProvider ticker;
   Timer? _timer;
 
-  TextEditingController toastTitleController =
-      TextEditingController(text: "Webkit Notifications");
+  TextEditingController toastTitleController = TextEditingController(
+    text: "Webkit Notifications",
+  );
   ContentThemeColor selectedColor = ContentThemeColor.primary;
   SnackBarBehavior selectedBehavior = SnackBarBehavior.floating;
-  late AnimationController animationController =
-      AnimationController(vsync: ticker, duration: Duration(seconds: 20));
+  late AnimationController animationController = AnimationController(
+    vsync: ticker,
+    duration: Duration(seconds: 20),
+  );
 
   bool showCloseIcon = true,
       showOkAction = true,
@@ -92,34 +95,27 @@ class NotificationsController extends MyController {
 
     List<Widget> actions = [];
     if (showCloseIcon) {
-      actions.add(MyButton.text(
+      actions.add(
+        MyButton.text(
           onPressed: () {
             ScaffoldMessenger.of(Get.context!).hideCurrentMaterialBanner();
           },
           padding: MySpacing.x(8),
           splashColor: color.withOpacity(0.1),
-          child: MyText.labelMedium(
-            'Dismiss',
-            color: color,
-          )));
+          child: MyText.labelMedium('Dismiss', color: color),
+        ),
+      );
     } else {
       actions.add(MySpacing.empty());
     }
 
     Widget? leadingIcon;
     if (showLeadingIcon) {
-      leadingIcon = Icon(
-        Icons.info_outline,
-        color: color,
-        size: 20,
-      );
+      leadingIcon = Icon(Icons.info_outline, color: color, size: 20);
     }
 
     MaterialBanner banner = MaterialBanner(
-      content: MyText.labelMedium(
-        text,
-        color: color,
-      ),
+      content: MyText.labelMedium(text, color: color),
       padding: MySpacing.x(24),
       leading: leadingIcon,
       actions: actions,
@@ -150,8 +146,8 @@ class NotificationsController extends MyController {
     if (showOkAction) {
       action = SnackBarAction(
         label: "Ok",
-        onPressed: () =>
-            ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar(),
+        onPressed:
+            () => ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar(),
         textColor: color,
       );
     }
@@ -164,10 +160,7 @@ class NotificationsController extends MyController {
       closeIconColor: color,
       action: action,
       animation: Tween<double>(begin: 0, end: 300).animate(animationController),
-      content: MyText.labelLarge(
-        text,
-        color: color,
-      ),
+      content: MyText.labelLarge(text, color: color),
       backgroundColor: backgroundColor,
     );
     ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();

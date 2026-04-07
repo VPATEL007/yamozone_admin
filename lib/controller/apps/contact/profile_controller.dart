@@ -1,7 +1,7 @@
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
-import 'package:webkit/models/chat.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/models/chat.dart';
 
 class ChartData {
   ChartData(this.x, this.y);
@@ -13,8 +13,10 @@ class ChartData {
 class ProfileController extends MyController {
   List<Chat> chat = [];
 
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   @override
   void onInit() {

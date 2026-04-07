@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 //  Theme constants  (matches your sidebar gold)

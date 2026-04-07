@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/auth/reset_password_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_responsiv.dart';
-import 'package:webkit/helpers/widgets/my_screen_media_type.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/auth_layout.dart';
+import 'package:yamazone/controller/auth/reset_password_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_responsiv.dart';
+import 'package:yamazone/helpers/widgets/my_screen_media_type.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/auth_layout.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -47,27 +47,29 @@ class _ResetPasswordState extends State<ResetPassword>
               children: [
                 MyFlexItem(
                   sizes: "lg-6",
-                  child: MyResponsive(builder: (_, __, type) {
-                    return type == MyScreenMediaType.xxl
-                        ? Image.asset(
+                  child: MyResponsive(
+                    builder: (_, __, type) {
+                      return type == MyScreenMediaType.xxl
+                          ? Image.asset(
                             Images.login[4],
                             fit: BoxFit.fitHeight,
                             height: 500,
                           )
-                        : type == MyScreenMediaType.xl
-                            ? Image.asset(
-                                Images.login[4],
-                                fit: BoxFit.fitHeight,
-                                height: 500,
-                              )
-                            : type == MyScreenMediaType.lg
-                                ? Image.asset(
-                                    Images.login[4],
-                                    fit: BoxFit.fitHeight,
-                                    height: 500,
-                                  )
-                                : const SizedBox();
-                  }),
+                          : type == MyScreenMediaType.xl
+                          ? Image.asset(
+                            Images.login[4],
+                            fit: BoxFit.fitHeight,
+                            height: 500,
+                          )
+                          : type == MyScreenMediaType.lg
+                          ? Image.asset(
+                            Images.login[4],
+                            fit: BoxFit.fitHeight,
+                            height: 500,
+                          )
+                          : const SizedBox();
+                    },
+                  ),
                 ),
                 MyFlexItem(
                   sizes: "lg-6",
@@ -95,10 +97,12 @@ class _ResetPasswordState extends State<ResetPassword>
                           MyText.labelMedium("password".tr()),
                           MySpacing.height(4),
                           TextFormField(
-                            validator: controller.basicValidator
-                                .getValidation('password'),
-                            controller: controller.basicValidator
-                                .getController('password'),
+                            validator: controller.basicValidator.getValidation(
+                              'password',
+                            ),
+                            controller: controller.basicValidator.getController(
+                              'password',
+                            ),
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: !controller.showPassword,
                             decoration: InputDecoration(
@@ -126,13 +130,16 @@ class _ResetPasswordState extends State<ResetPassword>
                           ),
                           MySpacing.height(15),
                           MyText.labelMedium(
-                              "confirm_password".tr().capitalizeWords),
+                            "confirm_password".tr().capitalizeWords,
+                          ),
                           MySpacing.height(4),
                           TextFormField(
-                            validator: controller.basicValidator
-                                .getValidation('confirm_password'),
-                            controller: controller.basicValidator
-                                .getController('confirm_password'),
+                            validator: controller.basicValidator.getValidation(
+                              'confirm_password',
+                            ),
+                            controller: controller.basicValidator.getController(
+                              'confirm_password',
+                            ),
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: controller.confirmPassword,
                             decoration: InputDecoration(
@@ -170,13 +177,13 @@ class _ResetPasswordState extends State<ResetPassword>
                                 children: [
                                   controller.loading
                                       ? SizedBox(
-                                          height: 14,
-                                          width: 14,
-                                          child: CircularProgressIndicator(
-                                            color: theme.colorScheme.onPrimary,
-                                            strokeWidth: 1.2,
-                                          ),
-                                        )
+                                        height: 14,
+                                        width: 14,
+                                        child: CircularProgressIndicator(
+                                          color: theme.colorScheme.onPrimary,
+                                          strokeWidth: 1.2,
+                                        ),
+                                      )
                                       : Container(),
                                   if (controller.loading) MySpacing.width(16),
                                   MyText.bodySmall(

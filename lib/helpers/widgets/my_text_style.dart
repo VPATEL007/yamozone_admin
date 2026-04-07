@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
 
 enum MyTextType {
   displayLarge,
@@ -78,409 +78,442 @@ class MyTextStyle {
 
   static Map<MyTextType, double> _defaultLetterSpacing = {};
 
-  static TextStyle getStyle(
-      {TextStyle? textStyle,
-      int? fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle getStyle({
+    TextStyle? textStyle,
+    int? fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     double? finalFontSize =
         fontSize ?? (textStyle == null ? 40 : textStyle.fontSize);
 
     Color finalColor = color ?? theme.colorScheme.onBackground;
-    finalColor = xMuted
-        ? finalColor.withAlpha(160)
-        : (muted ? finalColor.withAlpha(200) : finalColor);
+    finalColor =
+        xMuted
+            ? finalColor.withAlpha(160)
+            : (muted ? finalColor.withAlpha(200) : finalColor);
 
     return _fontFamily(
-        fontSize: finalFontSize,
-        fontWeight: _defaultFontWeight[fontWeight],
-        letterSpacing: letterSpacing,
-        color: finalColor,
-        decoration: decoration,
-        height: height,
-        wordSpacing: wordSpacing);
+      fontSize: finalFontSize,
+      fontWeight: _defaultFontWeight[fontWeight],
+      letterSpacing: letterSpacing,
+      color: finalColor,
+      decoration: decoration,
+      height: height,
+      wordSpacing: wordSpacing,
+    );
   }
 
   // Material Design 3
-  static TextStyle displayLarge(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle displayLarge({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.displayLarge],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.displayLarge],
-        fontWeight: _defaultTextFontWeight[MyTextType.displayLarge],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.displayLarge],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.displayLarge],
+      fontWeight: _defaultTextFontWeight[MyTextType.displayLarge],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle displayMedium(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle displayMedium({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.displayMedium],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.displayMedium],
-        fontWeight: _defaultTextFontWeight[MyTextType.displayMedium],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.displayMedium],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.displayMedium],
+      fontWeight: _defaultTextFontWeight[MyTextType.displayMedium],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle displaySmall(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle displaySmall({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.displaySmall],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.displaySmall],
-        fontWeight: _defaultTextFontWeight[MyTextType.displaySmall],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.displaySmall],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.displaySmall],
+      fontWeight: _defaultTextFontWeight[MyTextType.displaySmall],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle headlineLarge(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle headlineLarge({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineLarge],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineLarge],
-        fontWeight: _defaultTextFontWeight[MyTextType.headlineLarge],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineLarge],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineLarge],
+      fontWeight: _defaultTextFontWeight[MyTextType.headlineLarge],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle headlineMedium(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle headlineMedium({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineMedium],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineMedium],
-        fontWeight: _defaultTextFontWeight[MyTextType.headlineMedium],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineMedium],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineMedium],
+      fontWeight: _defaultTextFontWeight[MyTextType.headlineMedium],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle headlineSmall(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle headlineSmall({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineSmall],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineSmall],
-        fontWeight: _defaultTextFontWeight[MyTextType.headlineSmall],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.headlineSmall],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.headlineSmall],
+      fontWeight: _defaultTextFontWeight[MyTextType.headlineSmall],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle titleLarge(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle titleLarge({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.titleLarge],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.titleLarge],
-        fontWeight: _defaultTextFontWeight[MyTextType.titleLarge],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.titleLarge],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.titleLarge],
+      fontWeight: _defaultTextFontWeight[MyTextType.titleLarge],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle titleMedium(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle titleMedium({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.titleMedium],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.titleMedium],
-        fontWeight: _defaultTextFontWeight[MyTextType.titleMedium],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.titleMedium],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.titleMedium],
+      fontWeight: _defaultTextFontWeight[MyTextType.titleMedium],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle titleSmall(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle titleSmall({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.titleSmall],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.titleSmall],
-        fontWeight: _defaultTextFontWeight[MyTextType.titleSmall],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.titleSmall],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.titleSmall],
+      fontWeight: _defaultTextFontWeight[MyTextType.titleSmall],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle labelLarge(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle labelLarge({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.labelLarge],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.labelLarge],
-        fontWeight: _defaultTextFontWeight[MyTextType.labelLarge],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.labelLarge],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.labelLarge],
+      fontWeight: _defaultTextFontWeight[MyTextType.labelLarge],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle labelMedium(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle labelMedium({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.labelMedium],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.labelMedium],
-        fontWeight: _defaultTextFontWeight[MyTextType.labelMedium],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.labelMedium],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.labelMedium],
+      fontWeight: _defaultTextFontWeight[MyTextType.labelMedium],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle labelSmall(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle labelSmall({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.labelSmall],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.labelSmall],
-        fontWeight: _defaultTextFontWeight[MyTextType.labelSmall],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.labelSmall],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.labelSmall],
+      fontWeight: _defaultTextFontWeight[MyTextType.labelSmall],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle bodyLarge(
-      {TextStyle? textStyle,
-      int? fontWeight,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle bodyLarge({
+    TextStyle? textStyle,
+    int? fontWeight,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.bodyLarge],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.bodyLarge],
-        fontWeight: fontWeight ?? _defaultTextFontWeight[MyTextType.bodyLarge],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.bodyLarge],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.bodyLarge],
+      fontWeight: fontWeight ?? _defaultTextFontWeight[MyTextType.bodyLarge],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle bodyMedium(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle bodyMedium({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.bodyMedium],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.bodyMedium],
-        fontWeight: _defaultTextFontWeight[MyTextType.bodyMedium],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.bodyMedium],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.bodyMedium],
+      fontWeight: _defaultTextFontWeight[MyTextType.bodyMedium],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
-  static TextStyle bodySmall(
-      {TextStyle? textStyle,
-      int fontWeight = 500,
-      bool muted = false,
-      bool xMuted = false,
-      double? letterSpacing,
-      Color? color,
-      TextDecoration decoration = TextDecoration.none,
-      double? height,
-      double? wordSpacing,
-      double? fontSize}) {
+  static TextStyle bodySmall({
+    TextStyle? textStyle,
+    int fontWeight = 500,
+    bool muted = false,
+    bool xMuted = false,
+    double? letterSpacing,
+    Color? color,
+    TextDecoration decoration = TextDecoration.none,
+    double? height,
+    double? wordSpacing,
+    double? fontSize,
+  }) {
     return getStyle(
-        fontSize: fontSize ?? _defaultTextSize[MyTextType.bodySmall],
-        color: color,
-        height: height,
-        muted: muted,
-        letterSpacing:
-            letterSpacing ?? _defaultLetterSpacing[MyTextType.bodySmall],
-        fontWeight: _defaultTextFontWeight[MyTextType.bodySmall],
-        decoration: decoration,
-        textStyle: textStyle,
-        wordSpacing: wordSpacing,
-        xMuted: xMuted);
+      fontSize: fontSize ?? _defaultTextSize[MyTextType.bodySmall],
+      color: color,
+      height: height,
+      muted: muted,
+      letterSpacing:
+          letterSpacing ?? _defaultLetterSpacing[MyTextType.bodySmall],
+      fontWeight: _defaultTextFontWeight[MyTextType.bodySmall],
+      decoration: decoration,
+      textStyle: textStyle,
+      wordSpacing: wordSpacing,
+      xMuted: xMuted,
+    );
   }
 
   static void changeDefaultFontWeight(Map<int, FontWeight> defaultFontWeight) {
@@ -488,7 +521,8 @@ class MyTextStyle {
   }
 
   static void changeDefaultTextFontWeight(
-      Map<MyTextType, int> defaultFontWeight) {
+    Map<MyTextType, int> defaultFontWeight,
+  ) {
     MyTextStyle._defaultTextFontWeight = defaultFontWeight;
   }
 
@@ -497,7 +531,8 @@ class MyTextStyle {
   }
 
   static void changeDefaultLetterSpacing(
-      Map<MyTextType, double> defaultLetterSpacing) {
+    Map<MyTextType, double> defaultLetterSpacing,
+  ) {
     MyTextStyle._defaultLetterSpacing = defaultLetterSpacing;
   }
 

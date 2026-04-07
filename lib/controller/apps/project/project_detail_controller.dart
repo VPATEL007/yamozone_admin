@@ -1,6 +1,6 @@
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
-import 'package:webkit/images.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/images.dart';
 
 class ChartData {
   ChartData({this.x, this.yValue1, this.yValue2});
@@ -11,8 +11,10 @@ class ChartData {
 }
 
 class ProjectDetailController extends MyController {
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   List<String> images = [
     Images.avatars[0],
@@ -29,6 +31,6 @@ class ProjectDetailController extends MyController {
     ChartData(x: 'The', yValue1: 100, yValue2: 2000),
     ChartData(x: 'Fri', yValue1: 85, yValue2: 1000),
     ChartData(x: 'Sat', yValue1: 60, yValue2: 2000),
-    ChartData(x: 'Sun', yValue1: 140, yValue2: 4000)
+    ChartData(x: 'Sun', yValue1: 140, yValue2: 4000),
   ];
 }

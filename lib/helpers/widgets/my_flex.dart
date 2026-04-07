@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_list_extension.dart';
-import 'package:webkit/helpers/widgets/my_responsiv.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_list_extension.dart';
+import 'package:yamazone/helpers/widgets/my_responsiv.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
 
 class MyFlex extends StatelessWidget {
   final List<MyFlexItem> children;
@@ -15,42 +15,55 @@ class MyFlex extends StatelessWidget {
   // final Map<ScreenMediaType, int>? flex;
   final double? spacing, runSpacing;
 
-  const MyFlex(
-      {super.key,
-      required this.children,
-      this.wrapAlignment = WrapAlignment.start, // this.flex,
-      this.wrapCrossAlignment = WrapCrossAlignment.start,
-      this.runAlignment = WrapAlignment.start,
-      this.contentPadding = true,
-      this.spacing,
-      this.runSpacing});
+  const MyFlex({
+    super.key,
+    required this.children,
+    this.wrapAlignment = WrapAlignment.start, // this.flex,
+    this.wrapCrossAlignment = WrapCrossAlignment.start,
+    this.runAlignment = WrapAlignment.start,
+    this.contentPadding = true,
+    this.spacing,
+    this.runSpacing,
+  });
 
   getPadding(index, length) {
     if (contentPadding) {
       return MySpacing.x((spacing ?? flexSpacing) / 2);
     } else {
-      return MySpacing.fromLTRB(index == 0 ? 0 : (spacing ?? flexSpacing) / 2,
-          0, index == length - 1 ? 0 : (spacing ?? flexSpacing) / 2, 0);
+      return MySpacing.fromLTRB(
+        index == 0 ? 0 : (spacing ?? flexSpacing) / 2,
+        0,
+        index == length - 1 ? 0 : (spacing ?? flexSpacing) / 2,
+        0,
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return MyResponsive(
-      builder:
-          (BuildContext context, BoxConstraints constraints, screenMediaType) {
+      builder: (
+        BuildContext context,
+        BoxConstraints constraints,
+        screenMediaType,
+      ) {
         double width = constraints.maxWidth;
         List<Widget> list = [];
         for (List<MyFlexItem> lCol in getGrouped(screenMediaType)) {
-          list.addAll(lCol.mapIndexed((index, col) => Container(
+          list.addAll(
+            lCol.mapIndexed(
+              (index, col) => Container(
                 width: getWidthFromFlex(
-                    width,
-                    col.flex[screenMediaType] ?? MyScreenMedia.flexColumns,
-                    lCol.length,
-                    spacing ?? flexSpacing),
+                  width,
+                  col.flex[screenMediaType] ?? MyScreenMedia.flexColumns,
+                  lCol.length,
+                  spacing ?? flexSpacing,
+                ),
                 padding: getPadding(index, lCol.length),
                 child: col,
-              )));
+              ),
+            ),
+          );
           // for (MyFlexItem col in) {
           //   const padding = contenetPadding ? MySpacing.x((spacing ?? flexSpacing) / 2) : MySpacing.x(
           //       (spacing ?? flexSpacing) / 2);

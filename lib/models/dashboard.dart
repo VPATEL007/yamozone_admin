@@ -1,16 +1,25 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class DashBoard extends IdentifierModel {
   final double value, sum, processBar;
   final String metric, tag, title, email, image;
 
-  DashBoard(super.id, this.value, this.sum, this.metric, this.tag,
-      this.processBar, this.title, this.email, this.image);
+  DashBoard(
+    super.id,
+    this.value,
+    this.sum,
+    this.metric,
+    this.tag,
+    this.processBar,
+    this.title,
+    this.email,
+    this.image,
+  );
 
   static DashBoard fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -24,8 +33,17 @@ class DashBoard extends IdentifierModel {
     String email = decoder.getString('email');
     String image = Images.randomImage(Images.avatars);
 
-    return DashBoard(decoder.getId, value, sum, metric, tag, processBar, title,
-        email, image);
+    return DashBoard(
+      decoder.getId,
+      value,
+      sum,
+      metric,
+      tag,
+      processBar,
+      title,
+      email,
+      image,
+    );
   }
 
   static List<DashBoard> listFromJSON(List<dynamic> list) {

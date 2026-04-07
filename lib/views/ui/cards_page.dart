@@ -3,25 +3,25 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/ui/cards_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/ui/cards_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class CardsPage extends StatefulWidget {
   const CardsPage({Key? key}) : super(key: key);
@@ -54,11 +54,7 @@ class _CardsPageState extends State<CardsPage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Cards",
-                      fontSize: 18,
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Cards", fontSize: 18, fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'UI'),
@@ -492,8 +488,9 @@ class _CardsPageState extends State<CardsPage>
                           children: [
                             ClipRRect(
                               borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12)),
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                              ),
                               child: Image.asset(
                                 Images.landscapeImages[3],
                                 height: 300,
@@ -589,48 +586,57 @@ class _CardsPageState extends State<CardsPage>
                                       ),
                                       MySpacing.width(16),
                                       PopupMenuButton(
-                                          key: controller.shadowPositionKey,
-                                          onSelected:
-                                              controller.onChangePosition,
-                                          itemBuilder: (BuildContext context) {
-                                            return MyShadowPosition.values
-                                                .map((position) {
-                                              return PopupMenuItem(
-                                                value: position,
-                                                height: 32,
-                                                child: MyText.bodySmall(
-                                                  position.humanReadable,
-                                                  color: theme
-                                                      .colorScheme.onBackground,
-                                                  fontWeight: 600,
-                                                ),
-                                              );
-                                            }).toList();
-                                          },
-                                          color: theme.cardTheme.color,
-                                          child: MyContainer.bordered(
-                                            padding: MySpacing.xy(12, 8),
-                                            child: Row(
-                                              children: <Widget>[
-                                                MyText.labelMedium(
-                                                  controller.shadowPosition
-                                                      .humanReadable,
-                                                  color: theme
-                                                      .colorScheme.onBackground,
-                                                ),
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                      left: 4),
-                                                  child: Icon(
-                                                    LucideIcons.chevronDown,
-                                                    size: 22,
-                                                    color: theme.colorScheme
+                                        key: controller.shadowPositionKey,
+                                        onSelected: controller.onChangePosition,
+                                        itemBuilder: (BuildContext context) {
+                                          return MyShadowPosition.values.map((
+                                            position,
+                                          ) {
+                                            return PopupMenuItem(
+                                              value: position,
+                                              height: 32,
+                                              child: MyText.bodySmall(
+                                                position.humanReadable,
+                                                color:
+                                                    theme
+                                                        .colorScheme
                                                         .onBackground,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )),
+                                                fontWeight: 600,
+                                              ),
+                                            );
+                                          }).toList();
+                                        },
+                                        color: theme.cardTheme.color,
+                                        child: MyContainer.bordered(
+                                          padding: MySpacing.xy(12, 8),
+                                          child: Row(
+                                            children: <Widget>[
+                                              MyText.labelMedium(
+                                                controller
+                                                    .shadowPosition
+                                                    .humanReadable,
+                                                color:
+                                                    theme
+                                                        .colorScheme
+                                                        .onBackground,
+                                              ),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                  left: 4,
+                                                ),
+                                                child: Icon(
+                                                  LucideIcons.chevronDown,
+                                                  size: 22,
+                                                  color:
+                                                      theme
+                                                          .colorScheme
+                                                          .onBackground,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   MySpacing.height(8),
@@ -649,9 +655,10 @@ class _CardsPageState extends State<CardsPage>
                                         min: 0,
                                         max: 40,
                                         divisions: 40,
-                                        label: controller.shadowElevation
-                                            .floor()
-                                            .toString(),
+                                        label:
+                                            controller.shadowElevation
+                                                .floor()
+                                                .toString(),
                                         onChanged: controller.onChangeElevation,
                                       ),
                                     ],
@@ -678,7 +685,7 @@ class _CardsPageState extends State<CardsPage>
                                   ),
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

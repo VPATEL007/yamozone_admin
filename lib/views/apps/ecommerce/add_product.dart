@@ -3,24 +3,24 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_utils/src/extensions/string_extensions.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/apps/ecommerce/add_product_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/ecommerce/add_product_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -85,10 +85,7 @@ class _AddProductState extends State<AddProduct>
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const Icon(
-                                    LucideIcons.server,
-                                    size: 16,
-                                  ),
+                                  const Icon(LucideIcons.server, size: 16),
                                   MySpacing.width(12),
                                   MyText.titleMedium(
                                     "general".tr(),
@@ -119,24 +116,28 @@ class _AddProductState extends State<AddProduct>
                                               validator: controller
                                                   .basicValidator
                                                   .getValidation(
-                                                      'product_name'),
+                                                    'product_name',
+                                                  ),
                                               controller: controller
                                                   .basicValidator
                                                   .getController(
-                                                      'product_name'),
+                                                    'product_name',
+                                                  ),
                                               keyboardType: TextInputType.name,
                                               decoration: InputDecoration(
                                                 hintText: "eg: Tomatoes",
                                                 hintStyle:
                                                     MyTextStyle.bodySmall(
-                                                        xMuted: true),
+                                                      xMuted: true,
+                                                    ),
                                                 border: outlineInputBorder,
                                                 enabledBorder:
                                                     outlineInputBorder,
                                                 focusedBorder:
                                                     focusedInputBorder,
-                                                contentPadding:
-                                                    MySpacing.all(16),
+                                                contentPadding: MySpacing.all(
+                                                  16,
+                                                ),
                                                 isCollapsed: true,
                                                 floatingLabelBehavior:
                                                     FloatingLabelBehavior.never,
@@ -146,52 +147,49 @@ class _AddProductState extends State<AddProduct>
                                         ),
                                       ),
                                       MyFlexItem(
-                                          sizes: "lg-6",
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              MyText.labelMedium(
-                                                "shop_name"
-                                                    .tr()
-                                                    .capitalizeWords,
-                                              ),
-                                              MySpacing.height(8),
-                                              TextFormField(
-                                                validator: controller
-                                                    .basicValidator
-                                                    .getValidation('shop_name'),
-                                                controller: controller
-                                                    .basicValidator
-                                                    .getController('shop_name'),
-                                                keyboardType:
-                                                    TextInputType.name,
-                                                decoration: InputDecoration(
-                                                  hintText: "eg: Fruits",
-                                                  hintStyle:
-                                                      MyTextStyle.bodySmall(
-                                                          xMuted: true),
-                                                  border: outlineInputBorder,
-                                                  enabledBorder:
-                                                      outlineInputBorder,
-                                                  focusedBorder:
-                                                      focusedInputBorder,
-                                                  contentPadding:
-                                                      MySpacing.all(16),
-                                                  isCollapsed: true,
-                                                  floatingLabelBehavior:
-                                                      FloatingLabelBehavior
-                                                          .never,
+                                        sizes: "lg-6",
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            MyText.labelMedium(
+                                              "shop_name".tr().capitalizeWords,
+                                            ),
+                                            MySpacing.height(8),
+                                            TextFormField(
+                                              validator: controller
+                                                  .basicValidator
+                                                  .getValidation('shop_name'),
+                                              controller: controller
+                                                  .basicValidator
+                                                  .getController('shop_name'),
+                                              keyboardType: TextInputType.name,
+                                              decoration: InputDecoration(
+                                                hintText: "eg: Fruits",
+                                                hintStyle:
+                                                    MyTextStyle.bodySmall(
+                                                      xMuted: true,
+                                                    ),
+                                                border: outlineInputBorder,
+                                                enabledBorder:
+                                                    outlineInputBorder,
+                                                focusedBorder:
+                                                    focusedInputBorder,
+                                                contentPadding: MySpacing.all(
+                                                  16,
                                                 ),
+                                                isCollapsed: true,
+                                                floatingLabelBehavior:
+                                                    FloatingLabelBehavior.never,
                                               ),
-                                            ],
-                                          ))
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   MySpacing.height(25),
-                                  MyText.labelMedium(
-                                    "description".tr(),
-                                  ),
+                                  MyText.labelMedium("description".tr()),
                                   MySpacing.height(8),
                                   TextFormField(
                                     validator: controller.basicValidator
@@ -203,8 +201,9 @@ class _AddProductState extends State<AddProduct>
                                     decoration: InputDecoration(
                                       hintText:
                                           "It's contains blah blah things",
-                                      hintStyle:
-                                          MyTextStyle.bodySmall(xMuted: true),
+                                      hintStyle: MyTextStyle.bodySmall(
+                                        xMuted: true,
+                                      ),
                                       border: outlineInputBorder,
                                       enabledBorder: outlineInputBorder,
                                       focusedBorder: focusedInputBorder,
@@ -215,37 +214,40 @@ class _AddProductState extends State<AddProduct>
                                     ),
                                   ),
                                   MySpacing.height(25),
-                                  MyFlex(contentPadding: false, children: [
-                                    MyFlexItem(
+                                  MyFlex(
+                                    contentPadding: false,
+                                    children: [
+                                      MyFlexItem(
                                         sizes: 'lg-6 md-12',
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            MyText.labelMedium(
-                                              "category".tr(),
-                                            ),
+                                            MyText.labelMedium("category".tr()),
                                             MySpacing.height(8),
                                             PopupMenuButton(
                                               onSelected:
                                                   controller.onSelectedQty,
-                                              itemBuilder:
-                                                  (BuildContext context) {
+                                              itemBuilder: (
+                                                BuildContext context,
+                                              ) {
                                                 return [
                                                   "Fashion",
                                                   "Grocery",
                                                   "Vegetables",
                                                   "Fruits",
                                                   "Electronics",
-                                                  "Kids"
+                                                  "Kids",
                                                 ].map((behavior) {
                                                   return PopupMenuItem(
                                                     value: behavior,
                                                     height: 32,
                                                     child: MyText.bodySmall(
                                                       behavior.toString(),
-                                                      color: theme.colorScheme
-                                                          .onBackground,
+                                                      color:
+                                                          theme
+                                                              .colorScheme
+                                                              .onBackground,
                                                       fontWeight: 600,
                                                     ),
                                                   );
@@ -263,31 +265,34 @@ class _AddProductState extends State<AddProduct>
                                                       controller
                                                           .selectedQuantity
                                                           .toString(),
-                                                      color: theme.colorScheme
-                                                          .onBackground,
+                                                      color:
+                                                          theme
+                                                              .colorScheme
+                                                              .onBackground,
                                                     ),
                                                     Icon(
                                                       Icons
                                                           .expand_more_outlined,
                                                       size: 22,
-                                                      color: theme.colorScheme
-                                                          .onBackground,
-                                                    )
+                                                      color:
+                                                          theme
+                                                              .colorScheme
+                                                              .onBackground,
+                                                    ),
                                                   ],
                                                 ),
                                               ),
                                             ),
                                           ],
-                                        )),
-                                    MyFlexItem(
+                                        ),
+                                      ),
+                                      MyFlexItem(
                                         sizes: 'lg-6 md-12',
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            MyText.labelMedium(
-                                              "price".tr(),
-                                            ),
+                                            MyText.labelMedium("price".tr()),
                                             MySpacing.height(8),
                                             TextFormField(
                                               validator: controller
@@ -302,7 +307,8 @@ class _AddProductState extends State<AddProduct>
                                                 hintText: "99.99",
                                                 hintStyle:
                                                     MyTextStyle.bodySmall(
-                                                        xMuted: true),
+                                                      xMuted: true,
+                                                    ),
                                                 border: outlineInputBorder,
                                                 enabledBorder:
                                                     outlineInputBorder,
@@ -321,70 +327,78 @@ class _AddProductState extends State<AddProduct>
                                                 ),
                                                 prefixIconConstraints:
                                                     const BoxConstraints(
-                                                        maxHeight: 39,
-                                                        minWidth: 50,
-                                                        maxWidth: 50),
-                                                contentPadding:
-                                                    MySpacing.all(12),
+                                                      maxHeight: 39,
+                                                      minWidth: 50,
+                                                      maxWidth: 50,
+                                                    ),
+                                                contentPadding: MySpacing.all(
+                                                  12,
+                                                ),
                                                 isCollapsed: true,
                                                 floatingLabelBehavior:
                                                     FloatingLabelBehavior.never,
                                               ),
                                             ),
                                           ],
-                                        )),
-                                  ]),
-                                  MySpacing.height(25),
-                                  MyText.labelMedium(
-                                    "status".tr(),
+                                        ),
+                                      ),
+                                    ],
                                   ),
+                                  MySpacing.height(25),
+                                  MyText.labelMedium("status".tr()),
                                   MySpacing.height(4),
                                   Row(
                                     children: [
                                       Expanded(
                                         child: Wrap(
-                                            spacing: 16,
-                                            children: Status.values
-                                                .map(
-                                                  (gender) => InkWell(
-                                                    onTap: () => controller
-                                                        .onChangeGender(gender),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      children: [
-                                                        Radio<Status>(
-                                                          value: gender,
-                                                          activeColor:
-                                                              contentTheme
-                                                                  .primary,
-                                                          groupValue: controller
-                                                              .selectedGender,
-                                                          onChanged: controller
-                                                              .onChangeGender,
-                                                          visualDensity:
-                                                              getCompactDensity,
-                                                          materialTapTargetSize:
-                                                              MaterialTapTargetSize
-                                                                  .shrinkWrap,
-                                                        ),
-                                                        MySpacing.width(8),
-                                                        MyText.labelMedium(
-                                                          gender
-                                                              .name.capitalize!,
-                                                        ),
-                                                      ],
+                                          spacing: 16,
+                                          children:
+                                              Status.values
+                                                  .map(
+                                                    (gender) => InkWell(
+                                                      onTap:
+                                                          () => controller
+                                                              .onChangeGender(
+                                                                gender,
+                                                              ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Radio<Status>(
+                                                            value: gender,
+                                                            activeColor:
+                                                                contentTheme
+                                                                    .primary,
+                                                            groupValue:
+                                                                controller
+                                                                    .selectedGender,
+                                                            onChanged:
+                                                                controller
+                                                                    .onChangeGender,
+                                                            visualDensity:
+                                                                getCompactDensity,
+                                                            materialTapTargetSize:
+                                                                MaterialTapTargetSize
+                                                                    .shrinkWrap,
+                                                          ),
+                                                          MySpacing.width(8),
+                                                          MyText.labelMedium(
+                                                            gender
+                                                                .name
+                                                                .capitalize!,
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                )
-                                                .toList()),
-                                      )
+                                                  )
+                                                  .toList(),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   MySpacing.height(25),
-                                  MyText.labelMedium(
-                                    "tags".tr(),
-                                  ),
+                                  MyText.labelMedium("tags".tr()),
                                   MySpacing.height(8),
                                   Container(
                                     alignment: Alignment.topLeft,
@@ -398,8 +412,9 @@ class _AddProductState extends State<AddProduct>
                                       decoration: InputDecoration(
                                         hintText:
                                             "Fruits, Vegetables, Grocery, Healthy, etc",
-                                        hintStyle:
-                                            MyTextStyle.bodySmall(xMuted: true),
+                                        hintStyle: MyTextStyle.bodySmall(
+                                          xMuted: true,
+                                        ),
                                         border: outlineInputBorder,
                                         enabledBorder: outlineInputBorder,
                                         focusedBorder: focusedInputBorder,
@@ -419,9 +434,7 @@ class _AddProductState extends State<AddProduct>
                                         padding: MySpacing.xy(20, 16),
                                         splashColor: contentTheme.secondary
                                             .withOpacity(0.1),
-                                        child: MyText.bodySmall(
-                                          'cancel'.tr(),
-                                        ),
+                                        child: MyText.bodySmall('cancel'.tr()),
                                       ),
                                       MySpacing.width(12),
                                       MyButton(

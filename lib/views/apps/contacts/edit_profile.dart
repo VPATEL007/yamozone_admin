@@ -5,24 +5,24 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/apps/contact/edit_profile_controller.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/my_string_utils.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/contact/edit_profile_controller.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/my_string_utils.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -58,10 +58,7 @@ class _EditProfileState extends State<EditProfile>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Edit Profile",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Edit Profile", fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: "Contact"),
@@ -86,9 +83,11 @@ class _EditProfileState extends State<EditProfile>
                             InkWell(
                               onTap: () async {
                                 imageFile = await picker.pickImage(
-                                    source: ImageSource.gallery);
+                                  source: ImageSource.gallery,
+                                );
                                 debugPrint(
-                                    "imageFile!.path --------------------->>> ${imageFile!.path}");
+                                  "imageFile!.path --------------------->>> ${imageFile!.path}",
+                                );
                                 setState(() {});
                               },
                               child: Stack(
@@ -96,23 +95,25 @@ class _EditProfileState extends State<EditProfile>
                                 children: [
                                   imageFile == null
                                       ? MyContainer.rounded(
-                                          height: 150,
-                                          width: 150,
-                                          paddingAll: 0,
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          child: Image.asset(
-                                            Images.avatars[0],
-                                            fit: BoxFit.cover,
-                                          ))
-                                      : MyContainer.rounded(
-                                          paddingAll: 0,
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          child: Image.file(
-                                              File(imageFile!.path),
-                                              fit: BoxFit.cover),
+                                        height: 150,
+                                        width: 150,
+                                        paddingAll: 0,
+                                        clipBehavior:
+                                            Clip.antiAliasWithSaveLayer,
+                                        child: Image.asset(
+                                          Images.avatars[0],
+                                          fit: BoxFit.cover,
                                         ),
+                                      )
+                                      : MyContainer.rounded(
+                                        paddingAll: 0,
+                                        clipBehavior:
+                                            Clip.antiAliasWithSaveLayer,
+                                        child: Image.file(
+                                          File(imageFile!.path),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                 ],
                               ),
                             ),
@@ -121,14 +122,16 @@ class _EditProfileState extends State<EditProfile>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 buildTextField(
-                                    "First Name", "Enter your First Name"),
+                                  "First Name",
+                                  "Enter your First Name",
+                                ),
                                 MySpacing.height(20),
                                 buildTextField(
-                                    "Last Name", "Enter your Last Name"),
-                                MySpacing.height(20),
-                                MyText.labelMedium(
-                                  "Email address",
+                                  "Last Name",
+                                  "Enter your Last Name",
                                 ),
+                                MySpacing.height(20),
+                                MyText.labelMedium("Email address"),
                                 MySpacing.height(8),
                                 Form(
                                   autovalidateMode:
@@ -146,8 +149,9 @@ class _EditProfileState extends State<EditProfile>
                                     },
                                     decoration: InputDecoration(
                                       hintText: "Enter Email Address",
-                                      hintStyle:
-                                          MyTextStyle.bodySmall(xMuted: true),
+                                      hintStyle: MyTextStyle.bodySmall(
+                                        xMuted: true,
+                                      ),
                                       border: outlineInputBorder,
                                       enabledBorder: outlineInputBorder,
                                       focusedBorder: focusedInputBorder,
@@ -157,9 +161,7 @@ class _EditProfileState extends State<EditProfile>
                                   ),
                                 ),
                                 MySpacing.height(20),
-                                MyText.labelMedium(
-                                  "Contact Number",
-                                ),
+                                MyText.labelMedium("Contact Number"),
                                 MySpacing.height(8),
                                 TextFormField(
                                   inputFormatters: [
@@ -168,8 +170,9 @@ class _EditProfileState extends State<EditProfile>
                                   ],
                                   decoration: InputDecoration(
                                     hintText: "Enter Contact Number",
-                                    hintStyle:
-                                        MyTextStyle.bodySmall(xMuted: true),
+                                    hintStyle: MyTextStyle.bodySmall(
+                                      xMuted: true,
+                                    ),
                                     border: outlineInputBorder,
                                     enabledBorder: outlineInputBorder,
                                     focusedBorder: focusedInputBorder,
@@ -180,9 +183,7 @@ class _EditProfileState extends State<EditProfile>
                                 MySpacing.height(20),
                                 buildTextField("Address", "Enter Address"),
                                 MySpacing.height(20),
-                                MyText.labelMedium(
-                                  "password",
-                                ),
+                                MyText.labelMedium("password"),
                                 MySpacing.height(8),
                                 TextFormField(
                                   validator: controller.validation
@@ -193,8 +194,9 @@ class _EditProfileState extends State<EditProfile>
                                   obscureText: !controller.showPassword,
                                   decoration: InputDecoration(
                                     hintText: "Password",
-                                    hintStyle:
-                                        MyTextStyle.bodySmall(xMuted: true),
+                                    hintStyle: MyTextStyle.bodySmall(
+                                      xMuted: true,
+                                    ),
                                     border: outlineInputBorder,
                                     enabledBorder: outlineInputBorder,
                                     focusedBorder: focusedInputBorder,
@@ -245,9 +247,7 @@ class _EditProfileState extends State<EditProfile>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyText.labelMedium(
-          fieldTitle,
-        ),
+        MyText.labelMedium(fieldTitle),
         MySpacing.height(8),
         TextFormField(
           decoration: InputDecoration(
@@ -267,7 +267,9 @@ class _EditProfileState extends State<EditProfile>
 class PhoneInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final text = newValue.text.replaceAll(RegExp(r'\D'), '');
 
     return newValue.copyWith(

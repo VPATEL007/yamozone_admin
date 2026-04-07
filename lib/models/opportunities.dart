@@ -1,15 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class Opportunities extends IdentifierModel {
   final String name, location, category, email, phoneNumber, image;
 
-  Opportunities(super.id, this.name, this.location, this.category, this.email,
-      this.phoneNumber, this.image);
+  Opportunities(
+    super.id,
+    this.name,
+    this.location,
+    this.category,
+    this.email,
+    this.phoneNumber,
+    this.image,
+  );
 
   static Opportunities fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -22,7 +29,14 @@ class Opportunities extends IdentifierModel {
     String image = Images.randomImage(Images.social);
 
     return Opportunities(
-        decoder.getId, name, location, category, email, phoneNumber, image);
+      decoder.getId,
+      name,
+      location,
+      category,
+      email,
+      phoneNumber,
+      image,
+    );
   }
 
   static List<Opportunities> listFromJSON(List<dynamic> list) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/storage/local_storage.dart';
-import 'package:webkit/helpers/theme/theme_customizer.dart';
+import 'package:yamazone/helpers/storage/local_storage.dart';
+import 'package:yamazone/helpers/theme/theme_customizer.dart';
 
 class Language {
   final Locale locale;
@@ -11,11 +11,7 @@ class Language {
     Language(Locale('en'), "English"),
     Language(Locale('hi'), "हिंदी"),
     Language(Locale('es'), "Español"),
-    Language(
-      Locale('ar'),
-      "عربي",
-      true,
-    ),
+    Language(Locale('ar'), "عربي", true),
     Language(Locale('fr'), "Français"),
   ];
 

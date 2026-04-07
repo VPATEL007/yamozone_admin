@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/apps/contact/member_list_controller.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/contact/member_list_controller.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class MemberList extends StatefulWidget {
   const MemberList({Key? key}) : super(key: key);
@@ -47,10 +47,7 @@ class _MemberListState extends State<MemberList>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Member List",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Member List", fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: "Contact"),
@@ -69,96 +66,106 @@ class _MemberListState extends State<MemberList>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         MyButton(
-                          onPressed: () => showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              title: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MyText.titleMedium(
-                                    "Add item",
-                                  ),
-                                ],
-                              ),
-                              titlePadding: MySpacing.xy(16, 12),
-                              insetPadding: MySpacing.y(300),
-                              actionsPadding: MySpacing.xy(190, 16),
-                              contentPadding: MySpacing.x(16),
-                              content: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MyText.bodyMedium("Name :"),
-                                  MySpacing.height(8),
-                                  TextFormField(
-                                    validator: controller.basicValidator
-                                        .getValidation('name'),
-                                    controller: controller.basicValidator
-                                        .getController('name'),
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: InputDecoration(
-                                      labelText: "Name",
-                                      labelStyle:
-                                          MyTextStyle.bodySmall(xMuted: true),
-                                      border: outlineInputBorder,
-                                      contentPadding: MySpacing.all(16),
-                                      isCollapsed: true,
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                    ),
-                                  ),
-                                  MySpacing.height(16),
-                                  MyText.bodyMedium("Address :"),
-                                  MySpacing.height(8),
-                                  TextFormField(
-                                    validator: controller.basicValidator
-                                        .getValidation('address'),
-                                    controller: controller.basicValidator
-                                        .getController('address'),
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: InputDecoration(
-                                      labelText: "Address",
-                                      labelStyle:
-                                          MyTextStyle.bodySmall(xMuted: true),
-                                      border: outlineInputBorder,
-                                      contentPadding: MySpacing.all(16),
-                                      isCollapsed: true,
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              actions: [
-                                MyButton(
-                                  // onPressed: controller.onSubmit,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
+                          onPressed:
+                              () => showDialog(
+                                context: context,
+                                builder:
+                                    (context) => AlertDialog(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      title: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          MyText.titleMedium("Add item"),
+                                        ],
+                                      ),
+                                      titlePadding: MySpacing.xy(16, 12),
+                                      insetPadding: MySpacing.y(300),
+                                      actionsPadding: MySpacing.xy(190, 16),
+                                      contentPadding: MySpacing.x(16),
+                                      content: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          MyText.bodyMedium("Name :"),
+                                          MySpacing.height(8),
+                                          TextFormField(
+                                            validator: controller.basicValidator
+                                                .getValidation('name'),
+                                            controller: controller
+                                                .basicValidator
+                                                .getController('name'),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            decoration: InputDecoration(
+                                              labelText: "Name",
+                                              labelStyle: MyTextStyle.bodySmall(
+                                                xMuted: true,
+                                              ),
+                                              border: outlineInputBorder,
+                                              contentPadding: MySpacing.all(16),
+                                              isCollapsed: true,
+                                              floatingLabelBehavior:
+                                                  FloatingLabelBehavior.never,
+                                            ),
+                                          ),
+                                          MySpacing.height(16),
+                                          MyText.bodyMedium("Address :"),
+                                          MySpacing.height(8),
+                                          TextFormField(
+                                            validator: controller.basicValidator
+                                                .getValidation('address'),
+                                            controller: controller
+                                                .basicValidator
+                                                .getController('address'),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            decoration: InputDecoration(
+                                              labelText: "Address",
+                                              labelStyle: MyTextStyle.bodySmall(
+                                                xMuted: true,
+                                              ),
+                                              border: outlineInputBorder,
+                                              contentPadding: MySpacing.all(16),
+                                              isCollapsed: true,
+                                              floatingLabelBehavior:
+                                                  FloatingLabelBehavior.never,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        MyButton(
+                                          // onPressed: controller.onSubmit,
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
 
-                                  elevation: 0,
-                                  backgroundColor: contentTheme.primary,
-                                  borderRadiusAll: AppStyle.buttonRadius.medium,
-                                  child: MyText.bodyMedium(
-                                    "Ok",
-                                    color: contentTheme.onPrimary,
-                                  ),
-                                ),
-                                MyButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  elevation: 0,
-                                  backgroundColor: contentTheme.primary,
-                                  borderRadiusAll: AppStyle.buttonRadius.medium,
-                                  child: MyText.bodyMedium(
-                                    "Cancel",
-                                    color: contentTheme.onPrimary,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                          elevation: 0,
+                                          backgroundColor: contentTheme.primary,
+                                          borderRadiusAll:
+                                              AppStyle.buttonRadius.medium,
+                                          child: MyText.bodyMedium(
+                                            "Ok",
+                                            color: contentTheme.onPrimary,
+                                          ),
+                                        ),
+                                        MyButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          elevation: 0,
+                                          backgroundColor: contentTheme.primary,
+                                          borderRadiusAll:
+                                              AppStyle.buttonRadius.medium,
+                                          child: MyText.bodyMedium(
+                                            "Cancel",
+                                            color: contentTheme.onPrimary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                              ),
                           elevation: 0,
                           padding: MySpacing.xy(12, 16),
                           backgroundColor: contentTheme.primary,
@@ -184,26 +191,26 @@ class _MemberListState extends State<MemberList>
                             maxLines: 1,
                             style: MyTextStyle.bodyMedium(),
                             decoration: InputDecoration(
-                                hintText: "search",
-                                hintStyle: MyTextStyle.bodySmall(xMuted: true),
-                                border: outlineInputBorder,
-                                enabledBorder: outlineInputBorder,
-                                focusedBorder: focusedInputBorder,
-                                prefixIcon: const Align(
-                                    alignment: Alignment.center,
-                                    child: Icon(
-                                      LucideIcons.search,
-                                      size: 14,
-                                    )),
-                                prefixIconConstraints: const BoxConstraints(
-                                    minWidth: 36,
-                                    maxWidth: 36,
-                                    minHeight: 32,
-                                    maxHeight: 32),
-                                contentPadding: MySpacing.xy(16, 12),
-                                isCollapsed: true,
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.never),
+                              hintText: "search",
+                              hintStyle: MyTextStyle.bodySmall(xMuted: true),
+                              border: outlineInputBorder,
+                              enabledBorder: outlineInputBorder,
+                              focusedBorder: focusedInputBorder,
+                              prefixIcon: const Align(
+                                alignment: Alignment.center,
+                                child: Icon(LucideIcons.search, size: 14),
+                              ),
+                              prefixIconConstraints: const BoxConstraints(
+                                minWidth: 36,
+                                maxWidth: 36,
+                                minHeight: 32,
+                                maxHeight: 32,
+                              ),
+                              contentPadding: MySpacing.xy(16, 12),
+                              isCollapsed: true,
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                            ),
                           ),
                         ),
                       ],
@@ -214,11 +221,12 @@ class _MemberListState extends State<MemberList>
                       itemCount: controller.discover.length,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 350,
-                              // childAspectRatio: 1,
-                              crossAxisSpacing: 16,
-                              mainAxisSpacing: 16,
-                              mainAxisExtent: 320),
+                            maxCrossAxisExtent: 350,
+                            // childAspectRatio: 1,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                            mainAxisExtent: 320,
+                          ),
                       itemBuilder: (context, index) {
                         return MyCard(
                           shadow: MyShadow(elevation: 0.5),
@@ -231,22 +239,28 @@ class _MemberListState extends State<MemberList>
                                 child: PopupMenuButton(
                                   offset: const Offset(0, 10),
                                   position: PopupMenuPosition.under,
-                                  itemBuilder: (BuildContext context) => [
-                                    PopupMenuItem(
-                                        padding: MySpacing.xy(16, 8),
-                                        height: 10,
-                                        child: MyText.bodySmall("Action")),
-                                    PopupMenuItem(
-                                        padding: MySpacing.xy(16, 8),
-                                        height: 10,
-                                        child:
-                                            MyText.bodySmall("Another action")),
-                                    PopupMenuItem(
-                                        padding: MySpacing.xy(16, 8),
-                                        height: 10,
-                                        child: MyText.bodySmall(
-                                            "Somethings else here"))
-                                  ],
+                                  itemBuilder:
+                                      (BuildContext context) => [
+                                        PopupMenuItem(
+                                          padding: MySpacing.xy(16, 8),
+                                          height: 10,
+                                          child: MyText.bodySmall("Action"),
+                                        ),
+                                        PopupMenuItem(
+                                          padding: MySpacing.xy(16, 8),
+                                          height: 10,
+                                          child: MyText.bodySmall(
+                                            "Another action",
+                                          ),
+                                        ),
+                                        PopupMenuItem(
+                                          padding: MySpacing.xy(16, 8),
+                                          height: 10,
+                                          child: MyText.bodySmall(
+                                            "Somethings else here",
+                                          ),
+                                        ),
+                                      ],
                                   child: const Icon(
                                     LucideIcons.moreVertical,
                                     size: 18,
@@ -277,10 +291,7 @@ class _MemberListState extends State<MemberList>
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Icon(
-                                        LucideIcons.mail,
-                                        size: 16,
-                                      ),
+                                      const Icon(LucideIcons.mail, size: 16),
                                       MySpacing.width(8),
                                       MyText.bodyMedium(
                                         controller.opportunities[index].email,

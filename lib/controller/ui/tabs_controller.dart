@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
 
 class TabsController extends MyController {
   var defaultIndex = 0,
@@ -14,22 +14,45 @@ class TabsController extends MyController {
   final TickerProvider tickerProvider;
 
   late TabController defaultTabController = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: defaultIndex);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: defaultIndex,
+  );
   late TabController fullWidthTabController = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: fullWidthIndex);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: fullWidthIndex,
+  );
   late TabController backgroundTabController = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: backgroundIndex);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: backgroundIndex,
+  );
   late TabController borderedTabController = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: borderedIndex);
-  late TabController softTabController =
-      TabController(length: 3, vsync: tickerProvider, initialIndex: softIndex);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: borderedIndex,
+  );
+  late TabController softTabController = TabController(
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: softIndex,
+  );
   late TabController customTabController1 = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: customIndex1);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: customIndex1,
+  );
   late TabController customTabController2 = TabController(
-      length: 3, vsync: tickerProvider, initialIndex: customIndex2);
+    length: 3,
+    vsync: tickerProvider,
+    initialIndex: customIndex2,
+  );
 
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   TabsController(this.tickerProvider);
 

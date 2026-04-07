@@ -1,13 +1,9 @@
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
 
 class ChartSampleData {
-  ChartSampleData({
-    this.x,
-    this.y,
-    this.text,
-  });
+  ChartSampleData({this.x, this.y, this.text});
 
   final dynamic x;
   final num? y;
@@ -16,8 +12,10 @@ class ChartSampleData {
 }
 
 class ReviewsController extends MyController {
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   int initialRating = -1;
 
@@ -36,28 +34,28 @@ class ReviewsController extends MyController {
     ChartSampleData(x: 2011, y: 15),
     ChartSampleData(x: 2012, y: 39),
     ChartSampleData(x: 2013, y: 29),
-    ChartSampleData(x: 2014, y: 60)
+    ChartSampleData(x: 2014, y: 60),
   ];
   final List<ChartSampleData> chartData2 = <ChartSampleData>[
     ChartSampleData(x: 2010, y: 10),
     ChartSampleData(x: 2011, y: 26),
     ChartSampleData(x: 2012, y: 12),
     ChartSampleData(x: 2013, y: 17),
-    ChartSampleData(x: 2014, y: 50)
+    ChartSampleData(x: 2014, y: 50),
   ];
   final List<ChartSampleData> chartData3 = <ChartSampleData>[
     ChartSampleData(x: 2010, y: 30),
     ChartSampleData(x: 2011, y: 36),
     ChartSampleData(x: 2012, y: 22),
     ChartSampleData(x: 2013, y: 37),
-    ChartSampleData(x: 2014, y: 11)
+    ChartSampleData(x: 2014, y: 11),
   ];
   final List<ChartSampleData> chartData4 = <ChartSampleData>[
     ChartSampleData(x: 2010, y: 40),
     ChartSampleData(x: 2011, y: 46),
     ChartSampleData(x: 2012, y: 33),
     ChartSampleData(x: 2013, y: 7),
-    ChartSampleData(x: 2014, y: 33)
+    ChartSampleData(x: 2014, y: 33),
   ];
   final TooltipBehavior tooltipBehavior = TooltipBehavior(
     enable: true,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
 
 enum CustomPopupMenuPlacement { left, right, top, bottom }
 
@@ -17,18 +17,19 @@ class CustomPopupMenu extends StatefulWidget {
   final bool show;
   final HideFn? hideFn;
 
-  const CustomPopupMenu(
-      {super.key,
-      required this.menu,
-      required this.onChange,
-      required this.menuBuilder,
-      this.selectedIndex = 0,
-      this.backdrop = false,
-      this.show = true,
-      this.placement = CustomPopupMenuPlacement.bottom,
-      this.offsetX = 0,
-      this.hideFn,
-      this.offsetY = 0});
+  const CustomPopupMenu({
+    super.key,
+    required this.menu,
+    required this.onChange,
+    required this.menuBuilder,
+    this.selectedIndex = 0,
+    this.backdrop = false,
+    this.show = true,
+    this.placement = CustomPopupMenuPlacement.bottom,
+    this.offsetX = 0,
+    this.hideFn,
+    this.offsetY = 0,
+  });
 
   @override
   _CustomPopupMenuState createState() => _CustomPopupMenuState();
@@ -72,9 +73,7 @@ class _CustomPopupMenuState extends State<CustomPopupMenu>
     _overlayEntry = _overlayEntryBuilder();
     _overlayEntry1 = _overlayEntryBuilder1();
     Overlay.of(context).insert(_overlayEntry1!);
-    Overlay.of(context).insert(
-      _overlayEntry!,
-    );
+    Overlay.of(context).insert(_overlayEntry!);
     isMenuOpen = true;
   }
 
@@ -85,17 +84,18 @@ class _CustomPopupMenuState extends State<CustomPopupMenu>
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () {
-              if (isMenuOpen) {
-                closeMenu();
-                widget.onChange(false);
-              } else {
-                openMenu();
-                widget.onChange(true);
-              }
-            },
-            child: widget.menu),
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            if (isMenuOpen) {
+              closeMenu();
+              widget.onChange(false);
+            } else {
+              openMenu();
+              widget.onChange(true);
+            }
+          },
+          child: widget.menu,
+        ),
       ),
     );
   }
@@ -129,9 +129,10 @@ class _CustomPopupMenuState extends State<CustomPopupMenu>
           child: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: widget.backdrop
-                ? theme.colorScheme.onBackground.withAlpha(12)
-                : Colors.transparent,
+            color:
+                widget.backdrop
+                    ? theme.colorScheme.onBackground.withAlpha(12)
+                    : Colors.transparent,
           ),
         );
       },

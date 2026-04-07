@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/constant_data.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/constant_data.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
 
 class MyContainer extends StatelessWidget {
   final Widget? child;
@@ -20,143 +20,143 @@ class MyContainer extends StatelessWidget {
   final Color? splashColor;
   final bool enableBorderRadius;
 
-  const MyContainer(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll,
-      this.paddingAll,
-      this.border,
-      this.bordered = false,
-      this.clipBehavior,
-      this.color,
-      this.shape = BoxShape.rectangle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.enableBorderRadius = true,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll,
+    this.paddingAll,
+    this.border,
+    this.bordered = false,
+    this.clipBehavior,
+    this.color,
+    this.shape = BoxShape.rectangle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.enableBorderRadius = true,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
-  const MyContainer.transparent(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll,
-      this.paddingAll,
-      this.border,
-      this.bordered = false,
-      this.clipBehavior,
-      this.color = Colors.transparent,
-      this.shape = BoxShape.rectangle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.enableBorderRadius = true,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer.transparent({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll,
+    this.paddingAll,
+    this.border,
+    this.bordered = false,
+    this.clipBehavior,
+    this.color = Colors.transparent,
+    this.shape = BoxShape.rectangle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.enableBorderRadius = true,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
-  const MyContainer.none(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll = 0,
-      this.paddingAll = 0,
-      this.border,
-      this.bordered = false,
-      this.clipBehavior,
-      this.enableBorderRadius = true,
-      this.color,
-      this.shape = BoxShape.rectangle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer.none({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll = 0,
+    this.paddingAll = 0,
+    this.border,
+    this.bordered = false,
+    this.clipBehavior,
+    this.enableBorderRadius = true,
+    this.color,
+    this.shape = BoxShape.rectangle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
-  const MyContainer.bordered(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll,
-      this.paddingAll,
-      this.border,
-      this.bordered = true,
-      this.enableBorderRadius = true,
-      this.clipBehavior,
-      this.color,
-      this.shape = BoxShape.rectangle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer.bordered({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll,
+    this.paddingAll,
+    this.border,
+    this.bordered = true,
+    this.enableBorderRadius = true,
+    this.clipBehavior,
+    this.color,
+    this.shape = BoxShape.rectangle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
-  const MyContainer.roundBordered(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll,
-      this.enableBorderRadius = true,
-      this.paddingAll,
-      this.border,
-      this.bordered = true,
-      this.clipBehavior,
-      this.color,
-      this.shape = BoxShape.circle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer.roundBordered({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll,
+    this.enableBorderRadius = true,
+    this.paddingAll,
+    this.border,
+    this.bordered = true,
+    this.clipBehavior,
+    this.color,
+    this.shape = BoxShape.circle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
-  const MyContainer.rounded(
-      {Key? key,
-      this.child,
-      this.borderRadius,
-      this.padding,
-      this.borderRadiusAll,
-      this.enableBorderRadius = true,
-      this.paddingAll,
-      this.border,
-      this.bordered = false,
-      this.clipBehavior = Clip.antiAliasWithSaveLayer,
-      this.color,
-      this.shape = BoxShape.circle,
-      this.width,
-      this.height,
-      this.alignment,
-      this.onTap,
-      this.marginAll,
-      this.margin,
-      this.splashColor,
-      this.borderColor})
-      : super(key: key);
+  const MyContainer.rounded({
+    Key? key,
+    this.child,
+    this.borderRadius,
+    this.padding,
+    this.borderRadiusAll,
+    this.enableBorderRadius = true,
+    this.paddingAll,
+    this.border,
+    this.bordered = false,
+    this.clipBehavior = Clip.antiAliasWithSaveLayer,
+    this.color,
+    this.shape = BoxShape.circle,
+    this.width,
+    this.height,
+    this.alignment,
+    this.onTap,
+    this.marginAll,
+    this.margin,
+    this.splashColor,
+    this.borderColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -166,19 +166,29 @@ class MyContainer extends StatelessWidget {
       alignment: alignment,
       margin: margin ?? MySpacing.all(marginAll ?? 0),
       decoration: BoxDecoration(
-          color: color ?? theme.cardTheme.color,
-          shape: shape,
-          borderRadius: enableBorderRadius
-              ? (shape == BoxShape.rectangle
-                  ? borderRadius ??
-                      BorderRadius.all(Radius.circular(borderRadiusAll ??
-                          MyConstant.constant.containerRadius))
-                  : null)
-              : null,
-          border: bordered
-              ? border ??
-                  Border.all(color: borderColor ?? theme.dividerColor, width: 1)
-              : null),
+        color: color ?? theme.cardTheme.color,
+        shape: shape,
+        borderRadius:
+            enableBorderRadius
+                ? (shape == BoxShape.rectangle
+                    ? borderRadius ??
+                        BorderRadius.all(
+                          Radius.circular(
+                            borderRadiusAll ??
+                                MyConstant.constant.containerRadius,
+                          ),
+                        )
+                    : null)
+                : null,
+        border:
+            bordered
+                ? border ??
+                    Border.all(
+                      color: borderColor ?? theme.dividerColor,
+                      width: 1,
+                    )
+                : null,
+      ),
       padding: padding ?? MySpacing.all(paddingAll ?? 16),
       clipBehavior: clipBehavior ?? Clip.none,
       child: child,
@@ -186,11 +196,15 @@ class MyContainer extends StatelessWidget {
 
     if (onTap != null) {
       return InkWell(
-        borderRadius: shape != BoxShape.circle
-            ? borderRadius ??
-                BorderRadius.all(Radius.circular(
-                    borderRadiusAll ?? MyConstant.constant.containerRadius))
-            : null,
+        borderRadius:
+            shape != BoxShape.circle
+                ? borderRadius ??
+                    BorderRadius.all(
+                      Radius.circular(
+                        borderRadiusAll ?? MyConstant.constant.containerRadius,
+                      ),
+                    )
+                : null,
         onTap: onTap,
         splashColor: splashColor ?? Colors.transparent,
         highlightColor: splashColor ?? Colors.transparent,

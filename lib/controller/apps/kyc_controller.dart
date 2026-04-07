@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/models/chat.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/models/chat.dart';
 
 class KYCController extends MyController {
   List<Chat> chat = [];

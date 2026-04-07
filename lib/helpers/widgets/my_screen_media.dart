@@ -1,5 +1,5 @@
-import 'package:webkit/helpers/widgets/my_display_type.dart';
-import 'package:webkit/helpers/widgets/my_screen_media_type.dart';
+import 'package:yamazone/helpers/widgets/my_display_type.dart';
+import 'package:yamazone/helpers/widgets/my_screen_media_type.dart';
 
 class MyScreenMedia {
   static int flexColumns = 12;
@@ -15,8 +15,10 @@ class MyScreenMedia {
   }
 
   static Map<MyScreenMediaType, T> getFilledMedia<T>(
-      Map<MyScreenMediaType, T>? map, T defaultValue,
-      [bool reversed = false]) {
+    Map<MyScreenMediaType, T>? map,
+    T defaultValue, [
+    bool reversed = false,
+  ]) {
     Map<MyScreenMediaType, T> d = {};
     map ??= {};
     List list = MyScreenMediaType.list;
@@ -51,7 +53,8 @@ class MyScreenMedia {
   }
 
   static Map<MyScreenMediaType, MyDisplayType> getDisplayDataFromString(
-      String? string) {
+    String? string,
+  ) {
     string ??= "";
     Map<MyScreenMediaType, MyDisplayType> d = {};
 
@@ -60,7 +63,8 @@ class MyScreenMedia {
       for (var type in MyScreenMediaType.values) {
         if (item.contains(type.className)) {
           MyDisplayType displayType = MyDisplayType.fromString(
-              item.replaceAll("${type.className}-", ""));
+            item.replaceAll("${type.className}-", ""),
+          );
           d[type] = displayType;
           break;
         }

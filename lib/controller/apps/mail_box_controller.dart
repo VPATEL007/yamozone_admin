@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/models/mail_model.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/models/mail_model.dart';
 
 class MailBoxController extends MyController {
   List<MailModel> mail = [];
@@ -18,11 +18,12 @@ class MailBoxController extends MyController {
   TextEditingController searchController = TextEditingController();
 
   void searchMail(String query) {
-    search = mail.where((mail) {
-      final from = mail.title.toLowerCase();
-      final input = query.toLowerCase();
-      return from.contains(input);
-    }).toList();
+    search =
+        mail.where((mail) {
+          final from = mail.title.toLowerCase();
+          final input = query.toLowerCase();
+          return from.contains(input);
+        }).toList();
     update();
   }
 
@@ -88,21 +89,23 @@ class MailBoxController extends MyController {
               TextFormField(
                 controller: toTE,
                 decoration: InputDecoration(
-                    hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
-                    hintText: "TO",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
+                  hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
+                  hintText: "TO",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
               MySpacing.height(12),
               TextFormField(
                 controller: subjectTE,
                 decoration: InputDecoration(
-                    hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
-                    hintText: "Subject",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
+                  hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
+                  hintText: "Subject",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
               MySpacing.height(12),
               TextFormField(
@@ -110,11 +113,12 @@ class MailBoxController extends MyController {
                 minLines: 3,
                 controller: extraTextAreaTE,
                 decoration: InputDecoration(
-                    hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
-                    hintText: "Extra TextArea",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
+                  hintStyle: MyTextStyle.bodyMedium(fontWeight: 600),
+                  hintText: "Extra TextArea",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
             ],
           ),
@@ -124,24 +128,26 @@ class MailBoxController extends MyController {
             children: [
               Expanded(
                 child: MyButton.text(
-                    onPressed: () => Get.back(),
-                    child: MyText.bodyMedium("Cancel", fontWeight: 600)),
+                  onPressed: () => Get.back(),
+                  child: MyText.bodyMedium("Cancel", fontWeight: 600),
+                ),
               ),
               Expanded(
                 child: MyButton.block(
-                    elevation: 0,
-                    onPressed: () {
-                      addData();
-                      Get.back();
-                    },
-                    backgroundColor: contentTheme.primary,
-                    borderRadiusAll: 12,
-                    child: MyText.bodyMedium(
-                      "Send",
-                      color: contentTheme.onPrimary,
-                      fontWeight: 600,
-                    )),
-              )
+                  elevation: 0,
+                  onPressed: () {
+                    addData();
+                    Get.back();
+                  },
+                  backgroundColor: contentTheme.primary,
+                  borderRadiusAll: 12,
+                  child: MyText.bodyMedium(
+                    "Send",
+                    color: contentTheme.onPrimary,
+                    fontWeight: 600,
+                  ),
+                ),
+              ),
             ],
           ),
         ],

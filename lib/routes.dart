@@ -1,60 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/views/apps/CRM/contacts_page.dart';
-import 'package:webkit/views/apps/CRM/opportunities.dart';
-import 'package:webkit/views/apps/calender.dart';
-import 'package:webkit/views/apps/driver_monitoring/driver_profile_page.dart';
-import 'package:webkit/views/apps/driver_monitoring/driver_task_detail_page.dart';
-import 'package:webkit/views/apps/kyc/kyc_approval_page.dart';
-import 'package:webkit/views/apps/contacts/edit_profile.dart';
-import 'package:webkit/views/apps/contacts/member_list.dart';
-import 'package:webkit/views/apps/contacts/profile.dart';
-import 'package:webkit/views/apps/ecommerce/add_product.dart';
-import 'package:webkit/views/apps/listing_moderation/listing_detail_view.dart';
-import 'package:webkit/views/apps/listing_moderation/listing_reported_detail_view.dart';
-import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
-import 'package:webkit/views/apps/user_management/user_management_page.dart';
-import 'package:webkit/views/apps/kyc/kyc_review_page.dart';
-import 'package:webkit/views/apps/user_management/user_detail.dart';
-import 'package:webkit/views/apps/ecommerce/products.dart';
-import 'package:webkit/views/apps/file/file_manager.dart';
-import 'package:webkit/views/apps/file/file_uploader.dart';
-import 'package:webkit/views/apps/driver_monitoring/driver_monitoring_page.dart';
-import 'package:webkit/views/apps/kanban_page.dart';
-import 'package:webkit/views/apps/system_setting/system_setting_page.dart';
-import 'package:webkit/views/apps/projects/create_project.dart';
-import 'package:webkit/views/apps/projects/project_detail.dart';
-import 'package:webkit/views/apps/projects/project_list.dart';
-import 'package:webkit/views/apps/dispute_center/dispute_center_page.dart';
-import 'package:webkit/views/apps/withdrawal/withdrawal_view.dart';
-import 'package:webkit/views/auth/forgot_password.dart';
-import 'package:webkit/views/auth/forgot_password_2.dart';
-import 'package:webkit/views/auth/locked.dart';
-import 'package:webkit/views/auth/login.dart';
-import 'package:webkit/views/auth/login_2.dart';
-import 'package:webkit/views/auth/register.dart';
-import 'package:webkit/views/auth/register_2.dart';
-import 'package:webkit/views/auth/reset_password.dart';
-import 'package:webkit/views/auth/reset_password_2.dart';
-import 'package:webkit/views/forms/basic_page.dart';
-import 'package:webkit/views/forms/form_mask.dart';
-import 'package:webkit/views/forms/quill_editor.dart';
-import 'package:webkit/views/forms/validation.dart';
-import 'package:webkit/views/forms/wizard.dart';
-import 'package:webkit/views/other/basic_table.dart';
-import 'package:webkit/views/other/fl_chart_screen.dart';
-import 'package:webkit/views/other/google_map.dart';
-import 'package:webkit/views/other/sfmap_page.dart';
-import 'package:webkit/views/other/synsfusion_chart.dart';
-import 'package:webkit/views/apps/system_setting/audit_logs.dart';
-import 'package:webkit/views/ui/buttons_page.dart';
-import 'package:webkit/views/ui/cards_page.dart';
-import 'package:webkit/views/ui/carousels.dart';
-import 'package:webkit/views/ui/dialogs.dart';
-import 'package:webkit/views/ui/drag_drop.dart';
-import 'package:webkit/views/ui/notifications.dart';
-import 'package:webkit/views/ui/reviews_page.dart';
-import 'package:webkit/views/ui/tabs_page.dart';
+import 'package:yamazone/views/apps/CRM/contacts_page.dart';
+import 'package:yamazone/views/apps/CRM/opportunities.dart';
+import 'package:yamazone/views/apps/calender.dart';
+import 'package:yamazone/views/apps/driver_monitoring/driver_profile_page.dart';
+import 'package:yamazone/views/apps/driver_monitoring/driver_task_detail_page.dart';
+import 'package:yamazone/views/apps/kyc/kyc_approval_page.dart';
+import 'package:yamazone/views/apps/contacts/edit_profile.dart';
+import 'package:yamazone/views/apps/contacts/member_list.dart';
+import 'package:yamazone/views/apps/contacts/profile.dart';
+import 'package:yamazone/views/apps/ecommerce/add_product.dart';
+import 'package:yamazone/views/apps/listing_moderation/listing_detail_view.dart';
+import 'package:yamazone/views/apps/listing_moderation/listing_reported_detail_view.dart';
+import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart';
+import 'package:yamazone/views/apps/user_management/user_management_page.dart';
+import 'package:yamazone/views/apps/kyc/kyc_review_page.dart';
+import 'package:yamazone/views/apps/user_management/user_detail.dart';
+import 'package:yamazone/views/apps/ecommerce/products.dart';
+import 'package:yamazone/views/apps/file/file_manager.dart';
+import 'package:yamazone/views/apps/file/file_uploader.dart';
+import 'package:yamazone/views/apps/driver_monitoring/driver_monitoring_page.dart';
+import 'package:yamazone/views/apps/kanban_page.dart';
+import 'package:yamazone/views/apps/system_setting/system_setting_page.dart';
+import 'package:yamazone/views/apps/projects/create_project.dart';
+import 'package:yamazone/views/apps/projects/project_detail.dart';
+import 'package:yamazone/views/apps/projects/project_list.dart';
+import 'package:yamazone/views/apps/dispute_center/dispute_center_page.dart';
+import 'package:yamazone/views/apps/withdrawal/withdrawal_view.dart';
+import 'package:yamazone/views/auth/forgot_password.dart';
+import 'package:yamazone/views/auth/forgot_password_2.dart';
+import 'package:yamazone/views/auth/locked.dart';
+import 'package:yamazone/views/auth/login.dart';
+import 'package:yamazone/views/auth/login_2.dart';
+import 'package:yamazone/views/auth/register.dart';
+import 'package:yamazone/views/auth/register_2.dart';
+import 'package:yamazone/views/auth/reset_password.dart';
+import 'package:yamazone/views/auth/reset_password_2.dart';
+import 'package:yamazone/views/forms/basic_page.dart';
+import 'package:yamazone/views/forms/form_mask.dart';
+import 'package:yamazone/views/forms/quill_editor.dart';
+import 'package:yamazone/views/forms/validation.dart';
+import 'package:yamazone/views/forms/wizard.dart';
+import 'package:yamazone/views/other/basic_table.dart';
+import 'package:yamazone/views/other/fl_chart_screen.dart';
+import 'package:yamazone/views/other/google_map.dart';
+import 'package:yamazone/views/other/sfmap_page.dart';
+import 'package:yamazone/views/other/synsfusion_chart.dart';
+import 'package:yamazone/views/apps/system_setting/audit_logs.dart';
+import 'package:yamazone/views/ui/buttons_page.dart';
+import 'package:yamazone/views/ui/cards_page.dart';
+import 'package:yamazone/views/ui/carousels.dart';
+import 'package:yamazone/views/ui/dialogs.dart';
+import 'package:yamazone/views/ui/drag_drop.dart';
+import 'package:yamazone/views/ui/notifications.dart';
+import 'package:yamazone/views/ui/reviews_page.dart';
+import 'package:yamazone/views/ui/tabs_page.dart';
 
 import 'helpers/services/auth_services.dart';
 import 'views/auth/locked_2.dart';
@@ -142,19 +142,6 @@ getPageRoute() {
       middlewares: [AuthMiddleware()],
     ),
 
-    ///---------------- File ----------------///
-    GetPage(
-      name: '/apps/files',
-      page: () => const FileManager(),
-      middlewares: [AuthMiddleware()],
-    ),
-
-    GetPage(
-      name: '/apps/file-uploader',
-      page: () => const FileUploader(),
-      middlewares: [AuthMiddleware()],
-    ),
-
     ///---------------- Ntf ----------------///
     GetPage(
       name: '/listing-moderation',
@@ -229,11 +216,6 @@ getPageRoute() {
     GetPage(
       name: '/projects/project-detail',
       page: () => const ProjectDetail(),
-      middlewares: [AuthMiddleware()],
-    ),
-    GetPage(
-      name: '/projects/create-project',
-      page: () => const CreateProject(),
       middlewares: [AuthMiddleware()],
     ),
 

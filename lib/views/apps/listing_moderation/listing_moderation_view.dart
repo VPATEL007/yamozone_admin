@@ -3,12 +3,12 @@
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:webkit/controller/ui/nft_dashboard_controller.dart';
-// import 'package:webkit/helpers/theme/admin_theme.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/views/apps/listing_moderation/listing_detail_view.dart';
-// import 'package:webkit/views/apps/listing_moderation/listing_reported_detail_view.dart';
-// import 'package:webkit/views/layouts/layout.dart';
+// import 'package:yamazone/controller/ui/nft_dashboard_controller.dart';
+// import 'package:yamazone/helpers/theme/admin_theme.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/views/apps/listing_moderation/listing_detail_view.dart';
+// import 'package:yamazone/views/apps/listing_moderation/listing_reported_detail_view.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
 
 // class ListingModerationView extends StatefulWidget {
 //   const ListingModerationView({super.key});
@@ -443,10 +443,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
-import 'package:webkit/views/apps/listing_moderation/listing_detail_view.dart';
-import 'package:webkit/views/apps/listing_moderation/listing_reported_detail_view.dart';
-import 'package:webkit/views/apps/orders_escrow/widget/order_dialog.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/apps/listing_moderation/listing_detail_view.dart';
+import 'package:yamazone/views/apps/listing_moderation/listing_reported_detail_view.dart';
+import 'package:yamazone/views/apps/orders_escrow/widget/order_dialog.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // DATA MODEL

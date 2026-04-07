@@ -5,20 +5,20 @@ import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/forms/form_mask_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/utils/my_string_utils.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/forms/form_mask_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/utils/my_string_utils.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class FormMaskPage extends StatefulWidget {
   const FormMaskPage({Key? key}) : super(key: key);
@@ -80,10 +80,7 @@ class _FormMaskPageState extends State<FormMaskPage>
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
-                                    LucideIcons.fileText,
-                                    size: 16,
-                                  ),
+                                  Icon(LucideIcons.fileText, size: 16),
                                   MySpacing.width(12),
                                   MyText.titleMedium(
                                     "Form Mask",
@@ -98,32 +95,28 @@ class _FormMaskPageState extends State<FormMaskPage>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  MyText.labelMedium(
-                                    "Date Style 1",
-                                  ),
+                                  MyText.labelMedium("Date Style 1"),
                                   MySpacing.height(8),
                                   TextFormField(
-                                    inputFormatters: [
-                                      DateTextFormatter(),
-                                    ],
+                                    inputFormatters: [DateTextFormatter()],
                                     decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                          LucideIcons.calendar,
-                                          size: 20,
-                                        ),
-                                        border: outlineInputBorder,
-                                        enabledBorder: outlineInputBorder,
-                                        focusedBorder: focusedInputBorder,
-                                        contentPadding: MySpacing.all(16),
-                                        isCollapsed: true,
-                                        helperText: '"dd/mm/yyy"',
-                                        helperStyle:
-                                            MyTextStyle.bodySmall(muted: true)),
+                                      prefixIcon: const Icon(
+                                        LucideIcons.calendar,
+                                        size: 20,
+                                      ),
+                                      border: outlineInputBorder,
+                                      enabledBorder: outlineInputBorder,
+                                      focusedBorder: focusedInputBorder,
+                                      contentPadding: MySpacing.all(16),
+                                      isCollapsed: true,
+                                      helperText: '"dd/mm/yyy"',
+                                      helperStyle: MyTextStyle.bodySmall(
+                                        muted: true,
+                                      ),
+                                    ),
                                   ),
                                   MySpacing.height(24),
-                                  MyText.labelMedium(
-                                    "Phone Number 1",
-                                  ),
+                                  MyText.labelMedium("Phone Number 1"),
                                   MySpacing.height(8),
                                   TextFormField(
                                     inputFormatters: [
@@ -131,92 +124,88 @@ class _FormMaskPageState extends State<FormMaskPage>
                                       PhoneInputFormatter(),
                                     ],
                                     decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                          LucideIcons.phone,
-                                          size: 20,
-                                        ),
-                                        border: outlineInputBorder,
-                                        enabledBorder: outlineInputBorder,
-                                        focusedBorder: focusedInputBorder,
-                                        contentPadding: MySpacing.all(16),
-                                        isCollapsed: true,
-                                        helperText: '"123456789"',
-                                        helperStyle:
-                                            MyTextStyle.bodySmall(muted: true)),
+                                      prefixIcon: const Icon(
+                                        LucideIcons.phone,
+                                        size: 20,
+                                      ),
+                                      border: outlineInputBorder,
+                                      enabledBorder: outlineInputBorder,
+                                      focusedBorder: focusedInputBorder,
+                                      contentPadding: MySpacing.all(16),
+                                      isCollapsed: true,
+                                      helperText: '"123456789"',
+                                      helperStyle: MyTextStyle.bodySmall(
+                                        muted: true,
+                                      ),
+                                    ),
                                   ),
                                   MySpacing.height(24),
-                                  MyText.labelMedium(
-                                    "Date Style 2",
-                                  ),
+                                  MyText.labelMedium("Date Style 2"),
                                   MySpacing.height(8),
                                   TextFormField(
-                                    inputFormatters: [
-                                      DateTextFormatter(),
-                                    ],
+                                    inputFormatters: [DateTextFormatter()],
                                     decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                          LucideIcons.calendar,
-                                          size: 20,
-                                        ),
-                                        border: outlineInputBorder,
-                                        enabledBorder: outlineInputBorder,
-                                        focusedBorder: focusedInputBorder,
-                                        contentPadding: MySpacing.all(16),
-                                        isCollapsed: true,
-                                        helperText: '"mm/dd/yyy"',
-                                        helperStyle:
-                                            MyTextStyle.bodySmall(muted: true)),
+                                      prefixIcon: const Icon(
+                                        LucideIcons.calendar,
+                                        size: 20,
+                                      ),
+                                      border: outlineInputBorder,
+                                      enabledBorder: outlineInputBorder,
+                                      focusedBorder: focusedInputBorder,
+                                      contentPadding: MySpacing.all(16),
+                                      isCollapsed: true,
+                                      helperText: '"mm/dd/yyy"',
+                                      helperStyle: MyTextStyle.bodySmall(
+                                        muted: true,
+                                      ),
+                                    ),
                                   ),
                                   MySpacing.height(24),
-                                  MyText.labelMedium(
-                                    "Phone Number 2",
-                                  ),
+                                  MyText.labelMedium("Phone Number 2"),
                                   MySpacing.height(8),
                                   TextFormField(
-                                    inputFormatters: [
-                                      MaskTextFormatter(),
-                                    ],
+                                    inputFormatters: [MaskTextFormatter()],
                                     decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                          LucideIcons.phone,
-                                          size: 20,
-                                        ),
-                                        border: outlineInputBorder,
-                                        enabledBorder: outlineInputBorder,
-                                        focusedBorder: focusedInputBorder,
-                                        contentPadding: MySpacing.all(16),
-                                        isCollapsed: true,
-                                        helperText: '"00-0000000"',
-                                        helperStyle:
-                                            MyTextStyle.bodySmall(muted: true)),
+                                      prefixIcon: const Icon(
+                                        LucideIcons.phone,
+                                        size: 20,
+                                      ),
+                                      border: outlineInputBorder,
+                                      enabledBorder: outlineInputBorder,
+                                      focusedBorder: focusedInputBorder,
+                                      contentPadding: MySpacing.all(16),
+                                      isCollapsed: true,
+                                      helperText: '"00-0000000"',
+                                      helperStyle: MyTextStyle.bodySmall(
+                                        muted: true,
+                                      ),
+                                    ),
                                   ),
                                   MySpacing.height(24),
-                                  MyText.labelMedium(
-                                    "IP address",
-                                  ),
+                                  MyText.labelMedium("IP address"),
                                   MySpacing.height(8),
                                   TextFormField(
                                     inputFormatters: [
                                       IpAddressInputFormatter(),
                                     ],
                                     decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                          LucideIcons.shield,
-                                          size: 20,
-                                        ),
-                                        border: outlineInputBorder,
-                                        enabledBorder: outlineInputBorder,
-                                        focusedBorder: focusedInputBorder,
-                                        contentPadding: MySpacing.all(16),
-                                        isCollapsed: true,
-                                        helperText: '"99.99.99.99"',
-                                        helperStyle:
-                                            MyTextStyle.bodySmall(muted: true)),
+                                      prefixIcon: const Icon(
+                                        LucideIcons.shield,
+                                        size: 20,
+                                      ),
+                                      border: outlineInputBorder,
+                                      enabledBorder: outlineInputBorder,
+                                      focusedBorder: focusedInputBorder,
+                                      contentPadding: MySpacing.all(16),
+                                      isCollapsed: true,
+                                      helperText: '"99.99.99.99"',
+                                      helperStyle: MyTextStyle.bodySmall(
+                                        muted: true,
+                                      ),
+                                    ),
                                   ),
                                   MySpacing.height(24),
-                                  MyText.labelMedium(
-                                    "Email address",
-                                  ),
+                                  MyText.labelMedium("Email address"),
                                   MySpacing.height(8),
                                   Form(
                                     autovalidateMode:
@@ -233,18 +222,20 @@ class _FormMaskPageState extends State<FormMaskPage>
                                         return null;
                                       },
                                       decoration: InputDecoration(
-                                          prefixIcon: const Icon(
-                                            LucideIcons.mail,
-                                            size: 20,
-                                          ),
-                                          border: outlineInputBorder,
-                                          enabledBorder: outlineInputBorder,
-                                          focusedBorder: focusedInputBorder,
-                                          contentPadding: MySpacing.all(16),
-                                          isCollapsed: true,
-                                          helperText: '"_@_._"',
-                                          helperStyle: MyTextStyle.bodySmall(
-                                              muted: true)),
+                                        prefixIcon: const Icon(
+                                          LucideIcons.mail,
+                                          size: 20,
+                                        ),
+                                        border: outlineInputBorder,
+                                        enabledBorder: outlineInputBorder,
+                                        focusedBorder: focusedInputBorder,
+                                        contentPadding: MySpacing.all(16),
+                                        isCollapsed: true,
+                                        helperText: '"_@_._"',
+                                        helperStyle: MyTextStyle.bodySmall(
+                                          muted: true,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -270,7 +261,9 @@ class DateTextFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     var text = _format(newValue.text, '/');
     return newValue.copyWith(text: text, selection: updateCursorPosition(text));
   }
@@ -295,7 +288,9 @@ class DateTextFormatter extends TextInputFormatter {
 class PhoneInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final text = newValue.text.replaceAll(RegExp(r'\D'), '');
 
     return newValue.copyWith(
@@ -308,7 +303,9 @@ class PhoneInputFormatter extends TextInputFormatter {
 class IpAddressInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     var text = newValue.text;
 
     if (newValue.selection.baseOffset == 0) {
@@ -356,8 +353,9 @@ class IpAddressInputFormatter extends TextInputFormatter {
 
     var string = buffer.toString();
     return newValue.copyWith(
-        text: string,
-        selection: TextSelection.collapsed(offset: string.length));
+      text: string,
+      selection: TextSelection.collapsed(offset: string.length),
+    );
   }
 }
 
@@ -366,7 +364,9 @@ class MaskTextFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     var text = _format(newValue.text, '-');
     return newValue.copyWith(text: text, selection: updateCursorPosition(text));
   }

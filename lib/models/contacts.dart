@@ -1,16 +1,23 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class Contacts extends IdentifierModel {
   final String name, phoneNumber, email, company, image;
   final DateTime createdAt;
 
-  Contacts(super.id, this.name, this.phoneNumber, this.email, this.company,
-      this.createdAt, this.image);
+  Contacts(
+    super.id,
+    this.name,
+    this.phoneNumber,
+    this.email,
+    this.company,
+    this.createdAt,
+    this.image,
+  );
 
   static Contacts fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);

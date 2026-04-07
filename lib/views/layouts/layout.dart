@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/controller/layouts/layout_controller.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/theme/theme_customizer.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_dashed_divider.dart';
-import 'package:webkit/helpers/widgets/my_responsiv.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/left_bar.dart';
-import 'package:webkit/views/layouts/right_bar.dart';
-import 'package:webkit/views/layouts/top_bar.dart';
-import 'package:webkit/widgets/custom_pop_menu.dart';
+import 'package:yamazone/controller/layouts/layout_controller.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/theme/theme_customizer.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_dashed_divider.dart';
+import 'package:yamazone/helpers/widgets/my_responsiv.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/left_bar.dart';
+import 'package:yamazone/views/layouts/right_bar.dart';
+import 'package:yamazone/views/layouts/top_bar.dart';
+import 'package:yamazone/widgets/custom_pop_menu.dart';
 
 class Layout extends StatelessWidget {
   final Widget? child;
@@ -32,13 +32,16 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyResponsive(builder: (BuildContext context, _, screenMT) {
-      return GetBuilder(
+    return MyResponsive(
+      builder: (BuildContext context, _, screenMT) {
+        return GetBuilder(
           init: controller,
           builder: (controller) {
             return screenMT.isMobile ? mobileScreen() : largeScreen();
-          });
-    });
+          },
+        );
+      },
+    );
   }
 
   Widget mobileScreen() {
@@ -50,9 +53,10 @@ class Layout extends StatelessWidget {
           InkWell(
             onTap: () {
               ThemeCustomizer.setTheme(
-                  ThemeCustomizer.instance.theme == ThemeMode.dark
-                      ? ThemeMode.light
-                      : ThemeMode.dark);
+                ThemeCustomizer.instance.theme == ThemeMode.dark
+                    ? ThemeMode.light
+                    : ThemeMode.dark,
+              );
             },
             child: Icon(
               ThemeCustomizer.instance.theme == ThemeMode.dark
@@ -69,12 +73,7 @@ class Layout extends StatelessWidget {
             offsetX: -180,
             menu: Padding(
               padding: MySpacing.xy(8, 8),
-              child: Center(
-                child: Icon(
-                  FeatherIcons.bell,
-                  size: 18,
-                ),
-              ),
+              child: Center(child: Icon(FeatherIcons.bell, size: 18)),
             ),
             menuBuilder: (_) => buildNotifications(),
           ),
@@ -87,17 +86,18 @@ class Layout extends StatelessWidget {
             menu: Padding(
               padding: MySpacing.xy(8, 8),
               child: MyContainer.rounded(
-                  paddingAll: 0,
-                  child: Image.asset(
-                    Images.avatars[0],
-                    height: 28,
-                    width: 28,
-                    fit: BoxFit.cover,
-                  )),
+                paddingAll: 0,
+                child: Image.asset(
+                  Images.avatars[0],
+                  height: 28,
+                  width: 28,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
             menuBuilder: (_) => buildAccountMenu(),
           ),
-          MySpacing.width(20)
+          MySpacing.width(20),
         ],
       ), // endDrawer: RightBar(),
       // extendBodyBehindAppBar: true,
@@ -123,23 +123,28 @@ class Layout extends StatelessWidget {
             children: [
               LeftBar(isCondensed: ThemeCustomizer.instance.leftBarCondensed),
               Expanded(
-                  child: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    bottom: 0,
-                    child: SingleChildScrollView(
-                      padding: MySpacing.fromLTRB(
-                          0, 58 + flexSpacing, 0, flexSpacing),
-                      key: controller.scrollKey,
-                      child: child,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      left: 0,
+                      bottom: 0,
+                      child: SingleChildScrollView(
+                        padding: MySpacing.fromLTRB(
+                          0,
+                          58 + flexSpacing,
+                          0,
+                          flexSpacing,
+                        ),
+                        key: controller.scrollKey,
+                        child: child,
+                      ),
                     ),
-                  ),
-                  Positioned(top: 0, left: 0, right: 0, child: TopBar()),
-                ],
-              )),
+                    Positioned(top: 0, left: 0, right: 0, child: TopBar()),
+                  ],
+                ),
+              ),
               // Expanded(
               //     child: Column(
               //   crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +172,7 @@ class Layout extends StatelessWidget {
         children: [
           MyText.labelLarge(title),
           MySpacing.height(4),
-          MyText.bodySmall(description)
+          MyText.bodySmall(description),
         ],
       );
     }
@@ -183,22 +188,34 @@ class Layout extends StatelessWidget {
             child: MyText.titleMedium("Notification", fontWeight: 600),
           ),
           MyDashedDivider(
-              height: 1, color: theme.dividerColor, dashSpace: 4, dashWidth: 6),
+            height: 1,
+            color: theme.dividerColor,
+            dashSpace: 4,
+            dashWidth: 6,
+          ),
           Padding(
             padding: MySpacing.xy(16, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildNotification("Your order is received",
-                    "Order #1232 is ready to deliver"),
+                buildNotification(
+                  "Your order is received",
+                  "Order #1232 is ready to deliver",
+                ),
                 MySpacing.height(12),
-                buildNotification("Account Security ",
-                    "Your account password changed 1 hour ago"),
+                buildNotification(
+                  "Account Security ",
+                  "Your account password changed 1 hour ago",
+                ),
               ],
             ),
           ),
           MyDashedDivider(
-              height: 1, color: theme.dividerColor, dashSpace: 4, dashWidth: 6),
+            height: 1,
+            color: theme.dividerColor,
+            dashSpace: 4,
+            dashWidth: 6,
+          ),
           Padding(
             padding: MySpacing.xy(16, 0),
             child: Row(
@@ -215,14 +232,11 @@ class Layout extends StatelessWidget {
                 MyButton.text(
                   onPressed: () {},
                   splashColor: contentTheme.danger.withAlpha(28),
-                  child: MyText.labelSmall(
-                    "Clear",
-                    color: contentTheme.danger,
-                  ),
+                  child: MyText.labelSmall("Clear", color: contentTheme.danger),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -255,10 +269,7 @@ class Layout extends StatelessWidget {
                         color: contentTheme.onBackground,
                       ),
                       MySpacing.width(8),
-                      MyText.labelMedium(
-                        "My Account",
-                        fontWeight: 600,
-                      )
+                      MyText.labelMedium("My Account", fontWeight: 600),
                     ],
                   ),
                 ),
@@ -278,20 +289,14 @@ class Layout extends StatelessWidget {
                         color: contentTheme.onBackground,
                       ),
                       MySpacing.width(8),
-                      MyText.labelMedium(
-                        "Settings",
-                        fontWeight: 600,
-                      )
+                      MyText.labelMedium("Settings", fontWeight: 600),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          Divider(
-            height: 1,
-            thickness: 1,
-          ),
+          Divider(height: 1, thickness: 1),
           Padding(
             padding: MySpacing.xy(8, 8),
             child: MyButton(
@@ -313,11 +318,11 @@ class Layout extends StatelessWidget {
                     "Log out",
                     fontWeight: 600,
                     color: contentTheme.danger,
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // THEME CONSTANTS
@@ -25,14 +25,15 @@ class SystemSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kPrimaryLight,
-        body: Layout(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: SystemSettingsContent(),
-          ),
-        ));
+      backgroundColor: kPrimaryLight,
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SystemSettingsContent(),
+        ),
+      ),
+    );
   }
 }
 
@@ -64,17 +65,22 @@ class _SystemSettingsContentState extends State<SystemSettingsContent> {
   bool _partialRefunds = false;
 
   // API Keys
-  final _twilioSidCtrl =
-      TextEditingController(text: 'AC************************');
-  final _twilioTokenCtrl =
-      TextEditingController(text: '****************************');
-  final _sgApiKeyCtrl =
-      TextEditingController(text: 'SG.**********************');
+  final _twilioSidCtrl = TextEditingController(
+    text: 'AC************************',
+  );
+  final _twilioTokenCtrl = TextEditingController(
+    text: '****************************',
+  );
+  final _sgApiKeyCtrl = TextEditingController(
+    text: 'SG.**********************',
+  );
   final _fromEmailCtrl = TextEditingController(text: 'noreply@platform.com');
-  final _stripePublicCtrl =
-      TextEditingController(text: 'pk_live_************************');
-  final _stripeSecretCtrl =
-      TextEditingController(text: 'sk_live_************************');
+  final _stripePublicCtrl = TextEditingController(
+    text: 'pk_live_************************',
+  );
+  final _stripeSecretCtrl = TextEditingController(
+    text: 'sk_live_************************',
+  );
 
   @override
   void dispose() {
@@ -283,14 +289,17 @@ class _SystemSettingsContentState extends State<SystemSettingsContent> {
             children: [
               Expanded(
                 child: _LabeledField(
-                    label: 'Account SID', controller: _twilioSidCtrl),
+                  label: 'Account SID',
+                  controller: _twilioSidCtrl,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: _LabeledField(
-                    label: 'Auth Token',
-                    controller: _twilioTokenCtrl,
-                    obscure: true),
+                  label: 'Auth Token',
+                  controller: _twilioTokenCtrl,
+                  obscure: true,
+                ),
               ),
             ],
           ),
@@ -308,12 +317,17 @@ class _SystemSettingsContentState extends State<SystemSettingsContent> {
             children: [
               Expanded(
                 child: _LabeledField(
-                    label: 'API Key', controller: _sgApiKeyCtrl, obscure: true),
+                  label: 'API Key',
+                  controller: _sgApiKeyCtrl,
+                  obscure: true,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: _LabeledField(
-                    label: 'From Email', controller: _fromEmailCtrl),
+                  label: 'From Email',
+                  controller: _fromEmailCtrl,
+                ),
               ),
             ],
           ),
@@ -331,14 +345,17 @@ class _SystemSettingsContentState extends State<SystemSettingsContent> {
             children: [
               Expanded(
                 child: _LabeledField(
-                    label: 'Publishable Key', controller: _stripePublicCtrl),
+                  label: 'Publishable Key',
+                  controller: _stripePublicCtrl,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: _LabeledField(
-                    label: 'Secret Key',
-                    controller: _stripeSecretCtrl,
-                    obscure: true),
+                  label: 'Secret Key',
+                  controller: _stripeSecretCtrl,
+                  obscure: true,
+                ),
               ),
             ],
           ),
@@ -385,9 +402,12 @@ class _TopBar extends StatelessWidget {
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              textStyle:
-                  const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              textStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
@@ -454,15 +474,19 @@ class _SectionCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(title,
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: kTextDark)),
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: kTextDark,
+                        ),
+                      ),
                       const SizedBox(height: 2),
-                      Text(subtitle,
-                          style:
-                              const TextStyle(fontSize: 12, color: kTextLight)),
+                      Text(
+                        subtitle,
+                        style: const TextStyle(fontSize: 12, color: kTextLight),
+                      ),
                     ],
                   ),
                 ),
@@ -472,10 +496,7 @@ class _SectionCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Divider(color: kBorder, height: 1),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: child,
-          ),
+          Padding(padding: const EdgeInsets.all(20), child: child),
         ],
       ),
     );
@@ -528,9 +549,14 @@ class _NumberField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 13, fontWeight: FontWeight.w600, color: kTextMid)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: kTextMid,
+          ),
+        ),
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
@@ -543,15 +569,19 @@ class _NumberField extends StatelessWidget {
               Expanded(
                 child: TextField(
                   controller: controller,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
                   style: const TextStyle(
-                      fontSize: 14,
-                      color: kTextDark,
-                      fontWeight: FontWeight.w500),
+                    fontSize: 14,
+                    color: kTextDark,
+                    fontWeight: FontWeight.w500,
+                  ),
                   decoration: const InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 12,
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
@@ -559,11 +589,14 @@ class _NumberField extends StatelessWidget {
               if (suffix != null)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(suffix!,
-                      style: const TextStyle(
-                          color: kTextLight,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500)),
+                  child: Text(
+                    suffix!,
+                    style: const TextStyle(
+                      color: kTextLight,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
             ],
           ),
@@ -594,9 +627,14 @@ class _LabeledField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: const TextStyle(
-                fontSize: 13, fontWeight: FontWeight.w600, color: kTextMid)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: kTextMid,
+          ),
+        ),
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
@@ -608,13 +646,16 @@ class _LabeledField extends StatelessWidget {
             controller: controller,
             obscureText: obscure,
             style: const TextStyle(
-                fontSize: 13,
-                color: kTextDark,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'monospace'),
+              fontSize: 13,
+              color: kTextDark,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'monospace',
+            ),
             decoration: const InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 12,
+              ),
               border: InputBorder.none,
             ),
           ),
@@ -659,9 +700,14 @@ class _CheckboxCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title,
-              style: const TextStyle(
-                  fontSize: 13, fontWeight: FontWeight.w600, color: kTextMid)),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: kTextMid,
+            ),
+          ),
           const SizedBox(height: 10),
           ...items.map(
             (item) => Padding(
@@ -685,15 +731,22 @@ class _CheckboxCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(item.label,
-                            style: const TextStyle(
-                                fontSize: 12,
-                                color: kTextDark,
-                                fontWeight: FontWeight.w500)),
+                        Text(
+                          item.label,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: kTextDark,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         if (item.sublabel != null)
-                          Text(item.sublabel!,
-                              style: const TextStyle(
-                                  fontSize: 11, color: kTextLight)),
+                          Text(
+                            item.sublabel!,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: kTextLight,
+                            ),
+                          ),
                       ],
                     ),
                   ),
@@ -722,9 +775,14 @@ class _ProviderSubHeader extends StatelessWidget {
       children: [
         Icon(icon, size: 16, color: kAccentGold),
         const SizedBox(width: 8),
-        Text(label,
-            style: const TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w700, color: kTextDark)),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            color: kTextDark,
+          ),
+        ),
       ],
     );
   }

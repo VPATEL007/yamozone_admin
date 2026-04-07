@@ -4,15 +4,16 @@ import 'dart:developer';
 import 'package:flutter/services.dart';
 import 'package:get/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webkit/helpers/localizations/language.dart';
+import 'package:yamazone/helpers/localizations/language.dart';
 
 class Translator {
   static Map<String, String>? _localizedStrings;
 
   static Future<bool> changeLanguage(Language language) async {
     try {
-      String jsonString = await rootBundle
-          .loadString('assets/lang/${language.locale.languageCode}.json');
+      String jsonString = await rootBundle.loadString(
+        'assets/lang/${language.locale.languageCode}.json',
+      );
       Map<String, dynamic> jsonLanguageMap = json.decode(jsonString);
       _localizedStrings = jsonLanguageMap.map((key, value) {
         return MapEntry(key, value.toString());
@@ -42,8 +43,9 @@ class Translator {
       List<String> texts = text.split("_");
       StringBuffer stringBuffer = StringBuffer();
       for (String singleText in texts) {
-        stringBuffer
-            .write("${singleText[0].toUpperCase()}${singleText.substring(1)} ");
+        stringBuffer.write(
+          "${singleText[0].toUpperCase()}${singleText.substring(1)} ",
+        );
       }
       String result = stringBuffer.toString();
       return result.substring(0, result.length - 1);

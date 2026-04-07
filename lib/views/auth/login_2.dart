@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/auth/login_2_controller.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/auth_layout_2.dart';
+import 'package:yamazone/controller/auth/login_2_controller.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/auth_layout_2.dart';
 
 class Login2 extends StatefulWidget {
   const Login2({super.key});
@@ -58,9 +58,7 @@ class _Login2State extends State<Login2>
                       ),
                     ],
                   ),
-                  Divider(
-                    height: 40,
-                  ),
+                  Divider(height: 40),
                   Center(
                     child: Column(
                       children: [
@@ -75,72 +73,69 @@ class _Login2State extends State<Login2>
                           fontSize: 12,
                           fontWeight: 600,
                           xMuted: true,
-                        )
+                        ),
                       ],
                     ),
                   ),
                   MySpacing.height(20),
-                  MyText.labelMedium(
-                    "Email Address",
-                  ),
+                  MyText.labelMedium("Email Address"),
                   MySpacing.height(8),
                   TextFormField(
                     validator: controller.basicValidator.getValidation('email'),
-                    controller:
-                        controller.basicValidator.getController('email'),
+                    controller: controller.basicValidator.getController(
+                      'email',
+                    ),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        labelText: "Email Address",
-                        labelStyle: MyTextStyle.bodySmall(xMuted: true),
-                        border: outlineInputBorder,
-                        prefixIcon: const Icon(
-                          LucideIcons.mail,
-                          size: 20,
-                        ),
-                        contentPadding: MySpacing.all(16),
-                        isCollapsed: true,
-                        floatingLabelBehavior: FloatingLabelBehavior.never),
+                      labelText: "Email Address",
+                      labelStyle: MyTextStyle.bodySmall(xMuted: true),
+                      border: outlineInputBorder,
+                      prefixIcon: const Icon(LucideIcons.mail, size: 20),
+                      contentPadding: MySpacing.all(16),
+                      isCollapsed: true,
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                    ),
                   ),
                   MySpacing.height(20),
-                  MyText.labelMedium(
-                    "Password",
-                  ),
+                  MyText.labelMedium("Password"),
                   MySpacing.height(8),
                   TextFormField(
-                    validator:
-                        controller.basicValidator.getValidation('password'),
-                    controller:
-                        controller.basicValidator.getController('password'),
+                    validator: controller.basicValidator.getValidation(
+                      'password',
+                    ),
+                    controller: controller.basicValidator.getController(
+                      'password',
+                    ),
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: !controller.showPassword,
                     decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: MyTextStyle.bodySmall(xMuted: true),
-                        border: outlineInputBorder,
-                        prefixIcon: const Icon(
-                          LucideIcons.lock,
+                      labelText: "Password",
+                      labelStyle: MyTextStyle.bodySmall(xMuted: true),
+                      border: outlineInputBorder,
+                      prefixIcon: const Icon(LucideIcons.lock, size: 20),
+                      suffixIcon: InkWell(
+                        onTap: controller.onChangeShowPassword,
+                        child: Icon(
+                          controller.showPassword
+                              ? LucideIcons.eye
+                              : LucideIcons.eyeOff,
                           size: 20,
                         ),
-                        suffixIcon: InkWell(
-                          onTap: controller.onChangeShowPassword,
-                          child: Icon(
-                            controller.showPassword
-                                ? LucideIcons.eye
-                                : LucideIcons.eyeOff,
-                            size: 20,
-                          ),
-                        ),
-                        contentPadding: MySpacing.all(16),
-                        isCollapsed: true,
-                        floatingLabelBehavior: FloatingLabelBehavior.never),
+                      ),
+                      contentPadding: MySpacing.all(16),
+                      isCollapsed: true,
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                    ),
                   ),
                   MySpacing.height(12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: () =>
-                            controller.onChangeCheckBox(!controller.isChecked),
+                        onTap:
+                            () => controller.onChangeCheckBox(
+                              !controller.isChecked,
+                            ),
                         child: Row(
                           children: [
                             Checkbox(
@@ -151,9 +146,7 @@ class _Login2State extends State<Login2>
                               visualDensity: getCompactDensity,
                             ),
                             MySpacing.width(16),
-                            MyText.bodyMedium(
-                              "Remember Me",
-                            ),
+                            MyText.bodyMedium("Remember Me"),
                           ],
                         ),
                       ),
@@ -181,13 +174,13 @@ class _Login2State extends State<Login2>
                         children: [
                           controller.loading
                               ? SizedBox(
-                                  height: 14,
-                                  width: 14,
-                                  child: CircularProgressIndicator(
-                                    color: theme.colorScheme.onPrimary,
-                                    strokeWidth: 1.2,
-                                  ),
-                                )
+                                height: 14,
+                                width: 14,
+                                child: CircularProgressIndicator(
+                                  color: theme.colorScheme.onPrimary,
+                                  strokeWidth: 1.2,
+                                ),
+                              )
                               : Container(),
                           if (controller.loading) MySpacing.width(16),
                           MyText.bodySmall(
@@ -198,9 +191,7 @@ class _Login2State extends State<Login2>
                       ),
                     ),
                   ),
-                  Divider(
-                    height: 40,
-                  ),
+                  Divider(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -215,10 +206,7 @@ class _Login2State extends State<Login2>
                               color: Color(0xff4078c0),
                             ),
                             MySpacing.width(12),
-                            MyText.bodyMedium(
-                              "GitHub",
-                              fontWeight: 600,
-                            ),
+                            MyText.bodyMedium("GitHub", fontWeight: 600),
                           ],
                         ),
                       ),
@@ -235,10 +223,7 @@ class _Login2State extends State<Login2>
                               color: Color(0xff00acee),
                             ),
                             MySpacing.width(12),
-                            MyText.bodyMedium(
-                              "Twitter",
-                              fontWeight: 600,
-                            ),
+                            MyText.bodyMedium("Twitter", fontWeight: 600),
                           ],
                         ),
                       ),
@@ -253,10 +238,7 @@ class _Login2State extends State<Login2>
                               color: Color(0xff3b5998),
                             ),
                             MySpacing.width(12),
-                            MyText.bodyMedium(
-                              "Facebook",
-                              fontWeight: 600,
-                            ),
+                            MyText.bodyMedium("Facebook", fontWeight: 600),
                           ],
                         ),
                       ),

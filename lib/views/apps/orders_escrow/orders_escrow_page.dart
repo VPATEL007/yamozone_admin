@@ -1,12 +1,12 @@
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:webkit/controller/extra_pages/time_line_controller.dart';
-// import 'package:webkit/helpers/theme/admin_theme.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
-// import 'package:webkit/views/layouts/layout.dart';
-// import 'package:webkit/views/orders_escrow/orders_review.dart';
+// import 'package:yamazone/controller/extra_pages/time_line_controller.dart';
+// import 'package:yamazone/helpers/theme/admin_theme.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
+// import 'package:yamazone/views/orders_escrow/orders_review.dart';
 
 // class OrdersEscrowPage extends StatefulWidget {
 //   const OrdersEscrowPage({Key? key}) : super(key: key);
@@ -543,8 +543,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
-import 'package:webkit/views/apps/orders_escrow/order_detail_page.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // DATA MODELS
@@ -712,27 +712,28 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Layout(
-      child: SizedBox(
-        width: Get.width,
-        height: Get.height,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(),
-              const SizedBox(height: 24),
-              _buildStatCards(),
-              const SizedBox(height: 24),
-              _buildFilterRow(),
-              const SizedBox(height: 20),
-              _buildOrdersTable(),
-            ],
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(),
+                const SizedBox(height: 24),
+                _buildStatCards(),
+                const SizedBox(height: 24),
+                _buildFilterRow(),
+                const SizedBox(height: 20),
+                _buildOrdersTable(),
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 
   // ── header ────────────────────────────────────
@@ -752,60 +753,62 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
   // ── stat cards ────────────────────────────────
 
   Widget _buildStatCards() {
-    return LayoutBuilder(builder: (context, constraints) {
-      final double cardWidth = (constraints.maxWidth - 48) / 4;
-      return Row(
-        children: [
-          _StatCard(
-            width: cardWidth,
-            icon: Icons.shopping_bag_rounded,
-            iconColor: _accentGold,
-            iconBg: const Color(0xFFFFF3CD),
-            badge: '+12%',
-            badgeColor: _accentGold,
-            label: 'Total Orders',
-            value: '2,847',
-            valueColor: const Color(0xFF1A1A1A),
-          ),
-          const SizedBox(width: 16),
-          _StatCard(
-            width: cardWidth,
-            icon: Icons.access_time_rounded,
-            iconColor: _accentGold,
-            iconBg: const Color(0xFFFFF3CD),
-            badge: 'On Hold',
-            badgeColor: _accentGold,
-            label: 'Escrow On Hold',
-            value: '\$124,500',
-            valueColor: const Color(0xFF1A1A1A),
-          ),
-          const SizedBox(width: 16),
-          _StatCard(
-            width: cardWidth,
-            icon: Icons.check_circle_rounded,
-            iconColor: const Color(0xFF2D7D32),
-            iconBg: const Color(0xFFE8F5E9),
-            badge: 'Released',
-            badgeColor: const Color(0xFF2D7D32),
-            label: 'Escrow Released',
-            value: '\$892,340',
-            valueColor: const Color(0xFF1A1A1A),
-          ),
-          const SizedBox(width: 16),
-          _StatCard(
-            width: cardWidth,
-            icon: Icons.replay_rounded,
-            iconColor: const Color(0xFF8B4513),
-            iconBg: const Color(0xFFF3E5DC),
-            badge: 'Refunded',
-            badgeColor: const Color(0xFF8B4513),
-            label: 'Total Refunded',
-            value: '\$18,920',
-            valueColor: const Color(0xFF1A1A1A),
-          ),
-        ],
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double cardWidth = (constraints.maxWidth - 48) / 4;
+        return Row(
+          children: [
+            _StatCard(
+              width: cardWidth,
+              icon: Icons.shopping_bag_rounded,
+              iconColor: _accentGold,
+              iconBg: const Color(0xFFFFF3CD),
+              badge: '+12%',
+              badgeColor: _accentGold,
+              label: 'Total Orders',
+              value: '2,847',
+              valueColor: const Color(0xFF1A1A1A),
+            ),
+            const SizedBox(width: 16),
+            _StatCard(
+              width: cardWidth,
+              icon: Icons.access_time_rounded,
+              iconColor: _accentGold,
+              iconBg: const Color(0xFFFFF3CD),
+              badge: 'On Hold',
+              badgeColor: _accentGold,
+              label: 'Escrow On Hold',
+              value: '\$124,500',
+              valueColor: const Color(0xFF1A1A1A),
+            ),
+            const SizedBox(width: 16),
+            _StatCard(
+              width: cardWidth,
+              icon: Icons.check_circle_rounded,
+              iconColor: const Color(0xFF2D7D32),
+              iconBg: const Color(0xFFE8F5E9),
+              badge: 'Released',
+              badgeColor: const Color(0xFF2D7D32),
+              label: 'Escrow Released',
+              value: '\$892,340',
+              valueColor: const Color(0xFF1A1A1A),
+            ),
+            const SizedBox(width: 16),
+            _StatCard(
+              width: cardWidth,
+              icon: Icons.replay_rounded,
+              iconColor: const Color(0xFF8B4513),
+              iconBg: const Color(0xFFF3E5DC),
+              badge: 'Refunded',
+              badgeColor: const Color(0xFF8B4513),
+              label: 'Total Refunded',
+              value: '\$18,920',
+              valueColor: const Color(0xFF1A1A1A),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   // ── filter row ────────────────────────────────
@@ -834,7 +837,7 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
             'Last 7 days',
             'Last 30 days',
             'Last 90 days',
-            'Custom'
+            'Custom',
           ],
           onChanged: (v) => setState(() => _dateRangeFilter = v!),
         ),
@@ -853,8 +856,11 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
               decoration: const InputDecoration(
                 hintText: 'Search...',
                 hintStyle: TextStyle(color: Color(0xFFAAAAAA), fontSize: 13),
-                prefixIcon:
-                    Icon(Icons.search, color: Color(0xFFAAAAAA), size: 20),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Color(0xFFAAAAAA),
+                  size: 20,
+                ),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(vertical: 12),
               ),
@@ -866,14 +872,17 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
         ElevatedButton.icon(
           onPressed: () {},
           icon: const Icon(Icons.filter_list_rounded, size: 16),
-          label: const Text('Apply Filters',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+          label: const Text(
+            'Apply Filters',
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+          ),
           style: ElevatedButton.styleFrom(
             backgroundColor: _primaryGreen,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
             elevation: 0,
           ),
         ),
@@ -920,9 +929,12 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
                     foregroundColor: _primaryGreen,
                     side: const BorderSide(color: Color(0xFF2D5016)),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -934,9 +946,12 @@ class _OrdersEscrowScreenState extends State<OrdersEscrowScreen> {
                     foregroundColor: const Color(0xFF555555),
                     side: const BorderSide(color: Color(0xFFDDD6C8)),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                 ),
               ],
@@ -1121,9 +1136,10 @@ class _DropdownFilter extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-              fontSize: 11,
-              color: Color(0xFF888888),
-              fontWeight: FontWeight.w500),
+            fontSize: 11,
+            color: Color(0xFF888888),
+            fontWeight: FontWeight.w500,
+          ),
         ),
         const SizedBox(height: 4),
         Container(
@@ -1138,17 +1154,27 @@ class _DropdownFilter extends StatelessWidget {
             child: DropdownButton<String>(
               value: value,
               dropdownColor: Colors.white,
-              items: items
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e,
+              items:
+                  items
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(
+                            e,
                             style: const TextStyle(
-                                fontSize: 13, color: Color(0xFF333333))),
-                      ))
-                  .toList(),
+                              fontSize: 13,
+                              color: Color(0xFF333333),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
               onChanged: onChanged,
-              icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                  size: 18, color: Color(0xFF555555)),
+              icon: const Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 18,
+                color: Color(0xFF555555),
+              ),
               style: const TextStyle(fontSize: 13, color: Color(0xFF333333)),
             ),
           ),
@@ -1206,30 +1232,36 @@ class _OrderRow extends StatelessWidget {
           // Seller
           Expanded(
             flex: 2,
-            child:
-                _PersonCell(name: order.sellerName, email: order.sellerEmail),
+            child: _PersonCell(
+              name: order.sellerName,
+              email: order.sellerEmail,
+            ),
           ),
           // Driver
           Expanded(
             flex: 2,
-            child: order.driverName != null
-                ? _PersonCell(
-                    name: order.driverName!, email: order.driverEmail ?? '')
-                : const SizedBox.shrink(),
+            child:
+                order.driverName != null
+                    ? _PersonCell(
+                      name: order.driverName!,
+                      email: order.driverEmail ?? '',
+                    )
+                    : const SizedBox.shrink(),
           ),
           // Amount
           SizedBox(
             width: 100,
-            child: order.amount > 0
-                ? Text(
-                    '\$${order.amount.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1A1A),
-                    ),
-                  )
-                : const SizedBox.shrink(),
+            child:
+                order.amount > 0
+                    ? Text(
+                      '\$${order.amount.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF1A1A1A),
+                      ),
+                    )
+                    : const SizedBox.shrink(),
           ),
           // Escrow Status
           SizedBox(
@@ -1278,8 +1310,11 @@ class _OrderRow extends StatelessWidget {
                   onTap: () {
                     Get.toNamed("/orders/detail");
                   },
-                  child: Icon(Icons.remove_red_eye,
-                      size: 15, color: Color(0xFF555555)),
+                  child: Icon(
+                    Icons.remove_red_eye,
+                    size: 15,
+                    color: Color(0xFF555555),
+                  ),
                 ),
                 // const SizedBox(width: 8),
                 // GestureDetector(
@@ -1344,10 +1379,11 @@ class _BackgroundPattern extends StatelessWidget {
 class _HoneycombPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFFE8DFC8).withOpacity(0.35)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
+    final paint =
+        Paint()
+          ..color = const Color(0xFFE8DFC8).withOpacity(0.35)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.0;
 
     const double r = 28.0; // hex radius
     final double w = r * 2;

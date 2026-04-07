@@ -1,16 +1,18 @@
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/utils/my_utils.dart';
-import 'package:webkit/helpers/utils/shopping_constants.dart';
-import 'package:webkit/models/shopping_cart_data.dart';
-import 'package:webkit/models/shopping_product_data.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/utils/my_utils.dart';
+import 'package:yamazone/helpers/utils/shopping_constants.dart';
+import 'package:yamazone/models/shopping_cart_data.dart';
+import 'package:yamazone/models/shopping_product_data.dart';
 
 class ShoppingController extends MyController {
   List<ShoppingProduct> shopping = [];
   ShoppingProduct? shoppingProduct;
   List<ShoppingCart> shoppingCart = [];
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
   late double order = 0, tax = 30, offer = 50, total = 0;
   int selectSize = 1;
 

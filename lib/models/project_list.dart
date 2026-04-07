@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class ProjectList extends IdentifierModel {
   final String appName;
@@ -10,7 +10,12 @@ class ProjectList extends IdentifierModel {
   final double taskComplete;
 
   ProjectList(
-      super.id, this.appName, this.tasks, this.comments, this.taskComplete);
+    super.id,
+    this.appName,
+    this.tasks,
+    this.comments,
+    this.taskComplete,
+  );
 
   static ProjectList fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -20,13 +25,7 @@ class ProjectList extends IdentifierModel {
     int comments = decoder.getInt('comments');
     double taskComplete = decoder.getDouble('taskComplete');
 
-    return ProjectList(
-      decoder.getId,
-      appName,
-      tasks,
-      comments,
-      taskComplete,
-    );
+    return ProjectList(decoder.getId, appName, tasks, comments, taskComplete);
   }
 
   static List<ProjectList> listFromJSON(List<dynamic> list) {

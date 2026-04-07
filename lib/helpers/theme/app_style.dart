@@ -7,19 +7,23 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/widgets/my.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_constant.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/widgets/my.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_constant.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
 
 import 'theme_customizer.dart';
 
 class MaterialRadius {
   double xs, small, medium, large;
 
-  MaterialRadius(
-      {this.xs = 2, this.small = 4, this.medium = 6, this.large = 8});
+  MaterialRadius({
+    this.xs = 2,
+    this.small = 4,
+    this.medium = 6,
+    this.large = 8,
+  });
 }
 
 class ColorGroup {
@@ -57,9 +61,10 @@ class AppTheme {
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(
-        backgroundColor: Color(0xffF5F5F5),
-        iconTheme: IconThemeData(color: Color(0xff495057)),
-        actionsIconTheme: IconThemeData(color: Color(0xff495057))),
+      backgroundColor: Color(0xffF5F5F5),
+      iconTheme: IconThemeData(color: Color(0xff495057)),
+      actionsIconTheme: IconThemeData(color: Color(0xff495057)),
+    ),
 
     /// Card Theme
     cardTheme: CardThemeData(color: Color(0xffffffff)),
@@ -76,21 +81,24 @@ class AppTheme {
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: AppTheme.primaryColor,
-        splashColor: Color(0xffeeeeee).withAlpha(100),
-        highlightElevation: 8,
-        elevation: 4,
-        focusColor: AppTheme.primaryColor,
-        hoverColor: AppTheme.primaryColor,
-        foregroundColor: Color(0xffeeeeee)),
+      backgroundColor: AppTheme.primaryColor,
+      splashColor: Color(0xffeeeeee).withAlpha(100),
+      highlightElevation: 8,
+      elevation: 4,
+      focusColor: AppTheme.primaryColor,
+      hoverColor: AppTheme.primaryColor,
+      foregroundColor: Color(0xffeeeeee),
+    ),
 
     /// Divider Theme
     dividerTheme: DividerThemeData(color: Color(0xffdddddd), thickness: 1),
     dividerColor: Color(0xffdddddd),
 
     /// Bottom AppBar Theme
-    bottomAppBarTheme:
-        BottomAppBarThemeData(color: Color(0xffeeeeee), elevation: 2),
+    bottomAppBarTheme: BottomAppBarThemeData(
+      color: Color(0xffeeeeee),
+      elevation: 2,
+    ),
 
     /// Tab bar Theme
     tabBarTheme: TabBarThemeData(
@@ -116,22 +124,21 @@ class AppTheme {
       tickMarkShape: RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
       valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
-        color: Color(0xffeeeeee),
-      ),
+      valueIndicatorTextStyle: TextStyle(color: Color(0xffeeeeee)),
     ),
     checkboxTheme: CheckboxThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
       checkColor: MaterialStateProperty.all(Color(0xffffffff)),
       fillColor: MaterialStateProperty.all(AppTheme.primaryColor),
     ),
     switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith((states) =>
+      thumbColor: MaterialStateProperty.resolveWith(
+        (states) =>
             states.contains(MaterialState.selected)
                 ? AppTheme.primaryColor
-                : Colors.white)),
+                : Colors.white,
+      ),
+    ),
 
     /// Other Colors
     splashColor: Colors.white.withAlpha(100),
@@ -174,17 +181,20 @@ class AppTheme {
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: AppTheme.primaryColor,
-        splashColor: Colors.white.withAlpha(100),
-        highlightElevation: 8,
-        elevation: 4,
-        focusColor: AppTheme.primaryColor,
-        hoverColor: AppTheme.primaryColor,
-        foregroundColor: Colors.white),
+      backgroundColor: AppTheme.primaryColor,
+      splashColor: Colors.white.withAlpha(100),
+      highlightElevation: 8,
+      elevation: 4,
+      focusColor: AppTheme.primaryColor,
+      hoverColor: AppTheme.primaryColor,
+      foregroundColor: Colors.white,
+    ),
 
     /// Bottom AppBar Theme
-    bottomAppBarTheme:
-        BottomAppBarThemeData(color: Color(0xff464c52), elevation: 2),
+    bottomAppBarTheme: BottomAppBarThemeData(
+      color: Color(0xff464c52),
+      elevation: 2,
+    ),
 
     /// Tab bar Theme
     tabBarTheme: TabBarThemeData(
@@ -208,9 +218,7 @@ class AppTheme {
       tickMarkShape: RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
       valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
-        color: Colors.white,
-      ),
+      valueIndicatorTextStyle: TextStyle(color: Colors.white),
     ),
 
     ///Other Color
@@ -223,14 +231,19 @@ class AppTheme {
   static ThemeData createTheme(ThemeMode themeType, Color seedColor) {
     if (themeType == ThemeMode.light) {
       return lightTheme.copyWith(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: seedColor, brightness: Brightness.light));
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: seedColor,
+          brightness: Brightness.light,
+        ),
+      );
     }
     return darkTheme.copyWith(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: seedColor,
-            brightness: Brightness.dark,
-            onBackground: Color(0xFFDAD9CA)));
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: seedColor,
+        brightness: Brightness.dark,
+        onBackground: Color(0xFFDAD9CA),
+      ),
+    );
   }
 }
 
@@ -248,13 +261,17 @@ class AppStyle {
     MyTextStyle.resetFontStyles();
     MyTextStyle.changeFontFamily(GoogleFonts.poppins);
     My.changeTheme(AppTheme.theme);
-    My.setConstant(MyConstantData(
-      containerRadius: AppStyle.containerRadius.medium,
-      cardRadius: AppStyle.cardRadius.medium,
-      buttonRadius: AppStyle.buttonRadius.medium,
-      defaultBreadCrumbItem:
-          MyBreadcrumbItem(name: 'Webkit', route: '/dashboard'),
-    ));
+    My.setConstant(
+      MyConstantData(
+        containerRadius: AppStyle.containerRadius.medium,
+        cardRadius: AppStyle.cardRadius.medium,
+        buttonRadius: AppStyle.buttonRadius.medium,
+        defaultBreadCrumbItem: MyBreadcrumbItem(
+          name: 'Webkit',
+          route: '/dashboard',
+        ),
+      ),
+    );
     bool isMobile = true;
     try {
       isMobile = Platform.isAndroid || Platform.isIOS;
@@ -266,14 +283,29 @@ class AppStyle {
 
   /// -------------------------- Styles  -------------------------------------------- ///
 
-  static MaterialRadius buttonRadius =
-      MaterialRadius(small: 2, medium: 4, large: 8);
-  static MaterialRadius cardRadius =
-      MaterialRadius(xs: 2, small: 4, medium: 4, large: 8);
-  static MaterialRadius containerRadius =
-      MaterialRadius(xs: 2, small: 4, medium: 4, large: 8);
-  static MaterialRadius imageRadius =
-      MaterialRadius(xs: 2, small: 4, medium: 4, large: 8);
+  static MaterialRadius buttonRadius = MaterialRadius(
+    small: 2,
+    medium: 4,
+    large: 8,
+  );
+  static MaterialRadius cardRadius = MaterialRadius(
+    xs: 2,
+    small: 4,
+    medium: 4,
+    large: 8,
+  );
+  static MaterialRadius containerRadius = MaterialRadius(
+    xs: 2,
+    small: 4,
+    medium: 4,
+    large: 8,
+  );
+  static MaterialRadius imageRadius = MaterialRadius(
+    xs: 2,
+    small: 4,
+    medium: 4,
+    large: 8,
+  );
 }
 
 class AppColors {
@@ -289,16 +321,22 @@ class AppColors {
   static ColorGroup orange = ColorGroup(Color(0xffFFCEC2), Color(0xffFF3B0A));
   static ColorGroup skyBlue = ColorGroup(Color(0xffC2F0FF), Color(0xff0099CC));
   static ColorGroup lavender = ColorGroup(Color(0xffEAE2F3), Color(0xff7748AD));
-  static ColorGroup queenPink =
-      ColorGroup(Color(0xffE8D9DC), Color(0xff804D57));
-  static ColorGroup blueViolet =
-      ColorGroup(Color(0xffC5C6E7), Color(0xff3B3E91));
+  static ColorGroup queenPink = ColorGroup(
+    Color(0xffE8D9DC),
+    Color(0xff804D57),
+  );
+  static ColorGroup blueViolet = ColorGroup(
+    Color(0xffC5C6E7),
+    Color(0xff3B3E91),
+  );
   static ColorGroup rosePink = ColorGroup(Color(0xffFCB1E0), Color(0xffEC0999));
 
   static ColorGroup rubinRed = ColorGroup(Color(0x98f6a8bd), Color(0xffd03760));
   static ColorGroup favorite = rubinRed;
-  static ColorGroup redOrange =
-      ColorGroup(Color(0xffFFAD99), Color(0xffF53100));
+  static ColorGroup redOrange = ColorGroup(
+    Color(0xffFFAD99),
+    Color(0xffF53100),
+  );
 
   static Color notificationSuccessBGColor = Color(0xff117E68);
   static Color notificationSuccessTextColor = Color(0xffffffff);
@@ -318,7 +356,7 @@ class AppColors {
     orange,
     skyBlue,
     lavender,
-    blueViolet
+    blueViolet,
   ];
 
   static ColorGroup get random => list[Random().nextInt(list.length)];
@@ -333,7 +371,7 @@ class AppColors {
       2: Color(0xcdf0323c),
       3: star,
       4: Color(0xcd3cd278),
-      5: Color(0xff3cd278)
+      5: Color(0xff3cd278),
     };
 
     return colors[rating] ?? colors[1]!;

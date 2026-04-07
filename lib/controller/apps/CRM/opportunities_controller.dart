@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/models/opportunities.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/models/opportunities.dart';
 
 class ChartData1 {
   ChartData1(this.x, this.y, [this.color]);
@@ -28,7 +28,7 @@ class OpportunitiesController extends MyController {
     ChartData1('David', 25),
     ChartData1('Steve', 38),
     ChartData1('Jack', 34),
-    ChartData1('Others', 52)
+    ChartData1('Others', 52),
   ];
   final List<ChartData2> chartData2 = [
     ChartData2(2012, 12, 10),
@@ -39,9 +39,7 @@ class OpportunitiesController extends MyController {
     ChartData2(2017, 24, 12),
     ChartData2(2018, 26, 16),
   ];
-  final TooltipBehavior chartData = TooltipBehavior(
-    enable: true,
-  );
+  final TooltipBehavior chartData = TooltipBehavior(enable: true);
 
   @override
   void onInit() {

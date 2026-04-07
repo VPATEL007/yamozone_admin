@@ -1,15 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class MailModel extends IdentifierModel {
   final String title, description;
   final DateTime createdAt;
   bool isToggle;
 
-  MailModel(super.id, this.title, this.description, this.createdAt,this.isToggle);
+  MailModel(
+    super.id,
+    this.title,
+    this.description,
+    this.createdAt,
+    this.isToggle,
+  );
 
   static MailModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -19,7 +25,7 @@ class MailModel extends IdentifierModel {
     DateTime createdAt = decoder.getDateTime('created_at');
     bool isToggle = decoder.getBool('is_toggle');
 
-    return MailModel(decoder.getId, title, description, createdAt,isToggle);
+    return MailModel(decoder.getId, title, description, createdAt, isToggle);
   }
 
   static List<MailModel> listFromJSON(List<dynamic> list) {

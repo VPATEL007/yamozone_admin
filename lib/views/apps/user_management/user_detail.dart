@@ -4,9 +4,9 @@
 // import 'package:get/instance_manager.dart';
 // import 'package:get/route_manager.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:webkit/helpers/utils/ui_mixins.dart';
-// import 'package:webkit/helpers/widgets/my_button.dart';
-// import 'package:webkit/views/layouts/layout.dart';
+// import 'package:yamazone/helpers/utils/ui_mixins.dart';
+// import 'package:yamazone/helpers/widgets/my_button.dart';
+// import 'package:yamazone/views/layouts/layout.dart';
 
 // import '../../../controller/apps/ecommerce/product_detail_controller.dart';
 
@@ -1125,7 +1125,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ── Palette ────────────────────────────────────────────────────────────────
 const kBg = Color(0xFFF7F6F2);

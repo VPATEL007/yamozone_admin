@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // COLORS & THEME

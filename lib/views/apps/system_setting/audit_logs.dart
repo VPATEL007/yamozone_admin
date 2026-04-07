@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:webkit/views/apps/system_setting/audit_log_detail.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/apps/system_setting/audit_log_detail.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 //  THEME CONSTANTS  (matches the dark-green / gold palette)

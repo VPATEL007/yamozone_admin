@@ -5,10 +5,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webkit/helpers/localizations/language.dart';
-import 'package:webkit/helpers/storage/local_storage.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/widgets/my.dart';
+import 'package:yamazone/helpers/localizations/language.dart';
+import 'package:yamazone/helpers/storage/local_storage.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/widgets/my.dart';
 
 import 'theme_customizer.dart';
 
@@ -40,8 +40,11 @@ class AppNotifier extends ChangeNotifier {
     if (notify) notifyListeners();
   }
 
-  Future<void> changeLanguage(Language language,
-      {bool notify = true, bool changeDirection = true}) async {
+  Future<void> changeLanguage(
+    Language language, {
+    bool notify = true,
+    bool changeDirection = true,
+  }) async {
     if (changeDirection) {
       if (language.supportRTL) {
         changeDirectionality(TextDirection.rtl, false);

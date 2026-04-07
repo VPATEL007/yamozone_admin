@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/services/auth_services.dart';
-import 'package:webkit/helpers/widgets/my_form_validator.dart';
-import 'package:webkit/helpers/widgets/my_validators.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/services/auth_services.dart';
+import 'package:yamazone/helpers/widgets/my_form_validator.dart';
+import 'package:yamazone/helpers/widgets/my_validators.dart';
 
 class Login2Controller extends MyController {
   MyFormValidator basicValidator = MyFormValidator();
@@ -16,17 +16,21 @@ class Login2Controller extends MyController {
   @override
   void onInit() {
     super.onInit();
-    basicValidator.addField('email',
-        required: true,
-        label: "Email",
-        validators: [MyEmailValidator()],
-        controller: TextEditingController(text: _dummyEmail));
+    basicValidator.addField(
+      'email',
+      required: true,
+      label: "Email",
+      validators: [MyEmailValidator()],
+      controller: TextEditingController(text: _dummyEmail),
+    );
 
-    basicValidator.addField('password',
-        required: true,
-        label: "Password",
-        validators: [MyLengthValidator(min: 6, max: 10)],
-        controller: TextEditingController(text: _dummyPassword));
+    basicValidator.addField(
+      'password',
+      required: true,
+      label: "Password",
+      validators: [MyLengthValidator(min: 6, max: 10)],
+      controller: TextEditingController(text: _dummyPassword),
+    );
   }
 
   void onChangeShowPassword() {
@@ -50,12 +54,11 @@ class Login2Controller extends MyController {
         basicValidator.clearErrors();
       } else {
         String nextUrl =
-            Uri.parse(ModalRoute.of(Get.context!)?.settings.name ?? "")
-                    .queryParameters['next'] ??
-                "/dashboard";
-        Get.toNamed(
-          nextUrl,
-        );
+            Uri.parse(
+              ModalRoute.of(Get.context!)?.settings.name ?? "",
+            ).queryParameters['next'] ??
+            "/dashboard";
+        Get.toNamed(nextUrl);
       }
       loading = false;
       update();

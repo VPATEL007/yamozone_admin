@@ -2,19 +2,19 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/controller/ui/carousels_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/ui/carousels_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class Carousels extends StatefulWidget {
   const Carousels({Key? key}) : super(key: key);
@@ -66,35 +66,37 @@ class _CarouselsState extends State<Carousels>
                 child: MyFlex(
                   children: [
                     MyFlexItem(
-                        sizes: "lg-7 md-12",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium(
-                                'simple'.tr(),
-                                fontWeight: 600,
-                                letterSpacing: 0,
-                              ),
-                              MySpacing.height(16),
-                              simpleCarousel()
-                            ],
-                          ),
-                        )),
+                      sizes: "lg-7 md-12",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium(
+                              'simple'.tr(),
+                              fontWeight: 600,
+                              letterSpacing: 0,
+                            ),
+                            MySpacing.height(16),
+                            simpleCarousel(),
+                          ],
+                        ),
+                      ),
+                    ),
                     MyFlexItem(
-                        sizes: "lg-7 md-12",
-                        child: MyContainer(
-                          child: Column(
-                            children: [
-                              MyText.titleMedium(
-                                'animated'.tr(),
-                                fontWeight: 600,
-                                letterSpacing: 0,
-                              ),
-                              MySpacing.height(16),
-                              animatedCarousel()
-                            ],
-                          ),
-                        )),
+                      sizes: "lg-7 md-12",
+                      child: MyContainer(
+                        child: Column(
+                          children: [
+                            MyText.titleMedium(
+                              'animated'.tr(),
+                              fontWeight: 600,
+                              letterSpacing: 0,
+                            ),
+                            MySpacing.height(16),
+                            animatedCarousel(),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -123,9 +125,11 @@ class _CarouselsState extends State<Carousels>
     List<Widget> buildPageIndicatorStatic() {
       List<Widget> list = [];
       for (int i = 0; i < controller.simpleCarouselSize; i++) {
-        list.add(i == controller.selectedSimpleCarousel
-            ? indicator(true)
-            : indicator(false));
+        list.add(
+          i == controller.selectedSimpleCarousel
+              ? indicator(true)
+              : indicator(false),
+        );
       }
       return list;
     }
@@ -236,9 +240,11 @@ class _CarouselsState extends State<Carousels>
     List<Widget> buildPageIndicatorStatic() {
       List<Widget> list = [];
       for (int i = 0; i < controller.animatedCarouselSize; i++) {
-        list.add(i == controller.selectedAnimatedCarousel
-            ? indicator(true)
-            : indicator(false));
+        list.add(
+          i == controller.selectedAnimatedCarousel
+              ? indicator(true)
+              : indicator(false),
+        );
       }
       return list;
     }
@@ -348,7 +354,7 @@ class _CarouselsState extends State<Carousels>
 class AppScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
 }

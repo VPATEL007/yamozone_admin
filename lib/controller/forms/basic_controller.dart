@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/extensions/date_time_extention.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/extensions/date_time_extention.dart';
 
 enum Gender {
   male,
@@ -37,8 +37,9 @@ class BasicController extends MyController {
 
     if (borderType == TextFieldBorderType.none) {
       return const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide.none);
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide.none,
+      );
     }
     return const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -105,10 +106,11 @@ class BasicController extends MyController {
 
   Future<void> pickDate() async {
     final DateTime? picked = await showDatePicker(
-        context: Get.context!,
-        initialDate: selectedDate ?? DateTime.now(),
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+      context: Get.context!,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
     if (picked != null && picked != selectedDate) {
       selectedDate = picked;
       update();
@@ -117,7 +119,9 @@ class BasicController extends MyController {
 
   Future<void> pickTime() async {
     final TimeOfDay? picked = await showTimePicker(
-        context: Get.context!, initialTime: selectedTime ?? TimeOfDay.now());
+      context: Get.context!,
+      initialTime: selectedTime ?? TimeOfDay.now(),
+    );
     if (picked != null && picked != selectedTime) {
       selectedTime = picked;
       update();
@@ -126,10 +130,11 @@ class BasicController extends MyController {
 
   Future<void> pickDateRange() async {
     final DateTimeRange? picked = await showDateRangePicker(
-        context: Get.context!,
-        initialEntryMode: DatePickerEntryMode.input,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+      context: Get.context!,
+      initialEntryMode: DatePickerEntryMode.input,
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
     if (picked != null && picked != selectedDateTimeRange) {
       selectedDateTimeRange = picked;
       update();
@@ -138,13 +143,16 @@ class BasicController extends MyController {
 
   Future<void> pickDateTime() async {
     final DateTime? pickedDate = await showDatePicker(
-        context: Get.context!,
-        initialDate: selectedDate ?? DateTime.now(),
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+      context: Get.context!,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
     if (pickedDate != null) {
       final TimeOfDay? pickedTime = await showTimePicker(
-          context: Get.context!, initialTime: selectedTime ?? TimeOfDay.now());
+        context: Get.context!,
+        initialTime: selectedTime ?? TimeOfDay.now(),
+      );
       if (pickedTime != null) {
         selectedDateTime = pickedDate.applied(pickedTime);
         update();

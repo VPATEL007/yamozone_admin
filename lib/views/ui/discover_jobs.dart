@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_dotted_line.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/discover.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_dotted_line.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/discover.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 import '../../controller/ui/discover_jobs_controller.dart';
 
@@ -77,9 +77,7 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                             paddingAll: 0,
                             child: ExpansionTile(
                               initiallyExpanded: true,
-                              title: MyText.titleMedium(
-                                'Type of Employment',
-                              ),
+                              title: MyText.titleMedium('Type of Employment'),
                               children: [
                                 ListView.builder(
                                   shrinkWrap: true,
@@ -89,8 +87,9 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                       contentPadding: MySpacing.zero,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
-                                      title:
-                                          Text(controller.jobType[index].name),
+                                      title: Text(
+                                        controller.jobType[index].name,
+                                      ),
                                       value:
                                           controller.jobType[index].isChecked,
                                       onChanged: (bool? value) {
@@ -108,9 +107,7 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                             paddingAll: 0,
                             child: ExpansionTile(
                               initiallyExpanded: true,
-                              title: MyText.titleMedium(
-                                'Seniority Level',
-                              ),
+                              title: MyText.titleMedium('Seniority Level'),
                               children: [
                                 ListView.builder(
                                   shrinkWrap: true,
@@ -120,12 +117,16 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                       contentPadding: MySpacing.zero,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
-                                      title: Text(controller
-                                          .seniorityLevel[index].name),
-                                      value: controller
-                                          .seniorityLevel[index].isChecked,
+                                      title: Text(
+                                        controller.seniorityLevel[index].name,
+                                      ),
+                                      value:
+                                          controller
+                                              .seniorityLevel[index]
+                                              .isChecked,
                                       onChanged: (bool? value) {
-                                        controller.seniorityLevel[index]
+                                        controller
+                                            .seniorityLevel[index]
                                             .isChecked = value!;
                                         setState(() {});
                                       },
@@ -168,15 +169,16 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                               child: Stack(
                                 children: [
                                   MyContainer(
-                                      paddingAll: 0,
-                                      borderRadiusAll: 0,
-                                      height: 150,
-                                      width: double.infinity,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      child: Image.asset(
-                                        Images.portraitImages[1],
-                                        fit: BoxFit.fitWidth,
-                                      )),
+                                    paddingAll: 0,
+                                    borderRadiusAll: 0,
+                                    height: 150,
+                                    width: double.infinity,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Image.asset(
+                                      Images.portraitImages[1],
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
@@ -239,10 +241,8 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                               MySpacing.width(16),
                                               const MyContainer.bordered(
                                                 paddingAll: 8,
-                                                child: Icon(
-                                                  LucideIcons.share2,
-                                                ),
-                                              )
+                                                child: Icon(LucideIcons.share2),
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -274,9 +274,7 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                 ),
                               ],
                             ),
-                            const Divider(
-                              height: 40,
-                            ),
+                            const Divider(height: 40),
                             Padding(
                               padding: MySpacing.only(left: 12, right: 12),
                               child: Column(
@@ -294,9 +292,7 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                 ],
                               ),
                             ),
-                            const Divider(
-                              height: 40,
-                            ),
+                            const Divider(height: 40),
                             Padding(
                               padding: MySpacing.only(left: 12, right: 12),
                               child: Column(
@@ -308,26 +304,32 @@ class _DiscoverJobsState extends State<DiscoverJobs>
                                   ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "3+ years working as a product designer."),
+                                    "3+ years working as a product designer.",
+                                  ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "A portfolio that highlights your approach to problem solving, as well as your skills in UI."),
+                                    "A portfolio that highlights your approach to problem solving, as well as your skills in UI.",
+                                  ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "Experience conducting research and building out smooth flows for different types of users"),
+                                    "Experience conducting research and building out smooth flows for different types of users",
+                                  ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "Excellent communication skills with a well-defined design process."),
+                                    "Excellent communication skills with a well-defined design process.",
+                                  ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "Familiarity with design tools like Sketch and Figma."),
+                                    "Familiarity with design tools like Sketch and Figma.",
+                                  ),
                                   MySpacing.height(16),
                                   builderJobDescription(
-                                      "Up-level our overall design and bring consistency to end-user facing properties."),
+                                    "Up-level our overall design and bring consistency to end-user facing properties.",
+                                  ),
                                   MySpacing.height(16),
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -348,10 +350,7 @@ class _DiscoverJobsState extends State<DiscoverJobs>
         padding: MySpacing.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MyText.bodyMedium(title),
-            MyText.titleMedium(subTitle),
-          ],
+          children: [MyText.bodyMedium(title), MyText.titleMedium(subTitle)],
         ),
       ),
     );
@@ -403,43 +402,45 @@ class _DiscoveryWidgetState extends State<DiscoveryWidget> with UIMixin {
         MyContainer(
           child: Column(
             children: [
-              Row(children: [
-                MyContainer(
-                  height: 60,
-                  width: 60,
-                  paddingAll: 0,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: Image.asset(
-                    discover.image,
-                    fit: BoxFit.cover,
+              Row(
+                children: [
+                  MyContainer(
+                    height: 60,
+                    width: 60,
+                    paddingAll: 0,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image.asset(discover.image, fit: BoxFit.cover),
                   ),
-                ),
-                MySpacing.width(16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MyText.bodyLarge(discover.name),
-                      MyText.bodyMedium(discover.address, muted: true),
-                    ],
+                  MySpacing.width(16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MyText.bodyLarge(discover.name),
+                        MyText.bodyMedium(discover.address, muted: true),
+                      ],
+                    ),
                   ),
-                ),
-                MyContainer(
+                  MyContainer(
                     height: 40,
                     width: 40,
                     paddingAll: 0,
                     child: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            showLike = !showLike;
-                          });
-                        },
-                        icon: Icon(
-                            showLike
-                                ? Icons.favorite_outlined
-                                : Icons.favorite_outline,
-                            size: 24)))
-              ]),
+                      onPressed: () {
+                        setState(() {
+                          showLike = !showLike;
+                        });
+                      },
+                      icon: Icon(
+                        showLike
+                            ? Icons.favorite_outlined
+                            : Icons.favorite_outline,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               MySpacing.height(16),
               Row(
                 children: [
@@ -471,7 +472,7 @@ class _DiscoveryWidgetState extends State<DiscoveryWidget> with UIMixin {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

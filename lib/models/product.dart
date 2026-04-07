@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class Product extends IdentifierModel {
   final String name, description, image, category, sku;
@@ -11,18 +11,19 @@ class Product extends IdentifierModel {
   final DateTime createdAt;
 
   Product(
-      super.id,
-      this.name,
-      this.description,
-      this.image,
-      this.category,
-      this.sku,
-      this.price,
-      this.rating,
-      this.stock,
-      this.ordersCount,
-      this.ratingCount,
-      this.createdAt);
+    super.id,
+    this.name,
+    this.description,
+    this.image,
+    this.category,
+    this.sku,
+    this.price,
+    this.rating,
+    this.stock,
+    this.ordersCount,
+    this.ratingCount,
+    this.createdAt,
+  );
 
   static Product fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -39,8 +40,20 @@ class Product extends IdentifierModel {
     int ratingCount = decoder.getInt('rating_count');
     DateTime createdAt = decoder.getDateTime('created_at');
 
-    return Product(decoder.getId, name, description, image, category, sku,
-        price, rating, stock, ordersCount, ratingCount, createdAt);
+    return Product(
+      decoder.getId,
+      name,
+      description,
+      image,
+      category,
+      sku,
+      price,
+      rating,
+      stock,
+      ordersCount,
+      ratingCount,
+      createdAt,
+    );
   }
 
   static List<Product> listFromJSON(List<dynamic> list) {

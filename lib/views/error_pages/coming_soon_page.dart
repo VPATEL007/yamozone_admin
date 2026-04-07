@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/error_pages/coming_soon_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
+import 'package:yamazone/controller/error_pages/coming_soon_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
 
 class ComingSoonPage extends StatefulWidget {
   const ComingSoonPage({Key? key}) : super(key: key);
@@ -24,8 +24,10 @@ class _ComingSoonPageState extends State<ComingSoonPage>
   Duration myDuration = const Duration(days: 15);
 
   void startTimer() {
-    countdownTimer =
-        Timer.periodic(const Duration(seconds: 1), (_) => setCountDown());
+    countdownTimer = Timer.periodic(
+      const Duration(seconds: 1),
+      (_) => setCountDown(),
+    );
   }
 
   void setCountDown() {
@@ -54,7 +56,7 @@ class _ComingSoonPageState extends State<ComingSoonPage>
     String strDigits(int n) => n.toString().padLeft(2, '0');
     final days = strDigits(myDuration.inDays);
     final hours = strDigits(myDuration.inHours.remainder(24));
-    final minutes = strDigits(myDuration.inMinutes.remainder(60));  
+    final minutes = strDigits(myDuration.inMinutes.remainder(60));
     final seconds = strDigits(myDuration.inSeconds.remainder(60));
     debugPrint("$days : $hours : $minutes : $seconds");
     return Scaffold(
@@ -68,15 +70,9 @@ class _ComingSoonPageState extends State<ComingSoonPage>
               Center(
                 child: Column(
                   children: [
-                    const Icon(
-                      LucideIcons.rocket,
-                      size: 52,
-                    ),
+                    const Icon(LucideIcons.rocket, size: 52),
                     MySpacing.height(24),
-                    MyText.titleLarge(
-                      "Arriving Soon",
-                      fontSize: 52,
-                    ),
+                    MyText.titleLarge("Arriving Soon", fontSize: 52),
                     MySpacing.height(8),
                     MyText.titleMedium(
                       "Something Started forming, and will take shape soon.",

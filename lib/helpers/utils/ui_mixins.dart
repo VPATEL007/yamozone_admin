@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/widgets/my_dashed_divider.dart';
-import 'package:webkit/helpers/widgets/my_navigation_mixin.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/widgets/my_dashed_divider.dart';
+import 'package:yamazone/helpers/widgets/my_navigation_mixin.dart';
 
 mixin UIMixin {
   // ThemeData get theme => AppStyle.theme;
@@ -20,12 +20,13 @@ mixin UIMixin {
   // theme.colorScheme. get theme.colorScheme. => theme.theme.colorScheme.;
 
   OutlineInputBorder get outlineInputBorder => OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-        borderSide: BorderSide(
-            width: 1,
-            strokeAlign: 0,
-            color: theme.colorScheme.onBackground.withAlpha(80)),
-      );
+    borderRadius: BorderRadius.all(Radius.circular(4)),
+    borderSide: BorderSide(
+      width: 1,
+      strokeAlign: 0,
+      color: theme.colorScheme.onBackground.withAlpha(80),
+    ),
+  );
 
   OutlineInputBorder focusedInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -35,9 +36,7 @@ mixin UIMixin {
   OutlineInputBorder generateOutlineInputBorder({double radius = 4}) =>
       OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(radius)),
-        borderSide: BorderSide(
-          color: Colors.transparent,
-        ),
+        borderSide: BorderSide(color: Colors.transparent),
       );
 
   OutlineInputBorder generateFocusedInputBorder({double radius = 4}) =>
@@ -61,9 +60,10 @@ mixin UIMixin {
 
   Widget getDashedDivider() {
     return MyDashedDivider(
-        dashWidth: 6,
-        dashSpace: 4,
-        color: theme.colorScheme.onBackground.withAlpha(64),
-        height: 0.5);
+      dashWidth: 6,
+      dashSpace: 4,
+      color: theme.colorScheme.onBackground.withAlpha(64),
+      height: 0.5,
+    );
   }
 }

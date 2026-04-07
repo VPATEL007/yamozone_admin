@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/controller/forms/quill_editor_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/forms/quill_editor_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class QuillEditor extends StatefulWidget {
   const QuillEditor({Key? key}) : super(key: key);
@@ -43,15 +43,14 @@ class _QuillEditorState extends State<QuillEditor>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Quill HTML Editor",
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Quill HTML Editor", fontWeight: 600),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: "Forms"),
                         MyBreadcrumbItem(
-                            name: "Quill HTML Editor", active: true),
+                          name: "Quill HTML Editor",
+                          active: true,
+                        ),
                       ],
                     ),
                   ],
@@ -62,12 +61,7 @@ class _QuillEditorState extends State<QuillEditor>
                 padding: MySpacing.x(flexSpacing),
                 child: MyFlex(
                   children: [
-                    MyFlexItem(
-                      sizes: "lg-8",
-                      child: Column(
-                        children: [],
-                      ),
-                    ),
+                    MyFlexItem(sizes: "lg-8", child: Column(children: [])),
                   ],
                 ),
               ),

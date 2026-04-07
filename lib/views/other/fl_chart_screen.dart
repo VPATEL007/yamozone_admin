@@ -2,17 +2,17 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/other/fl_chart_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/other/fl_chart_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class FlChartScreen extends StatefulWidget {
   const FlChartScreen({super.key});
@@ -72,8 +72,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                             MySpacing.height(8),
                             SizedBox(
                               height: 300,
-                              child: LineChart(controller.sampleData,
-                                  duration: Duration(milliseconds: 600)),
+                              child: LineChart(
+                                controller.sampleData,
+                                duration: Duration(milliseconds: 600),
+                              ),
                             ),
                           ],
                         ),
@@ -88,8 +90,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                             MySpacing.height(8),
                             SizedBox(
                               height: 300,
-                              child: LineChart(controller.mainData(),
-                                  duration: Duration(milliseconds: 600)),
+                              child: LineChart(
+                                controller.mainData(),
+                                duration: Duration(milliseconds: 600),
+                              ),
                             ),
                           ],
                         ),
@@ -97,61 +101,68 @@ class _FlChartScreenState extends State<FlChartScreen>
                     ),
                     MyFlexItem(
                       sizes: "lg-6 md-12",
-                      child: controller.cosPoints.isNotEmpty
-                          ? MyContainer.bordered(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                      child: MyText.bodyMedium('Line Chart 3',
-                                          fontWeight: 600)),
-                                  MySpacing.height(8),
-                                  MyText.bodyMedium(
-                                    'x: ${controller.xValue.toStringAsFixed(1)}',
-                                    fontWeight: 600,
-                                  ),
-                                  MyText.bodyMedium(
-                                    'sin: ${controller.sinPoints.last.y.toStringAsFixed(1)}',
-                                    fontWeight: 600,
-                                    color: Colors.blue,
-                                  ),
-                                  MyText.bodyMedium(
-                                    'cos: ${controller.cosPoints.last.y.toStringAsFixed(1)}',
-                                    fontWeight: 600,
-                                    color: Colors.pink,
-                                  ),
-                                  SizedBox(
-                                    height: 237,
-                                    child: LineChart(
-                                      LineChartData(
-                                        minY: -1,
-                                        maxY: 1,
-                                        minX: controller.sinPoints.first.x,
-                                        maxX: controller.sinPoints.last.x,
-                                        lineTouchData:
-                                            const LineTouchData(enabled: false),
-                                        clipData: const FlClipData.all(),
-                                        gridData: const FlGridData(
-                                          show: true,
-                                          drawVerticalLine: false,
-                                        ),
-                                        borderData: FlBorderData(show: false),
-                                        lineBarsData: [
-                                          controller
-                                              .sinLine(controller.sinPoints),
-                                          controller
-                                              .cosLine(controller.cosPoints),
-                                        ],
-                                        titlesData: const FlTitlesData(
-                                          show: false,
+                      child:
+                          controller.cosPoints.isNotEmpty
+                              ? MyContainer.bordered(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: MyText.bodyMedium(
+                                        'Line Chart 3',
+                                        fontWeight: 600,
+                                      ),
+                                    ),
+                                    MySpacing.height(8),
+                                    MyText.bodyMedium(
+                                      'x: ${controller.xValue.toStringAsFixed(1)}',
+                                      fontWeight: 600,
+                                    ),
+                                    MyText.bodyMedium(
+                                      'sin: ${controller.sinPoints.last.y.toStringAsFixed(1)}',
+                                      fontWeight: 600,
+                                      color: Colors.blue,
+                                    ),
+                                    MyText.bodyMedium(
+                                      'cos: ${controller.cosPoints.last.y.toStringAsFixed(1)}',
+                                      fontWeight: 600,
+                                      color: Colors.pink,
+                                    ),
+                                    SizedBox(
+                                      height: 237,
+                                      child: LineChart(
+                                        LineChartData(
+                                          minY: -1,
+                                          maxY: 1,
+                                          minX: controller.sinPoints.first.x,
+                                          maxX: controller.sinPoints.last.x,
+                                          lineTouchData: const LineTouchData(
+                                            enabled: false,
+                                          ),
+                                          clipData: const FlClipData.all(),
+                                          gridData: const FlGridData(
+                                            show: true,
+                                            drawVerticalLine: false,
+                                          ),
+                                          borderData: FlBorderData(show: false),
+                                          lineBarsData: [
+                                            controller.sinLine(
+                                              controller.sinPoints,
+                                            ),
+                                            controller.cosLine(
+                                              controller.cosPoints,
+                                            ),
+                                          ],
+                                          titlesData: const FlTitlesData(
+                                            show: false,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : SizedBox(),
+                                  ],
+                                ),
+                              )
+                              : SizedBox(),
                     ),
                     MyFlexItem(
                       sizes: "lg-6 md-12",
@@ -164,8 +175,9 @@ class _FlChartScreenState extends State<FlChartScreen>
                               height: 300,
                               child: LineChart(
                                 LineChartData(
-                                  lineTouchData:
-                                      const LineTouchData(enabled: false),
+                                  lineTouchData: const LineTouchData(
+                                    enabled: false,
+                                  ),
                                   lineBarsData: [
                                     LineChartBarData(
                                       spots: const [
@@ -196,9 +208,7 @@ class _FlChartScreenState extends State<FlChartScreen>
                                         cutOffY: controller.cutOffYValue,
                                         applyCutOffY: true,
                                       ),
-                                      dotData: const FlDotData(
-                                        show: false,
-                                      ),
+                                      dotData: const FlDotData(show: false),
                                     ),
                                   ],
                                   minY: 0,
@@ -236,8 +246,8 @@ class _FlChartScreenState extends State<FlChartScreen>
                                   borderData: FlBorderData(
                                     show: true,
                                     border: Border.all(
-                                        // color: Colors.borderColor,
-                                        ),
+                                      // color: Colors.borderColor,
+                                    ),
                                   ),
                                   gridData: FlGridData(
                                     show: true,
@@ -273,13 +283,16 @@ class _FlChartScreenState extends State<FlChartScreen>
                                     touchTooltipData: BarTouchTooltipData(
                                       getTooltipItem: (a, b, c, d) => null,
                                     ),
-                                    touchCallback:
-                                        (FlTouchEvent event, response) {
+                                    touchCallback: (
+                                      FlTouchEvent event,
+                                      response,
+                                    ) {
                                       if (response == null ||
                                           response.spot == null) {
                                         controller.touchedGroupIndex = -1;
-                                        controller.showingBarGroups =
-                                            List.of(controller.rawBarGroups);
+                                        controller.showingBarGroups = List.of(
+                                          controller.rawBarGroups,
+                                        );
 
                                         return;
                                       }
@@ -289,44 +302,49 @@ class _FlChartScreenState extends State<FlChartScreen>
 
                                       if (!event.isInterestedForInteractions) {
                                         controller.touchedGroupIndex = -1;
-                                        controller.showingBarGroups =
-                                            List.of(controller.rawBarGroups);
+                                        controller.showingBarGroups = List.of(
+                                          controller.rawBarGroups,
+                                        );
                                         return;
                                       }
-                                      controller.showingBarGroups =
-                                          List.of(controller.rawBarGroups);
+                                      controller.showingBarGroups = List.of(
+                                        controller.rawBarGroups,
+                                      );
                                       if (controller.touchedGroupIndex != -1) {
                                         var sum = 0.0;
-                                        for (final rod in controller
-                                            .showingBarGroups[
-                                                controller.touchedGroupIndex]
-                                            .barRods) {
+                                        for (final rod
+                                            in controller
+                                                .showingBarGroups[controller
+                                                    .touchedGroupIndex]
+                                                .barRods) {
                                           sum += rod.toY;
                                         }
-                                        final avg = sum /
+                                        final avg =
+                                            sum /
                                             controller
                                                 .showingBarGroups[controller
                                                     .touchedGroupIndex]
                                                 .barRods
                                                 .length;
 
-                                        controller.showingBarGroups[
-                                                controller.touchedGroupIndex] =
-                                            controller.showingBarGroups[
-                                                    controller
-                                                        .touchedGroupIndex]
-                                                .copyWith(
-                                          barRods: controller
-                                              .showingBarGroups[
-                                                  controller.touchedGroupIndex]
-                                              .barRods
-                                              .map((rod) {
-                                            return rod.copyWith(
-                                              toY: avg,
-                                              // color: widget.avgColor,
+                                        controller.showingBarGroups[controller
+                                            .touchedGroupIndex] = controller
+                                            .showingBarGroups[controller
+                                                .touchedGroupIndex]
+                                            .copyWith(
+                                              barRods:
+                                                  controller
+                                                      .showingBarGroups[controller
+                                                          .touchedGroupIndex]
+                                                      .barRods
+                                                      .map((rod) {
+                                                        return rod.copyWith(
+                                                          toY: avg,
+                                                          // color: widget.avgColor,
+                                                        );
+                                                      })
+                                                      .toList(),
                                             );
-                                          }).toList(),
-                                        );
                                       }
                                     },
                                   ),
@@ -339,14 +357,12 @@ class _FlChartScreenState extends State<FlChartScreen>
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
                                   ),
-                                  borderData: FlBorderData(
-                                    show: false,
-                                  ),
+                                  borderData: FlBorderData(show: false),
                                   barGroups: controller.showingBarGroups,
                                   gridData: const FlGridData(show: false),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -361,7 +377,7 @@ class _FlChartScreenState extends State<FlChartScreen>
                             SizedBox(
                               height: 300,
                               child: BarChart(controller.barChartData),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -397,24 +413,60 @@ class _FlChartScreenState extends State<FlChartScreen>
                                     controller.generateGroupData(0, 2, 3, 2),
                                     controller.generateGroupData(1, 2, 5, 1.7),
                                     controller.generateGroupData(
-                                        2, 1.3, 3.1, 2.8),
+                                      2,
+                                      1.3,
+                                      3.1,
+                                      2.8,
+                                    ),
                                     controller.generateGroupData(
-                                        3, 3.1, 4, 3.1),
+                                      3,
+                                      3.1,
+                                      4,
+                                      3.1,
+                                    ),
                                     controller.generateGroupData(
-                                        4, 0.8, 3.3, 3.4),
+                                      4,
+                                      0.8,
+                                      3.3,
+                                      3.4,
+                                    ),
                                     controller.generateGroupData(
-                                        5, 2, 5.6, 1.8),
+                                      5,
+                                      2,
+                                      5.6,
+                                      1.8,
+                                    ),
                                     controller.generateGroupData(
-                                        6, 1.3, 3.2, 2),
+                                      6,
+                                      1.3,
+                                      3.2,
+                                      2,
+                                    ),
                                     controller.generateGroupData(
-                                        7, 2.3, 3.2, 3),
+                                      7,
+                                      2.3,
+                                      3.2,
+                                      3,
+                                    ),
                                     controller.generateGroupData(
-                                        8, 2, 4.8, 2.5),
+                                      8,
+                                      2,
+                                      4.8,
+                                      2.5,
+                                    ),
                                     controller.generateGroupData(
-                                        9, 1.2, 3.2, 2.5),
+                                      9,
+                                      1.2,
+                                      3.2,
+                                      2.5,
+                                    ),
                                     controller.generateGroupData(10, 1, 4.8, 3),
                                     controller.generateGroupData(
-                                        11, 2, 4.4, 2.8),
+                                      11,
+                                      2,
+                                      4.4,
+                                      2.8,
+                                    ),
                                   ],
                                   maxY: 11 + (controller.betweenSpace * 3),
                                   extraLinesData: ExtraLinesData(
@@ -441,7 +493,7 @@ class _FlChartScreenState extends State<FlChartScreen>
                                   ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -458,8 +510,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                               child: PieChart(
                                 PieChartData(
                                   pieTouchData: PieTouchData(
-                                    touchCallback:
-                                        (FlTouchEvent event, pieTouchResponse) {
+                                    touchCallback: (
+                                      FlTouchEvent event,
+                                      pieTouchResponse,
+                                    ) {
                                       if (!event.isInterestedForInteractions ||
                                           pieTouchResponse == null ||
                                           pieTouchResponse.touchedSection ==
@@ -468,20 +522,19 @@ class _FlChartScreenState extends State<FlChartScreen>
                                         return;
                                       }
                                       controller.touchedIndex1 =
-                                          pieTouchResponse.touchedSection!
+                                          pieTouchResponse
+                                              .touchedSection!
                                               .touchedSectionIndex;
                                     },
                                   ),
                                   startDegreeOffset: 180,
-                                  borderData: FlBorderData(
-                                    show: false,
-                                  ),
+                                  borderData: FlBorderData(show: false),
                                   sectionsSpace: 1,
                                   centerSpaceRadius: 0,
                                   sections: showingSections1(),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -498,8 +551,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                               child: PieChart(
                                 PieChartData(
                                   pieTouchData: PieTouchData(
-                                    touchCallback:
-                                        (FlTouchEvent event, pieTouchResponse) {
+                                    touchCallback: (
+                                      FlTouchEvent event,
+                                      pieTouchResponse,
+                                    ) {
                                       if (!event.isInterestedForInteractions ||
                                           pieTouchResponse == null ||
                                           pieTouchResponse.touchedSection ==
@@ -508,19 +563,18 @@ class _FlChartScreenState extends State<FlChartScreen>
                                         return;
                                       }
                                       controller.touchedIndex2 =
-                                          pieTouchResponse.touchedSection!
+                                          pieTouchResponse
+                                              .touchedSection!
                                               .touchedSectionIndex;
                                     },
                                   ),
-                                  borderData: FlBorderData(
-                                    show: false,
-                                  ),
+                                  borderData: FlBorderData(show: false),
                                   sectionsSpace: 0,
                                   centerSpaceRadius: 40,
                                   sections: showingSections2(),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -537,8 +591,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                               child: PieChart(
                                 PieChartData(
                                   pieTouchData: PieTouchData(
-                                    touchCallback:
-                                        (FlTouchEvent event, pieTouchResponse) {
+                                    touchCallback: (
+                                      FlTouchEvent event,
+                                      pieTouchResponse,
+                                    ) {
                                       if (!event.isInterestedForInteractions ||
                                           pieTouchResponse == null ||
                                           pieTouchResponse.touchedSection ==
@@ -547,19 +603,18 @@ class _FlChartScreenState extends State<FlChartScreen>
                                         return;
                                       }
                                       controller.touchedIndex3 =
-                                          pieTouchResponse.touchedSection!
+                                          pieTouchResponse
+                                              .touchedSection!
                                               .touchedSectionIndex;
                                     },
                                   ),
-                                  borderData: FlBorderData(
-                                    show: false,
-                                  ),
+                                  borderData: FlBorderData(show: false),
                                   sectionsSpace: 0,
                                   centerSpaceRadius: 0,
                                   sections: showingSections3(),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -569,8 +624,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                       child: MyContainer.bordered(
                         child: Column(
                           children: [
-                            MyText.bodyMedium('Scatter Chart 1',
-                                fontWeight: 600),
+                            MyText.bodyMedium(
+                              'Scatter Chart 1',
+                              fontWeight: 600,
+                            ),
                             MySpacing.height(8),
                             SizedBox(
                               height: 500,
@@ -584,25 +641,20 @@ class _FlChartScreenState extends State<FlChartScreen>
                                     maxX: controller.maxX,
                                     minY: 0,
                                     maxY: controller.maxY,
-                                    borderData: FlBorderData(
-                                      show: false,
-                                    ),
-                                    gridData: const FlGridData(
-                                      show: false,
-                                    ),
-                                    titlesData: const FlTitlesData(
-                                      show: false,
-                                    ),
+                                    borderData: FlBorderData(show: false),
+                                    gridData: const FlGridData(show: false),
+                                    titlesData: const FlTitlesData(show: false),
                                     scatterTouchData: ScatterTouchData(
                                       enabled: false,
                                     ),
                                   ),
-                                  swapAnimationDuration:
-                                      const Duration(milliseconds: 600),
+                                  swapAnimationDuration: const Duration(
+                                    milliseconds: 600,
+                                  ),
                                   swapAnimationCurve: Curves.fastOutSlowIn,
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -612,8 +664,10 @@ class _FlChartScreenState extends State<FlChartScreen>
                       child: MyContainer.bordered(
                         child: Column(
                           children: [
-                            MyText.bodyMedium('Scatter Chart 2',
-                                fontWeight: 600),
+                            MyText.bodyMedium(
+                              'Scatter Chart 2',
+                              fontWeight: 600,
+                            ),
                             MySpacing.height(8),
                           ],
                         ),
@@ -626,8 +680,11 @@ class _FlChartScreenState extends State<FlChartScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Center(
-                                child: MyText.bodyMedium('Radar Chart',
-                                    fontWeight: 600)),
+                              child: MyText.bodyMedium(
+                                'Radar Chart',
+                                fontWeight: 600,
+                              ),
+                            ),
                             MySpacing.height(8),
                             GestureDetector(
                               onTap: () {
@@ -645,70 +702,83 @@ class _FlChartScreenState extends State<FlChartScreen>
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: controller
-                                  .rawDataSets()
-                                  .asMap()
-                                  .map((index, value) {
-                                    final isSelected = index ==
-                                        controller.selectedDataSetIndex;
-                                    return MapEntry(
-                                      index,
-                                      GestureDetector(
-                                        onTap: () {
-                                          controller.selectedDataSetIndex =
-                                              index;
-                                        },
-                                        child: AnimatedContainer(
-                                          duration:
-                                              const Duration(milliseconds: 300),
-                                          margin: const EdgeInsets.symmetric(
-                                              vertical: 2),
-                                          height: 26,
-                                          decoration: BoxDecoration(
-                                            color: isSelected
-                                                ? Colors.grey
-                                                : Colors.transparent,
-                                            borderRadius:
-                                                BorderRadius.circular(46),
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 4,
-                                            horizontal: 6,
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              AnimatedContainer(
-                                                duration: const Duration(
-                                                    milliseconds: 400),
-                                                curve: Curves.easeInToLinear,
-                                                padding: EdgeInsets.all(
-                                                    isSelected ? 8 : 6),
-                                                decoration: BoxDecoration(
-                                                  color: value.color,
-                                                  shape: BoxShape.circle,
-                                                ),
+                              children:
+                                  controller
+                                      .rawDataSets()
+                                      .asMap()
+                                      .map((index, value) {
+                                        final isSelected =
+                                            index ==
+                                            controller.selectedDataSetIndex;
+                                        return MapEntry(
+                                          index,
+                                          GestureDetector(
+                                            onTap: () {
+                                              controller.selectedDataSetIndex =
+                                                  index;
+                                            },
+                                            child: AnimatedContainer(
+                                              duration: const Duration(
+                                                milliseconds: 300,
                                               ),
-                                              const SizedBox(width: 8),
-                                              AnimatedDefaultTextStyle(
-                                                duration: const Duration(
-                                                    milliseconds: 300),
-                                                curve: Curves.easeInToLinear,
-                                                style: TextStyle(
-                                                  color: isSelected
-                                                      ? value.color
-                                                      : Colors.grey,
-                                                ),
-                                                child: Text(value.title),
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 2,
+                                                  ),
+                                              height: 26,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    isSelected
+                                                        ? Colors.grey
+                                                        : Colors.transparent,
+                                                borderRadius:
+                                                    BorderRadius.circular(46),
                                               ),
-                                            ],
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 4,
+                                                    horizontal: 6,
+                                                  ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  AnimatedContainer(
+                                                    duration: const Duration(
+                                                      milliseconds: 400,
+                                                    ),
+                                                    curve:
+                                                        Curves.easeInToLinear,
+                                                    padding: EdgeInsets.all(
+                                                      isSelected ? 8 : 6,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: value.color,
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 8),
+                                                  AnimatedDefaultTextStyle(
+                                                    duration: const Duration(
+                                                      milliseconds: 300,
+                                                    ),
+                                                    curve:
+                                                        Curves.easeInToLinear,
+                                                    style: TextStyle(
+                                                      color:
+                                                          isSelected
+                                                              ? value.color
+                                                              : Colors.grey,
+                                                    ),
+                                                    child: Text(value.title),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    );
-                                  })
-                                  .values
-                                  .toList(),
+                                        );
+                                      })
+                                      .values
+                                      .toList(),
                             ),
                             MySpacing.height(8),
                             SizedBox(
@@ -716,15 +786,18 @@ class _FlChartScreenState extends State<FlChartScreen>
                               child: RadarChart(
                                 RadarChartData(
                                   radarTouchData: RadarTouchData(
-                                    touchCallback:
-                                        (FlTouchEvent event, response) {
+                                    touchCallback: (
+                                      FlTouchEvent event,
+                                      response,
+                                    ) {
                                       if (!event.isInterestedForInteractions) {
                                         controller.selectedDataSetIndex = -1;
 
                                         return;
                                       }
 
-                                      controller.selectedDataSetIndex = response
+                                      controller.selectedDataSetIndex =
+                                          response
                                               ?.touchedSpot
                                               ?.touchedDataSetIndex ??
                                           -1;
@@ -734,10 +807,13 @@ class _FlChartScreenState extends State<FlChartScreen>
                                   radarBackgroundColor: Colors.transparent,
                                   borderData: FlBorderData(show: false),
                                   radarBorderData: const BorderSide(
-                                      color: Colors.transparent),
+                                    color: Colors.transparent,
+                                  ),
                                   titlePositionPercentageOffset: 0.2,
                                   titleTextStyle: TextStyle(
-                                      color: Colors.black, fontSize: 14),
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                  ),
                                   getTitle: (index, angle) {
                                     final usedAngle =
                                         controller.relativeAngleMode
@@ -756,25 +832,31 @@ class _FlChartScreenState extends State<FlChartScreen>
                                         );
                                       case 1:
                                         return RadarChartTitle(
-                                            text: 'TV', angle: usedAngle);
+                                          text: 'TV',
+                                          angle: usedAngle,
+                                        );
                                       default:
                                         return const RadarChartTitle(text: '');
                                     }
                                   },
                                   tickCount: 1,
                                   ticksTextStyle: const TextStyle(
-                                      color: Colors.transparent, fontSize: 10),
+                                    color: Colors.transparent,
+                                    fontSize: 10,
+                                  ),
                                   tickBorderData: const BorderSide(
-                                      color: Colors.transparent),
+                                    color: Colors.transparent,
+                                  ),
                                   gridBorderData: BorderSide(
                                     // color: widget.gridColor,
                                     width: 2,
                                   ),
                                 ),
-                                swapAnimationDuration:
-                                    const Duration(milliseconds: 400),
+                                swapAnimationDuration: const Duration(
+                                  milliseconds: 400,
+                                ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -961,9 +1043,10 @@ class _FlChartScreenState extends State<FlChartScreen>
             title: '',
             radius: 80,
             titlePositionPercentageOffset: 0.55,
-            borderSide: isTouched
-                ? const BorderSide(color: Colors.white, width: 6)
-                : BorderSide(color: Colors.white.withOpacity(0)),
+            borderSide:
+                isTouched
+                    ? const BorderSide(color: Colors.white, width: 6)
+                    : BorderSide(color: Colors.white.withOpacity(0)),
           );
         case 1:
           return PieChartSectionData(
@@ -972,9 +1055,10 @@ class _FlChartScreenState extends State<FlChartScreen>
             title: '',
             radius: 65,
             titlePositionPercentageOffset: 0.55,
-            borderSide: isTouched
-                ? const BorderSide(color: Colors.white, width: 6)
-                : BorderSide(color: Colors.white.withOpacity(0)),
+            borderSide:
+                isTouched
+                    ? const BorderSide(color: Colors.white, width: 6)
+                    : BorderSide(color: Colors.white.withOpacity(0)),
           );
         case 2:
           return PieChartSectionData(
@@ -983,9 +1067,10 @@ class _FlChartScreenState extends State<FlChartScreen>
             title: '',
             radius: 60,
             titlePositionPercentageOffset: 0.6,
-            borderSide: isTouched
-                ? const BorderSide(color: Colors.white, width: 6)
-                : BorderSide(color: Colors.white.withOpacity(0)),
+            borderSide:
+                isTouched
+                    ? const BorderSide(color: Colors.white, width: 6)
+                    : BorderSide(color: Colors.white.withOpacity(0)),
           );
         case 3:
           return PieChartSectionData(
@@ -994,9 +1079,10 @@ class _FlChartScreenState extends State<FlChartScreen>
             title: '',
             radius: 70,
             titlePositionPercentageOffset: 0.55,
-            borderSide: isTouched
-                ? const BorderSide(color: Colors.white, width: 6)
-                : BorderSide(color: Colors.white.withOpacity(0)),
+            borderSide:
+                isTouched
+                    ? const BorderSide(color: Colors.white, width: 6)
+                    : BorderSide(color: Colors.white.withOpacity(0)),
           );
         default:
           throw Error();
@@ -1153,11 +1239,7 @@ class _FlChartScreenState extends State<FlChartScreen>
 }
 
 class _Badge extends StatelessWidget {
-  const _Badge(
-    this.svgAsset, {
-    required this.size,
-    required this.borderColor,
-  });
+  const _Badge(this.svgAsset, {required this.size, required this.borderColor});
 
   final String svgAsset;
   final double size;
@@ -1172,10 +1254,7 @@ class _Badge extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
-        border: Border.all(
-          color: borderColor,
-          width: 2,
-        ),
+        border: Border.all(color: borderColor, width: 2),
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black.withOpacity(.5),
@@ -1185,11 +1264,7 @@ class _Badge extends StatelessWidget {
         ],
       ),
       padding: EdgeInsets.all(size * .15),
-      child: Center(
-        child: SvgPicture.asset(
-          svgAsset,
-        ),
-      ),
+      child: Center(child: SvgPicture.asset(svgAsset)),
     );
   }
 }

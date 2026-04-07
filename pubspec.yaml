@@ -1,4 +1,4 @@
-name: webkit
+name: yamazone
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,7 +40,6 @@ dependencies:
 
   provider: ^6.0.5
   url_launcher: ^6.1.11
-  google_maps_flutter: ^2.2.8
   flutter_blurhash: ^0.9.1
   feather_icons: ^1.2.0
   url_strategy: ^0.3.0
@@ -55,16 +54,17 @@ dependencies:
   get: ^4.6.5
   appflowy_board: ^0.1.0
   countup: ^0.1.4
-  image_picker: ^1.0.0
   lucide_icons: ^0.257.0
   google_fonts: ^8.0.2
   fl_chart: ^1.2.0
   flutter_svg: ^2.0.8
-  syncfusion_flutter_charts: ^28.0.0
-  file_picker: ^10.3.10
-  syncfusion_flutter_datepicker: ^28.2.12
-  syncfusion_flutter_calendar: ^28.2.12
-  syncfusion_flutter_maps: ^28.2.12
+  syncfusion_flutter_charts: ^33.1.46
+  syncfusion_flutter_datepicker: ^33.1.46
+  syncfusion_flutter_calendar: ^33.1.46
+  syncfusion_flutter_maps: ^33.1.46
+  file_picker: ^11.0.2
+  google_maps_flutter: ^2.17.0
+  image_picker: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -75,7 +75,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

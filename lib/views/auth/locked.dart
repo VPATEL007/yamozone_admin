@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/auth/locked_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_responsiv.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/auth_layout.dart';
+import 'package:yamazone/controller/auth/locked_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_responsiv.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/auth_layout.dart';
 
 class LockedPage extends StatefulWidget {
   const LockedPage({Key? key}) : super(key: key);
@@ -52,23 +52,23 @@ class _LockedPageState extends State<LockedPage>
                     builder: (_, __, type) {
                       return type == MyScreenMediaType.xxl
                           ? Image.asset(
-                              Images.login[5],
-                              fit: BoxFit.fitHeight,
-                              height: 500,
-                            )
+                            Images.login[5],
+                            fit: BoxFit.fitHeight,
+                            height: 500,
+                          )
                           : type == MyScreenMediaType.xl
-                              ? Image.asset(
-                                  Images.login[5],
-                                  fit: BoxFit.fitHeight,
-                                  height: 500,
-                                )
-                              : type == MyScreenMediaType.lg
-                                  ? Image.asset(
-                                      Images.login[5],
-                                      fit: BoxFit.fitHeight,
-                                      height: 500,
-                                    )
-                                  : const SizedBox();
+                          ? Image.asset(
+                            Images.login[5],
+                            fit: BoxFit.fitHeight,
+                            height: 500,
+                          )
+                          : type == MyScreenMediaType.lg
+                          ? Image.asset(
+                            Images.login[5],
+                            fit: BoxFit.fitHeight,
+                            height: 500,
+                          )
+                          : const SizedBox();
                     },
                   ),
                 ),
@@ -80,12 +80,7 @@ class _LockedPageState extends State<LockedPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Center(
-                          child: Image.asset(
-                            Images.logoIcon,
-                            height: 28,
-                          ),
-                        ),
+                        Center(child: Image.asset(Images.logoIcon, height: 28)),
                         MySpacing.height(16),
                         Center(
                           child: MyText.titleLarge(
@@ -114,44 +109,37 @@ class _LockedPageState extends State<LockedPage>
                           ),
                         ),
                         MySpacing.height(8),
-                        Center(
-                          child: MyText(
-                            "den".tr(),
-                            fontWeight: 700,
-                          ),
-                        ),
+                        Center(child: MyText("den".tr(), fontWeight: 700)),
                         MySpacing.height(16),
-                        MyText.labelMedium(
-                          "password".tr(),
-                          fontWeight: 600,
-                        ),
+                        MyText.labelMedium("password".tr(), fontWeight: 600),
                         MySpacing.height(8),
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
-                          controller: controller.basicValidator
-                              .getController('password'),
-                          validator: controller.basicValidator
-                              .getValidation('password'),
+                          controller: controller.basicValidator.getController(
+                            'password',
+                          ),
+                          validator: controller.basicValidator.getValidation(
+                            'password',
+                          ),
                           obscureText: !controller.showPassword,
                           decoration: InputDecoration(
-                              suffixIcon: InkWell(
-                                onTap: controller.onShowPassword,
-                                child: Icon(
-                                  controller.showPassword
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,
-                                  size: 20,
-                                ),
+                            suffixIcon: InkWell(
+                              onTap: controller.onShowPassword,
+                              child: Icon(
+                                controller.showPassword
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                size: 20,
                               ),
-                              prefixIcon:
-                                  const Icon(LucideIcons.lock, size: 18),
-                              hintText: "Password",
-                              hintStyle: MyTextStyle.bodySmall(xMuted: true),
-                              border: outlineInputBorder,
-                              contentPadding: MySpacing.all(12),
-                              isCollapsed: true,
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.never),
+                            ),
+                            prefixIcon: const Icon(LucideIcons.lock, size: 18),
+                            hintText: "Password",
+                            hintStyle: MyTextStyle.bodySmall(xMuted: true),
+                            border: outlineInputBorder,
+                            contentPadding: MySpacing.all(12),
+                            isCollapsed: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                          ),
                         ),
                         MySpacing.height(16),
                         Center(
@@ -165,13 +153,13 @@ class _LockedPageState extends State<LockedPage>
                               children: [
                                 controller.loading
                                     ? SizedBox(
-                                        height: 14,
-                                        width: 14,
-                                        child: CircularProgressIndicator(
-                                          color: theme.colorScheme.onPrimary,
-                                          strokeWidth: 1.2,
-                                        ),
-                                      )
+                                      height: 14,
+                                      width: 14,
+                                      child: CircularProgressIndicator(
+                                        color: theme.colorScheme.onPrimary,
+                                        strokeWidth: 1.2,
+                                      ),
+                                    )
                                     : Container(),
                                 if (controller.loading) MySpacing.width(16),
                                 MyText.bodySmall(

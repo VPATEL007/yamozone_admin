@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/apps/ecommerce/product_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/utils/utils.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/models/product.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/ecommerce/product_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/utils/utils.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/models/product.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -84,10 +84,7 @@ class _ProductPageState extends State<ProductPage>
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                LucideIcons.plus,
-                                color: Color(0xffffffff),
-                              ),
+                              Icon(LucideIcons.plus, color: Color(0xffffffff)),
                               MySpacing.width(8),
                               MyText.labelMedium(
                                 'create_product'.tr().capitalizeWords,
@@ -100,27 +97,35 @@ class _ProductPageState extends State<ProductPage>
                     ),
                     columns: [
                       DataColumn(
-                          label: MyText.titleMedium(
-                        'Id',
-                        fontWeight: 600,
-                      )),
+                        label: MyText.titleMedium('Id', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Name', fontWeight: 600)),
+                        label: MyText.titleMedium('Name', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Price', fontWeight: 600)),
+                        label: MyText.titleMedium('Price', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Rating', fontWeight: 600)),
+                        label: MyText.titleMedium('Rating', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('SKU', fontWeight: 600)),
+                        label: MyText.titleMedium('SKU', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Stock', fontWeight: 600)),
+                        label: MyText.titleMedium('Stock', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Orders', fontWeight: 600)),
+                        label: MyText.titleMedium('Orders', fontWeight: 600),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Created At',
-                              fontWeight: 600)),
+                        label: MyText.titleMedium(
+                          'Created At',
+                          fontWeight: 600,
+                        ),
+                      ),
                       DataColumn(
-                          label: MyText.titleMedium('Action', fontWeight: 600)),
+                        label: MyText.titleMedium('Action', fontWeight: 600),
+                      ),
                       // DataColumn(label: Text('Delete')),
                     ],
                     columnSpacing: 110,
@@ -154,14 +159,10 @@ class MyData extends DataTableSource with UIMixin {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(MyText.titleMedium(
-          data[index].id.toString(),
-          fontWeight: 600,
-        )),
-        DataCell(MyText.titleMedium(
-          data[index].name,
-          fontWeight: 600,
-        )),
+        DataCell(
+          MyText.titleMedium(data[index].id.toString(), fontWeight: 600),
+        ),
+        DataCell(MyText.titleMedium(data[index].name, fontWeight: 600)),
         DataCell(MyText.titleMedium(data[index].price.toString())),
         DataCell(MyText.titleMedium(data[index].rating.toString())),
         DataCell(MyText.titleMedium(data[index].sku)),
@@ -169,10 +170,7 @@ class MyData extends DataTableSource with UIMixin {
         DataCell(MyText.titleMedium(data[index].ordersCount.toString())),
         DataCell(
           MyText.bodyMedium(
-            '${Utils.getDateStringFromDateTime(
-              data[index].createdAt,
-              showMonthShort: true,
-            )}',
+            '${Utils.getDateStringFromDateTime(data[index].createdAt, showMonthShort: true)}',
           ),
         ),
         DataCell(

@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/ui/buttons_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/ui/buttons_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class ButtonsPage extends StatefulWidget {
   const ButtonsPage({Key? key}) : super(key: key);
@@ -78,17 +78,18 @@ class _ButtonsPageState extends State<ButtonsPage>
                             TabBar(
                               controller: controller.normalTabController,
                               isScrollable: true,
-                              // indicatorColor: contentTheme.primary,
 
+                              // indicatorColor: contentTheme.primary,
                               tabs: [
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Elevated Buttons",
                                     fontWeight:
                                         controller.normalIndex == 0 ? 600 : 500,
-                                    color: controller.normalIndex == 0
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.normalIndex == 0
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
@@ -96,9 +97,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                     "Flat Buttons",
                                     fontWeight:
                                         controller.normalIndex == 1 ? 600 : 500,
-                                    color: controller.normalIndex == 1
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.normalIndex == 1
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
@@ -106,9 +108,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                     "Outline Buttons",
                                     fontWeight:
                                         controller.normalIndex == 2 ? 600 : 500,
-                                    color: controller.normalIndex == 2
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.normalIndex == 2
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
@@ -116,9 +119,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                     "Soft Buttons",
                                     fontWeight:
                                         controller.normalIndex == 3 ? 600 : 500,
-                                    color: controller.normalIndex == 3
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.normalIndex == 3
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
@@ -126,9 +130,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                     "Text Buttons",
                                     fontWeight:
                                         controller.normalIndex == 4 ? 600 : 500,
-                                    color: controller.normalIndex == 4
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.normalIndex == 4
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                               ],
@@ -167,56 +172,66 @@ class _ButtonsPageState extends State<ButtonsPage>
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Elevated Rounded Buttons",
-                                    fontWeight: controller.roundedIndex == 0
-                                        ? 600
-                                        : 500,
-                                    color: controller.roundedIndex == 0
-                                        ? contentTheme.primary
-                                        : null,
+                                    fontWeight:
+                                        controller.roundedIndex == 0
+                                            ? 600
+                                            : 500,
+                                    color:
+                                        controller.roundedIndex == 0
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Rounded Buttons",
-                                    fontWeight: controller.roundedIndex == 1
-                                        ? 600
-                                        : 500,
-                                    color: controller.roundedIndex == 1
-                                        ? contentTheme.primary
-                                        : null,
+                                    fontWeight:
+                                        controller.roundedIndex == 1
+                                            ? 600
+                                            : 500,
+                                    color:
+                                        controller.roundedIndex == 1
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Outline Rounded Buttons",
-                                    fontWeight: controller.roundedIndex == 2
-                                        ? 600
-                                        : 500,
-                                    color: controller.roundedIndex == 2
-                                        ? contentTheme.primary
-                                        : null,
+                                    fontWeight:
+                                        controller.roundedIndex == 2
+                                            ? 600
+                                            : 500,
+                                    color:
+                                        controller.roundedIndex == 2
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Soft Rounded Buttons",
-                                    fontWeight: controller.roundedIndex == 3
-                                        ? 600
-                                        : 500,
-                                    color: controller.roundedIndex == 3
-                                        ? contentTheme.primary
-                                        : null,
+                                    fontWeight:
+                                        controller.roundedIndex == 3
+                                            ? 600
+                                            : 500,
+                                    color:
+                                        controller.roundedIndex == 3
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
                                   icon: MyText.bodyMedium(
                                     "Text Rounded Buttons",
-                                    fontWeight: controller.roundedIndex == 4
-                                        ? 600
-                                        : 500,
-                                    color: controller.roundedIndex == 4
-                                        ? contentTheme.primary
-                                        : null,
+                                    fontWeight:
+                                        controller.roundedIndex == 4
+                                            ? 600
+                                            : 500,
+                                    color:
+                                        controller.roundedIndex == 4
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                               ],
@@ -259,9 +274,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                         controller.groupAndSizedButtons == 0
                                             ? 600
                                             : 500,
-                                    color: controller.groupAndSizedButtons == 0
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.groupAndSizedButtons == 0
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                                 Tab(
@@ -271,9 +287,10 @@ class _ButtonsPageState extends State<ButtonsPage>
                                         controller.groupAndSizedButtons == 1
                                             ? 600
                                             : 500,
-                                    color: controller.groupAndSizedButtons == 1
-                                        ? contentTheme.primary
-                                        : null,
+                                    color:
+                                        controller.groupAndSizedButtons == 1
+                                            ? contentTheme.primary
+                                            : null,
                                   ),
                                 ),
                               ],
@@ -368,10 +385,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             padding: MySpacing.xy(20, 16),
             backgroundColor: contentTheme.info,
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.onInfo,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.onInfo),
           ),
           MyButton(
             onPressed: () {},
@@ -448,10 +462,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             padding: MySpacing.xy(20, 16),
             backgroundColor: contentTheme.info,
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.onInfo,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.onInfo),
           ),
           MyButton(
             onPressed: () {},
@@ -532,10 +543,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             borderColor: contentTheme.info,
             splashColor: contentTheme.info.withOpacity(0.1),
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.info,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.info),
           ),
           MyButton.outlined(
             onPressed: () {},
@@ -544,10 +552,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             borderColor: contentTheme.danger,
             splashColor: contentTheme.danger.withOpacity(0.1),
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -622,10 +627,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             backgroundColor: contentTheme.info.withOpacity(0.12),
             splashColor: contentTheme.info.withOpacity(0.2),
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.info,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.info),
           ),
           MyButton(
             onPressed: () {},
@@ -635,10 +637,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             backgroundColor: contentTheme.danger.withOpacity(0.12),
             splashColor: contentTheme.danger.withOpacity(0.2),
             borderRadiusAll: AppStyle.buttonRadius.medium,
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -699,10 +698,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             onPressed: () {},
             padding: MySpacing.xy(20, 16),
             splashColor: contentTheme.danger.withOpacity(0.1),
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -770,10 +766,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             padding: MySpacing.xy(20, 16),
             backgroundColor: contentTheme.info,
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.onInfo,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.onInfo),
           ),
           MyButton(
             onPressed: () {},
@@ -803,8 +796,8 @@ class _ButtonsPageState extends State<ButtonsPage>
             onPressed: () {},
             elevation: 0,
             padding: MySpacing.xy(20, 16),
-            // padding: MySpacing.xy(12, 8),
 
+            // padding: MySpacing.xy(12, 8),
             backgroundColor: contentTheme.primary,
             borderRadiusAll: 20,
             child: MyText.bodySmall(
@@ -852,10 +845,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             padding: MySpacing.xy(20, 16),
             backgroundColor: contentTheme.info,
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.onInfo,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.onInfo),
           ),
           MyButton(
             onPressed: () {},
@@ -936,10 +926,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             borderColor: contentTheme.info,
             splashColor: contentTheme.info.withOpacity(0.1),
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.info,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.info),
           ),
           MyButton.outlined(
             onPressed: () {},
@@ -948,10 +935,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             borderColor: contentTheme.danger,
             splashColor: contentTheme.danger.withOpacity(0.1),
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -1026,10 +1010,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             backgroundColor: contentTheme.info.withOpacity(0.12),
             splashColor: contentTheme.info.withOpacity(0.2),
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.info,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.info),
           ),
           MyButton(
             onPressed: () {},
@@ -1039,10 +1020,7 @@ class _ButtonsPageState extends State<ButtonsPage>
             backgroundColor: contentTheme.danger.withOpacity(0.12),
             splashColor: contentTheme.danger.withOpacity(0.2),
             borderRadiusAll: 20,
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -1101,20 +1079,14 @@ class _ButtonsPageState extends State<ButtonsPage>
             padding: MySpacing.xy(20, 16),
             borderRadiusAll: 20,
             splashColor: contentTheme.info.withOpacity(0.1),
-            child: MyText.bodySmall(
-              'info'.tr(),
-              color: contentTheme.info,
-            ),
+            child: MyText.bodySmall('info'.tr(), color: contentTheme.info),
           ),
           MyButton.text(
             onPressed: () {},
             padding: MySpacing.xy(20, 16),
             borderRadiusAll: 20,
             splashColor: contentTheme.danger.withOpacity(0.1),
-            child: MyText.bodySmall(
-              'danger'.tr(),
-              color: contentTheme.danger,
-            ),
+            child: MyText.bodySmall('danger'.tr(), color: contentTheme.danger),
           ),
         ],
       ),
@@ -1183,10 +1155,11 @@ class _ButtonsPageState extends State<ButtonsPage>
           ToggleButtons(
             splashColor: theme.colorScheme.primary.withAlpha(48),
             color: theme.colorScheme.onBackground,
-// fillColor: theme.colorScheme.primary.withAlpha(48),
+            // fillColor: theme.colorScheme.primary.withAlpha(48),
             selectedBorderColor: theme.colorScheme.primary.withAlpha(48),
             borderRadius: BorderRadius.all(
-                Radius.circular(AppStyle.containerRadius.small)),
+              Radius.circular(AppStyle.containerRadius.small),
+            ),
             isSelected: controller.selected,
             onPressed: controller.onSelect,
             children: <Widget>[
@@ -1213,7 +1186,8 @@ class _ButtonsPageState extends State<ButtonsPage>
             color: theme.colorScheme.onBackground,
             selectedBorderColor: theme.colorScheme.primary.withAlpha(48),
             borderRadius: BorderRadius.all(
-                Radius.circular(AppStyle.containerRadius.small)),
+              Radius.circular(AppStyle.containerRadius.small),
+            ),
             isSelected: controller.selected,
             onPressed: controller.onSelect,
             children: <Widget>[
@@ -1230,7 +1204,7 @@ class _ButtonsPageState extends State<ButtonsPage>
                     MyText.labelLarge(
                       'light'.tr(),
                       color: theme.colorScheme.primary,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -1247,7 +1221,7 @@ class _ButtonsPageState extends State<ButtonsPage>
                     MyText.labelLarge(
                       'dark'.tr(),
                       color: theme.colorScheme.primary,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -1264,7 +1238,7 @@ class _ButtonsPageState extends State<ButtonsPage>
                     MyText.labelLarge(
                       'system'.tr(),
                       color: theme.colorScheme.primary,
-                    )
+                    ),
                   ],
                 ),
               ),

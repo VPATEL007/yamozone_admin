@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
 
 class CustomSwitch extends StatefulWidget {
   final bool value;
@@ -87,15 +87,19 @@ class _CustomSwitchState extends State<CustomSwitch>
         height: widget.height,
         padding: MySpacing.all(widget.spacingOfThumbTrack),
         decoration: BoxDecoration(
-            border: Border.all(
-                color: widget.value
+          border: Border.all(
+            color:
+                widget.value
                     ? rightBarTheme.activeSwitchBorderColor
                     : rightBarTheme.onDisabled,
-                width: 0.6),
-            borderRadius: BorderRadius.circular(widget.height / 2),
-            color: !widget.value
-                ? rightBarTheme.disabled
-                : theme.colorScheme.primary),
+            width: 0.6,
+          ),
+          borderRadius: BorderRadius.circular(widget.height / 2),
+          color:
+              !widget.value
+                  ? rightBarTheme.disabled
+                  : theme.colorScheme.primary,
+        ),
         child: Align(
           alignment:
               widget.value ? Alignment.centerRight : Alignment.centerLeft,
@@ -103,10 +107,12 @@ class _CustomSwitchState extends State<CustomSwitch>
             width: widget.thumbSize,
             height: widget.thumbSize,
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: !widget.value
-                    ? rightBarTheme.onDisabled
-                    : theme.colorScheme.onPrimary),
+              shape: BoxShape.circle,
+              color:
+                  !widget.value
+                      ? rightBarTheme.onDisabled
+                      : theme.colorScheme.onPrimary,
+            ),
           ),
         ),
       ),

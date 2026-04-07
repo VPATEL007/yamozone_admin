@@ -1,4 +1,4 @@
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
 
 class MyConstantData {
   final double containerRadius;
@@ -7,11 +7,12 @@ class MyConstantData {
 
   final MyBreadcrumbItem? defaultBreadCrumbItem;
 
-  MyConstantData(
-      {this.containerRadius = 4,
-      this.cardRadius = 4,
-      this.buttonRadius = 4,
-      this.defaultBreadCrumbItem});
+  MyConstantData({
+    this.containerRadius = 4,
+    this.cardRadius = 4,
+    this.buttonRadius = 4,
+    this.defaultBreadCrumbItem,
+  });
 }
 
 class MyConstant {

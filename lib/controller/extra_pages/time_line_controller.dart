@@ -1,5 +1,5 @@
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/models/discover.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/models/discover.dart';
 
 class TimeLineController extends MyController {
   List<Discover> discover = [];

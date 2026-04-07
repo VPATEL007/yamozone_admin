@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/auth/forgot_password_2_controller.dart';
-import 'package:webkit/helpers/theme/app_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/my_text_style.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/views/layouts/auth_layout_2.dart';
+import 'package:yamazone/controller/auth/forgot_password_2_controller.dart';
+import 'package:yamazone/helpers/theme/app_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/my_text_style.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/views/layouts/auth_layout_2.dart';
 
 class ForgotPassword2 extends StatefulWidget {
   const ForgotPassword2({super.key});
@@ -56,9 +56,7 @@ class _ForgotPassword2State extends State<ForgotPassword2>
                       ),
                     ],
                   ),
-                  Divider(
-                    height: 40,
-                  ),
+                  Divider(height: 40),
                   Column(
                     children: [
                       MyText.bodyLarge(
@@ -81,10 +79,12 @@ class _ForgotPassword2State extends State<ForgotPassword2>
                           MyText.labelMedium("Email Address"),
                           MySpacing.height(8),
                           TextFormField(
-                            validator: controller.basicValidator
-                                .getValidation('email'),
-                            controller: controller.basicValidator
-                                .getController('email'),
+                            validator: controller.basicValidator.getValidation(
+                              'email',
+                            ),
+                            controller: controller.basicValidator.getController(
+                              'email',
+                            ),
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: "Email Address",
@@ -115,13 +115,13 @@ class _ForgotPassword2State extends State<ForgotPassword2>
                               children: [
                                 controller.loading
                                     ? SizedBox(
-                                        height: 14,
-                                        width: 14,
-                                        child: CircularProgressIndicator(
-                                          color: theme.colorScheme.onPrimary,
-                                          strokeWidth: 1.2,
-                                        ),
-                                      )
+                                      height: 14,
+                                      width: 14,
+                                      child: CircularProgressIndicator(
+                                        color: theme.colorScheme.onPrimary,
+                                        strokeWidth: 1.2,
+                                      ),
+                                    )
                                     : Container(),
                                 if (controller.loading) MySpacing.width(16),
                                 MyText.bodySmall(
@@ -135,8 +135,9 @@ class _ForgotPassword2State extends State<ForgotPassword2>
                             onPressed: controller.gotoLogIn,
                             elevation: 0,
                             padding: MySpacing.x(16),
-                            splashColor:
-                                contentTheme.secondary.withOpacity(0.1),
+                            splashColor: contentTheme.secondary.withOpacity(
+                              0.1,
+                            ),
                             child: MyText.labelMedium(
                               'Back to login',
                               color: contentTheme.secondary,
@@ -145,7 +146,7 @@ class _ForgotPassword2State extends State<ForgotPassword2>
                         ],
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/extra_pages/time_line_controller.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/extra_pages/time_line_controller.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class OrdersReview extends StatefulWidget {
   const OrdersReview({super.key});
@@ -55,11 +55,8 @@ class _OrdersReviewState extends State<OrdersReview>
         SizedBox(width: 10),
         Text(
           "Order ID #ORD-2847",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        )
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
@@ -85,30 +82,51 @@ class _OrdersReviewState extends State<OrdersReview>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Order Summary",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(
+          "Order Summary",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         SizedBox(height: 15),
         Row(
           children: [
             Expanded(
-                child: summaryCard(Icons.person, "Buyer", "John Mitchell",
-                    "Order Date: Jan 15, 2024")),
+              child: summaryCard(
+                Icons.person,
+                "Buyer",
+                "John Mitchell",
+                "Order Date: Jan 15, 2024",
+              ),
+            ),
             SizedBox(width: 15),
             Expanded(
-                child: summaryCard(
-                    Icons.store, "Seller", "Sarah's Electronics", "")),
+              child: summaryCard(
+                Icons.store,
+                "Seller",
+                "Sarah's Electronics",
+                "",
+              ),
+            ),
             SizedBox(width: 15),
             Expanded(
-                child: summaryCard(Icons.local_shipping, "Driver",
-                    "Mike Rodriguez", "Delivery Date: Jan 18, 2024")),
+              child: summaryCard(
+                Icons.local_shipping,
+                "Driver",
+                "Mike Rodriguez",
+                "Delivery Date: Jan 18, 2024",
+              ),
+            ),
           ],
-        )
+        ),
       ],
     );
   }
 
   Widget summaryCard(
-      IconData icon, String title, String name, String subtitle) {
+    IconData icon,
+    String title,
+    String name,
+    String subtitle,
+  ) {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -127,13 +145,17 @@ class _OrdersReviewState extends State<OrdersReview>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title, style: TextStyle(color: Colors.grey, fontSize: 13)),
-              Text(name,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              Text(
+                name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
               if (subtitle.isNotEmpty)
-                Text(subtitle,
-                    style: TextStyle(color: Colors.grey, fontSize: 12)),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -149,8 +171,10 @@ class _OrdersReviewState extends State<OrdersReview>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Amount Breakdown",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          Text(
+            "Amount Breakdown",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
           SizedBox(height: 20),
           priceRow("Item Price", "\$299.99"),
           priceRow("Platform Fee", "\$14.99"),
@@ -168,12 +192,16 @@ class _OrdersReviewState extends State<OrdersReview>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Escrow Held Amount"),
-                Text("\$327.97",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.orange)),
+                Text(
+                  "\$327.97",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -189,8 +217,9 @@ class _OrdersReviewState extends State<OrdersReview>
           Text(
             value,
             style: TextStyle(
-                fontWeight: bold ? FontWeight.bold : FontWeight.normal),
-          )
+              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
         ],
       ),
     );
@@ -206,27 +235,25 @@ class _OrdersReviewState extends State<OrdersReview>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Delivery Proof",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          Text(
+            "Delivery Proof",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
           SizedBox(height: 15),
           Row(
             children: [
               Icon(Icons.image, color: Colors.orange),
               SizedBox(width: 10),
-              Expanded(
-                child: Text("delivery-proof-image.jpg"),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text("Download"),
-              )
+              Expanded(child: Text("delivery-proof-image.jpg")),
+              TextButton(onPressed: () {}, child: Text("Download")),
             ],
           ),
           SizedBox(height: 20),
           Text("Driver Notes", style: TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 8),
           Text(
-              "Package delivered to front door as requested. Customer was not home but delivery confirmed."),
+            "Package delivered to front door as requested. Customer was not home but delivery confirmed.",
+          ),
         ],
       ),
     );
@@ -234,11 +261,7 @@ class _OrdersReviewState extends State<OrdersReview>
 
   Widget rightPanel() {
     return Column(
-      children: [
-        escrowTimeline(),
-        SizedBox(height: 20),
-        actionsPanel(),
-      ],
+      children: [escrowTimeline(), SizedBox(height: 20), actionsPanel()],
     );
   }
 
@@ -252,8 +275,10 @@ class _OrdersReviewState extends State<OrdersReview>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Escrow Timeline",
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(
+            "Escrow Timeline",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           SizedBox(height: 15),
           timelineItem("Payment Received", true),
           timelineItem("Escrow Held", true),

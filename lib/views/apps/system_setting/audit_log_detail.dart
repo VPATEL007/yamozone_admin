@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
 // AUDIT LOG DETAIL SCREEN
@@ -27,93 +27,105 @@ class AuditLogDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ── Scrollable body ─────────────────────────────────────────────
+      body: Layout(
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // 1. Log header card
+                _LogHeaderCard(),
+                const SizedBox(height: 16),
 
-        // ── Scrollable body ─────────────────────────────────────────────
-        body: Layout(
-      child: SizedBox(
-        width: Get.width,
-        height: Get.height,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // 1. Log header card
-              _LogHeaderCard(),
-              const SizedBox(height: 16),
+                // 2. Action / Module / User row
+                _ActionRowCard(),
+                const SizedBox(height: 16),
 
-              // 2. Action / Module / User row
-              _ActionRowCard(),
-              const SizedBox(height: 16),
+                // 3. Performed By  +  Reason  (side by side on wide, stacked on narrow)
+                LayoutBuilder(
+                  builder: (_, constraints) {
+                    if (constraints.maxWidth >= 600) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _PerformedByCard()),
+                          const SizedBox(width: 16),
+                          Expanded(child: _ReasonCard()),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _PerformedByCard(),
+                        const SizedBox(height: 16),
+                        _ReasonCard(),
+                      ],
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
 
-              // 3. Performed By  +  Reason  (side by side on wide, stacked on narrow)
-              LayoutBuilder(builder: (_, constraints) {
-                if (constraints.maxWidth >= 600) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: _PerformedByCard()),
-                      const SizedBox(width: 16),
-                      Expanded(child: _ReasonCard()),
-                    ],
-                  );
-                }
-                return Column(children: [
-                  _PerformedByCard(),
-                  const SizedBox(height: 16),
-                  _ReasonCard(),
-                ]);
-              }),
-              const SizedBox(height: 16),
+                // 4. Before / After comparison
+                LayoutBuilder(
+                  builder: (_, constraints) {
+                    if (constraints.maxWidth >= 600) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _StateCard(isBefore: true)),
+                          const SizedBox(width: 16),
+                          Expanded(child: _StateCard(isBefore: false)),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _StateCard(isBefore: true),
+                        const SizedBox(height: 16),
+                        _StateCard(isBefore: false),
+                      ],
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
 
-              // 4. Before / After comparison
-              LayoutBuilder(builder: (_, constraints) {
-                if (constraints.maxWidth >= 600) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: _StateCard(isBefore: true)),
-                      const SizedBox(width: 16),
-                      Expanded(child: _StateCard(isBefore: false)),
-                    ],
-                  );
-                }
-                return Column(children: [
-                  _StateCard(isBefore: true),
-                  const SizedBox(height: 16),
-                  _StateCard(isBefore: false),
-                ]);
-              }),
-              const SizedBox(height: 16),
+                // 5. Linked Records  +  Review Timeline
+                LayoutBuilder(
+                  builder: (_, constraints) {
+                    if (constraints.maxWidth >= 600) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _LinkedRecordsCard()),
+                          const SizedBox(width: 16),
+                          Expanded(child: _ReviewTimelineCard()),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _LinkedRecordsCard(),
+                        const SizedBox(height: 16),
+                        _ReviewTimelineCard(),
+                      ],
+                    );
+                  },
+                ),
+                const SizedBox(height: 24),
 
-              // 5. Linked Records  +  Review Timeline
-              LayoutBuilder(builder: (_, constraints) {
-                if (constraints.maxWidth >= 600) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: _LinkedRecordsCard()),
-                      const SizedBox(width: 16),
-                      Expanded(child: _ReviewTimelineCard()),
-                    ],
-                  );
-                }
-                return Column(children: [
-                  _LinkedRecordsCard(),
-                  const SizedBox(height: 16),
-                  _ReviewTimelineCard(),
-                ]);
-              }),
-              const SizedBox(height: 24),
-
-              // 6. Bottom action buttons
-              _BottomActions(),
-              const SizedBox(height: 16),
-            ],
+                // 6. Bottom action buttons
+                _BottomActions(),
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }
 
@@ -254,14 +266,21 @@ class _ActionChip extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (label.isNotEmpty)
-              Text(label,
-                  style: const TextStyle(
-                      color: AuditLogDetailScreen.kSubtext, fontSize: 11)),
-            Text(value,
+              Text(
+                label,
                 style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: AuditLogDetailScreen.kText)),
+                  color: AuditLogDetailScreen.kSubtext,
+                  fontSize: 11,
+                ),
+              ),
+            Text(
+              value,
+              style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                color: AuditLogDetailScreen.kText,
+              ),
+            ),
           ],
         ),
       ],
@@ -277,11 +296,14 @@ class _PerformedByCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Performed By',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: AuditLogDetailScreen.kText)),
+          const Text(
+            'Performed By',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+              color: AuditLogDetailScreen.kText,
+            ),
+          ),
           const SizedBox(height: 14),
           Row(
             children: [
@@ -293,31 +315,47 @@ class _PerformedByCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: AuditLogDetailScreen.kAccent.withOpacity(0.2),
                 ),
-                child: const Icon(Icons.person,
-                    color: AuditLogDetailScreen.kAccent, size: 28),
+                child: const Icon(
+                  Icons.person,
+                  color: AuditLogDetailScreen.kAccent,
+                  size: 28,
+                ),
               ),
               const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('John Admin',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          color: AuditLogDetailScreen.kText)),
-                  const Text('Super Admin',
-                      style: TextStyle(
-                          color: AuditLogDetailScreen.kSubtext, fontSize: 12)),
+                  const Text(
+                    'John Admin',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: AuditLogDetailScreen.kText,
+                    ),
+                  ),
+                  const Text(
+                    'Super Admin',
+                    style: TextStyle(
+                      color: AuditLogDetailScreen.kSubtext,
+                      fontSize: 12,
+                    ),
+                  ),
                   const SizedBox(height: 4),
                   Row(
                     children: const [
-                      Icon(Icons.computer,
-                          size: 12, color: AuditLogDetailScreen.kSubtext),
+                      Icon(
+                        Icons.computer,
+                        size: 12,
+                        color: AuditLogDetailScreen.kSubtext,
+                      ),
                       SizedBox(width: 4),
-                      Text('192.168.1.24',
-                          style: TextStyle(
-                              color: AuditLogDetailScreen.kSubtext,
-                              fontSize: 12)),
+                      Text(
+                        '192.168.1.24',
+                        style: TextStyle(
+                          color: AuditLogDetailScreen.kSubtext,
+                          fontSize: 12,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -338,11 +376,14 @@ class _ReasonCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Reason',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: AuditLogDetailScreen.kText)),
+          const Text(
+            'Reason',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+              color: AuditLogDetailScreen.kText,
+            ),
+          ),
           const SizedBox(height: 12),
           // Reason chip
           Container(
@@ -352,9 +393,10 @@ class _ReasonCard extends StatelessWidget {
               color: AuditLogDetailScreen.kBg,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Text('Repeated fraud complaints',
-                style:
-                    TextStyle(color: AuditLogDetailScreen.kText, fontSize: 13)),
+            child: const Text(
+              'Repeated fraud complaints',
+              style: TextStyle(color: AuditLogDetailScreen.kText, fontSize: 13),
+            ),
           ),
           const SizedBox(height: 12),
           // Admin Notes
@@ -365,20 +407,28 @@ class _ReasonCard extends StatelessWidget {
               color: AuditLogDetailScreen.kAccent.withOpacity(0.07),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                  color: AuditLogDetailScreen.kAccent.withOpacity(0.2)),
+                color: AuditLogDetailScreen.kAccent.withOpacity(0.2),
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text('Admin Notes',
-                    style: TextStyle(
-                        color: AuditLogDetailScreen.kAccent,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600)),
+                Text(
+                  'Admin Notes',
+                  style: TextStyle(
+                    color: AuditLogDetailScreen.kAccent,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 SizedBox(height: 4),
-                Text('Blocked for 30 days. Review after investigation.',
-                    style: TextStyle(
-                        color: AuditLogDetailScreen.kText, fontSize: 13)),
+                Text(
+                  'Blocked for 30 days. Review after investigation.',
+                  style: TextStyle(
+                    color: AuditLogDetailScreen.kText,
+                    fontSize: 13,
+                  ),
+                ),
               ],
             ),
           ),
@@ -411,9 +461,10 @@ class _StateCard extends StatelessWidget {
               Text(
                 isBefore ? 'BEFORE' : 'AFTER',
                 style: const TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 14,
-                    color: AuditLogDetailScreen.kText),
+                  fontWeight: FontWeight.w800,
+                  fontSize: 14,
+                  color: AuditLogDetailScreen.kText,
+                ),
               ),
             ],
           ),
@@ -423,18 +474,20 @@ class _StateCard extends StatelessWidget {
           _StateRow(
             label: 'Status',
             value: isBefore ? 'Active' : 'Blocked',
-            valueColor: isBefore
-                ? AuditLogDetailScreen.kGreen
-                : AuditLogDetailScreen.kRed,
+            valueColor:
+                isBefore
+                    ? AuditLogDetailScreen.kGreen
+                    : AuditLogDetailScreen.kRed,
             icon: isBefore ? Icons.check_circle_outline : Icons.block,
           ),
           const SizedBox(height: 10),
           _StateRow(
             label: 'Login Access',
             value: isBefore ? 'Enabled' : 'Disabled',
-            valueColor: isBefore
-                ? AuditLogDetailScreen.kGreen
-                : AuditLogDetailScreen.kRed,
+            valueColor:
+                isBefore
+                    ? AuditLogDetailScreen.kGreen
+                    : AuditLogDetailScreen.kRed,
             icon: isBefore ? Icons.check_circle_outline : Icons.cancel_outlined,
           ),
           const SizedBox(height: 10),
@@ -473,9 +526,13 @@ class _StateRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label,
-            style: const TextStyle(
-                color: AuditLogDetailScreen.kSubtext, fontSize: 13)),
+        Text(
+          label,
+          style: const TextStyle(
+            color: AuditLogDetailScreen.kSubtext,
+            fontSize: 13,
+          ),
+        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -483,11 +540,14 @@ class _StateRow extends StatelessWidget {
               Icon(icon, size: 14, color: valueColor),
               const SizedBox(width: 4),
             ],
-            Text(value,
-                style: TextStyle(
-                    color: valueColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13)),
+            Text(
+              value,
+              style: TextStyle(
+                color: valueColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 13,
+              ),
+            ),
           ],
         ),
       ],
@@ -509,42 +569,60 @@ class _LinkedRecordsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Linked Records',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: AuditLogDetailScreen.kText)),
+          const Text(
+            'Linked Records',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+              color: AuditLogDetailScreen.kText,
+            ),
+          ),
           const SizedBox(height: 12),
-          ..._records.map((r) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Row(
-                  children: [
-                    Icon(r['icon'] as IconData,
-                        size: 18, color: AuditLogDetailScreen.kSubtext),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(r['label'] as String,
-                          style: const TextStyle(
-                              color: AuditLogDetailScreen.kText, fontSize: 13)),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        children: const [
-                          Text('View',
-                              style: TextStyle(
-                                  color: AuditLogDetailScreen.kAccent,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 13)),
-                          SizedBox(width: 2),
-                          Icon(Icons.arrow_forward,
-                              size: 13, color: AuditLogDetailScreen.kAccent),
-                        ],
+          ..._records.map(
+            (r) => Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: [
+                  Icon(
+                    r['icon'] as IconData,
+                    size: 18,
+                    color: AuditLogDetailScreen.kSubtext,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      r['label'] as String,
+                      style: const TextStyle(
+                        color: AuditLogDetailScreen.kText,
+                        fontSize: 13,
                       ),
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: const [
+                        Text(
+                          'View',
+                          style: TextStyle(
+                            color: AuditLogDetailScreen.kAccent,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                          ),
+                        ),
+                        SizedBox(width: 2),
+                        Icon(
+                          Icons.arrow_forward,
+                          size: 13,
+                          color: AuditLogDetailScreen.kAccent,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -559,18 +637,23 @@ class _ReviewTimelineCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Review Timeline',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: AuditLogDetailScreen.kText)),
+          const Text(
+            'Review Timeline',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 15,
+              color: AuditLogDetailScreen.kText,
+            ),
+          ),
           const SizedBox(height: 14),
           _TimelineItem(
             dot: Container(
               width: 14,
               height: 14,
               decoration: const BoxDecoration(
-                  color: AuditLogDetailScreen.kAccent, shape: BoxShape.circle),
+                color: AuditLogDetailScreen.kAccent,
+                shape: BoxShape.circle,
+              ),
             ),
             title: 'Created by John Admin',
             subtitle: '04:15 PM',
@@ -581,7 +664,9 @@ class _ReviewTimelineCard extends StatelessWidget {
               width: 14,
               height: 14,
               decoration: const BoxDecoration(
-                  color: AuditLogDetailScreen.kAccent, shape: BoxShape.circle),
+                color: AuditLogDetailScreen.kAccent,
+                shape: BoxShape.circle,
+              ),
             ),
             title: 'Reviewed by Compliance',
             subtitle: '05:02 PM',
@@ -592,7 +677,9 @@ class _ReviewTimelineCard extends StatelessWidget {
               width: 14,
               height: 14,
               decoration: const BoxDecoration(
-                  color: AuditLogDetailScreen.kGreen, shape: BoxShape.circle),
+                color: AuditLogDetailScreen.kGreen,
+                shape: BoxShape.circle,
+              ),
               child: const Icon(Icons.check, color: Colors.white, size: 10),
             ),
             title: 'Finalized',
@@ -641,16 +728,22 @@ class _TimelineItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: AuditLogDetailScreen.kText)),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: AuditLogDetailScreen.kText,
+                    ),
+                  ),
                   if (subtitle.isNotEmpty)
-                    Text(subtitle,
-                        style: const TextStyle(
-                            color: AuditLogDetailScreen.kSubtext,
-                            fontSize: 11)),
+                    Text(
+                      subtitle,
+                      style: const TextStyle(
+                        color: AuditLogDetailScreen.kSubtext,
+                        fontSize: 11,
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -671,17 +764,24 @@ class _BottomActions extends StatelessWidget {
         Expanded(
           child: OutlinedButton.icon(
             onPressed: () {},
-            icon: const Icon(Icons.download_outlined,
-                color: AuditLogDetailScreen.kText, size: 18),
-            label: const Text('Export Log',
-                style: TextStyle(
-                    color: AuditLogDetailScreen.kText,
-                    fontWeight: FontWeight.w600)),
+            icon: const Icon(
+              Icons.download_outlined,
+              color: AuditLogDetailScreen.kText,
+              size: 18,
+            ),
+            label: const Text(
+              'Export Log',
+              style: TextStyle(
+                color: AuditLogDetailScreen.kText,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
               side: const BorderSide(color: AuditLogDetailScreen.kBorder),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
         ),
@@ -690,16 +790,24 @@ class _BottomActions extends StatelessWidget {
         Expanded(
           child: ElevatedButton.icon(
             onPressed: () {},
-            icon: const Icon(Icons.check_circle_outline,
-                color: Colors.white, size: 18),
-            label: const Text('Mark as Reviewed',
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.w600)),
+            icon: const Icon(
+              Icons.check_circle_outline,
+              color: Colors.white,
+              size: 18,
+            ),
+            label: const Text(
+              'Mark as Reviewed',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AuditLogDetailScreen.kAccent,
               padding: const EdgeInsets.symmetric(vertical: 14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
               elevation: 0,
             ),
           ),

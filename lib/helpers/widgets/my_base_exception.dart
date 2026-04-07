@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:webkit/helpers/widgets/my_exception.dart';
+import 'package:yamazone/helpers/widgets/my_exception.dart';
 
 class BaseException extends MyException {
   StackTrace? stackTrace;
@@ -31,11 +31,7 @@ class BaseException extends MyException {
       StringBuffer stringBuffer = StringBuffer();
       stringBuffer.write('----- ${exception.runtimeType} ------ \n');
       stringBuffer.write('message : $exception');
-      log(
-        stringBuffer.toString(),
-        stackTrace: stackTrace,
-        error: error,
-      );
+      log(stringBuffer.toString(), stackTrace: stackTrace, error: error);
     }
   }
 

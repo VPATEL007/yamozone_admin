@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webkit/helpers/widgets/my_display_type.dart';
-import 'package:webkit/helpers/widgets/my_screen_media.dart';
-import 'package:webkit/helpers/widgets/my_screen_media_type.dart';
+import 'package:yamazone/helpers/widgets/my_display_type.dart';
+import 'package:yamazone/helpers/widgets/my_screen_media.dart';
+import 'package:yamazone/helpers/widgets/my_screen_media_type.dart';
 
 class MyFlexItem extends StatelessWidget {
   final Widget child;
@@ -13,12 +13,7 @@ class MyFlexItem extends StatelessWidget {
   Map<MyScreenMediaType, MyDisplayType> get display =>
       MyScreenMedia.getDisplayDataFromString(displays);
 
-  MyFlexItem({
-    super.key,
-    required this.child,
-    this.sizes,
-    this.displays,
-  });
+  MyFlexItem({super.key, required this.child, this.sizes, this.displays});
 
   @override
   Widget build(BuildContext context) {

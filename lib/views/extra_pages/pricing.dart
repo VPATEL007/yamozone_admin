@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:webkit/controller/extra_pages/pricing_controller.dart';
-import 'package:webkit/helpers/theme/app_style.dart';
-import 'package:webkit/helpers/utils/my_shadow.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_button.dart';
-import 'package:webkit/helpers/widgets/my_card.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/extra_pages/pricing_controller.dart';
+import 'package:yamazone/helpers/theme/app_style.dart';
+import 'package:yamazone/helpers/utils/my_shadow.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_button.dart';
+import 'package:yamazone/helpers/widgets/my_card.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class Pricing extends StatefulWidget {
   const Pricing({Key? key}) : super(key: key);
@@ -76,13 +76,12 @@ class _PricingState extends State<Pricing>
                   ),
                   MySpacing.height(60),
                   Center(
-                    child: [
-                      pricingCard(),
-                      pricingCard()
-                    ][controller.currentTabId - 1],
-                  )
+                    child:
+                        [pricingCard(), pricingCard()][controller.currentTabId -
+                            1],
+                  ),
                 ],
-              )
+              ),
             ],
           );
         },
@@ -98,17 +97,20 @@ class _PricingState extends State<Pricing>
           setTabId(id);
         },
         borderRadiusAll: AppStyle.buttonRadius.medium,
-        color: controller.currentTabId == id
-            ? contentTheme.primary
-            : Colors.transparent,
+        color:
+            controller.currentTabId == id
+                ? contentTheme.primary
+                : Colors.transparent,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Center(
-            child: MyText.bodyMedium(
-          text,
-          color: controller.currentTabId == id ? contentTheme.onPrimary : null,
-          fontSize: 16,
-          fontWeight: 600,
-        )),
+          child: MyText.bodyMedium(
+            text,
+            color:
+                controller.currentTabId == id ? contentTheme.onPrimary : null,
+            fontSize: 16,
+            fontWeight: 600,
+          ),
+        ),
       ),
     );
   }
@@ -143,14 +145,8 @@ class _PricingState extends State<Pricing>
                       children: [
                         MySpacing.height(20),
                         controller.currentTabId % 2 == 1
-                            ? MyText.titleLarge(
-                                "\$56",
-                                fontSize: 40,
-                              )
-                            : MyText.titleLarge(
-                                "\$150",
-                                fontSize: 40,
-                              ),
+                            ? MyText.titleLarge("\$56", fontSize: 40)
+                            : MyText.titleLarge("\$150", fontSize: 40),
                         MySpacing.height(20),
                         buildPricingCardDetail(
                           LucideIcons.check,
@@ -162,25 +158,16 @@ class _PricingState extends State<Pricing>
                           "500Gb BandWidth",
                         ),
                         MySpacing.height(16),
-                        buildPricingCardDetail(
-                          LucideIcons.check,
-                          "Domain",
-                        ),
+                        buildPricingCardDetail(LucideIcons.check, "Domain"),
                         MySpacing.height(16),
-                        buildPricingCardDetail(
-                          LucideIcons.minus,
-                          "0 User",
-                        ),
+                        buildPricingCardDetail(LucideIcons.minus, "0 User"),
                         MySpacing.height(16),
                         buildPricingCardDetail(
                           LucideIcons.minus,
                           "Email Support",
                         ),
                         MySpacing.height(16),
-                        buildPricingCardDetail(
-                          LucideIcons.minus,
-                          "API Access",
-                        ),
+                        buildPricingCardDetail(LucideIcons.minus, "API Access"),
                         MySpacing.height(16),
                         MyButton(
                           onPressed: () {},
@@ -199,7 +186,7 @@ class _PricingState extends State<Pricing>
                               Icon(
                                 LucideIcons.moveRight,
                                 color: contentTheme.light,
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -211,12 +198,13 @@ class _PricingState extends State<Pricing>
               Align(
                 alignment: Alignment.topCenter,
                 child: MyCard(
-                    shadow: MyShadow(elevation: 0.5),
-                    height: 30,
-                    width: 110,
-                    borderRadiusAll: 12,
-                    paddingAll: 0,
-                    child: Center(child: MyText.bodyMedium("Starter"))),
+                  shadow: MyShadow(elevation: 0.5),
+                  height: 30,
+                  width: 110,
+                  borderRadiusAll: 12,
+                  paddingAll: 0,
+                  child: Center(child: MyText.bodyMedium("Starter")),
+                ),
               ),
             ],
           ),
@@ -241,14 +229,8 @@ class _PricingState extends State<Pricing>
                         children: [
                           MySpacing.height(20),
                           controller.currentTabId % 2 == 1
-                              ? MyText.titleLarge(
-                                  "\$89",
-                                  fontSize: 40,
-                                )
-                              : MyText.titleLarge(
-                                  "\$200",
-                                  fontSize: 40,
-                                ),
+                              ? MyText.titleLarge("\$89", fontSize: 40)
+                              : MyText.titleLarge("\$200", fontSize: 40),
                           MySpacing.height(20),
                           buildPricingCardDetail(
                             LucideIcons.check,
@@ -260,15 +242,9 @@ class _PricingState extends State<Pricing>
                             "900Gb BandWidth",
                           ),
                           MySpacing.height(16),
-                          buildPricingCardDetail(
-                            LucideIcons.check,
-                            "2 Domain",
-                          ),
+                          buildPricingCardDetail(LucideIcons.check, "2 Domain"),
                           MySpacing.height(16),
-                          buildPricingCardDetail(
-                            LucideIcons.check,
-                            "10 User",
-                          ),
+                          buildPricingCardDetail(LucideIcons.check, "10 User"),
                           MySpacing.height(16),
                           buildPricingCardDetail(
                             LucideIcons.minus,
@@ -297,7 +273,7 @@ class _PricingState extends State<Pricing>
                                 Icon(
                                   LucideIcons.moveRight,
                                   color: contentTheme.light,
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -308,27 +284,26 @@ class _PricingState extends State<Pricing>
                 ),
               ),
               Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    height: 30,
-                    width: 110,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          contentTheme.primary,
-                          contentTheme.red,
-                        ],
-                      ),
+                alignment: Alignment.topCenter,
+                child: Container(
+                  height: 30,
+                  width: 110,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [contentTheme.primary, contentTheme.red],
                     ),
-                    child: Center(
-                        child: MyText.bodyMedium(
+                  ),
+                  child: Center(
+                    child: MyText.bodyMedium(
                       "Premium",
                       color: contentTheme.onPrimary,
-                    )),
-                  )),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -352,14 +327,8 @@ class _PricingState extends State<Pricing>
                         children: [
                           MySpacing.height(20),
                           controller.currentTabId % 2 == 1
-                              ? MyText.titleLarge(
-                                  "\$100",
-                                  fontSize: 40,
-                                )
-                              : MyText.titleLarge(
-                                  "\$300",
-                                  fontSize: 40,
-                                ),
+                              ? MyText.titleLarge("\$100", fontSize: 40)
+                              : MyText.titleLarge("\$300", fontSize: 40),
                           MySpacing.height(20),
                           buildPricingCardDetail(
                             LucideIcons.check,
@@ -376,10 +345,7 @@ class _PricingState extends State<Pricing>
                             "50 Domain",
                           ),
                           MySpacing.height(16),
-                          buildPricingCardDetail(
-                            LucideIcons.check,
-                            "20 User",
-                          ),
+                          buildPricingCardDetail(LucideIcons.check, "20 User"),
                           MySpacing.height(16),
                           buildPricingCardDetail(
                             LucideIcons.check,
@@ -408,7 +374,7 @@ class _PricingState extends State<Pricing>
                                 Icon(
                                   LucideIcons.moveRight,
                                   color: contentTheme.light,
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -421,12 +387,13 @@ class _PricingState extends State<Pricing>
               Align(
                 alignment: Alignment.topCenter,
                 child: MyCard(
-                    shadow: MyShadow(elevation: 0.5),
-                    height: 30,
-                    width: 110,
-                    borderRadiusAll: 12,
-                    paddingAll: 0,
-                    child: Center(child: MyText.bodyMedium("Enterprise"))),
+                  shadow: MyShadow(elevation: 0.5),
+                  height: 30,
+                  width: 110,
+                  borderRadiusAll: 12,
+                  paddingAll: 0,
+                  child: Center(child: MyText.bodyMedium("Enterprise")),
+                ),
               ),
             ],
           ),
@@ -438,16 +405,9 @@ class _PricingState extends State<Pricing>
   Widget buildPricingCardDetail(IconData icon, String detail) {
     return Row(
       children: [
-        Icon(
-          icon,
-          size: 16,
-        ),
+        Icon(icon, size: 16),
         MySpacing.width(8),
-        MyText.bodyMedium(
-          detail,
-          fontWeight: 600,
-          fontSize: 16,
-        ),
+        MyText.bodyMedium(detail, fontWeight: 600, fontSize: 16),
       ],
     );
   }

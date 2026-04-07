@@ -1,6 +1,6 @@
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
-import 'package:webkit/models/discover.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/models/discover.dart';
 
 class SeniorityLevel {
   String name;
@@ -27,8 +27,10 @@ class DiscoverJobsController extends MyController {
   List<Discover> discover = [];
 
   bool showLike = false;
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
 
   final List<JobType> jobType = [
     JobType('Full Time Jobs'),

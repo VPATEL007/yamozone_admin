@@ -1,21 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:webkit/helpers/services/json_decoder.dart';
-import 'package:webkit/images.dart';
-import 'package:webkit/models/identifier_model.dart';
+import 'package:yamazone/helpers/services/json_decoder.dart';
+import 'package:yamazone/images.dart';
+import 'package:yamazone/models/identifier_model.dart';
 
 class JobVacancee extends IdentifierModel {
   final String jobName, city, image;
   final int price;
 
-  JobVacancee(
-    super.id,
-    this.jobName,
-    this.city,
-    this.image,
-    this.price,
-  );
+  JobVacancee(super.id, this.jobName, this.city, this.image, this.price);
 
   static JobVacancee fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
@@ -25,13 +19,7 @@ class JobVacancee extends IdentifierModel {
     String image = Images.randomImage(Images.avatars);
     int price = decoder.getInt('price');
 
-    return JobVacancee(
-      decoder.getId,
-      jobName,
-      city,
-      image,
-      price,
-    );
+    return JobVacancee(decoder.getId, jobName, city, image, price);
   }
 
   static List<JobVacancee> listFromJSON(List<dynamic> list) {

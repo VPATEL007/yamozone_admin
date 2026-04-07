@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/extensions/date_time_extention.dart';
-import 'package:webkit/helpers/widgets/my_form_validator.dart';
-import 'package:webkit/helpers/widgets/my_validators.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/extensions/date_time_extention.dart';
+import 'package:yamazone/helpers/widgets/my_form_validator.dart';
+import 'package:yamazone/helpers/widgets/my_validators.dart';
 
 class WizardController extends MyController {
   // int selectedTab = 0;
@@ -117,36 +117,50 @@ class WizardController extends MyController {
   DateTime? selectedDateTime;
 
   WizardController() {
-    step1Validator.addField('username',
-        required: true, label: "Username", controller: TextEditingController());
+    step1Validator.addField(
+      'username',
+      required: true,
+      label: "Username",
+      controller: TextEditingController(),
+    );
 
-    step1Validator.addField('email',
-        required: true,
-        label: "Email",
-        validators: [MyEmailValidator()],
-        controller: TextEditingController());
+    step1Validator.addField(
+      'email',
+      required: true,
+      label: "Email",
+      validators: [MyEmailValidator()],
+      controller: TextEditingController(),
+    );
 
-    step1Validator.addField('password',
-        required: true,
-        label: "Password",
-        validators: [MyLengthValidator(min: 6, max: 10)],
-        controller: TextEditingController());
+    step1Validator.addField(
+      'password',
+      required: true,
+      label: "Password",
+      validators: [MyLengthValidator(min: 6, max: 10)],
+      controller: TextEditingController(),
+    );
 
-    step2Validator.addField('first_name',
-        required: true,
-        label: "First name",
-        controller: TextEditingController());
+    step2Validator.addField(
+      'first_name',
+      required: true,
+      label: "First name",
+      controller: TextEditingController(),
+    );
 
-    step2Validator.addField('last_name',
-        required: true,
-        label: "Last name",
-        controller: TextEditingController());
+    step2Validator.addField(
+      'last_name',
+      required: true,
+      label: "Last name",
+      controller: TextEditingController(),
+    );
 
-    step2Validator.addField('phone_number',
-        required: true,
-        label: "Phone number",
-        validators: [MyLengthValidator(required: true, min: 10, max: 12)],
-        controller: TextEditingController());
+    step2Validator.addField(
+      'phone_number',
+      required: true,
+      label: "Phone number",
+      validators: [MyLengthValidator(required: true, min: 10, max: 12)],
+      controller: TextEditingController(),
+    );
   }
 
   @override
@@ -156,8 +170,11 @@ class WizardController extends MyController {
   }
 
   void changePage(int page) {
-    pageController.animateToPage(page,
-        duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+    pageController.animateToPage(
+      page,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   void onChangedValidation(bool? validation) {
@@ -201,14 +218,16 @@ class WizardController extends MyController {
 
   Future<void> pickDateTime() async {
     final DateTime? pickedDate = await showDatePicker(
-        context: Get.context!,
-        initialDate: selectedDateTime ?? DateTime.now(),
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+      context: Get.context!,
+      initialDate: selectedDateTime ?? DateTime.now(),
+      firstDate: DateTime(2015, 8),
+      lastDate: DateTime(2101),
+    );
     if (pickedDate != null) {
       final TimeOfDay? pickedTime = await showTimePicker(
-          context: Get.context!,
-          initialTime: selectedDateTime?.timeOfDay ?? TimeOfDay.now());
+        context: Get.context!,
+        initialTime: selectedDateTime?.timeOfDay ?? TimeOfDay.now(),
+      );
       if (pickedTime != null) {
         selectedDateTime = pickedDate.applied(pickedTime);
         update();

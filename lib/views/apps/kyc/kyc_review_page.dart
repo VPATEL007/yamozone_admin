@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webkit/controller/apps/ecommerce/invoice_controller.dart';
-import 'package:webkit/helpers/theme/admin_theme.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/views/apps/kyc/widget/kyc_dialog.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/apps/ecommerce/invoice_controller.dart';
+import 'package:yamazone/helpers/theme/admin_theme.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/views/apps/kyc/widget/kyc_dialog.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class KycReviewPage extends StatefulWidget {
   const KycReviewPage({super.key});

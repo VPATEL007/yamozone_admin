@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 
 import 'package:flutter/material.dart';
-import 'package:webkit/controller/my_controller.dart';
+import 'package:yamazone/controller/my_controller.dart';
 
 class FlChartController extends MyController {
   @override
@@ -56,56 +56,42 @@ class FlChartController extends MyController {
   /// Chart 1
 
   LineChartData get sampleData => LineChartData(
-        lineTouchData: lineTouchData1,
-        gridData: gridData,
-        titlesData: titlesData1,
-        borderData: borderData,
-        lineBarsData: lineBarsData1,
-        minX: 0,
-        maxX: 14,
-        maxY: 4,
-        minY: 0,
-      );
+    lineTouchData: lineTouchData1,
+    gridData: gridData,
+    titlesData: titlesData1,
+    borderData: borderData,
+    lineBarsData: lineBarsData1,
+    minX: 0,
+    maxX: 14,
+    maxY: 4,
+    minY: 0,
+  );
 
   List<LineChartBarData> get lineBarsData1 => [
-        lineChartBarData1_1,
-        lineChartBarData1_2,
-        lineChartBarData1_3,
-      ];
+    lineChartBarData1_1,
+    lineChartBarData1_2,
+    lineChartBarData1_3,
+  ];
 
   LineTouchData get lineTouchData1 => LineTouchData(
-        handleBuiltInTouches: true,
-        touchTooltipData: LineTouchTooltipData(),
-      );
+    handleBuiltInTouches: true,
+    touchTooltipData: LineTouchTooltipData(),
+  );
 
   FlGridData get gridData => const FlGridData(show: false);
 
   FlTitlesData get titlesData1 => FlTitlesData(
-        bottomTitles: AxisTitles(
-          sideTitles: bottomTitles,
-        ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: leftTitles(),
-        ),
-      );
+    bottomTitles: AxisTitles(sideTitles: bottomTitles),
+    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    leftTitles: AxisTitles(sideTitles: leftTitles()),
+  );
 
-  SideTitles get bottomTitles => SideTitles(
-        showTitles: true,
-        reservedSize: 32,
-        interval: 1,
-      );
+  SideTitles get bottomTitles =>
+      SideTitles(showTitles: true, reservedSize: 32, interval: 1);
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    );
+    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
     String text;
     switch (value.toInt()) {
       case 1:
@@ -131,75 +117,72 @@ class FlChartController extends MyController {
   }
 
   SideTitles leftTitles() => SideTitles(
-        getTitlesWidget: leftTitleWidgets,
-        showTitles: true,
-        interval: 1,
-        reservedSize: 40,
-      );
+    getTitlesWidget: leftTitleWidgets,
+    showTitles: true,
+    interval: 1,
+    reservedSize: 40,
+  );
 
   FlBorderData get borderData => FlBorderData(
-        show: true,
-        border: Border(
-          bottom: BorderSide(color: Colors.blue.withAlpha(40), width: 4),
-          left: const BorderSide(color: Colors.transparent),
-          right: const BorderSide(color: Colors.transparent),
-          top: const BorderSide(color: Colors.transparent),
-        ),
-      );
+    show: true,
+    border: Border(
+      bottom: BorderSide(color: Colors.blue.withAlpha(40), width: 4),
+      left: const BorderSide(color: Colors.transparent),
+      right: const BorderSide(color: Colors.transparent),
+      top: const BorderSide(color: Colors.transparent),
+    ),
+  );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-        isCurved: true,
-        color: Colors.greenAccent,
-        barWidth: 8,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 1.5),
-          FlSpot(5, 1.4),
-          FlSpot(7, 3.4),
-          FlSpot(10, 2),
-          FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
-        ],
-      );
+    isCurved: true,
+    color: Colors.greenAccent,
+    barWidth: 8,
+    isStrokeCapRound: true,
+    dotData: const FlDotData(show: false),
+    belowBarData: BarAreaData(show: false),
+    spots: const [
+      FlSpot(1, 1),
+      FlSpot(3, 1.5),
+      FlSpot(5, 1.4),
+      FlSpot(7, 3.4),
+      FlSpot(10, 2),
+      FlSpot(12, 2.2),
+      FlSpot(13, 1.8),
+    ],
+  );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
-        isCurved: true,
-        color: Colors.pink,
-        barWidth: 8,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(
-          show: false,
-          color: Colors.pink.withOpacity(0),
-        ),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 2.8),
-          FlSpot(7, 1.2),
-          FlSpot(10, 2.8),
-          FlSpot(12, 2.6),
-          FlSpot(13, 3.9),
-        ],
-      );
+    isCurved: true,
+    color: Colors.pink,
+    barWidth: 8,
+    isStrokeCapRound: true,
+    dotData: const FlDotData(show: false),
+    belowBarData: BarAreaData(show: false, color: Colors.pink.withOpacity(0)),
+    spots: const [
+      FlSpot(1, 1),
+      FlSpot(3, 2.8),
+      FlSpot(7, 1.2),
+      FlSpot(10, 2.8),
+      FlSpot(12, 2.6),
+      FlSpot(13, 3.9),
+    ],
+  );
 
   LineChartBarData get lineChartBarData1_3 => LineChartBarData(
-        isCurved: true,
-        color: Colors.cyan,
-        barWidth: 8,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 2.8),
-          FlSpot(3, 1.9),
-          FlSpot(6, 3),
-          FlSpot(10, 1.3),
-          FlSpot(13, 2.5),
-        ],
-      );
+    isCurved: true,
+    color: Colors.cyan,
+    barWidth: 8,
+    isStrokeCapRound: true,
+    dotData: const FlDotData(show: false),
+    belowBarData: BarAreaData(show: false),
+    spots: const [
+      FlSpot(1, 2.8),
+      FlSpot(3, 1.9),
+      FlSpot(6, 3),
+      FlSpot(10, 1.3),
+      FlSpot(13, 2.5),
+    ],
+  );
 
   /// Chart 2
   List<Color> gradientColors = [Colors.cyan, Colors.blue];
@@ -212,9 +195,7 @@ class FlChartController extends MyController {
         horizontalInterval: 1,
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
-          return const FlLine(
-            strokeWidth: 1,
-          );
+          return const FlLine(strokeWidth: 1);
         },
         getDrawingVerticalLine: (value) {
           return const FlLine(
@@ -228,9 +209,7 @@ class FlChartController extends MyController {
         rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
+        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
@@ -267,20 +246,17 @@ class FlChartController extends MyController {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-          ),
+          gradient: LinearGradient(colors: gradientColors),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: const FlDotData(
-            show: false,
-          ),
+          dotData: const FlDotData(show: false),
           belowBarData: BarAreaData(
             show: true,
             gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
+              colors:
+                  gradientColors
+                      .map((color) => color.withOpacity(0.3))
+                      .toList(),
             ),
           ),
         ),
@@ -301,9 +277,7 @@ class FlChartController extends MyController {
   LineChartBarData sinLine(List<FlSpot> points) {
     return LineChartBarData(
       spots: points,
-      dotData: const FlDotData(
-        show: false,
-      ),
+      dotData: const FlDotData(show: false),
       gradient: LinearGradient(
         colors: [Colors.blue.withOpacity(0), Colors.blue],
         stops: const [0.1, 1.0],
@@ -316,9 +290,7 @@ class FlChartController extends MyController {
   LineChartBarData cosLine(List<FlSpot> points) {
     return LineChartBarData(
       spots: points,
-      dotData: const FlDotData(
-        show: false,
-      ),
+      dotData: const FlDotData(show: false),
       gradient: LinearGradient(
         colors: [Colors.pink.withOpacity(0), Colors.pink],
         stops: const [0.1, 1.0],
@@ -345,16 +317,8 @@ class FlChartController extends MyController {
       barsSpace: 4,
       x: x,
       barRods: [
-        BarChartRodData(
-          toY: y1,
-          color: Colors.purple,
-          width: width,
-        ),
-        BarChartRodData(
-          toY: y2,
-          color: Colors.redAccent,
-          width: width,
-        ),
+        BarChartRodData(toY: y1, color: Colors.purple, width: width),
+        BarChartRodData(toY: y2, color: Colors.redAccent, width: width),
       ],
     );
   }
@@ -362,141 +326,89 @@ class FlChartController extends MyController {
   /// Bar Chart 2
 
   BarChartData get barChartData => BarChartData(
-        barTouchData: barTouchData,
-        titlesData: titlesData,
-        borderData: borderBarChartData,
-        barGroups: barGroups,
-        gridData: const FlGridData(show: false),
-        alignment: BarChartAlignment.spaceAround,
-        maxY: 20,
-      );
+    barTouchData: barTouchData,
+    titlesData: titlesData,
+    borderData: borderBarChartData,
+    barGroups: barGroups,
+    gridData: const FlGridData(show: false),
+    alignment: BarChartAlignment.spaceAround,
+    maxY: 20,
+  );
 
-  FlBorderData get borderBarChartData => FlBorderData(
-        show: false,
-      );
+  FlBorderData get borderBarChartData => FlBorderData(show: false);
 
   BarTouchData get barTouchData => BarTouchData(
-        enabled: false,
-        touchTooltipData: BarTouchTooltipData(
-          tooltipPadding: EdgeInsets.zero,
-          tooltipMargin: 8,
-          getTooltipItem: (
-            BarChartGroupData group,
-            int groupIndex,
-            BarChartRodData rod,
-            int rodIndex,
-          ) {
-            return BarTooltipItem(
-              rod.toY.round().toString(),
-              const TextStyle(
-                color: Colors.cyan,
-                fontWeight: FontWeight.bold,
-              ),
-            );
-          },
-        ),
-      );
+    enabled: false,
+    touchTooltipData: BarTouchTooltipData(
+      tooltipPadding: EdgeInsets.zero,
+      tooltipMargin: 8,
+      getTooltipItem: (
+        BarChartGroupData group,
+        int groupIndex,
+        BarChartRodData rod,
+        int rodIndex,
+      ) {
+        return BarTooltipItem(
+          rod.toY.round().toString(),
+          const TextStyle(color: Colors.cyan, fontWeight: FontWeight.bold),
+        );
+      },
+    ),
+  );
 
   FlTitlesData get titlesData => FlTitlesData(
-        show: true,
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-          ),
-        ),
-        leftTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-      );
+    show: true,
+    bottomTitles: AxisTitles(
+      sideTitles: SideTitles(showTitles: true, reservedSize: 30),
+    ),
+    leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+  );
 
   List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
-          x: 0,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 1,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 2,
-          barRods: [
-            BarChartRodData(
-              toY: 14,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [
-            BarChartRodData(
-              toY: 15,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 4,
-          barRods: [
-            BarChartRodData(
-              toY: 13,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 5,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 6,
-          barRods: [
-            BarChartRodData(
-              toY: 16,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-      ];
+    BarChartGroupData(
+      x: 0,
+      barRods: [BarChartRodData(toY: 8, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 1,
+      barRods: [BarChartRodData(toY: 10, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 2,
+      barRods: [BarChartRodData(toY: 14, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 3,
+      barRods: [BarChartRodData(toY: 15, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 4,
+      barRods: [BarChartRodData(toY: 13, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 5,
+      barRods: [BarChartRodData(toY: 10, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+    BarChartGroupData(
+      x: 6,
+      barRods: [BarChartRodData(toY: 16, gradient: _barsGradient)],
+      showingTooltipIndicators: [0],
+    ),
+  ];
 
   LinearGradient get _barsGradient => LinearGradient(
-        colors: [
-          Colors.blue.shade300,
-          Colors.cyan,
-        ],
-        begin: Alignment.bottomCenter,
-        end: Alignment.topCenter,
-      );
+    colors: [Colors.blue.shade300, Colors.cyan],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
 
   /// Bar Chart 3
 
@@ -512,12 +424,7 @@ class FlChartController extends MyController {
       x: x,
       groupVertically: true,
       barRods: [
-        BarChartRodData(
-          fromY: 0,
-          toY: pilates,
-          color: Colors.purple,
-          width: 5,
-        ),
+        BarChartRodData(fromY: 0, toY: pilates, color: Colors.purple, width: 5),
         BarChartRodData(
           fromY: pilates + betweenSpace,
           toY: pilates + betweenSpace + quickWorkout,
@@ -575,51 +482,23 @@ class FlChartController extends MyController {
 
   List<RawDataSet> rawDataSets() {
     return [
-      RawDataSet(
-        title: 'Fashion',
-        color: Colors.red,
-        values: [
-          300,
-          50,
-          250,
-        ],
-      ),
+      RawDataSet(title: 'Fashion', color: Colors.red, values: [300, 50, 250]),
       RawDataSet(
         title: 'Art & Tech',
         color: Colors.cyan,
-        values: [
-          250,
-          100,
-          200,
-        ],
+        values: [250, 100, 200],
       ),
       RawDataSet(
         title: 'Entertainment',
         color: Colors.white,
-        values: [
-          200,
-          150,
-          50,
-        ],
+        values: [200, 150, 50],
       ),
       RawDataSet(
         title: 'Off-road Vehicle',
         color: Colors.yellow,
-        values: [
-          150,
-          200,
-          150,
-        ],
+        values: [150, 200, 150],
       ),
-      RawDataSet(
-        title: 'Boxing',
-        color: Colors.green,
-        values: [
-          100,
-          250,
-          100,
-        ],
-      ),
+      RawDataSet(title: 'Boxing', color: Colors.green, values: [100, 250, 100]),
     ];
   }
 
@@ -628,16 +507,18 @@ class FlChartController extends MyController {
       final index = entry.key;
       final rawDataSet = entry.value;
 
-      final isSelected = index == selectedDataSetIndex
-          ? true
-          : selectedDataSetIndex == -1
+      final isSelected =
+          index == selectedDataSetIndex
+              ? true
+              : selectedDataSetIndex == -1
               ? true
               : false;
 
       return RadarDataSet(
-        fillColor: isSelected
-            ? rawDataSet.color.withOpacity(0.2)
-            : rawDataSet.color.withOpacity(0.05),
+        fillColor:
+            isSelected
+                ? rawDataSet.color.withOpacity(0.2)
+                : rawDataSet.color.withOpacity(0.05),
         borderColor:
             isSelected ? rawDataSet.color : rawDataSet.color.withOpacity(0.25),
         entryRadius: isSelected ? 3 : 2,
@@ -650,11 +531,7 @@ class FlChartController extends MyController {
 }
 
 class RawDataSet {
-  RawDataSet({
-    required this.title,
-    required this.color,
-    required this.values,
-  });
+  RawDataSet({required this.title, required this.color, required this.values});
 
   final String title;
   final Color color;

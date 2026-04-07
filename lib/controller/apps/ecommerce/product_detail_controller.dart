@@ -1,6 +1,6 @@
-import 'package:webkit/controller/my_controller.dart';
-import 'package:webkit/helpers/widgets/my_text_utils.dart';
-import 'package:webkit/images.dart';
+import 'package:yamazone/controller/my_controller.dart';
+import 'package:yamazone/helpers/widgets/my_text_utils.dart';
+import 'package:yamazone/images.dart';
 
 class ChartData {
   ChartData(this.x, this.y);
@@ -10,8 +10,10 @@ class ChartData {
 }
 
 class ProductDetailController extends MyController {
-  List<String> dummyTexts =
-      List.generate(12, (index) => MyTextUtils.getDummyText(60));
+  List<String> dummyTexts = List.generate(
+    12,
+    (index) => MyTextUtils.getDummyText(60),
+  );
   String selectedImage = Images.squareImages[6];
 
   var itemCount = 1;

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import 'package:webkit/controller/ui/drag_drop_controller.dart';
-import 'package:webkit/helpers/extensions/string.dart';
-import 'package:webkit/helpers/utils/ui_mixins.dart';
-import 'package:webkit/helpers/utils/utils.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb.dart';
-import 'package:webkit/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:webkit/helpers/widgets/my_container.dart';
-import 'package:webkit/helpers/widgets/my_flex.dart';
-import 'package:webkit/helpers/widgets/my_flex_item.dart';
-import 'package:webkit/helpers/widgets/my_list_extension.dart';
-import 'package:webkit/helpers/widgets/my_spacing.dart';
-import 'package:webkit/helpers/widgets/my_text.dart';
-import 'package:webkit/helpers/widgets/responsive.dart';
-import 'package:webkit/views/layouts/layout.dart';
+import 'package:yamazone/controller/ui/drag_drop_controller.dart';
+import 'package:yamazone/helpers/extensions/string.dart';
+import 'package:yamazone/helpers/utils/ui_mixins.dart';
+import 'package:yamazone/helpers/utils/utils.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb.dart';
+import 'package:yamazone/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:yamazone/helpers/widgets/my_container.dart';
+import 'package:yamazone/helpers/widgets/my_flex.dart';
+import 'package:yamazone/helpers/widgets/my_flex_item.dart';
+import 'package:yamazone/helpers/widgets/my_list_extension.dart';
+import 'package:yamazone/helpers/widgets/my_spacing.dart';
+import 'package:yamazone/helpers/widgets/my_text.dart';
+import 'package:yamazone/helpers/widgets/responsive.dart';
+import 'package:yamazone/views/layouts/layout.dart';
 
 class DragDropPage extends StatefulWidget {
   const DragDropPage({Key? key}) : super(key: key);
@@ -71,51 +71,55 @@ class _DragDropPageState extends State<DragDropPage>
                       sizes: "lg-7 md-12",
                       child: ReorderableListView(
                         proxyDecorator: (child, index, animation) {
-                          return Material(
-                            child: child,
-                          );
+                          return Material(child: child);
                         },
                         buildDefaultDragHandles: false,
                         shrinkWrap: true,
                         onReorder: controller.onReorder,
-                        children: controller.dragDrop
-                            .mapIndexed(
-                              (index, element) => MyContainer.bordered(
-                                paddingAll: 40,
-                                key: Key('$index'),
-                                child: ReorderableDragStartListener(
-                                  index: index,
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.grabbing,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        MyText.bodyMedium(controller
-                                            .dragDrop[index].number
-                                            .toString()),
-                                        MyText.bodyMedium(
-                                          Utils.getDateStringFromDateTime(
+                        children:
+                            controller.dragDrop
+                                .mapIndexed(
+                                  (index, element) => MyContainer.bordered(
+                                    paddingAll: 40,
+                                    key: Key('$index'),
+                                    child: ReorderableDragStartListener(
+                                      index: index,
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.grabbing,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            MyText.bodyMedium(
+                                              controller.dragDrop[index].number
+                                                  .toString(),
+                                            ),
+                                            MyText.bodyMedium(
+                                              Utils.getDateStringFromDateTime(
+                                                controller
+                                                    .dragDrop[index]
+                                                    .sendAt,
+                                              ),
+                                            ),
+                                            MyText.bodyMedium(
+                                              controller.dragDrop[index].name,
+                                            ),
+                                            MyText.bodyMedium(
                                               controller
-                                                  .dragDrop[index].sendAt),
+                                                  .dragDrop[index]
+                                                  .phoneNumber,
+                                              textAlign: TextAlign.start,
+                                            ),
+                                            MyText.bodyMedium(
+                                              "${controller.dragDrop[index].balance}",
+                                            ),
+                                          ],
                                         ),
-                                        MyText.bodyMedium(
-                                          controller.dragDrop[index].name,
-                                        ),
-                                        MyText.bodyMedium(
-                                            controller
-                                                .dragDrop[index].phoneNumber,
-                                            textAlign: TextAlign.start),
-                                        MyText.bodyMedium(
-                                          "${controller.dragDrop[index].balance}",
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            )
-                            .toList(),
+                                )
+                                .toList(),
                       ),
                     ),
                   ],
