@@ -645,22 +645,22 @@ class _UserManagementCardState extends State<_UserManagementCard> {
                   color: kTextDark,
                 ),
               ),
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.add, size: 14),
-                label: const Text('Add User', style: TextStyle(fontSize: 13)),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kPrimary,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 8,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
+              // ElevatedButton.icon(
+              //   onPressed: () {},
+              //   icon: const Icon(Icons.add, size: 14),
+              //   label: const Text('Add User', style: TextStyle(fontSize: 13)),
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: kPrimary,
+              //     foregroundColor: Colors.white,
+              //     padding: const EdgeInsets.symmetric(
+              //       horizontal: 14,
+              //       vertical: 8,
+              //     ),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(8),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           const SizedBox(height: 12),

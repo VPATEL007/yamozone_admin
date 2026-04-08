@@ -1098,25 +1098,25 @@ class _KYCApprovalsScreenState extends State<KYCApprovalsScreen> {
           items: ['Sort by: Newest', 'Sort by: Oldest', 'Sort by: Name'],
           onChanged: (v) => setState(() => _selectedSort = v!),
         ),
-        const Spacer(),
-        ElevatedButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.filter_list, size: 16),
-          label: const Text('More Filters'),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primary,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            textStyle: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            elevation: 0,
-          ),
-        ),
+        // const Spacer(),
+        // ElevatedButton.icon(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.filter_list, size: 16),
+        //   label: const Text('More Filters'),
+        //   style: ElevatedButton.styleFrom(
+        //     backgroundColor: AppColors.primary,
+        //     foregroundColor: Colors.white,
+        //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        //     textStyle: const TextStyle(
+        //       fontSize: 13,
+        //       fontWeight: FontWeight.w600,
+        //     ),
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(8),
+        //     ),
+        //     elevation: 0,
+        //   ),
+        // ),
       ],
     );
   }

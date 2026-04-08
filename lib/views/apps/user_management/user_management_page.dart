@@ -778,24 +778,24 @@ class _UserManagementPageState extends State<UserManagementPage> {
               letterSpacing: -0.3,
             ),
           ),
-          const Spacer(),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.add, size: 18),
-            label: const Text(
-              'Add User',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              elevation: 0,
-            ),
-          ),
+          // const Spacer(),
+          // ElevatedButton.icon(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.add, size: 18),
+          //   label: const Text(
+          //     'Add User',
+          //     style: TextStyle(fontWeight: FontWeight.w600),
+          //   ),
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: AppColors.primary,
+          //     foregroundColor: Colors.white,
+          //     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(8),
+          //     ),
+          //     elevation: 0,
+          //   ),
+          // ),
         ],
       ),
     );

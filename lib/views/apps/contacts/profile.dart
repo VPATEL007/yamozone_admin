@@ -208,96 +208,8 @@ class _ProfilePageState extends State<ProfilePage>
                               padding: MySpacing.left(20),
                               child: MyText.titleMedium("Inbox"),
                             ),
+
                             // MySpacing.height(12),
-                            Padding(
-                              padding: MySpacing.all(20),
-                              child: SizedBox(
-                                height: 315,
-                                child: ListView.separated(
-                                  primary: true,
-                                  shrinkWrap: true,
-                                  itemCount: controller.chat.length,
-                                  itemBuilder: (context, index) {
-                                    return MyButton(
-                                      onPressed: () {},
-                                      elevation: 0,
-                                      borderRadiusAll: 8,
-                                      backgroundColor: theme
-                                          .colorScheme
-                                          .background
-                                          .withAlpha(5),
-                                      splashColor: theme
-                                          .colorScheme
-                                          .onBackground
-                                          .withAlpha(10),
-                                      child: SizedBox(
-                                        height: 60,
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            MyContainer.rounded(
-                                              height: 40,
-                                              width: 40,
-                                              paddingAll: 0,
-                                              child: Image.asset(
-                                                Images.avatars[index %
-                                                    Images.avatars.length],
-                                                height: 40,
-                                                width: 40,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            MySpacing.width(12),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  MyText.labelLarge(
-                                                    controller
-                                                        .chat[index]
-                                                        .firstName,
-                                                  ),
-                                                  SizedBox(
-                                                    width: 300,
-                                                    child: MyText.bodySmall(
-                                                      controller
-                                                          .chat[index]
-                                                          .message,
-                                                      muted: true,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      fontWeight: 400,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                MyText.bodySmall(
-                                                  '${Utils.getTimeStringFromDateTime(controller.chat[index].sendAt, showSecond: false)}',
-                                                  muted: true,
-                                                  fontWeight: 600,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  separatorBuilder: (context, index) {
-                                    return const SizedBox(height: 12);
-                                  },
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -317,10 +229,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   fontWeight: 600,
                                 ),
                                 MySpacing.height(20),
-                                MyText.bodyMedium(
-                                  controller.dummyTexts[5],
-                                  maxLines: 3,
-                                ),
+
                                 MySpacing.height(16),
                                 MyFlex(
                                   contentPadding: false,
@@ -505,8 +414,6 @@ class _ProfilePageState extends State<ProfilePage>
                                 MySpacing.height(12),
                                 SfCartesianChart(
                                   primaryXAxis: NumericAxis(isInversed: true),
-                                  primaryYAxis: NumericAxis(isInversed: true),
-                                  tooltipBehavior: controller.tool,
                                 ),
                               ],
                             ),

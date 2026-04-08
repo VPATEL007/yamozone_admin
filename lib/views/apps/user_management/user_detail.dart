@@ -1243,20 +1243,20 @@ class _TopBar extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          _ActionButton(
-            icon: Icons.lock_reset,
-            label: 'Reset Password',
-            color: kGreen,
-            textColor: Colors.white,
-          ),
-          const SizedBox(width: 8),
-          _ActionButton(
-            icon: Icons.logout,
-            label: 'Force Logout',
-            color: kGold,
-            textColor: Colors.white,
-          ),
-          const SizedBox(width: 8),
+          // _ActionButton(
+          //   icon: Icons.lock_reset,
+          //   label: 'Reset Password',
+          //   color: kGreen,
+          //   textColor: Colors.white,
+          // ),
+          // const SizedBox(width: 8),
+          // _ActionButton(
+          //   icon: Icons.logout,
+          //   label: 'Force Logout',
+          //   color: kGold,
+          //   textColor: Colors.white,
+          // ),
+          // const SizedBox(width: 8),
           _ActionButton(
             icon: Icons.block,
             label: 'Block User',
@@ -1603,6 +1603,7 @@ class _WalletCard extends StatelessWidget {
         border: Border.all(color: kBorder),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -1666,55 +1667,55 @@ class _WalletCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           _WalletRow(label: 'Pending Payouts', value: '\$850.00', color: kRed),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.add, size: 14, color: Colors.white),
-                  label: const Text(
-                    'Add Funds',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kBalanceBg,
-                    elevation: 0,
-                    padding: const EdgeInsets.symmetric(vertical: 11),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.history,
-                    size: 14,
-                    color: kTextSecondary,
-                  ),
-                  label: const Text(
-                    'History',
-                    style: TextStyle(fontSize: 13, color: kTextSecondary),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: kBorder),
-                    padding: const EdgeInsets.symmetric(vertical: 11),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // const SizedBox(height: 16),
+          // Row(
+          //   children: [
+          //     Expanded(
+          //       child: ElevatedButton.icon(
+          //         onPressed: () {},
+          //         icon: const Icon(Icons.add, size: 14, color: Colors.white),
+          //         label: const Text(
+          //           'Add Funds',
+          //           style: TextStyle(
+          //             fontSize: 13,
+          //             fontWeight: FontWeight.w600,
+          //             color: Colors.white,
+          //           ),
+          //         ),
+          //         style: ElevatedButton.styleFrom(
+          //           backgroundColor: kBalanceBg,
+          //           elevation: 0,
+          //           padding: const EdgeInsets.symmetric(vertical: 11),
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(8),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     const SizedBox(width: 10),
+          //     Expanded(
+          //       child: OutlinedButton.icon(
+          //         onPressed: () {},
+          //         icon: const Icon(
+          //           Icons.history,
+          //           size: 14,
+          //           color: kTextSecondary,
+          //         ),
+          //         label: const Text(
+          //           'History',
+          //           style: TextStyle(fontSize: 13, color: kTextSecondary),
+          //         ),
+          //         style: OutlinedButton.styleFrom(
+          //           side: const BorderSide(color: kBorder),
+          //           padding: const EdgeInsets.symmetric(vertical: 11),
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.circular(8),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
