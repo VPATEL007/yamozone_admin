@@ -19,8 +19,6 @@ Future<void> main() async {
   await LocalStorage.init();
   AppStyle.init();
   await ThemeCustomizer.init();
-  // await Translator.clearTrans();
-  // Translator.getUnTrans();
 
   runApp(
     ChangeNotifierProvider<AppNotifier>(
