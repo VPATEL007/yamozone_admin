@@ -158,6 +158,12 @@ class _LeftBarState extends State<LeftBar>
                       isCondensed: isCondensed,
                     ),
                     NavigationItem(
+                      iconData: LucideIcons.accessibility,
+                      title: "Suggestions",
+                      route: '/suggestions',
+                      isCondensed: isCondensed,
+                    ),
+                    NavigationItem(
                       iconData: LucideIcons.dumbbell,
                       title: "Driver Monitoring",
                       route: '/driver-monitoring',

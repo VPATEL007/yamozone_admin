@@ -202,7 +202,7 @@ class _StatCardsRow extends StatelessWidget {
             stats
                 .map(
                   (s) => Padding(
-                    padding: const EdgeInsets.only(right: 12),
+                    padding: const EdgeInsets.only(right: 10),
                     child: _StatCard(data: s),
                   ),
                 )
@@ -245,6 +245,7 @@ class _StatCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(

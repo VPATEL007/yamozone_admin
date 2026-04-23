@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:yamazone/views/apps/driver_monitoring/widget/proof_of_delivery_dialog.dart';
+import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart'
+    show kTextPrimary;
 import 'package:yamazone/views/layouts/layout.dart';
 
 // ─────────────────────────────────────────────
@@ -108,7 +110,7 @@ class _DriverHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: kCardBg,
         borderRadius: BorderRadius.circular(12),
@@ -122,6 +124,26 @@ class _DriverHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
+          InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: kBg,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: kBorder),
+              ),
+              child: const Icon(
+                Icons.arrow_back,
+                size: 18,
+                color: kTextPrimary,
+              ),
+            ),
+          ),
+          SizedBox(width: 20),
           // Avatar
           Container(
             width: 60,

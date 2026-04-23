@@ -13,6 +13,8 @@ import 'package:yamazone/views/apps/ecommerce/add_product.dart';
 import 'package:yamazone/views/apps/listing_moderation/listing_detail_view.dart';
 import 'package:yamazone/views/apps/listing_moderation/listing_reported_detail_view.dart';
 import 'package:yamazone/views/apps/orders_escrow/order_detail_page.dart';
+import 'package:yamazone/views/apps/suggestions/suggestions_page.dart';
+import 'package:yamazone/views/apps/system_setting/audit_log_detail.dart';
 import 'package:yamazone/views/apps/user_management/user_management_page.dart';
 import 'package:yamazone/views/apps/kyc/kyc_review_page.dart';
 import 'package:yamazone/views/apps/user_management/user_detail.dart';
@@ -112,6 +114,11 @@ getPageRoute() {
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
+      name: '/suggestions',
+      page: () => const SuggestionsPage(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
       name: '/apps/ecommerce/add_product',
       page: () => const AddProduct(),
       middlewares: [AuthMiddleware()],
@@ -191,7 +198,7 @@ getPageRoute() {
     ),
     GetPage(
       name: '/audit/detail',
-      page: () => const SystemSettingsPage(),
+      page: () => const AuditLogDetailScreen(),
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
